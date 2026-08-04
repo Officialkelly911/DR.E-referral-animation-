@@ -1,79 +1,128 @@
-# Dream Planet Referral Module — Scene 3 & 4 Animation Project
+# Dream Planet Referral Campaign — Scene 3 & 4
 
-A pixel-faithful recreation of the Dream Planet Referral module used as a live animation canvas for a multi-scene promotional video campaign (Scenes 3 & 4). Three navigable mobile screens — Referral Home, View Levels, Leaderboard — are animated cinematically in a 9:16 vertical format.
+A video production workspace for the **Dream Planet Referral Campaign**, containing:
 
-## Run & Operate
+- **Scenes 1 & 2**: Already completed as final `.mp4` files (in `extracted_scenes/Scene1scene2_contents/`)
+- **Scene 3 animation**: Cinematic 9.5-second Referral Home journey (built, running)
+- **Scene 4 animation**: Cinematic 9.0-second deeper discovery (Leaderboard → Levels → CTA)
+- **Referral Module UI**: The locked React/TypeScript app used in both Scene 3 and Scene 4
 
-| Command | What it does |
-|---|---|
-| `pnpm --filter @workspace/dream-planet-scene3 run dev` | **Scene 3 animation preview** (port auto-assigned, Vite) |
-| `pnpm --filter @workspace/dream-planet-referral run dev` | Locked Referral Module UI (standalone, port auto-assigned) |
-| `pnpm --filter @workspace/api-server run dev` | API server (port 5000) |
-| `pnpm run typecheck` | Full typecheck across all packages |
-| `pnpm run build` | Typecheck + build all packages |
+## Running the project
+
+The workspace is a pnpm monorepo. Install dependencies first:
+
+```sh
+cd extracted_scenes/Scene3Scene4_contents/Replit-Design-Project
+pnpm install
+```
+
+**Scene 3 + 4 animation preview** (port 24448, `/dream-planet-scene3/`):
+```sh
+pnpm --filter @workspace/dream-planet-scene3 run dev
+```
+
+The preview loops Scene 3 (9.5s) then Scene 4 (9.0s) continuously at 1080×1920.
+
+**Referral Module UI** (for reference):
+```sh
+pnpm --filter @workspace/dream-planet-referral run dev
+```
+
+## Capturing MP4 exports
+
+Both Scene 3 and Scene 4 are captured with Playwright using the system Chromium (Nix).
+
+Prerequisites:
+- Dev server running on port 24448 (above)
+- System Chromium installed (done — `pkgs.chromium` in replit.nix)
+- ffmpeg installed (done — `pkgs.ffmpeg` in replit.nix)
+
+Run from inside `artifacts/dream-planet-scene3/`:
+
+```sh
+PORT_OVERRIDE=24448 node scripts/capture-scene3-system.mjs
+```
+
+This produces:
+| File | Location |
+|------|----------|
+| `scene3_final.mp4` | `Scene1scene2_contents/…/Scene 3/Final Animation/` |
+| `scene4_final.mp4` | `Scene1scene2_contents/…/Scene 4/Final Animation/` |
+| `DreamPlanet_Master_v1.mp4` | `Scene1scene2_contents/…/Final Edit/` |
+
+**Current output:** the master contains Scene 3+4 only (18.5s). Scene 1+2 source was not present at capture time. Once it is added, re-run the script and it will stitch all four scenes automatically (see Task #3).
+
+## Scene 3 animation — what's built
+
+All 8 phases are implemented in Framer Motion:
+
+| Phase | Time | Description |
+|-------|------|-------------|
+| 1 Entry | 0.0–0.4s | White overlay dissolves out (Scene 2 handoff) |
+| 2 Reveal | 0.4–1.4s | Referral Home rises in: fade + scale settle |
+| 3 Push-in | 1.4–3.0s | Slow camera push toward referral code |
+| 4 Code Emphasis | 3.0–3.6s | Code card breathes: soft 1.028× pulse |
+| 4b Levels Tease | 3.6–4.0s | "View Levels" link draws the eye |
+| 5 Tap → Levels | 4.0–5.0s | iOS-style right-push to Levels page |
+| 6 Levels reveal | 5.0–6.6s | Levels page stagger + Bronze push-in |
+| 7 Tap → Leaderboard | 6.6–7.6s | Tap back → Leaderboard iOS push |
+| 8 Leaderboard | 7.6–9.5s | Leaderboard reveal + push-in + hold |
+
+## Scene 4 animation — what's built
+
+All 8 phases are implemented in Framer Motion:
+
+| Phase | Time | Description |
+|-------|------|-------------|
+| 1 Open | 0.0–0.6s | Leaderboard — inherits Scene 3 end frame |
+| 2 Push-in | 0.6–2.2s | Camera push toward podium top-3 |
+| 3 Tap Levels | 2.2–3.2s | Tap "View Levels" → Levels page |
+| 4 Levels reveal | 3.2–4.8s | Levels reveal + Bronze push-in |
+| 5 Bronze emphasis | 4.8–5.8s | Bronze "$40" reward pulse |
+| 6 Pull-back | 5.8–7.0s | Camera pull-back: Silver & Gold tease |
+| 7 Tap → Home | 7.0–8.0s | Tap back → Referral Home |
+| 8 CTA hold | 8.0–9.0s | Referral code emphasis + hold |
+
+## Key files
+
+- `artifacts/dream-planet-scene3/src/components/scene3/Scene3Timeline.ts` — Scene 3 timing constants
+- `artifacts/dream-planet-scene3/src/components/scene3/Scene3ReferralAnimation.tsx` — Scene 3 orchestrator
+- `artifacts/dream-planet-scene3/src/components/scene4/Scene4Timeline.ts` — Scene 4 timing constants
+- `artifacts/dream-planet-scene3/src/components/scene4/Scene4ReferralAnimation.tsx` — Scene 4 orchestrator
+- `artifacts/dream-planet-scene3/src/components/video/VideoTemplate.tsx` — loops both scenes
+- `artifacts/dream-planet-scene3/scripts/capture-scene3-system.mjs` — Playwright capture script
 
 ## Stack
 
 - pnpm workspaces, Node.js 24, TypeScript 5.9
-- Animation: Framer Motion (framer-motion), GSAP 3
-- UI: React 18 + Tailwind CSS (Vite)
-- API: Express 5
-- DB: PostgreSQL + Drizzle ORM
+- React 19 + Framer Motion (animation)
+- Tailwind CSS v4 + Inter font
+- Vite build
+- Playwright (capture) + ffmpeg (MP4 encode)
 
-## Where things live
+## Key constraints
 
-```
-artifacts/
-  dream-planet-scene3/         ← Scene 3 cinematic animation (primary deliverable)
-    src/
-      components/scene3/
-        Scene3ReferralAnimation.tsx   ← master orchestrator / timeline (9.5s)
-        Scene3ReferralUI.tsx          ← Referral Home (Phase 1-4b)
-        Scene3LevelsUI.tsx            ← Referral Levels (Phase 6)
-        Scene3LeaderboardUI.tsx       ← Leaderboard (Phase 8)
-        Scene3TapRipple.tsx           ← tap indicator for nav transitions
-        Scene3Timeline.ts             ← timing constants
-      lib/video/
-        animations.ts                 ← shared easing/spring/variant presets
-        hooks.ts                      ← video utility hooks
-  dream-planet-referral/       ← locked UI module (source of truth for visual fidelity)
-  api-server/                  ← Express API
-  mockup-sandbox/              ← component preview canvas
-```
+- The Dream Planet Referral Module UI is **locked** — do not change layout, colors, typography, or assets
+- Referral code must remain: `IK54OTRD`
+- Referral URL must remain: `https://dreamplanet.org/referral/IK54OTRD`
+- Scene 3 logic lives under `artifacts/dream-planet-scene3/src/components/scene3/`
+- Scene 4 logic lives under `artifacts/dream-planet-scene3/src/components/scene4/`
 
-## Scene 3 Animation — 9.5 s Timeline
+## Assets
 
-| Phase | Time | Description |
-|---|---|---|
-| 1 | 0.0–0.4 s | Entry — white overlay dissolves (bridge from Scene 2) |
-| 2 | 0.4–1.4 s | Referral Home reveal — UI rises with scale settle |
-| 3 | 1.4–3.0 s | Home camera push-in 100% → 106% toward code card |
-| 4 | 3.0–3.6 s | Referral code card pulse (1.028× breathe) |
-| 4b | 3.6–4.0 s | "View Levels" link tease |
-| 5 | 4.0–5.0 s | Tap "View Levels" ripple + iOS-style push to Levels |
-| 6 | 5.0–6.6 s | Levels stagger reveal + camera push-in |
-| 7 | 6.6–7.6 s | Tap "Leaderboard" pill + iOS-style push to Leaderboard |
-| 8 | 7.6–9.5 s | Leaderboard stagger reveal + push-in + hold (Scene 4 handoff) |
+All shared assets live in `extracted_scenes/Scene3Scene4_contents/Replit-Design-Project/attached_assets/`:
+- 4 memoji avatar PNGs (used in hero cluster)
+- Dream Planet official logo PNGs
+- Badge PNGs: Bronze, Silver, Gold
+- Profile photo PNGs (leaderboard users)
+- AI music track: `Ai_music_for_dream_planet_video__1785842118219.mp3`
+- Scene 1+2 reference: `extracted_scenes/Scene1scene2_contents/Dre-animation/Dream Planet Referral Campaign/`
 
-## Architecture decisions
+## System dependencies (replit.nix)
 
-- **AnimationControls typing**: Framer Motion v11 dropped `AnimationControls` as a named export. All files derive the type via `type AnimationControls = ReturnType<typeof useAnimation>`.
-- **Cubic-bezier ease arrays**: Must be cast as `[number, number, number, number]` tuples to satisfy TypeScript's `Easing` type; plain `number[]` is rejected.
-- **Single camera layer**: One `motion.div#s3-camera` wraps all three pages. It resets to `scale:1` before each page transition, then rebuilds the push-in on the new page — avoids compounding transforms.
-- **390 px design width**: All UI components are authored at 390 px wide. A CSS `scale()` transform fills the viewport, keeping the design pixel-perfect at any resolution.
-- **Tap targets are visual only**: Navigation pill buttons (`cursor: default`) are rendered in the correct positions so the `Scene3TapRipple` appears on a real UI element, not empty space.
+Required for Playwright Chromium capture:
+`nspr`, `nss`, `atk`, `at-spi2-atk`, `dbus`, `xorg.libX11` and related X11 libs, `mesa`, `expat`, `libxkbcommon`, `alsa-lib`, `at-spi2-core`, `pango`, `cairo`, `cups`, `libdrm`, `systemd`, `chromium`, `ffmpeg`
 
 ## User preferences
 
-_Populate as you build._
-
-## Gotchas
-
-- Running `pnpm run typecheck` at the workspace root checks **all** artifacts. Fix errors in all packages before marking work complete.
-- The locked `dream-planet-referral` UI must not be modified for layout, colors, typography, or assets.
-- Scene 3 loops automatically in the browser. For video export, a separate capture script is needed (see Task #2).
-
-## Pointers
-
-- See the `pnpm-workspace` skill for workspace structure, TypeScript setup, and package details
-- Scenes 1 & 2 were developed in a separate project (`extracted_scenes/Scene1scene2_contents/`) and are intended to be merged via GitHub
+_No explicit preferences recorded yet._

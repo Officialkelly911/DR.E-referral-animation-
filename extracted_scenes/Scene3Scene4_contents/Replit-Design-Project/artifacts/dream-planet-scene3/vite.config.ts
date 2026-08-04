@@ -5,27 +5,20 @@ import { defineConfig } from 'vite';
 
 import runtimeErrorOverlay from '@replit/vite-plugin-runtime-error-modal';
 
-const rawPort = process.env.PORT;
-
-if (!rawPort) {
-  throw new Error(
-    'PORT environment variable is required but was not provided.',
-  );
-}
-
+// PORT is required by the dev/preview server; during production builds it is
+// not strictly needed (Vite doesn't bind a port for `vite build`), so we fall
+// back to the canonical value so the config file loads cleanly.
+const rawPort = process.env.PORT ?? '24448';
 const port = Number(rawPort);
 
 if (Number.isNaN(port) || port <= 0) {
   throw new Error(`Invalid PORT value: "${rawPort}"`);
 }
 
-const basePath = process.env.BASE_PATH;
-
-if (!basePath) {
-  throw new Error(
-    'BASE_PATH environment variable is required but was not provided.',
-  );
-}
+// BASE_PATH controls asset URL prefixes in the build output.  The canonical
+// path for this artifact is /dream-planet-scene3/ — use it as the default so
+// `pnpm run build` works without extra env-var ceremony.
+const basePath = process.env.BASE_PATH ?? '/dream-planet-scene3/';
 
 export default defineConfig({
   base: basePath,
