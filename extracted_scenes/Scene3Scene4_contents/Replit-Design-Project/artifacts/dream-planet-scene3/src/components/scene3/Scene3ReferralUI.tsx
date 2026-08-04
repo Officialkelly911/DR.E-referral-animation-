@@ -13,7 +13,7 @@
  */
 
 import React from 'react';
-import { motion, AnimationControls } from 'framer-motion';
+import { motion, useAnimation } from 'framer-motion';
 import { ChevronLeft } from 'lucide-react';
 
 // Avatar images — shared attached_assets folder (same @assets alias as referral app)
@@ -21,6 +21,9 @@ import yellowAvatarImg      from '@assets/D584BC4A-F374-4214-9909-3969CA68DFFF_1
 import lightBlueAvatarImg   from '@assets/90B081D0-1C60-4E73-82F9-438E59013B4A_1785791313737.png';
 import pinkThumbsAvatarImg  from '@assets/3DF9C94B-3977-4E14-B891-1DEEC6A17354_1785791313737.png';
 import hotPinkAvatarImg     from '@assets/61F98831-A057-42BC-84E4-E8862E1BE1E5_1785791313737.png';
+
+// AnimationControls is no longer a named export in Framer Motion v11 — derive it from useAnimation
+type AnimationControls = ReturnType<typeof useAnimation>;
 
 export interface Scene3ReferralUIProps {
   /** Controls for the referral code card pulse (Phase 4) */

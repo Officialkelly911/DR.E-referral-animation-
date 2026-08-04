@@ -9,6 +9,7 @@
  *   scene3 (4500ms) — Scene3ReferralAnimation, all 6 phases
  */
 
+import { useState } from 'react';
 import { useVideoPlayer } from '@/lib/video';
 import { AnimatePresence, motion } from 'framer-motion';
 import { Scene3ReferralAnimation } from '@/components/scene3/Scene3ReferralAnimation';
@@ -19,9 +20,14 @@ const SCENE_DURATIONS = {
 };
 
 export default function VideoTemplate() {
+  // loopCount forces a remount of Scene3ReferralAnimation on each loop cycle,
+  // so the animation useEffect and startedRef reset cleanly.
+  const [loopCount, setLoopCount] = useState(0);
+
   const { currentScene } = useVideoPlayer({
     durations: SCENE_DURATIONS,
     loop: true,
+    onVideoEnd: () => setLoopCount((n) => n + 1),
   });
 
   return (
@@ -32,7 +38,7 @@ export default function VideoTemplate() {
       <AnimatePresence mode="wait">
         {currentScene === 0 && (
           <motion.div
-            key="scene3"
+            key={`scene3-${loopCount}`}
             style={{ position: 'absolute', inset: 0 }}
             initial={{ opacity: 1 }}
             exit={{ opacity: 0 }}

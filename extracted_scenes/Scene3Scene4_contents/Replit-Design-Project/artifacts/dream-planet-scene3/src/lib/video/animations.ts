@@ -212,7 +212,7 @@ export const containerVariants: Variants = {
   hidden: { opacity: 0 },
   visible: {
     opacity: 1,
-    transition: staggerConfigs.medium,
+    transition: staggerConfigs.medium as never,
   },
 };
 
@@ -221,7 +221,7 @@ export const itemVariants: Variants = {
   visible: {
     opacity: 1,
     y: 0,
-    transition: { duration: 0.5, ease: 'circOut' },
+    transition: { duration: 0.5, ease: 'circOut' } as never,
   },
 };
 
