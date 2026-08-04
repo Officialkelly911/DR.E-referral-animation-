@@ -1,0 +1,6 @@
+[0:v]scale=w='trunc(iw*(1+0.065*min(1,max(0,(t-0.5)/2.5)))/2)*2':h='trunc(ih*(1+0.065*min(1,max(0,(t-0.5)/2.5)))/2)*2':eval=frame[zoomed];
+[zoomed]crop=w=1080:h=1302:x='(iw-1080)/2':y='(ih-1302)/2'[cropped];
+[1:v]format=rgba[streak];
+[cropped][streak]overlay=x='-1080+(t-0.8)/1.5*2160':y=0:enable='between(t,0.8,2.3)'[lit];
+[lit]drawtext=fontfile=assets/fonts/Inter-SemiBold.ttf:text='More than followers.':fontsize=54:fontcolor=white:shadowcolor=black@0.55:shadowx=2:shadowy=3:x=90:y=h-th-160:alpha='if(lt(t,1.2),0,if(lt(t,1.6),(t-1.2)/0.4,if(lt(t,2.8),1,if(lt(t,3.0),(3.0-t)/0.2,0))))'[texted];
+[texted]fade=t=in:st=0.2:d=0.3:color=black[vout]

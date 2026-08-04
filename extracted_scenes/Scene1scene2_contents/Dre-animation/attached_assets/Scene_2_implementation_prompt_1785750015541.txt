@@ -1,0 +1,328 @@
+MASTER PROMPT
+
+Dream Planet Promotional Video
+
+Scene 2 – The Brand Reveal
+
+Output Settings
+
+	•	Aspect Ratio: 9:16 (Vertical)
+	•	Resolution: 4K preferred (minimum 2K)
+	•	Quality: Highest available
+	•	Frame Rate: Match Scene 1 for seamless continuity
+	•	Duration: Approximately 3 seconds
+
+Maintain absolute visual continuity with the approved Scene 1 output.
+
+This scene must feel like a direct continuation of the previous shot rather than a new clip.
+
+⸻
+
+Objective
+
+Reward the viewer’s curiosity established in Scene 1 by revealing the Dream Planet brand identity.
+
+The audience should recognize the Dream Planet name and logo, but still feel curious about what Dream Planet actually is.
+
+The tone should remain elegant, premium, cinematic, and understated.
+
+Avoid creating the feeling of an advertisement.
+
+This should feel like the second chapter of a visual story.
+
+⸻
+
+Reference Assets
+
+Use the approved Scene 1 master frame as the primary visual reference.
+
+Use the uploaded official Dream Planet logo as the only brand reference.
+
+Do not recreate or redesign the logo.
+
+Maintain the exact proportions, colors, typography, and geometry of the official Dream Planet logo.
+
+If animation requires scaling, only change its size while preserving every design element.
+
+⸻
+
+Visual Continuity
+
+Continue directly from the final frame of Scene 1.
+
+Do not restart the composition.
+
+Do not introduce a new camera angle.
+
+Maintain the same lighting, color grading, depth of field, and photographic realism established previously.
+
+The viewer should feel that the camera never stopped recording.
+
+⸻
+
+Camera Movement
+
+Continue the slow cinematic push-in.
+
+Increase the scale only slightly, from approximately 106% to 110%.
+
+The movement should remain smooth, deliberate, and almost imperceptible.
+
+No sudden zooms.
+
+No camera shakes.
+
+No dramatic movement.
+
+⸻
+
+Composition
+
+The Dream Planet tattoo remains the visual focal point.
+
+The tattoo should gradually become centered within the frame.
+
+Maintain generous negative space around the subject.
+
+The bracelet should remain naturally visible but softly de-emphasized through depth of field.
+
+Do not remove or redesign any authentic elements from the original photograph.
+
+⸻
+
+Lighting
+
+Continue the warm golden-hour lighting established in Scene 1.
+
+Introduce one subtle natural highlight moving across the skin.
+
+The movement should resemble sunlight shifting naturally.
+
+Do not create glowing tattoos.
+
+Do not use lens flares.
+
+Do not introduce artificial light effects.
+
+The lighting should feel photographic rather than digitally generated.
+
+⸻
+
+Color Grading
+
+Maintain the same premium cinematic grade established in Scene 1.
+
+Warm skin tones.
+
+Rich blacks.
+
+Soft highlights.
+
+Natural contrast.
+
+Realistic skin texture.
+
+Luxury editorial aesthetic.
+
+Avoid oversaturation.
+
+Avoid HDR effects.
+
+Avoid excessive sharpening.
+
+⸻
+
+Typography
+
+Introduce the Dream Planet identity with minimal typography.
+
+Primary recommendation:
+
+Small headline:
+
+Join me on
+
+Directly beneath it:
+
+Dream Planet
+
+The words “Dream Planet” should appear larger than the headline.
+
+Typography should feel refined and premium.
+
+Alternative option:
+
+Display only:
+
+Dream Planet
+
+with no supporting text.
+
+Less is more.
+
+⸻
+
+Typography Style
+
+Font:
+
+	•	Inter SemiBold
+	•	SF Pro Display
+	•	Geist
+
+Text Color:
+
+White (#FFFFFF)
+
+Apply only a subtle shadow for readability.
+
+No glow.
+
+No outlines.
+
+No animated typography effects beyond gentle fading.
+
+⸻
+
+Text Placement
+
+Position the typography in the lower-left corner.
+
+Maintain generous breathing room.
+
+Never obscure the tattoo.
+
+Maintain a balanced composition.
+
+⸻
+
+Brand Accent
+
+Use the Dream Planet orange sparingly.
+
+If appropriate, use it only to:
+
+	•	underline “Dream Planet”, or
+	•	highlight the word “Dream”.
+
+Do not overuse accent colors.
+
+The overall palette should remain restrained and premium.
+
+⸻
+
+Logo Transition
+
+As the camera reaches its closest point to the tattoo, create a subtle visual relationship between the tattoo’s DP symbol and the official Dream Planet logo.
+
+Do not morph or redesign the tattoo.
+
+Instead:
+
+	•	allow the viewer’s attention to naturally settle on the DP symbol,
+	•	subtly introduce the official Dream Planet logo through a clean dissolve or fade,
+	•	preserve the authenticity of the original tattoo while visually connecting it to the official brand.
+
+The transition should feel elegant and almost invisible.
+
+⸻
+
+Motion Design
+
+Maintain understated motion.
+
+Recommended:
+
+	•	slow push-in,
+	•	subtle lighting movement,
+	•	gentle fade-ins,
+	•	smooth opacity transitions.
+
+Avoid:
+
+	•	bouncing,
+	•	spinning,
+	•	particles,
+	•	glitch effects,
+	•	energetic transitions,
+	•	exaggerated animations.
+
+Everything should communicate confidence and craftsmanship.
+
+⸻
+
+Audio
+
+Continue using the uploaded Dream Planet AI song.
+
+Allow the music to build naturally from Scene 1.
+
+Do not begin the chorus yet.
+
+The visuals should follow the emotional rhythm of the music without cutting on every beat.
+
+Maintain a calm, cinematic pace.
+
+⸻
+
+Timeline
+
+3.0s
+
+	•	Continue seamlessly from Scene 1.
+
+3.2s
+
+	•	Slow push-in continues.
+
+3.6s
+
+	•	“Join me on” gently fades in.
+
+4.0s
+
+	•	“Dream Planet” appears beneath it.
+
+4.6s
+
+	•	The viewer’s attention naturally settles on the tattoo.
+
+4.8s
+
+	•	A subtle lighting movement passes across the tattoo.
+
+5.2s
+
+	•	The official Dream Planet logo softly dissolves into view, visually reinforcing the brand identity without overpowering the scene.
+
+5.6s
+
+	•	Typography begins fading away.
+
+6.0s
+
+	•	Hold briefly before transitioning into Scene 3.
+
+⸻
+
+Emotional Goal
+
+By the end of Scene 2, viewers should understand that the symbol belongs to Dream Planet while still wanting to discover more.
+
+The scene should create recognition without fully explaining the platform.
+
+Curiosity should continue carrying the viewer into the next chapter.
+
+⸻
+
+Transition to Scene 3
+
+Prepare the ending of Scene 2 so it naturally transitions into the recreated Dream Planet interface.
+
+As the camera reaches its closest point to the tattoo, allow the Dream Planet logo to become the visual bridge into the app experience.
+
+The transition should feel like the viewer is entering the Dream Planet ecosystem through the brand itself.
+
+Do not reveal the app interface yet.
+
+Simply prepare the visual handoff so Scene 3 begins smoothly and naturally.

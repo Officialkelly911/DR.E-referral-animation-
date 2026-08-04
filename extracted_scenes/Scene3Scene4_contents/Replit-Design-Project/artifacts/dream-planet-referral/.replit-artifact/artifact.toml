@@ -1,0 +1,28 @@
+kind = "web"
+previewPath = "/"
+title = "Dream Planet Referral Module"
+description = "A pixel-faithful, production-quality recreation of the Dream Planet Referral module featuring three navigable screens: Referral Home, View Levels, and Leaderboard. Built as a mobile-portrait (390px) React + TypeScript app with component-based architecture, design tokens, and animation-ready IDs. Intended for use in a promotional video (Scene 3 & 4)."
+version = "1.0.0"
+id = "artifacts/dream-planet-referral"
+router = "path"
+
+[[services]]
+name = "web"
+paths = [ "/" ]
+localPort = 23915
+
+[services.development]
+run = "pnpm --filter @workspace/dream-planet-referral run dev"
+
+[services.production]
+build = [ "pnpm", "--filter", "@workspace/dream-planet-referral", "run", "build" ]
+serve = "static"
+publicDir = "artifacts/dream-planet-referral/dist/public"
+
+[[services.production.rewrites]]
+from = "/*"
+to = "/index.html"
+
+[services.env]
+PORT = "23915"
+BASE_PATH = "/"

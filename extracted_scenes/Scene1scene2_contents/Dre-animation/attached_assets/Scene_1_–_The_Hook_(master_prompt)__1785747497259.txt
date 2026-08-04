@@ -1,0 +1,258 @@
+MASTER PROMPT
+
+Dream Planet Promotional Video
+
+Scene 1 – The Hook
+
+Objective
+
+Create the opening frame for a premium cinematic promotional video introducing Dream Planet.
+
+This scene should immediately create curiosity without looking like an advertisement.
+
+The visual should feel elegant, authentic, modern, minimal, and emotionally engaging.
+
+The final image should resemble a luxury lifestyle campaign or an Apple commercial rather than a social media advertisement.
+
+⸻
+
+Source Image
+
+Use the uploaded image as the primary reference.
+
+This image contains Dr. Elizabeth Wisniewski’s hand wearing the original Dream Planet temporary tattoo that was created during the Dream Planet launch event.
+
+Preserve the authenticity of the original image while enhancing its cinematic quality.
+
+Do not replace the hand or redesign the tattoo.
+
+Maintain the tattoo exactly as shown.
+
+⸻
+
+Composition
+
+Create an extremely clean close-up composition.
+
+The Dream Planet tattoo must be the visual focal point.
+
+Keep the tattoo positioned close to the center of the frame.
+
+Only reveal enough of the hand to establish that it is a real person.
+
+Do not reveal the entire arm.
+
+Maintain generous negative space around the tattoo.
+
+The image should immediately draw the viewer’s attention toward the Dream Planet branding.
+
+⸻
+
+Background
+
+Remove all distracting background elements.
+
+The original rug and surrounding environment should disappear.
+
+Replace the background with a very soft cinematic blur.
+
+Dark warm neutral tones are preferred.
+
+Use an elegant vignette around the outer edges.
+
+The background should never compete with the tattoo.
+
+⸻
+
+Lighting
+
+Simulate beautiful natural golden-hour lighting.
+
+Soft sunlight should illuminate the skin naturally.
+
+The highlights should be soft and cinematic.
+
+Maintain realistic skin texture.
+
+Avoid harsh reflections.
+
+Avoid overexposed highlights.
+
+The tattoo should remain crisp and readable.
+
+⸻
+
+Color Grading
+
+Apply premium cinematic color grading.
+
+Warm skin tones.
+
+Rich blacks.
+
+Gentle contrast.
+
+Slightly reduced saturation.
+
+Natural color balance.
+
+Luxury commercial aesthetic.
+
+Avoid HDR effects.
+
+Avoid excessive sharpening.
+
+Avoid artificial-looking skin.
+
+⸻
+
+Image Cleanup
+
+Enhance skin naturally while preserving pores and texture.
+
+Remove visual distractions.
+
+Keep the image realistic.
+
+Do not create plastic-looking skin.
+
+Preserve the realism of the original photograph.
+
+⸻
+
+Orientation
+
+Rotate the composition slightly clockwise so the Dream Planet text feels balanced and intentional.
+
+The tattoo should read comfortably without feeling crooked.
+
+⸻
+
+Focus
+
+Use shallow depth of field.
+
+The tattoo should be razor sharp.
+
+The surrounding skin should remain sharp enough to preserve realism.
+
+The outer edges may gradually soften.
+
+⸻
+
+Mood
+
+The image should communicate:
+
+	•	authenticity
+	•	creativity
+	•	curiosity
+	•	premium craftsmanship
+	•	belonging
+	•	artistic expression
+
+The viewer should wonder:
+
+“What is Dream Planet?”
+
+rather than immediately recognizing an advertisement.
+
+⸻
+
+Visual Style
+
+Luxury lifestyle photography.
+
+Apple commercial.
+
+Nike lifestyle campaign.
+
+Minimalist branding.
+
+Editorial portrait photography.
+
+Soft cinematic realism.
+
+Natural elegance.
+
+⸻
+
+Avoid
+
+Do not redesign the tattoo.
+
+Do not invent new logos.
+
+Do not exaggerate colors.
+
+Do not add particles.
+
+Do not add lens flares.
+
+Do not add fake glow effects.
+
+Do not create surreal lighting.
+
+Do not over-edit the skin.
+
+Do not add extra accessories.
+
+Do not add text.
+
+Do not add watermarks.
+
+Do not change the identity of the original photograph.
+
+⸻
+
+Output Quality
+
+Ultra-high-resolution.
+
+Photorealistic.
+
+Professional commercial photography quality.
+
+Premium marketing campaign aesthetic.
+
+Suitable as the opening hero frame for a cinematic promotional video.
+
+⸻
+
+Scene 1 Animation Notes (For Subsequent Video Nodes)
+
+After this image is generated, animate it according to the following timeline:
+
+Duration: 3 seconds
+
+0.0s
+
+	•	Fade in from black.
+
+0.2s
+
+	•	Display the generated close-up image.
+
+0.5s
+
+	•	Begin a slow cinematic push-in from 100% to approximately 105-108% scale.
+
+0.8s
+
+	•	Apply a subtle, natural light sweep across the skin and tattoo over approximately 1.5 seconds. The tattoo itself should not glow or animate.
+
+1.2s
+
+	•	Overlay one of the following text options in the lower-left corner using a premium font (Inter SemiBold, SF Pro Display, or Geist), white with a subtle shadow:
+	•	Every connection starts somewhere.
+	•	Creativity deserves a community.
+	•	More than followers. (preferred)
+	•	Every movement begins with belief.
+
+2.8s
+
+	•	Fade the text out while holding the image briefly.
+
+3.0s
+
+	•	Cut cleanly into Scene 2.

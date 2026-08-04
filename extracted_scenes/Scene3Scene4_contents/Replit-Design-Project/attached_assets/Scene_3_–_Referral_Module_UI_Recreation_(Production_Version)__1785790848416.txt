@@ -1,0 +1,327 @@
+Scene 3 – Referral Module UI Recreation (Production Version)
+
+PROJECT OVERVIEW
+This task is part of the Dream Planet promotional referral campaign.
+Scene 1 and Scene 2 have already been completed in another Replit workspace by a different AI agent.
+This workspace is responsible only for:
+	•	Scene 3
+	•	Scene 4
+This repository will later be pushed to GitHub and merged into the primary Dream Planet project.
+Therefore, this implementation must remain completely independent, modular, and merge-safe.
+Do not assume access to any existing project files, components, assets, routes, or styling.
+Everything required for this module must exist within this workspace.
+
+PRIMARY OBJECTIVE
+Recreate the entire Dream Planet Referral module as a modern, editable, production-quality mobile interface.
+This is not a redesign.
+This is not a concept.
+This is not a static mockup.
+The goal is to faithfully recreate the existing Referral experience while improving implementation quality, consistency, responsiveness, and animation readiness.
+
+IMPORTANT CREATIVE DIRECTION
+Although Scene 3 will primarily display the Referral Home screen, the implementation must also include the referral subpages because Scene 4 will transition into them.
+Build all screens now as one cohesive feature module.
+Required screens:
+	•	Referral Home
+	•	View Levels
+	•	Leaderboard
+If additional referral-related pages exist within the supplied references, recreate them as well.
+
+PROJECT REQUIREMENTS
+Everything must remain:
+	•	Fully editable
+	•	Component-based
+	•	Responsive
+	•	Animation-ready
+	•	High resolution
+	•	Pixel-perfect
+	•	Merge-friendly
+Never flatten the interface into images.
+
+TARGET OUTPUT
+Primary layout:
+Mobile Portrait
+Aspect Ratio:
+9:16
+Canvas:
+1080 × 1920
+Retina Ready
+4K Capture Ready
+Highest visual quality.
+
+ASSETS
+Use only the uploaded files.
+Do not recreate logos.
+Do not redraw illustrations.
+Do not substitute stock photography.
+Do not invent interface artwork.
+Every uploaded asset should remain in its original quality.
+
+MODULE STRUCTURE
+Build the Referral module as follows:
+ReferralModule
+
+├── Referral Home
+├── View Levels
+├── Leaderboard
+└── Shared Components
+Each page must remain independently accessible.
+
+REPOSITORY STRUCTURE
+scene-3/
+
+├── assets/
+│
+│   ├── images/
+│   ├── logos/
+│   ├── illustrations/
+│   ├── icons/
+│   └── fonts/
+│
+├── components/
+│
+│   ├── referral/
+│   │
+│   ├── ReferralHeader
+│   ├── ReferralHero
+│   ├── ReferralStatistics
+│   ├── ReferralCodeCard
+│   ├── ReferralRewardCard
+│   ├── ReferralButton
+│   ├── ReferralLevelCard
+│   ├── LeaderboardRow
+│   ├── EmptyState
+│   └── SharedNavigation
+│
+├── pages/
+│
+│   ├── ReferralHome
+│   ├── ReferralLevels
+│   └── ReferralLeaderboard
+│
+├── styles/
+│
+├── data/
+│
+└── README.md
+Everything should remain inside this module.
+
+DESIGN SYSTEM
+Create reusable design tokens.
+Centralize:
+Colors
+Typography
+Spacing
+Corner Radius
+Elevation
+Animation
+Transitions
+Icon sizes
+Shadows
+Never duplicate values throughout components.
+
+TYPOGRAPHY
+Preferred:
+Inter
+Fallback:
+SF Pro Display
+System UI
+Use clean modern typography.
+No decorative fonts.
+
+COLOR SYSTEM
+Create centralized variables.
+Example
+--dp-orange
+--dp-white
+--dp-black
+--dp-gray-50
+--dp-gray-100
+--dp-gray-300
+--dp-gray-600
+Never repeatedly hardcode colors.
+
+RESPONSIVENESS
+Primary width:
+390px
+Secondary:
+430px
+Support:
+360px
+Maintain identical hierarchy across all widths.
+
+PAGE 1
+Referral Home
+Faithfully recreate the supplied referral page.
+Preserve:
+	•	Layout
+	•	Typography
+	•	Spacing
+	•	Card hierarchy
+	•	Referral code
+	•	Referral URL
+	•	Branding
+	•	Buttons
+	•	Statistics
+	•	Illustrations
+Use uploaded assets rather than recreating content.
+Do not redesign the page.
+
+PAGE 2
+View Levels
+Build the complete Referral Levels page.
+Requirements:
+	•	Level cards
+	•	Reward progression
+	•	Earnings information
+	•	Active level state (if present)
+	•	Locked levels (if present)
+	•	Progress indicators (if present)
+Maintain consistent spacing with the Referral Home page.
+
+PAGE 3
+Leaderboard
+Build the leaderboard exactly as shown.
+Requirements:
+	•	Ranking numbers
+	•	User names
+	•	Referral counts or scores
+	•	Position indicators
+	•	Highlighted top performers (if present)
+	•	Scrollable list
+	•	Consistent card styling
+The leaderboard should support smooth vertical scrolling without breaking layout.
+
+COMPONENT REUSE
+Avoid duplicate implementations.
+Shared components should power every page.
+Example:
+Button
+Card
+Badge
+Avatar
+Header
+Section Title
+Statistics Card
+Navigation Button
+Progress Bar
+These should exist only once.
+
+DATA STRUCTURE
+Separate content from presentation.
+Create structured data files.
+Example:
+referralData.ts
+
+leaderboardData.ts
+
+levelData.ts
+Components should consume data rather than hardcoded values.
+
+NAVIGATION
+Implement internal navigation between:
+Referral Home
+↓
+View Levels
+↓
+Leaderboard
+Navigation should remain fully functional.
+Do not use page reloads.
+Use smooth transitions.
+
+ANIMATION PREPARATION
+Do not implement cinematic animation yet.
+Instead prepare every component.
+Assign unique IDs.
+Example:
+id="referral-home"
+
+id="hero"
+
+id="referral-card"
+
+id="view-levels"
+
+id="leaderboard"
+
+id="cta-button"
+These IDs will later drive Scene 3 and Scene 4 animations.
+
+PERFORMANCE
+Optimize all assets.
+Lazy-load only content below the fold.
+Compress images without visible quality loss.
+Keep scrolling smooth.
+
+CODE QUALITY
+Use:
+React
+TypeScript
+Reusable components
+Readable naming
+Minimal nesting
+Strong separation of concerns
+Avoid duplicated logic.
+
+MERGE SAFETY
+This repository will later merge into another GitHub repository.
+Avoid generic filenames.
+Instead of:
+Header.tsx
+Use:
+ReferralHeader.tsx
+Instead of:
+Card.tsx
+Use:
+ReferralCodeCard.tsx
+Namespace every scene-specific component.
+Prevent filename collisions.
+
+README
+Generate a README containing:
+	•	Project overview
+	•	Folder structure
+	•	Asset requirements
+	•	Installation
+	•	Component hierarchy
+	•	Merge instructions
+	•	Animation preparation notes
+	•	Future Scene 4 integration notes
+
+FUTURE VIDEO INTEGRATION
+Design every page knowing it will later become part of a cinematic promotional video.
+The implementation should support:
+	•	Slow camera push-ins
+	•	Gentle vertical scrolling
+	•	Card fade-ins
+	•	Soft scale animations
+	•	Cross-page transitions
+	•	Smooth navigation between Referral Home, View Levels, and Leaderboard
+	•	Overlay text and music added during final video editing
+Do not bake animations, captions, or audio into the UI itself.
+
+DO NOT
+	•	Do not redesign Dream Planet's interface.
+	•	Do not invent new referral features.
+	•	Do not substitute uploaded assets.
+	•	Do not use placeholder content if originals are available.
+	•	Do not flatten screens into images.
+	•	Do not create one monolithic component.
+	•	Do not reference Scene 1 or Scene 2 code.
+	•	Do not overwrite root project files.
+	•	Do not introduce unnecessary third-party UI libraries if standard React components are sufficient.
+
+FINAL DELIVERABLE
+Produce a complete, production-ready Dream Planet Referral Module that includes:
+	•	Referral Home
+	•	View Levels
+	•	Leaderboard
+The implementation must be:
+	•	Visually faithful to the supplied references
+	•	Fully editable
+	•	Responsive
+	•	Component-driven
+	•	Animation-ready
+	•	High-resolution
+	•	Merge-safe for GitHub integration
+	•	Self-contained with no dependencies on the Scene 1 and Scene 2 workspace

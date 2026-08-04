@@ -1,0 +1,30 @@
+uploads = []
+generated = []
+
+[[outputs]]
+id = "aV_lxigl2LmuTuvzJNtH3"
+uri = "file://attached_assets/generated_audio/scene1_ambient_intro.mp3"
+type = "audio"
+title = "scene1 ambient intro"
+description = "Generated music: Ultra-soft ambient cinematic intro for a luxury lifestyle brand film. Quiet atmospheric instrumental, warm gentle pads, delicate airy texture, subtle shimmer, slow and elegant, no dr…"
+
+[[outputs]]
+id = "3VR2ET_LkJHitlIudehX_"
+uri = "file://output/scene1_final.mp4"
+type = "video"
+title = "Scene 1 – The Hook (3s promo clip)"
+description = "Final rendered clip: fade in from black, slow push-in, soft diagonal light sweep across the tattoo, 'More than followers.' caption fade in/out, ambient placeholder music bed. 1080x1302, 30fps, 3.0s exactly, ends on a clean cut point for Scene 2."
+
+[[outputs]]
+id = "Ztvj2cawRNPq8iekXgEMl"
+uri = "file://output/scene1_hero_frame.png"
+type = "image"
+title = "Scene 1 hero still (prepped)"
+description = "Standalone graded still used as the animation source: background cleaned/blurred with a warm dark vignette, tattoo kept pixel-exact and razor sharp, rotated ~10° for a natural cinematic angle, warm color grade applied."
+
+[[outputs]]
+id = "EUjOOg49Ay1CZvsrUbSsr"
+uri = "file://Dream%20Planet%20Referral%20Campaign/Scene%202/Final%20Animation/scene2_final.mp4"
+type = "video"
+title = "Scene 2 — The Reveal"
+description = "3s continuation of Scene 1: push-in continues 106.5%→110%, 'Join me on / Dream Planet' caption fades in, a subtle light pass crosses the tattoo, and the official Dream Planet icon fades in as the bridge into Scene 3. Real song's 3.0–6.0s slice is muxed in."

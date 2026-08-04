@@ -1,0 +1,312 @@
+Dream Planet Referral Module
+
+The current implementation contains the recreated Dream Planet Referral module for the promotional video project.
+
+The module includes:
+
+* Referral Home
+* View Levels
+* Leaderboard
+
+The original screenshots and reference assets have been uploaded to this workspace.
+
+Your task is to perform a strict visual fidelity audit comparing the current recreated UI against the supplied reference screenshots.
+
+Important: Audit first, modify second
+
+Do not immediately redesign or rebuild the interface.
+
+First, inspect the existing implementation and compare it systematically against the reference screenshots.
+
+Identify every meaningful visual discrepancy.
+
+Then provide a structured audit report.
+
+Only after completing the audit should you make targeted corrections.
+
+⸻
+
+Audit Scope
+
+Compare each page individually:
+
+1. Referral Home
+
+Check:
+
+* Overall page structure
+* Header
+* Hero section
+* Referral information
+* Referral code
+* Referral link
+* Buttons
+* Statistics
+* Cards
+* Images
+* Typography
+* Spacing
+* Alignment
+* Colors
+* Border radius
+* Shadows
+* Background
+* Scroll behavior
+
+2. View Levels
+
+Check:
+
+* Page header
+* Level hierarchy
+* Level cards
+* Reward values
+* Earnings information
+* Progress indicators
+* Active and inactive states
+* Locked states, if present
+* Spacing between levels
+* Typography
+* Colors
+* Scroll behavior
+
+3. Leaderboard
+
+Check:
+
+* Page header
+* Ranking layout
+* User rows
+* Avatars
+* Referral counts
+* Ranking numbers
+* Top-ranking emphasis
+* Spacing
+* Typography
+* Card structure
+* Scroll behavior
+
+⸻
+
+Reference Accuracy
+
+Treat the supplied screenshots as the source of truth for visual appearance.
+
+Do not invent new UI elements.
+
+Do not remove existing elements unless they are clearly absent from the reference.
+
+Do not redesign the interface.
+
+Do not modernize the design.
+
+Do not substitute different colors, fonts, layouts, or components merely because they seem aesthetically preferable.
+
+The goal is faithful recreation, not reinterpretation.
+
+⸻
+
+Asset Verification
+
+Verify that the implementation uses the correct uploaded assets.
+
+Check:
+
+* Dream Planet logo
+* Profile images
+* Illustrations
+* Images
+* Icons, only where actually present in the reference
+* Any other supplied media
+
+Do not replace original assets with generated or stock alternatives.
+
+Do not recreate the Dream Planet logo.
+
+⸻
+
+Typography Audit
+
+Compare:
+
+* Font family
+* Font weight
+* Font size
+* Line height
+* Letter spacing
+* Text alignment
+* Text hierarchy
+
+Pay particular attention to headings, body text, button labels, referral information, and leaderboard values.
+
+⸻
+
+Layout Audit
+
+Check the exact visual relationships between elements.
+
+Measure or estimate:
+
+* Page margins
+* Horizontal padding
+* Vertical spacing
+* Card spacing
+* Section spacing
+* Element alignment
+* Button dimensions
+* Header height
+* Bottom navigation position, if present
+
+The goal is to reproduce the visual rhythm of the reference.
+
+⸻
+
+Color Audit
+
+Compare the implementation with the screenshot and supplied brand assets.
+
+Check:
+
+* Dream Planet orange
+* Black
+* White
+* Background gray
+* Text gray
+* Borders
+* Active and inactive states
+
+Centralize corrected values using the existing design-token system.
+
+Do not introduce unnecessary new colors.
+
+⸻
+
+Responsive Audit
+
+Test the recreated UI at:
+
+* 360px width
+* 390px width
+* 430px width
+
+Confirm that:
+
+* The layout remains faithful to the screenshot.
+* Nothing is unintentionally clipped.
+* Text does not overflow.
+* Cards maintain correct proportions.
+* Buttons remain usable.
+* Spacing scales appropriately.
+
+The primary target remains a 9:16 vertical promotional-video composition.
+
+⸻
+
+Animation Readiness Audit
+
+Verify that the implementation remains suitable for later cinematic animation.
+
+Confirm that:
+
+* Each major section is independently addressable.
+* Referral Home, View Levels, and Leaderboard can be targeted separately.
+* Components are not flattened into single images.
+* Individual cards can be animated independently.
+* Page transitions can be controlled programmatically.
+* Scroll behavior can be controlled.
+* Text and UI elements remain editable.
+
+Do not add cinematic animations during this audit.
+
+This is a visual fidelity and structural audit only.
+
+⸻
+
+Merge Safety
+
+This audit is being performed in a separate Replit workspace from Scene 1 and Scene 2.
+
+Do not:
+
+* Modify unrelated project files
+* Overwrite root-level files unnecessarily
+* Rename shared files without a compelling reason
+* Introduce dependencies unrelated to the Referral module
+* Break the current modular structure
+* Create conflicts with future GitHub integration
+
+Keep all corrections scoped to the Referral module and its associated assets/styles/data.
+
+⸻
+
+Required Output
+
+First provide a report in this format:
+
+Visual Fidelity Score
+
+Referral Home: __ / 100
+
+View Levels: __ / 100
+
+Leaderboard: __ / 100
+
+Critical Issues
+
+List only issues that materially affect visual accuracy.
+
+Minor Issues
+
+List smaller visual inconsistencies.
+
+Structural Issues
+
+List implementation issues that could affect future animation.
+
+Missing Assets
+
+List any assets required to achieve closer fidelity.
+
+Recommended Corrections
+
+Provide a prioritized list from most important to least important.
+
+⸻
+
+Correction Phase
+
+After completing the audit, apply only the corrections that materially improve fidelity.
+
+Prioritize:
+
+1. Layout mismatches
+2. Incorrect spacing
+3. Incorrect typography
+4. Incorrect colors
+5. Incorrect asset usage
+6. Incorrect button/card styling
+7. Minor visual details
+
+Do not redesign the interface.
+
+Do not add new functionality.
+
+Do not introduce unrelated changes.
+
+After making corrections, run a second comparison against the screenshots and report the final fidelity score.
+
+⸻
+
+Final Acceptance Criteria
+
+The Referral module should be considered ready for Scene 3 and Scene 4 animation only when:
+
+* Referral Home closely matches its reference screenshot.
+* View Levels closely matches its reference screenshot.
+* Leaderboard closely matches its reference screenshot.
+* Correct assets are used.
+* Typography and spacing are consistent.
+* No unnecessary UI has been invented.
+* The module remains fully editable.
+* The module remains animation-ready.
+* The module remains isolated and merge-safe for the later GitHub integration.

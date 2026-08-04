@@ -1,0 +1,111 @@
+Dream Planet Referral Module — Pre-Animation Lock
+
+The Referral Module has now completed its visual fidelity audit against the supplied reference screenshots.
+
+The implementation is visually very close to the references.
+
+Do not redesign, refactor, or introduce new UI elements at this stage.
+
+Only address the following two remaining issues.
+
+⸻
+
+FIX 1 — Referral Home Clipping / Overflow Issue
+
+Review the current Referral Home implementation against the original reference screenshot.
+
+The current implementation appears to have a white layer, container, overflow region, or positioning issue that partially obscures the top content.
+
+In the current result, the following elements appear partially clipped or hidden:
+
+* Referral code
+* Share button
+* Top section of the Referral Home content
+
+Correct the layout so that:
+
+* The full referral code is completely visible.
+* The full Share button is completely visible.
+* No white overlay or container unintentionally covers the content.
+* The header and hero section match the reference screenshot’s vertical positioning.
+* No content is clipped by a parent container with incorrect overflow, height, z-index, or positioning rules.
+* The page remains responsive at 360px, 390px, and 430px widths.
+* The corrected composition remains faithful to the supplied reference.
+
+Inspect and correct any likely causes, including:
+
+* overflow: hidden
+* fixed or incorrect container heights
+* incorrect absolute positioning
+* z-index layering
+* excessive top or bottom padding
+* incorrect viewport sizing
+* content being positioned behind another layer
+
+Do not change the overall visual design.
+
+⸻
+
+FIX 2 — Leaderboard Profile Images
+
+The current Leaderboard implementation uses initials or placeholder circles because the original profile images were not available in the workspace.
+
+I am now providing the missing profile images for all 9 leaderboard users.
+
+Replace the current initials/placeholders with the correct uploaded profile images.
+
+Requirements:
+
+* Use the uploaded images directly.
+* Display each image as a circular thumbnail.
+* Preserve the correct image-to-user mapping.
+* Match the approximate size and position shown in the reference screenshot.
+* Use object-fit: cover.
+* Do not distort faces or crop them unnaturally.
+* Maintain consistent circular dimensions across all 9 users.
+* Do not replace any real image with generated or stock content.
+
+⸻
+
+Final Visual Verification
+
+After applying the two fixes, perform one final comparison against the reference screenshots.
+
+Verify:
+
+Referral Home
+
+* Full referral code visible.
+* Full Share button visible.
+* No clipping or overlay issues.
+* Layout matches reference.
+* Spacing and alignment remain consistent.
+
+View Levels
+
+* No regression from previous corrections.
+* Layout remains unchanged unless required for consistency.
+
+Leaderboard
+
+* All 9 actual profile images are displayed.
+* Correct image-to-user mapping.
+* Circular thumbnails match reference proportions.
+* No placeholder initials remain where real images are available.
+
+⸻
+
+Important: Do Not Change Anything Else
+
+Do not:
+
+* Redesign the interface.
+* Add new features.
+* Change typography unnecessarily.
+* Change the existing color palette.
+* Change the page structure.
+* Change the navigation.
+* Add new animations.
+* Start video export.
+* Start cinematic Scene 3 animation.
+* Start Scene 4 animation.

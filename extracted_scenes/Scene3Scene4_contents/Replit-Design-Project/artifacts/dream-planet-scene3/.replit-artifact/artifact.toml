@@ -1,0 +1,28 @@
+kind = "video"
+previewPath = "/dream-planet-scene3/"
+title = "Dream Planet — Scene 3 Referral Experience"
+description = "A ~4.5 second cinematic animation for the Dream Planet promotional campaign. Reveals the locked Referral Home UI with a soft dissolve from the logo, a slow camera push-in toward the referral code and CTA, brief emphasis on the code, a quick tease of View Levels, and a handoff exit toward Scene 4."
+version = "1.0.0"
+id = "artifacts/dream-planet-scene3"
+router = "path"
+
+[[services]]
+name = "web"
+paths = [ "/dream-planet-scene3/" ]
+localPort = 24448
+
+[services.development]
+run = "pnpm --filter @workspace/dream-planet-scene3 run dev"
+
+[services.production]
+build = [ "pnpm", "--filter", "@workspace/dream-planet-scene3", "run", "build" ]
+serve = "static"
+publicDir = "artifacts/dream-planet-scene3/dist/public"
+
+[[services.production.rewrites]]
+from = "/*"
+to = "/index.html"
+
+[services.env]
+PORT = "24448"
+BASE_PATH = "/dream-planet-scene3/"

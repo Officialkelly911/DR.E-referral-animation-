@@ -1,0 +1,346 @@
+Dream Planet Promotional Video
+
+Master Production Document
+
+Scene 1 - The Hook
+
+⸻
+
+Scene Overview
+
+Scene Number: 01
+
+Duration: 0:00-0:03 (Approximately 3 seconds)
+
+Purpose:
+Capture the viewer’s attention immediately by creating curiosity rather than feeling like an advertisement. The opening should invite viewers into the Dream Planet experience without revealing everything at once.
+
+⸻
+
+Creative Direction
+
+This scene should feel like the opening of a premium lifestyle commercial rather than a traditional social media advertisement.
+
+The goal is to spark curiosity within the first second.
+
+Instead of making viewers think:
+
+“Here’s another app promotion.”
+
+They should think:
+
+“What’s that on her hand?”
+
+The scene should be elegant, modern, minimal, and cinematic.
+
+Think of an Apple commercial or luxury brand campaign where every frame has intention.
+
+⸻
+
+Primary Visual
+
+Use the close-up photograph of Dr. Elizabeth Wisniewski’s hand wearing the original Dream Planet temporary tattoo from the Dream Planet launch event.
+
+This image represents authenticity, history, and community. It connects viewers to a real moment rather than a manufactured advertisement.
+
+The Dream Planet tattoo is the hero of the shot.
+
+Everything else exists only to support it.
+
+⸻
+
+Image Preparation
+
+Before animation begins, prepare the image with the following improvements:
+
+Background
+
+	•	Remove or heavily blur the visible rug and surrounding distractions.
+	•	Add a soft cinematic vignette around the edges.
+	•	Keep the center brighter than the outer edges.
+
+Orientation
+
+Rotate the image approximately 8-12° clockwise so that the “Dream Planet” text feels more level and intentional.
+
+Color Grading
+
+Create a warm cinematic grade.
+
+	•	Warm daylight tones
+	•	Slightly increased contrast
+	•	Slightly reduced saturation (5-10%)
+	•	Natural skin texture
+	•	Soft highlight roll-off
+	•	Deep but clean shadows
+
+Avoid heavy filters.
+
+The image should feel timeless.
+
+⸻
+
+Camera Movement
+
+Use a slow cinematic push-in.
+
+Instead of zooming outward, begin at 100% scale and slowly push toward approximately 105-108%.
+
+The movement should be almost imperceptible.
+
+It should feel as though the viewer is naturally leaning in.
+
+No sudden movement.
+
+No shaking.
+
+No fast zoom.
+
+⸻
+
+Lighting Animation
+
+Create a subtle light sweep.
+
+A soft band of light should gently pass across the tattoo over approximately 1.5 seconds.
+
+The tattoo itself should never glow or animate.
+
+Only the lighting changes.
+
+The effect should resemble natural sunlight moving across the skin.
+
+⸻
+
+Motion Style
+
+Motion should remain understated.
+
+Recommended motion:
+
+	•	Slow push-in
+	•	Gentle light sweep
+	•	Tiny parallax effect (optional)
+	•	Soft fade transitions
+
+Avoid:
+
+	•	Bounce animations
+	•	Fast camera moves
+	•	Flash effects
+	•	Spin transitions
+	•	Excessive particles
+
+The scene should feel calm and premium.
+
+⸻
+
+Typography
+
+Typography should be minimal.
+
+Use only one short statement.
+
+Avoid long marketing copy.
+
+Recommended font families:
+
+	•	Inter SemiBold
+	•	SF Pro Display
+	•	Geist
+
+Font Color:
+
+White (#FFFFFF)
+
+Apply only a subtle drop shadow for readability.
+
+⸻
+
+Recommended Opening Text
+
+Choose one of the following:
+
+Option A
+
+Every connection starts somewhere.
+
+⸻
+
+Option B
+
+Creativity deserves a community.
+
+⸻
+
+Option C (Recommended)
+
+More than followers.
+
+⸻
+
+Option D
+
+Every movement begins with belief.
+
+⸻
+
+Text Placement
+
+Position the text in the lower-left corner.
+
+Never cover the tattoo.
+
+Maintain generous negative space around both the tattoo and the typography.
+
+The composition should feel balanced.
+
+⸻
+
+Music
+
+The AI Dream Planet song should begin softly.
+
+Avoid starting with the chorus.
+
+Begin with:
+
+	•	Quiet instrumental
+	•	Ambient introduction
+	•	Soft opening notes
+
+Allow the music to build naturally.
+
+The first major musical accent should arrive around the two-second mark.
+
+⸻
+
+Optional Sound Design
+
+If the music leaves room:
+
+Layer an extremely subtle ambient sound such as:
+
+	•	Soft atmospheric swell
+	•	Gentle shimmer
+	•	Cinematic whoosh
+
+These sounds should enhance the mood without competing with the music.
+
+⸻
+
+Scene Timeline
+
+0.0 Seconds
+
+Black screen.
+
+⸻
+
+0.2 Seconds
+
+Fade into the close-up tattoo image.
+
+⸻
+
+0.5 Seconds
+
+Begin the slow push-in.
+
+⸻
+
+0.8 Seconds
+
+The soft light sweep begins moving across the tattoo.
+
+⸻
+
+1.2 Seconds
+
+The opening text gently fades into view.
+
+⸻
+
+2.2 Seconds
+
+The push-in continues while the bracelet tassels and surrounding hand become slightly more visible.
+
+⸻
+
+2.8 Seconds
+
+The text fades away.
+
+The image remains for a brief pause.
+
+⸻
+
+3.0 Seconds
+
+Clean cut into Scene 2.
+
+⸻
+
+Emotional Goal
+
+By the end of Scene 1, viewers should feel curious rather than informed.
+
+They shouldn’t yet know exactly what Dream Planet is.
+
+Instead, they should simply feel that they’re about to discover something meaningful and authentic.
+
+⸻
+
+Psychological Strategy
+
+This scene deliberately creates an open loop, a storytelling technique that introduces an intriguing visual without immediately explaining it.
+
+The unusual Dream Planet tattoo naturally prompts questions:
+
+	•	What is this symbol?
+	•	Why is it on her hand?
+	•	What is Dream Planet?
+	•	Why does it matter?
+
+Rather than answering these questions immediately, the video encourages viewers to continue watching to satisfy their curiosity. This approach is generally more effective than leading with direct promotional messaging.
+
+⸻
+
+Scene 1 Production Checklist
+
+Visual
+
+	•	✔ Close-up of Dr. Elizabeth’s hand with the original Dream Planet temporary tattoo.
+	•	✔ Background distractions removed or heavily blurred.
+	•	✔ Warm cinematic color grading applied.
+	•	✔ Image rotated slightly for a more balanced composition.
+
+Animation
+
+	•	✔ Slow push-in (100% to approximately 105-108%).
+	•	✔ Soft cinematic light sweep.
+	•	✔ Smooth, minimal movement.
+
+Typography
+
+	•	✔ Single short statement.
+	•	✔ Premium modern font.
+	•	✔ Lower-left placement.
+	•	✔ White text with subtle shadow.
+
+Audio
+
+	•	✔ Soft instrumental introduction.
+	•	✔ AI Dream Planet song begins gently.
+	•	✔ Optional ambient sound layer.
+
+Transition
+
+	•	✔ Hold briefly after text fades.
+	•	✔ Clean cut into Scene 2.
+
+⸻
+
+Creative Intent
+
+The opening scene is designed to establish trust, curiosity, and emotional resonance before introducing any features or calls to action. By centering on a genuine moment from Dream Planet’s history, the video begins with authenticity rather than promotion, setting the tone for a modern, polished, and memorable viewing experience.

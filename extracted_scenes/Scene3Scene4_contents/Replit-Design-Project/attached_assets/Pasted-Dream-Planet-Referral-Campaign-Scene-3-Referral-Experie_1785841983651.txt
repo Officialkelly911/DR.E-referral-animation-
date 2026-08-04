@@ -1,0 +1,623 @@
+Dream Planet Referral Campaign
+
+Scene 3 — Referral Experience Cinematic Animation
+
+IMPORTANT PROJECT CONTEXT
+
+This workspace is a separate Replit project from the workspace where Scene 1 and Scene 2 were created.
+
+Scene 1 and Scene 2 were developed by a different agent and are not available as shared project code.
+
+This workspace is responsible for:
+
+* Scene 3 animation
+* Scene 4 animation
+
+The Dream Planet Referral Module UI is now officially LOCKED.
+
+The locked UI module already contains:
+
+* Referral Home
+* View Levels
+* Leaderboard
+* Correct uploaded assets
+* Correct visual styling
+* Correct profile images
+* Responsive layout
+* Animation-ready components
+
+The UI has already passed its visual fidelity review.
+
+CRITICAL RULE
+
+Do not redesign, rebuild, restyle, or visually modify the locked Referral Module.
+
+Treat the current Referral Module as the final source of truth.
+
+The task now is to animate the existing UI, not to change the UI itself.
+
+Do not alter:
+
+* Layout
+* Typography
+* Colors
+* Spacing
+* Assets
+* Card design
+* Button design
+* Referral code
+* Page structure
+* Profile images
+* Navigation
+* Visual hierarchy
+
+Only add the animation and cinematic presentation layer required for Scene 3.
+
+⸻
+
+SCENE 3 OBJECTIVE
+
+Scene 3 is the first time the viewer enters the actual Dream Planet referral experience.
+
+The viewer should move from:
+
+“I know this is Dream Planet.”
+
+to:
+
+“I can actually participate, invite people, and benefit from being part of it.”
+
+The Referral Home page is the hero of this scene.
+
+The purpose is to introduce the referral system without turning the video into a software tutorial.
+
+The scene should feel like a premium product reveal.
+
+It should be:
+
+* Modern
+* Elegant
+* Cinematic
+* Minimal
+* Visually engaging
+* Easy to understand
+
+Do not cram every feature into the scene.
+
+⸻
+
+SCENE 3 STORY ROLE
+
+The overall campaign currently follows this narrative:
+
+Scene 1
+
+Curiosity
+
+The Dream Planet tattoo creates the opening hook.
+
+Scene 2
+
+Brand Reveal
+
+The viewer discovers Dream Planet.
+
+Scene 3
+
+Participation
+
+The viewer discovers that Dream Planet has a referral system and that they can participate.
+
+Scene 4
+
+Deeper Discovery
+
+The viewer sees referral levels, rewards, and the leaderboard/community dynamics.
+
+Therefore, Scene 3 should focus primarily on the Referral Home page.
+
+The View Levels and Leaderboard screens exist in the locked UI module, but they should not be fully explored in Scene 3.
+
+They are reserved for Scene 4.
+
+⸻
+
+OUTPUT SETTINGS
+
+Aspect Ratio: 9:16
+
+Resolution: 4K preferred, minimum 2K
+
+Quality: Highest available
+
+Target canvas: 1080 × 1920 minimum
+
+Duration: Approximately 4.5 seconds
+
+Frame rate: Use a consistent cinematic frame rate suitable for later editing and match the final campaign delivery standard.
+
+The final render must be clean and free of browser chrome, editor UI, device mockups, and development overlays.
+
+⸻
+
+INPUTS
+
+Use the existing locked Dream Planet Referral Module as the primary source.
+
+The animation must operate directly on the existing UI implementation.
+
+If available, also use:
+
+* Approved Scene 2 final frame
+* Dream Planet official logo
+* AI Dream Planet song
+* Scene 2 timing reference
+
+The Scene 2 final frame is a visual reference only.
+
+Do not require Scene 1 or Scene 2 project code.
+
+Do not import Scene 1 or Scene 2 dependencies into this workspace.
+
+⸻
+
+ANIMATION PHILOSOPHY
+
+The animation should feel like a premium product film.
+
+Think:
+
+* Calm camera movement
+* Controlled UI reveals
+* Subtle depth
+* Precise timing
+* Elegant transitions
+
+Avoid the feeling of a website demo.
+
+Do not use:
+
+* Fast scrolling
+* Aggressive zooms
+* Bounce animations
+* Glitch effects
+* Flashing transitions
+* Excessive parallax
+* Random particle effects
+* Overly dramatic 3D transformations
+
+The UI should remain recognizable at all times.
+
+⸻
+
+SCENE 3 VISUAL SEQUENCE
+
+PHASE 1 — ENTRY FROM SCENE 2
+
+0.0s - 0.6s
+
+Scene 3 should begin as a seamless continuation of Scene 2.
+
+The visual bridge should feel as though the viewer is entering the Dream Planet ecosystem.
+
+Use the cleanest possible transition.
+
+Preferred options:
+
+* Soft dissolve from the Dream Planet logo
+* Subtle logo-to-interface transition
+* Gentle white transition into the Referral Home
+
+Avoid a hard, jarring cut unless it is necessary for rhythmic timing.
+
+The transition must feel intentional.
+
+Do not animate the locked UI before it enters the frame.
+
+⸻
+
+PHASE 2 — REFERRAL HOME REVEAL
+
+0.6s - 1.8s
+
+Reveal the locked Referral Home interface.
+
+The interface should appear as though the viewer is moving into a real Dream Planet app experience.
+
+Use:
+
+* Very subtle scale-up
+* Gentle vertical movement
+* Soft opacity reveal
+* Controlled depth
+
+The entire interface should settle into position naturally.
+
+Do not reveal everything simultaneously with an aggressive animation.
+
+The viewer should first recognize:
+
+* Dream Planet branding
+* Referral page identity
+* Referral code area
+* Primary CTA
+
+⸻
+
+PHASE 3 — CAMERA PUSH-IN
+
+1.8s - 3.0s
+
+Begin a slow cinematic push-in toward the most important referral information.
+
+The camera should move toward:
+
+* Referral code
+* Referral CTA
+* Share action
+* Primary referral benefit information
+
+The exact focal area should follow the locked UI hierarchy.
+
+The camera movement should be subtle.
+
+Target:
+
+Approximately 100% → 108% scale
+
+Do not exceed this unless necessary.
+
+The movement should feel like a real camera moving closer to a product interface.
+
+Not like a browser zoom.
+
+⸻
+
+PHASE 4 — REFERRAL CODE EMPHASIS
+
+3.0s - 3.7s
+
+Bring visual attention toward the referral code and invitation action.
+
+Use a restrained emphasis effect.
+
+Possible treatments:
+
+* Very subtle scale emphasis
+* Soft highlight
+* Gentle focus shift
+* Minimal opacity contrast
+
+Do not change the referral code.
+
+The exact referral code must remain:
+
+IK54OTRD
+
+The referral URL must remain:
+
+https://dreamplanet.org/referral/IK54OTRD
+
+Do not rewrite, truncate, or replace the link.
+
+Do not generate a fake referral code.
+
+⸻
+
+PHASE 5 — VIEW LEVELS TEASE
+
+3.7s - 4.2s
+
+Briefly introduce the existence of deeper referral information.
+
+Do not navigate fully into the View Levels page.
+
+Instead, create a subtle visual cue toward the View Levels interaction.
+
+For example:
+
+* Very brief focus shift
+* Gentle emphasis on the View Levels control
+* Soft tap-style interaction indicator if visually appropriate
+
+The viewer should understand:
+
+There is more to explore.
+
+But the scene should not stop to explain the levels.
+
+The full View Levels experience will be revealed in Scene 4.
+
+⸻
+
+PHASE 6 — SCENE 3 EXIT
+
+4.2s - 4.5s
+
+Prepare the transition into Scene 4.
+
+The final frame should leave the viewer visually oriented around the referral experience.
+
+The preferred handoff is:
+
+Referral Home → View Levels
+
+The transition should feel like the user has just selected or entered the next layer of the referral ecosystem.
+
+Do not fully reveal the View Levels page yet unless required as a transition frame.
+
+End on a visually clean frame suitable for Scene 4 to continue from.
+
+⸻
+
+CAMERA MOVEMENT
+
+The camera movement must remain:
+
+* Smooth
+* Continuous
+* Controlled
+* Cinematic
+
+Use subtle movement only.
+
+Recommended:
+
+* Slow push-in
+* Slight vertical drift
+* Minimal depth movement
+
+Do not use:
+
+* Camera shake
+* Rapid zoom
+* Sudden perspective changes
+* Excessive 3D perspective
+* Unstable parallax
+
+⸻
+
+UI ANIMATION
+
+Animate the locked UI itself using subtle motion.
+
+Recommended:
+
+Referral Home entrance
+
+* Fade in
+* Gentle upward movement
+* Slight scale settle
+
+Referral code card
+
+* Delayed reveal
+* Minimal emphasis
+
+CTA
+
+* Soft appearance
+* No bounce
+
+View Levels
+
+* Brief focus cue
+
+Background elements
+
+* Remain stable
+
+The UI should feel like a polished application interface, not a motion graphics collage.
+
+⸻
+
+TEXT OVERLAY
+
+Do not add large marketing text unless explicitly instructed.
+
+The interface itself should tell the story.
+
+If an external text overlay is required, keep it separate from the UI and editable.
+
+Preferred optional text:
+
+Invite. Connect. Grow.
+
+Alternative:
+
+Your journey starts here.
+
+The text should only be used if it enhances the composition.
+
+Do not burn the text permanently into the UI.
+
+⸻
+
+AUDIO
+
+The Dream Planet AI song should remain a separate audio layer.
+
+Do not embed or permanently bake the song into the visual render if the production pipeline supports separate audio.
+
+Use the song to guide:
+
+* Scene entrance
+* Push-in timing
+* Referral code emphasis
+* Scene 4 transition
+
+Scene 3 should feel like the music is building toward the next chapter.
+
+Do not force every movement to occur on every beat.
+
+Use the emotional rhythm of the music rather than literal beat-cutting.
+
+⸻
+
+AUDIO / VISUAL SYNCHRONIZATION
+
+Recommended:
+
+* Scene entry aligns with a musical transition.
+* Referral Home reveal aligns with a subtle musical accent.
+* Referral code emphasis aligns with a stronger beat or tonal lift.
+* Scene 4 transition begins as the music gains momentum.
+
+The music should feel like one continuous piece across Scenes 1-4.
+
+⸻
+
+ANIMATION SAFETY
+
+Do not alter the locked UI.
+
+Do not generate new UI content.
+
+Do not modify the referral numbers.
+
+Do not change user information.
+
+Do not substitute images.
+
+Do not invent additional features.
+
+Do not redesign the Referral Home.
+
+Do not change the View Levels or Leaderboard layouts.
+
+The only purpose of this task is to add cinematic motion to the existing module.
+
+⸻
+
+SCENE 4 HANDOFF
+
+The end of Scene 3 must be intentionally prepared for Scene 4.
+
+The expected narrative is:
+
+Referral Home
+
+↓
+
+View Levels
+
+↓
+
+Leaderboard
+
+Therefore, Scene 3 should conclude with a visual cue that naturally leads into the View Levels page.
+
+The scene should make Scene 4 feel like the next logical step.
+
+Do not treat Scene 4 as a separate unrelated video.
+
+The transition should feel like one continuous interaction with the same Dream Planet referral system.
+
+⸻
+
+TECHNICAL IMPLEMENTATION
+
+Keep all animation code inside the existing Scene 3 feature area.
+
+Do not modify unrelated project architecture.
+
+Do not introduce unnecessary global dependencies.
+
+Use reusable animation components.
+
+Create a dedicated scene controller if necessary.
+
+Suggested naming:
+
+Scene3ReferralAnimation
+ReferralHomeAnimation
+ReferralFocusAnimation
+ReferralLevelsTransition
+Scene3Timeline
+
+Avoid generic names such as:
+
+Animation
+Transition
+Page
+Screen
+
+This is important for future GitHub merging.
+
+⸻
+
+EXPORT PREPARATION
+
+Prepare the scene for clean export as:
+
+scene-03-referral-home.mp4
+
+Also provide:
+
+scene-03-start-frame.png
+scene-03-end-frame.png
+
+If technically practical, also provide a clean transparent or isolated UI render for compositing.
+
+Do not include:
+
+* Browser UI
+* Replit UI
+* Development controls
+* Cursor
+* Scrollbars
+* Debug overlays
+
+⸻
+
+MERGE SAFETY
+
+This Scene 3 animation is being developed in a separate Replit workspace from Scene 1 and Scene 2.
+
+Do not import Scene 1 or Scene 2 project code.
+
+Do not modify unrelated root files.
+
+Do not rename unrelated components.
+
+Do not introduce conflicting generic component names.
+
+Keep all Scene 3 work clearly namespaced.
+
+The final implementation should be easy to merge into the main GitHub repository later.
+
+⸻
+
+FINAL ACCEPTANCE CRITERIA
+
+Scene 3 is complete only when:
+
+* The locked Referral UI remains visually unchanged.
+* The Referral Home is the hero screen.
+* The animation feels cinematic and premium.
+* The viewer can clearly recognize the referral system.
+* The referral code remains readable and accurate.
+* The referral CTA receives appropriate visual emphasis.
+* View Levels is teased but not fully explored.
+* The transition into Scene 4 feels natural.
+* No UI elements warp or distort.
+* No animation feels excessive.
+* No browser or development UI appears in the final render.
+* The scene is suitable for vertical social media delivery.
+* The scene is structurally isolated and merge-safe.
+* A clean Scene 3 export and start/end frames are available.
+
+⸻
+
+IMPORTANT FINAL INSTRUCTION
+
+Do not start Scene 4 animation yet.
+
+First:
+
+1. Animate Scene 3.
+2. Render the scene.
+3. Review the result against the scene specification.
+4. Confirm the Referral Home remains visually faithful.
+5. Confirm the transition point into Scene 4.
+6. Lock Scene 3.

@@ -1,0 +1,11 @@
+[0:v]scale=w='trunc(iw*(1.065+0.035*min(1,max(0,t/3.0)))/2)*2':h='trunc(ih*(1.065+0.035*min(1,max(0,t/3.0)))/2)*2':eval=frame[zoomed];
+[zoomed]crop=w=1080:h=1302:x='(iw-1080)/2':y='(ih-1302)/2'[cropped];
+[cropped]eq=contrast='1+0.018*min(1,max(0,(t-0.6)/0.6))':eval=frame[graded];
+[1:v]format=rgba[streak];
+[graded][streak]overlay=x='-90+(t-1.5)/0.8*180':y='-30+(t-1.5)/0.8*60':enable='between(t,1.5,2.3)'[lit];
+[2:v]scale=-2:96,format=rgba[iconraw];
+[iconraw]fade=t=in:st=2.2:d=0.5:alpha=1[iconfaded];
+[lit][iconfaded]overlay=x=90:y=924:enable='gte(t,2.2)'[iconned];
+[iconned]drawtext=fontfile='../../Scene 1 (LOCKED)/Project Files/fonts/Inter-SemiBold.ttf':text='Join me on':fontsize=40:fontcolor=white:shadowcolor=black@0.5:shadowx=1:shadowy=2:x=90:y=1042:alpha='if(lt(t,0.6),0,if(lt(t,1.0),(t-0.6)/0.4,if(lt(t,2.5),1,if(lt(t,2.8),(2.8-t)/0.3,0))))'[t1];
+[t1]drawtext=fontfile='../../Scene 1 (LOCKED)/Project Files/fonts/Inter-SemiBold.ttf':text='Dream ':fontsize=82:fontcolor=white:shadowcolor=black@0.55:shadowx=2:shadowy=3:x=90:y=1091:alpha='if(lt(t,1.0),0,if(lt(t,1.4),(t-1.0)/0.4,if(lt(t,2.5),1,if(lt(t,2.8),(2.8-t)/0.3,0))))'[t2];
+[t2]drawtext=fontfile='../../Scene 1 (LOCKED)/Project Files/fonts/Inter-SemiBold.ttf':text='Planet':fontsize=82:fontcolor=0xF64A01:shadowcolor=black@0.55:shadowx=2:shadowy=3:x=374:y=1091:alpha='if(lt(t,1.0),0,if(lt(t,1.4),(t-1.0)/0.4,if(lt(t,2.5),1,if(lt(t,2.8),(2.8-t)/0.3,0))))'[vout]

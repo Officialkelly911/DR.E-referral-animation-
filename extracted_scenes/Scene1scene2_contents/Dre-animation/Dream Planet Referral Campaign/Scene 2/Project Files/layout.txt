@@ -1,0 +1,11 @@
+MARGIN_X=90
+HEADLINE_SIZE=40
+MAIN_SIZE=82
+headline_y=1042
+main_y=1091
+dream_w=284
+planet_x=374
+icon_x=90
+icon_y=924
+icon_h=96
+orange=246x74x1

@@ -1,0 +1,1 @@
+- [Referral Module UI Lock](referral-ui-lock.md) — UI locked for Scene 3/4 animation; do not redesign or restructure any screen.

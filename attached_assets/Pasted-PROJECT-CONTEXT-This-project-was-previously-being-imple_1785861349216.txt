@@ -1,0 +1,308 @@
+PROJECT CONTEXT
+
+This project was previously being implemented by another Replit Agent before the account reached its credit limit.
+
+DO NOT restart the project.
+
+DO NOT redesign the UI.
+
+DO NOT recreate existing components.
+
+Your first responsibility is to inspect the existing project, understand what has already been completed, and continue exactly where the previous agent stopped.
+
+--------------------------------------------------
+
+FIRST TASK
+
+Analyze the current project.
+
+Review:
+
+• package.json
+• App.tsx
+• ReferralPage.tsx
+• ReferralLevels.tsx
+• Leaderboard.tsx
+• MobileLayout.tsx
+• referralData.ts
+• levelData.ts
+• all assets
+• routing
+• styling
+• animations
+
+Determine:
+
+✓ what has already been completed
+
+✓ what still remains
+
+✓ whether the recreated UI matches the supplied screenshots
+
+✓ whether any dimensions differ from the original reference
+
+--------------------------------------------------
+
+PREVIOUS AGENT STATUS
+
+The previous agent successfully:
+
+• recreated the Referral page
+
+• recreated the Referral Levels page
+
+• recreated the Leaderboard page
+
+• recreated navigation
+
+• recreated the mobile layout
+
+• recreated styling
+
+• recreated animations
+
+The remaining work involves polishing and completing Scene 3.
+
+--------------------------------------------------
+
+KNOWN ITEMS TO VERIFY
+
+1.
+
+Header clipping issue
+
+The white top card must sit perfectly beneath the orange background.
+
+No clipping.
+
+No cropped text.
+
+Correct spacing.
+
+Correct border radius.
+
+Correct padding.
+
+2.
+
+Leaderboard
+
+Replace any placeholder initials with the uploaded real profile photos.
+
+All avatar sizes must match the screenshot.
+
+Spacing must be identical.
+
+3.
+
+Typography
+
+Verify every font size.
+
+Every font weight.
+
+Every letter spacing.
+
+Every alignment.
+
+4.
+
+Spacing
+
+Compare every margin
+
+Every padding
+
+Every card radius
+
+Every shadow
+
+Every divider
+
+against the screenshot.
+
+5.
+
+Colors
+
+Verify every color.
+
+Orange gradient
+
+White cards
+
+Gray backgrounds
+
+Text colors
+
+Opacity
+
+Everything must match.
+
+--------------------------------------------------
+
+VISUAL COMPARISON
+
+After implementation,
+
+perform a complete screenshot comparison.
+
+Treat the uploaded screenshots as the source of truth.
+
+Compare:
+
+• dimensions
+
+• spacing
+
+• fonts
+
+• colors
+
+• shadows
+
+• radii
+
+• alignment
+
+• avatar sizes
+
+• navigation spacing
+
+Continue refining until the recreated UI is visually indistinguishable from the reference.
+
+--------------------------------------------------
+
+SCENE 3 ANIMATION
+
+Once the UI has been verified and locked,
+
+begin building the cinematic animation.
+
+Animation should be premium,
+
+smooth,
+
+minimal,
+
+luxury,
+
+Apple-quality.
+
+Sequence:
+
+Referral page
+
+↓
+
+gentle push-in
+
+↓
+
+tap "View Levels"
+
+↓
+
+smooth transition
+
+↓
+
+Referral Levels page
+
+↓
+
+pause
+
+↓
+
+tap Leaderboard
+
+↓
+
+smooth transition
+
+↓
+
+Leaderboard
+
+↓
+
+slow push-in
+
+↓
+
+hold
+
+↓
+
+transition out
+
+No abrupt cuts.
+
+No exaggerated easing.
+
+No bounce animations.
+
+Motion should feel expensive and cinematic.
+
+--------------------------------------------------
+
+PROJECT REQUIREMENTS
+
+Aspect Ratio:
+9:16
+
+Resolution:
+1080 × 1920
+
+Quality:
+4K-ready assets and export-safe
+
+Frame Rate:
+60 FPS
+
+--------------------------------------------------
+
+IMPORTANT
+
+This repository will later be merged with another Replit project containing Scenes 1 and 2.
+
+Therefore:
+
+• do not rename existing folders unnecessarily
+
+• do not change routing structure
+
+• do not break imports
+
+• do not remove reusable components
+
+• keep code modular
+
+• keep assets organized
+
+• isolate Scene 3 logic where appropriate
+
+Everything should merge cleanly into the final GitHub repository with minimal conflicts.
+
+--------------------------------------------------
+
+FINAL DELIVERABLE
+
+Before considering Scene 3 complete:
+
+✓ UI matches the screenshots
+
+✓ Leaderboard uses uploaded profile photos
+
+✓ Header clipping fixed
+
+✓ All spacing refined
+
+✓ Mobile responsiveness verified
+
+✓ Scene 3 animation completed
+
+✓ Code cleaned
+
+✓ Ready for GitHub merge
