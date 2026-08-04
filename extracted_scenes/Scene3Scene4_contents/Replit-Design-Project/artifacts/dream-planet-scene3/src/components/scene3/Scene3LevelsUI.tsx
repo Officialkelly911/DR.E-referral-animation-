@@ -51,7 +51,7 @@ const itemVariants = {
   visible: {
     opacity: 1,
     y: 0,
-    transition: { duration: 0.38, ease: [0.16, 1, 0.3, 1] },
+    transition: { duration: 0.38, ease: [0.16, 1, 0.3, 1] as [number, number, number, number] },
   },
 };
 
@@ -60,7 +60,7 @@ const badgeVariants = {
   visible: {
     opacity: 1,
     scale: 1,
-    transition: { duration: 0.48, ease: [0.16, 1, 0.3, 1] },
+    transition: { duration: 0.48, ease: [0.16, 1, 0.3, 1] as [number, number, number, number] },
   },
 };
 
@@ -132,7 +132,23 @@ export function Scene3LevelsUI({ revealControls }: Scene3LevelsUIProps) {
         >
           Levels
         </h1>
-        <div style={{ width: 40, height: 40 }} />
+        {/* "Leaderboard" navigation pill — tap target for Phase 7 (~x=330, y=36) */}
+        <span
+          id="s3-levels-leaderboard-btn"
+          style={{
+            background: 'white',
+            color: '#000',
+            padding: '8px 16px',
+            borderRadius: '9999px',
+            fontWeight: 600,
+            fontSize: '14px',
+            boxShadow: '0 1px 3px rgba(0,0,0,0.1)',
+            whiteSpace: 'nowrap',
+            cursor: 'default',
+          }}
+        >
+          Leaderboard
+        </span>
       </div>
 
       {/* Animated content */}

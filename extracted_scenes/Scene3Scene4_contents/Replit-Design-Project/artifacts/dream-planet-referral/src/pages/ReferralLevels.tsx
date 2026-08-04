@@ -6,7 +6,7 @@ import { ReferralLevelCard } from '@/components/referral/ReferralLevelCard';
 import { levelsData } from '@/data/levelData';
 
 // 4-pointed diamond sparkle matching the reference design
-function DiamondSparkle({ size = 20, className = '' }: { size?: number; className?: string }) {
+function DiamondSparkle({ size = 20, className = '', style }: { size?: number; className?: string; style?: React.CSSProperties }) {
   return (
     <svg
       width={size}
