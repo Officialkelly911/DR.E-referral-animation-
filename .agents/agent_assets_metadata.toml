@@ -1,0 +1,16 @@
+uploads = []
+generated = []
+
+[[outputs]]
+id = "YYrMMmdhumDbnjkWZEKg3"
+uri = "file://extracted_scenes/Scene1scene2_contents/Dre-animation/Dream%20Planet%20Referral%20Campaign/Final%20Edit/scene1_scene2_combined.mp4"
+type = "video"
+title = "Scene 1 + Scene 2 Combined — Official Audio"
+description = "6-second seamless cut. Scene 1 (0:00–3:00) → Scene 2 (3:00–6:00). Single continuous 0:00–6:00 slice of dream_planet_song.mp3 — no audio seam at the 3-second boundary."
+
+[[outputs]]
+id = "qqw3geAzmDbRPRr3mawwZ"
+uri = "file://extracted_scenes/Scene1scene2_contents/Dre-animation/Dream%20Planet%20Referral%20Campaign/Scene%201%20(LOCKED)/Final%20Animation/scene1_official_audio.mp4"
+type = "video"
+title = "Scene 1 — Official Audio (standalone)"
+description = "Scene 1 with placeholder audio replaced. Video stream copied losslessly, official track 0:00–3:00 muxed in. Original scene1_final.mp4 untouched."
