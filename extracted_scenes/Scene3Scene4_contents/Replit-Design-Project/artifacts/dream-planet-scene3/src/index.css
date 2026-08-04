@@ -1,7 +1,5 @@
 @import 'tailwindcss';
-
-/* Inter — matches the locked Referral Module typography */
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap');
+/* Inter is loaded via <link> in index.html to avoid PostCSS @import ordering errors */
 
 :root {
   /* Dream Planet brand colors */
