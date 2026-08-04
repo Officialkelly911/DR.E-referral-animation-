@@ -1,35 +1,52 @@
 /**
  * Scene3ReferralAnimation.tsx
  *
- * Main orchestrator for the Scene 3 cinematic animation.
- * 4.5-second premium product reveal of the Dream Planet Referral Home.
+ * Full Scene 3 cinematic orchestrator — 9.5 second journey through:
+ *   Referral Home → View Levels → Leaderboard
  *
- * 6-phase timeline:
- *   Phase 1 (0.0–0.6s)  Entry        — white overlay dissolves out
- *   Phase 2 (0.6–1.8s)  Reveal       — UI fades + scales up from slight below
- *   Phase 3 (1.8–3.0s)  Push-in      — camera scale 100% → 108% toward code card
- *   Phase 4 (3.0–3.7s)  Code Emphasis— referral card breathes with a soft pulse
- *   Phase 5 (3.7–4.2s)  Levels Tease — "View Levels" gently draws the eye
- *   Phase 6 (4.2–4.5s)  Exit         — white overlay fades in for Scene 4 handoff
+ * Timeline:
+ *   Phase 1  (0.0–0.4s)   Entry         — white overlay dissolves (from Scene 2)
+ *   Phase 2  (0.4–1.4s)   Home reveal   — UI rises from below with scale settle
+ *   Phase 3  (1.4–3.0s)   Home push-in  — camera 100% → 106% toward code card
+ *   Phase 4  (3.0–3.6s)   Code emphasis — referral card breathes (1.028× pulse)
+ *   Phase 4b (3.6–4.0s)   Levels tease  — "View Levels" link draws the eye
+ *   Phase 5  (4.0–5.0s)   Tap + push to Levels — ripple, camera resets, iOS slide
+ *   Phase 6  (5.0–6.6s)   Levels        — stagger reveal + camera push-in
+ *   Phase 7  (6.6–7.6s)   Tap + push to Leaderboard — ripple, camera resets, iOS slide
+ *   Phase 8  (7.6–9.5s)   Leaderboard   — stagger reveal + push-in + hold
  */
 
-import React, { useEffect, useRef } from 'react';
-import { motion, useAnimation } from 'framer-motion';
+import React, { useEffect, useRef, useState } from 'react';
+import { motion, AnimatePresence, useAnimation } from 'framer-motion';
 import { Scene3ReferralUI } from './Scene3ReferralUI';
-import { S3 } from './Scene3Timeline';
+import { Scene3LevelsUI } from './Scene3LevelsUI';
+import { Scene3LeaderboardUI } from './Scene3LeaderboardUI';
+import { Scene3TapRipple } from './Scene3TapRipple';
 
 // Cinematic easing curves
-const EASE_EXPO_OUT   = [0.16, 1, 0.3, 1] as const;   // Premium settle
-const EASE_SMOOTH     = [0.25, 0.46, 0.45, 0.94] as const; // Smooth push
-const EASE_GENTLE_OUT = [0.4, 0, 0.2, 1] as const;    // Material-style out
+const EASE_EXPO_OUT = [0.16, 1, 0.3, 1] as const;
+const EASE_SMOOTH   = [0.25, 0.46, 0.45, 0.94] as const;
+
+// Page transition timing (iOS-style horizontal push)
+const PAGE_TRANSITION = { duration: 0.45, ease: EASE_SMOOTH };
+
+// Simple async delay
+const delay = (ms: number) => new Promise<void>(res => setTimeout(res, ms));
+
+type Page = 'home' | 'levels' | 'leaderboard';
 
 export function Scene3ReferralAnimation() {
-  // Animation controls for each layer
-  const overlayControls    = useAnimation();
-  const uiControls         = useAnimation();
-  const cameraControls     = useAnimation();
-  const codeCardControls   = useAnimation();
-  const viewLevelsControls = useAnimation();
+  const [currentPage, setCurrentPage] = useState<Page>('home');
+  const [tapPos, setTapPos] = useState<{ x: number; y: number } | null>(null);
+
+  // ── Controls ─────────────────────────────────────────────────────────────
+  const overlayControls          = useAnimation(); // entry/exit white flash
+  const cameraControls           = useAnimation(); // push-in scale (shared)
+  const homeRevealControls       = useAnimation(); // home opacity+scale+y reveal
+  const codeCardControls         = useAnimation(); // referral code card pulse
+  const viewLevelsControls       = useAnimation(); // "View Levels" link highlight
+  const levelsRevealControls     = useAnimation(); // levels page stagger
+  const leaderboardRevealControls = useAnimation(); // leaderboard page stagger
 
   const startedRef = useRef(false);
 
@@ -38,91 +55,117 @@ export function Scene3ReferralAnimation() {
     startedRef.current = true;
 
     const run = async () => {
-      // ── PHASE 1: Entry (0.0 – 0.6s) ────────────────────────────────
-      // White overlay fades out, revealing the warm orange hero beneath.
-      // Fire without await so the reveal starts on time.
+      // ── PHASE 1: Entry (0.0–0.4s) ──────────────────────────────────────
+      // White dissolves — gives the impression of emerging from Scene 2.
       overlayControls.start({
         opacity: 0,
-        transition: { duration: S3.ENTRY_DURATION, ease: 'easeOut' },
+        transition: { duration: 0.4, ease: 'easeOut' },
       });
+      await delay(400);
 
-      // Wait for overlay to clear before UI animates in
-      await new Promise(r => setTimeout(r, S3.ENTRY_DURATION * 1000));
-
-      // ── PHASE 2: Referral Home Reveal (0.6 – 1.8s) ─────────────────
-      // UI rises from slight below with opacity and gentle scale settle.
-      await uiControls.start({
+      // ── PHASE 2: Referral Home Reveal (0.4–1.4s) ───────────────────────
+      await homeRevealControls.start({
         opacity: 1,
         scale: 1,
         y: 0,
-        transition: {
-          duration: S3.REVEAL_DURATION,
-          ease: EASE_EXPO_OUT,
-        },
+        transition: { duration: 1.0, ease: EASE_EXPO_OUT },
       });
 
-      // ── PHASE 3: Camera Push-in (1.8 – 3.0s) ───────────────────────
+      // ── PHASE 3: Home Camera Push-in (1.4–3.0s) ────────────────────────
       // Slow cinematic push toward the referral code card area.
-      // Transform origin is set to ~55% vertical to focus the zoom
-      // toward the code card, not the top of the screen.
       await cameraControls.start({
-        scale: 1.08,
+        scale: 1.06,
         y: '-1.5%',
-        transition: {
-          duration: S3.PUSH_DURATION,
-          ease: EASE_SMOOTH,
-        },
+        transition: { duration: 1.6, ease: EASE_SMOOTH },
       });
 
-      // ── PHASE 4: Referral Code Emphasis (3.0 – 3.7s) ───────────────
-      // The code card breathes: out → in → settle.
-      // Restrained — only 1.028× at peak. Premium, not bouncy.
+      // ── PHASE 4: Referral Code Emphasis (3.0–3.6s) ─────────────────────
       await codeCardControls.start({
         scale: [1, 1.028, 1],
-        transition: {
-          duration: S3.CODE_DURATION,
-          ease: EASE_GENTLE_OUT,
-          times: [0, 0.45, 1],
-        },
+        transition: { duration: 0.6, ease: 'easeInOut', times: [0, 0.45, 1] },
       });
 
-      // ── PHASE 5: View Levels Tease (3.7 – 4.2s) ─────────────────────
-      // "View Levels" draws attention with a brief scale pulse.
-      // Tells the viewer: there's more to explore.
+      // ── PHASE 4b: View Levels Tease (3.6–4.0s) ─────────────────────────
       await viewLevelsControls.start({
-        scale: [1, 1.18, 1],
-        transition: {
-          duration: S3.LEVELS_DURATION,
-          ease: 'easeInOut',
-          times: [0, 0.5, 1],
-        },
+        scale: [1, 1.14, 1],
+        opacity: [1, 0.6, 1],
+        transition: { duration: 0.4, times: [0, 0.5, 1] },
       });
 
-      // ── PHASE 6: Scene Exit (4.2 – 4.5s) ────────────────────────────
-      // White overlay returns, preparing the handoff to Scene 4.
-      // The viewer is left oriented in the referral experience.
-      await overlayControls.start({
-        opacity: 0.88,
-        transition: { duration: S3.EXIT_DURATION, ease: 'easeIn' },
+      // ── PHASE 5: Tap "View Levels" + Camera Reset + Transition ──────────
+      // Tap ripple appears at the "View Levels" link position (~85px, 510px)
+      setTapPos({ x: 85, y: 510 });
+      // Camera resets concurrently while the ripple plays
+      cameraControls.start({
+        scale: 1,
+        y: 0,
+        transition: { duration: 0.35, ease: EASE_SMOOTH },
       });
+      await delay(500);
+      setTapPos(null);
+
+      // iOS-style push: Home slides left, Levels slides in from right
+      setCurrentPage('levels');
+      await delay(520); // let the 450ms transition finish + small buffer
+
+      // ── PHASE 6: Levels Reveal (5.0–5.4s) ──────────────────────────────
+      // Fire stagger reveal on the levels content
+      levelsRevealControls.start('visible');
+      await delay(400); // let the stagger start before the camera moves
+
+      // ── PHASE 6b: Levels Camera Push-in (5.4–6.6s) ─────────────────────
+      await cameraControls.start({
+        scale: 1.05,
+        y: '-1%',
+        transition: { duration: 1.2, ease: EASE_SMOOTH },
+      });
+
+      // ── PHASE 7: Tap "Leaderboard" Header Button + Camera Reset ─────────
+      // Tap ripple on the "Leaderboard" header pill (~330px, 36px)
+      setTapPos({ x: 330, y: 36 });
+      cameraControls.start({
+        scale: 1,
+        y: 0,
+        transition: { duration: 0.35, ease: EASE_SMOOTH },
+      });
+      await delay(500);
+      setTapPos(null);
+
+      // Levels slides left, Leaderboard slides in from right
+      setCurrentPage('leaderboard');
+      await delay(520);
+
+      // ── PHASE 8: Leaderboard Reveal (7.6–8.0s) ──────────────────────────
+      leaderboardRevealControls.start('visible');
+      await delay(400);
+
+      // ── PHASE 8b: Leaderboard Push-in + Hold (8.0–9.5s) ─────────────────
+      await cameraControls.start({
+        scale: 1.05,
+        y: '-1%',
+        transition: { duration: 1.0, ease: EASE_SMOOTH },
+      });
+
+      // End frame — clean hold before the loop restarts
+      await delay(450);
     };
 
     run().catch(console.error);
   }, [
     overlayControls,
-    uiControls,
     cameraControls,
+    homeRevealControls,
     codeCardControls,
     viewLevelsControls,
+    levelsRevealControls,
+    leaderboardRevealControls,
   ]);
 
-  // Scale 390px phone design to fill the actual viewport width
-  const phoneScale =
-    typeof window !== 'undefined' ? window.innerWidth / 390 : 2.769;
-  const phoneContentHeight =
-    typeof window !== 'undefined'
-      ? `${Math.ceil(window.innerHeight / phoneScale)}px`
-      : '693px';
+  // Scale 390px design to fill the viewport (portrait 9:16 capture)
+  const phoneScale = typeof window !== 'undefined' ? window.innerWidth / 390 : 2.769;
+  const phoneH = typeof window !== 'undefined'
+    ? Math.ceil(window.innerHeight / phoneScale)
+    : 693;
 
   return (
     <div
@@ -132,12 +175,13 @@ export function Scene3ReferralAnimation() {
         width: '100%',
         height: '100%',
         overflow: 'hidden',
-        background: '#FF6B00', // orange matches hero — no flash during entry
+        background: '#FF6B00', // matches hero — prevents flash between loops
       }}
     >
-      {/* ── CAMERA LAYER ──────────────────────────────────────────────
-          Gets the Phase 3 push-in scale. Transform origin sits at ~55%
-          vertical so the zoom pushes toward the code card, not the sky. */}
+      {/* ── CAMERA LAYER ──────────────────────────────────────────────────
+          A single push-in layer. Resets to scale:1 before each page transition,
+          then builds up again on the new page. Transform origin at 55% vertical
+          biases the zoom toward the lower-half content (code card, badge, podium). */}
       <motion.div
         id="s3-camera"
         animate={cameraControls}
@@ -148,45 +192,89 @@ export function Scene3ReferralAnimation() {
           transformOrigin: '50% 55%',
         }}
       >
-        {/* ── PHONE UI SCALER ────────────────────────────────────────
-            Scales the 390px-wide design to fill the capture viewport.
-            The inner content is always 390px; CSS scale handles the rest. */}
+        {/* ── PHONE SCALER ──────────────────────────────────────────────
+            The design is always 390px wide. CSS scale fills the viewport.
+            overflow:hidden clips off-screen pages during slide transitions. */}
         <div
-          id="s3-phone-scaler"
+          id="s3-phone-frame"
           style={{
             position: 'absolute',
             top: 0,
             left: '50%',
             width: '390px',
-            height: phoneContentHeight,
+            height: `${phoneH}px`,
             transformOrigin: 'top center',
             transform: `translateX(-50%) scale(${phoneScale})`,
+            overflow: 'hidden',
           }}
         >
-          {/* ── UI REVEAL LAYER ──────────────────────────────────────
-              Phase 2: rises from y=28px, opacity 0→1, scale 0.96→1 */}
-          <motion.div
-            id="s3-ui-wrap"
-            animate={uiControls}
-            initial={{ opacity: 0, scale: 0.96, y: 28 }}
-            style={{
-              width: '100%',
-              height: '100%',
-              transformOrigin: 'center bottom',
-            }}
-          >
-            <Scene3ReferralUI
-              codeCardControls={codeCardControls}
-              viewLevelsControls={viewLevelsControls}
-            />
-          </motion.div>
+          {/* ── PAGE TRANSITIONS ──────────────────────────────────────
+              AnimatePresence manages the iOS-style horizontal push.
+              - Exiting page slides left (-28% parallax)
+              - Entering page slides in from the right (100% → 0)
+              Both happen simultaneously (default AnimatePresence mode). */}
+          <AnimatePresence>
+            {currentPage === 'home' && (
+              <motion.div
+                key="home"
+                initial={{ x: 0 }}
+                exit={{ x: '-28%', transition: PAGE_TRANSITION }}
+                style={{ position: 'absolute', inset: 0 }}
+              >
+                {/* Home reveal layer: opacity + scale + y settle */}
+                <motion.div
+                  id="s3-home-reveal"
+                  animate={homeRevealControls}
+                  initial={{ opacity: 0, scale: 0.96, y: 28 }}
+                  style={{
+                    position: 'absolute',
+                    inset: 0,
+                    transformOrigin: 'center bottom',
+                  }}
+                >
+                  <Scene3ReferralUI
+                    codeCardControls={codeCardControls}
+                    viewLevelsControls={viewLevelsControls}
+                  />
+                </motion.div>
+              </motion.div>
+            )}
+
+            {currentPage === 'levels' && (
+              <motion.div
+                key="levels"
+                initial={{ x: '100%' }}
+                animate={{ x: 0, transition: PAGE_TRANSITION }}
+                exit={{ x: '-28%', transition: PAGE_TRANSITION }}
+                style={{ position: 'absolute', inset: 0 }}
+              >
+                <Scene3LevelsUI revealControls={levelsRevealControls} />
+              </motion.div>
+            )}
+
+            {currentPage === 'leaderboard' && (
+              <motion.div
+                key="leaderboard"
+                initial={{ x: '100%' }}
+                animate={{ x: 0, transition: PAGE_TRANSITION }}
+                style={{ position: 'absolute', inset: 0 }}
+              >
+                <Scene3LeaderboardUI revealControls={leaderboardRevealControls} />
+              </motion.div>
+            )}
+          </AnimatePresence>
+
+          {/* ── TAP RIPPLE ────────────────────────────────────────────
+              Renders in phone coordinate space so it scales correctly.
+              Position is in the 390px design frame. */}
+          {tapPos && <Scene3TapRipple x={tapPos.x} y={tapPos.y} />}
         </div>
       </motion.div>
 
-      {/* ── TRANSITION OVERLAY ────────────────────────────────────────
-          Phase 1: starts at opacity 1 (white), fades to 0 (entry from Scene 2).
-          Phase 6: fades back to 0.88 (handoff to Scene 4).
-          Sits above everything; pointer-events: none so nothing is blocked. */}
+      {/* ── TRANSITION OVERLAY ────────────────────────────────────────────
+          Phase 1: starts at opacity:1 (white), fades to 0 on entry.
+          Stays at 0 for the rest of the scene.
+          Phase 6 (exit) is handled by the loop restart in VideoTemplate. */}
       <motion.div
         id="s3-overlay"
         animate={overlayControls}

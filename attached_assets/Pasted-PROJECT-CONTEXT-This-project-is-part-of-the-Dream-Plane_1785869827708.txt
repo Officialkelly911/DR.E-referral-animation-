@@ -1,0 +1,431 @@
+PROJECT CONTEXT
+
+This project is part of the Dream Planet Referral Campaign.
+
+Scenes 1 and 2 have already been completed in another branch/project and will later be merged into this repository through GitHub.
+
+The Referral Module UI has already been recreated and approved.
+
+DO NOT redesign or rebuild the UI.
+
+DO NOT modify approved layouts unless required to fix visual inconsistencies discovered during implementation.
+
+Your task is to continue from the current checkpoint.
+
+--------------------------------------------------------
+
+PHASE 1
+VERIFY CURRENT PROJECT
+
+Before making any changes:
+
+Analyze the entire project.
+
+Review:
+
+• App structure
+• Routing
+• Components
+• Assets
+• Animation files
+• package.json
+• Existing Scene 3 implementation
+• README
+• Folder structure
+
+Determine:
+
+✓ what has already been completed
+
+✓ what remains
+
+✓ whether the UI is production-ready
+
+✓ whether any missing assets still exist
+
+If any issue is found, fix it while preserving the existing architecture.
+
+--------------------------------------------------------
+
+PHASE 2
+FINAL UI VERIFICATION
+
+Perform one final visual QA pass.
+
+Compare the recreated UI against every supplied screenshot.
+
+Verify:
+
+• spacing
+
+• margins
+
+• padding
+
+• typography
+
+• shadows
+
+• border radius
+
+• colors
+
+• gradients
+
+• avatar placement
+
+• icon placement
+
+• navigation
+
+• responsiveness
+
+The recreated UI should be visually indistinguishable from the reference.
+
+Do not continue until this verification passes.
+
+--------------------------------------------------------
+
+PHASE 3
+BUILD SCENE 3 CINEMATIC ANIMATION
+
+Use the approved Referral Module UI.
+
+Do NOT regenerate interfaces.
+
+Animate the existing UI.
+
+The animation style must match Scenes 1 and 2.
+
+Visual language:
+
+Luxury
+
+Premium
+
+Minimal
+
+Apple-quality
+
+Smooth
+
+Cinematic
+
+No exaggerated effects.
+
+No gaming-style animations.
+
+No flashy transitions.
+
+--------------------------------------------------------
+
+Animation Sequence
+
+Scene begins immediately after Scene 2 ends.
+
+Maintain visual continuity.
+
+The movement should feel like a continuation of the previous scene.
+
+Sequence:
+
+1.
+
+Referral Page
+
+Hold briefly.
+
+Subtle cinematic push-in.
+
+Very soft floating motion.
+
+2.
+
+Focus on the Share section.
+
+Camera gently settles.
+
+3.
+
+Tap "View Levels"
+
+Natural tap ripple.
+
+Smooth page transition.
+
+No hard cut.
+
+4.
+
+Referral Levels
+
+Cards reveal naturally.
+
+Camera slowly pushes inward.
+
+Pause long enough for readability.
+
+5.
+
+Tap Leaderboard.
+
+Smooth transition.
+
+6.
+
+Leaderboard
+
+Leaderboard slides in naturally.
+
+Real uploaded profile photos must appear.
+
+No placeholder initials.
+
+Camera performs a subtle push-in.
+
+Hold briefly.
+
+7.
+
+End Frame
+
+Camera settles.
+
+Prepare cleanly for Scene 4.
+
+Do not fade to black.
+
+Leave a clean outgoing frame.
+
+--------------------------------------------------------
+
+Animation Style
+
+Motion:
+
+Slow
+
+Confident
+
+Elegant
+
+Premium
+
+Camera:
+
+Very gentle push-ins
+
+Micro-parallax where appropriate
+
+No shakes
+
+No dramatic zooms
+
+Transitions:
+
+Smooth
+
+Invisible
+
+Natural
+
+Lighting:
+
+Maintain the existing UI.
+
+Do not introduce lighting effects.
+
+No fake reflections.
+
+No glow.
+
+No bloom.
+
+--------------------------------------------------------
+
+Text
+
+No new text.
+
+No captions.
+
+No embedded subtitles.
+
+No watermarks.
+
+--------------------------------------------------------
+
+Audio
+
+Do not modify audio.
+
+Animation only.
+
+Audio will be handled during final composition.
+
+--------------------------------------------------------
+
+OUTPUT SPECIFICATIONS
+
+Aspect Ratio
+
+9:16
+
+Resolution
+
+1080 × 1920
+
+Frame Rate
+
+60 FPS
+
+Quality
+
+4K-ready
+
+High-quality export
+
+Maintain vector sharpness where possible.
+
+--------------------------------------------------------
+
+PHASE 4
+QUALITY ASSURANCE
+
+After rendering:
+
+Verify:
+
+✓ smooth transitions
+
+✓ no clipped elements
+
+✓ no layout shifts
+
+✓ no animation jitter
+
+✓ no dropped frames
+
+✓ responsive layout remains intact
+
+✓ visual consistency with Scenes 1 and 2
+
+Refine until production-ready.
+
+--------------------------------------------------------
+
+PHASE 5
+LOCK SCENE 2
+
+After Scene 3 has been successfully completed and verified:
+
+Lock Scene 2.
+
+Do not modify any approved Scene 2 assets.
+
+Mark Scene 2 as approved.
+
+Ensure Scene 2 remains unchanged unless explicitly requested in the future.
+
+--------------------------------------------------------
+
+PHASE 6
+UPDATE PROJECT README
+
+Update the campaign documentation.
+
+Include:
+
+Project Overview
+
+Current Progress
+
+Completed
+
+✓ Scene 1
+
+✓ Scene 2
+
+✓ Scene 3 UI Recreation
+
+✓ Scene 3 Animation
+
+Pending
+
+• Scene 4
+
+• Final Composition
+
+• Final Audio Mix
+
+• Final Color Pass
+
+• Final Export
+
+Repository Notes
+
+Mention that:
+
+Scenes 1 and 2 were developed in a separate branch/project.
+
+Scene 3 was developed independently.
+
+The repositories are intended to merge through GitHub.
+
+Avoid structural changes that could introduce merge conflicts.
+
+Document folder structure.
+
+Document reusable components.
+
+Document animation entry points.
+
+Document exported assets.
+
+--------------------------------------------------------
+
+PHASE 7
+PREPARE FOR GITHUB
+
+Before completion:
+
+Ensure:
+
+No broken imports.
+
+No duplicated assets.
+
+No unused components.
+
+No temporary files.
+
+No placeholder content.
+
+No debug code.
+
+Code should be clean, modular, and merge-safe.
+
+--------------------------------------------------------
+
+FINAL DELIVERABLE
+
+The task is complete only when:
+
+✓ Scene 3 animation is fully finished
+
+✓ UI remains pixel-perfect
+
+✓ Motion matches the cinematic style of Scenes 1 and 2
+
+✓ Scene 2 is locked
+
+✓ README has been updated
+
+✓ Project is cleaned
+
+✓ Repository is ready for GitHub merge
+
+Finally, provide a concise completion report summarizing:
+- What was implemented.
+- Any issues encountered and how they were resolved.
+- Any remaining work before the full Dream Planet promotional campaign is complete.

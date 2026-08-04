@@ -1,0 +1,413 @@
+Absolutely. Since this is becoming your master production pipeline, the prompt should read more like a creative brief combined with a technical specification than a simple implementation request. That gives the Replit Agent enough context to make consistent decisions without improvising the visual language.
+
+⸻
+
+DREAM PLANET REFERRAL CAMPAIGN
+
+Scene 3 Implementation & Scene 2 → Scene 3 Transition
+
+MASTER IMPLEMENTATION PROMPT
+
+Analyze the entire project before making any changes.
+
+Locate all project files, source code, assets, UI components, animation files, README documentation, exported media, timing data, and previous implementation notes related to:
+
+* Scene 1
+* Scene 2
+* Scene 3
+
+Understand how every approved scene was implemented before modifying anything.
+
+This project is being developed across multiple Replit workspaces and agents. Preserve compatibility with the existing project structure. Do not rename assets, alter directory structures unnecessarily, or introduce breaking changes that will complicate the final GitHub merge.
+
+⸻
+
+Objective
+
+Implement the complete Scene 3 experience while seamlessly connecting it to the ending of Scene 2.
+
+The viewer must perceive the entire commercial as one continuous premium cinematic sequence rather than separate scenes.
+
+No visible seams.
+
+No abrupt transitions.
+
+No disconnected animations.
+
+Every movement should naturally evolve into the next.
+
+⸻
+
+Technical Specifications
+
+Aspect Ratio:
+9:16 (Vertical)
+
+Resolution:
+2K
+
+Frame Rate:
+60 FPS
+
+Quality:
+Highest available export quality
+
+Motion Style:
+Premium luxury commercial
+
+⸻
+
+Existing Timeline
+
+Scene 1
+0:00–0:03
+
+Luxury tattoo reveal.
+
+Approved.
+
+Locked.
+
+⸻
+
+Scene 2
+
+0:03–0:06
+
+Dream Planet identity reveal.
+
+Approved.
+
+Locked.
+
+Ends with the Dream Planet tattoo clearly visible.
+
+⸻
+
+Scene 3
+
+0:06–0:12
+
+Referral Experience.
+
+Currently being implemented.
+
+⸻
+
+Critical Transition Requirement
+
+Do NOT perform a normal video transition.
+
+Avoid:
+
+• Fade
+
+• Dissolve
+
+• Flash
+
+• Swipe
+
+• Zoom cut
+
+• Whip transition
+
+Instead, Scene 3 must begin through a cinematic object transformation.
+
+⸻
+
+Morph Transition
+
+The ending tattoo from Scene 2 is the transition element.
+
+Sequence:
+
+The camera continues its movement from Scene 2.
+
+The Dream Planet tattoo begins transforming into a clean vector-quality Dream Planet logo.
+
+The morph must appear organic.
+
+Do not simply crossfade between two images.
+
+The tattoo should gradually simplify into the clean brand logo while preserving position and orientation.
+
+The logo becomes perfectly sharp.
+
+The logo gently lifts away from the skin.
+
+The background gradually softens into cinematic blur.
+
+The logo becomes the dominant subject.
+
+The logo scales slightly larger.
+
+The camera continues moving naturally.
+
+As the logo floats in the center of the frame, a smartphone interface begins emerging behind it.
+
+The logo remains visible while the interface fades in.
+
+The logo then scales down smoothly toward its natural location within the application (or fades elegantly once the interface is fully established if the UI does not display it prominently).
+
+The entire transition should feel like one uninterrupted camera move.
+
+⸻
+
+Scene 3 Opening
+
+The Referral Dashboard should already be open.
+
+Do NOT animate:
+
+Opening the app.
+
+Launching the application.
+
+Loading screens.
+
+Splash screens.
+
+Navigation to the Referral page.
+
+Those actions slow the pacing.
+
+The audience should immediately arrive at the feature being advertised.
+
+⸻
+
+Referral UI
+
+Use the approved pixel-perfect recreation.
+
+Do not redesign.
+
+Do not reposition elements.
+
+Do not alter spacing.
+
+Do not modify typography.
+
+Do not change colors.
+
+Maintain complete fidelity to the supplied screenshots.
+
+⸻
+
+UI Animation
+
+The interface should feel alive.
+
+Use premium motion principles.
+
+Cards gently rise into place.
+
+Buttons subtly animate.
+
+Numbers count smoothly.
+
+Referral statistics animate naturally.
+
+Leaderboards scroll slowly.
+
+Progress indicators animate.
+
+Cards reveal using opacity and slight vertical motion.
+
+Use easing throughout.
+
+Avoid robotic linear movement.
+
+⸻
+
+Camera Movement
+
+Maintain one continuous cinematic camera.
+
+Slow dolly movement.
+
+Gentle push-ins.
+
+Subtle parallax.
+
+No aggressive zooms.
+
+No sudden direction changes.
+
+Motion should feel premium and expensive.
+
+⸻
+
+Leaderboard
+
+Use the recreated leaderboard.
+
+If actual profile photos are available, display them.
+
+If profile images are unavailable, use tasteful placeholder avatars.
+
+Do not delay implementation waiting for profile photos.
+
+The layout should remain identical.
+
+⸻
+
+Referral Levels
+
+When transitioning into the Referral Levels page:
+
+Slide naturally.
+
+Avoid hard cuts.
+
+Cards should stagger slightly.
+
+Reward values animate smoothly.
+
+Maintain visual continuity.
+
+⸻
+
+Return to Dashboard
+
+If returning to the dashboard after viewing subpages:
+
+Use the same animation language.
+
+Consistent easing.
+
+Consistent duration.
+
+No abrupt navigation.
+
+⸻
+
+Motion Language
+
+Everything must share one motion system.
+
+Soft easing.
+
+Elegant acceleration.
+
+Smooth deceleration.
+
+No bounce animations.
+
+No exaggerated scaling.
+
+No gaming-style motion.
+
+Think Apple keynote.
+
+Think luxury automotive commercial.
+
+Think premium fintech application.
+
+⸻
+
+Color
+
+Maintain identical grading established in Scene 2.
+
+Warm premium lighting.
+
+High contrast.
+
+Soft highlights.
+
+Rich blacks.
+
+Consistent brightness.
+
+No noticeable color shift between scenes.
+
+⸻
+
+Audio
+
+Continue seamlessly from Scene 2.
+
+Do not restart music.
+
+No silence.
+
+No interruption.
+
+No duplicated intro.
+
+Scene 3 begins exactly where Scene 2’s music segment ends.
+
+⸻
+
+Performance
+
+Maintain smooth rendering.
+
+No dropped frames.
+
+No UI jitter.
+
+No flickering.
+
+No layout shifts.
+
+No frame pacing inconsistencies.
+
+⸻
+
+Validation
+
+Before completion, verify:
+
+✓ Scene 2 ends naturally.
+
+✓ Tattoo morphs into Dream Planet logo.
+
+✓ Logo transformation appears organic.
+
+✓ Logo transitions naturally into the Referral experience.
+
+✓ Referral dashboard is immediately visible.
+
+✓ UI matches supplied screenshots.
+
+✓ Camera movement is continuous.
+
+✓ Motion language is consistent.
+
+✓ Audio remains uninterrupted.
+
+✓ No visual seams.
+
+✓ No abrupt cuts.
+
+✓ Export is smooth at 60 FPS.
+
+⸻
+
+Deliverables
+
+Produce:
+
+1. Fully implemented Scene 3 animation.
+2. Updated project files.
+3. Updated README documenting the Scene 2 → Scene 3 transition.
+4. Updated animation timeline.
+5. One preview export:
+
+DreamPlanet_Scene3_v1.mp4
+
+6. One merged preview:
+
+DreamPlanet_Master_v1.mp4
+
+This merged preview should include:
+
+* Scene 1 (0:00–0:03)
+* Scene 2 (0:03–0:06)
+* Scene 3 (0:06–0:12)
+
+The final output should play as a single uninterrupted cinematic commercial, with the Dream Planet tattoo naturally evolving into the Dream Planet logo before transitioning into the Referral Dashboard, creating a premium, polished, and cohesive brand experience with no visible seams between scenes.
+
+One final recommendation: if your Replit Agent supports image-to-image keyframe interpolation or SVG/vector interpolation, explicitly instruct it to use that for the tattoo-to-logo morph. Because the tattoo and the Dream Planet logo share the same underlying design, interpolation produces a much more convincing transformation than a simple dissolve or opacity fade. It makes the brand feel as though it is literally emerging from the tattoo, which is a far stronger visual moment.
