@@ -1,0 +1,488 @@
+Good. Now move to Phase 2: Side Navigation Recreation only.
+
+Paste this into the Replit Agent:
+
+⸻
+
+Scene 5 — Phase 2: Side Navigation Drawer Recreation
+
+The Scene 5 project and asset audit has been completed.
+
+Now implement Phase 2 only: recreate the Dream Planet Side Navigation Drawer.
+
+Do not proceed to Portfolio, Forum, interactions, animation, or master integration yet.
+
+⸻
+
+Project constraints
+
+Scenes 1-4 are approved, locked, and must remain untouched.
+
+Do not modify:
+
+* Scene 1 source
+* Scene 2 source
+* Scene 3 source
+* Scene 4 source
+* Approved four-scene master
+* Canonical build_master.sh
+* Master validation logic
+* Existing master review page
+
+Do not start Scene 6.
+
+Do not integrate Scene 5 into the master.
+
+This task is limited to the Side Navigation UI for Scene 5.
+
+⸻
+
+Objective
+
+Recreate the Dream Planet left-side navigation drawer shown in the supplied screenshots and screen recordings as a fully editable, responsive, production-quality UI component.
+
+The recreated interface must be visually faithful to the latest reference material.
+
+Use the supplied screenshot as the primary visual reference and the supplied screen recording as the behavioral reference.
+
+Do not use the screenshot itself as a background.
+
+Build the interface from real components, text, icons, and uploaded assets.
+
+⸻
+
+Component scope
+
+Create a Scene 5-specific, reusable navigation module.
+
+Preferred component structure:
+
+Scene5SideNavigation
+├── Scene5NavOverlay
+├── Scene5NavProfile
+├── Scene5NavigationList
+├── Scene5NavigationItem
+└── Scene5NavigationSection
+
+Use Scene 5-specific naming.
+
+Avoid generic names such as:
+
+* Navigation.tsx
+* Menu.tsx
+* Sidebar.tsx
+
+unless those components already exist and can safely be reused.
+
+Do not duplicate existing shared infrastructure unnecessarily.
+
+⸻
+
+Visual requirements
+
+Drawer
+
+Match the supplied reference:
+
+* Full mobile viewport height
+* White background
+* Drawer enters from the left
+* Rounded top-right corner
+* Rounded bottom-right corner
+* Clean modern appearance
+* Minimal shadow or elevation
+* No unnecessary gradients
+* No decorative effects
+* No glassmorphism
+
+The drawer should occupy the same approximate width as the reference.
+
+Measure the reference as closely as practical.
+
+⸻
+
+Background overlay
+
+When the drawer is open:
+
+* Keep the underlying application visible.
+* Apply a muted dark/gray overlay.
+* Match the approximate opacity in the screenshot.
+* Preserve the underlying page’s visual structure.
+* Do not completely hide the background.
+
+The overlay and drawer must be independently animatable.
+
+⸻
+
+Profile section
+
+At the top of the drawer, recreate:
+
+Profile image
+
+Use the original uploaded Dr. Elizabeth profile image.
+
+Requirements:
+
+* Circular crop
+* Natural framing
+* Correct dimensions
+* No distortion
+* No unnecessary border unless visible in the reference
+
+Profile name
+
+Display:
+
+Elizabeth Wisniewski DC PhD
+
+Match:
+
+* Font family
+* Font size
+* Weight
+* Color
+* Line height
+* Spacing
+
+as closely as possible to the reference.
+
+View Portfolio
+
+Display:
+
+View Portfolio
+
+Use the Dream Planet orange accent visible in the reference.
+
+This is an important interactive navigation item and must be independently addressable.
+
+Do not add navigation behavior yet beyond making the item structurally interactive.
+
+The actual Portfolio navigation will be implemented in a later phase.
+
+⸻
+
+Navigation item order
+
+Recreate the latest verified menu order from the supplied screenshots and screen recordings.
+
+Include:
+
+1. Store Analytics
+2. Sales
+3. My purchases
+4. Raba Bag
+5. Subscriptions
+6. Digital Library
+7. Masterclass
+8. Favorite
+9. Distribution Hub
+10. Referral
+
+Then a visual divider.
+
+Below the divider:
+
+11. Support
+12. Settings
+
+⸻
+
+Coming Soon items
+
+The reference shows:
+
+* Masterclass — Coming Soon
+* Distribution Hub — Coming Soon
+
+Recreate these states exactly as shown.
+
+The “Coming Soon” badge should be:
+
+* Light neutral gray
+* Rounded pill
+* Smaller than the primary navigation text
+* Visually secondary
+* Aligned naturally beside the item label
+
+Do not make these items appear active or navigable unless the reference indicates otherwise.
+
+⸻
+
+Navigation icons
+
+Use the original icons from the reference when available.
+
+If original icon assets are not available:
+
+* Reuse an existing project icon library only if it matches the visual style.
+* Use clean outline-style icons.
+* Maintain consistent stroke width.
+* Maintain consistent dimensions.
+* Align every icon on the same vertical baseline.
+
+Do not invent colorful icons.
+
+Do not use emoji.
+
+Do not mix incompatible icon families.
+
+⸻
+
+Navigation item styling
+
+Each item should support:
+
+* Default state
+* Pressed state
+* Hover/focus state where relevant
+
+The default state should match the screenshot.
+
+The pressed state should be subtle and suitable for later animation.
+
+Do not add:
+
+* Ripple effects
+* Bounce animations
+* Glowing effects
+* Large color changes
+
+Keep interaction styling minimal.
+
+⸻
+
+Dividers
+
+Recreate the visible divider separating the main navigation items from:
+
+* Support
+* Settings
+
+Match:
+
+* Thickness
+* Color
+* Spacing
+* Position
+
+as closely as possible.
+
+⸻
+
+Responsive behavior
+
+The component must work at:
+
+* 360px width
+* 390px width
+* 430px width
+* 1080×1920 capture canvas
+
+The drawer should:
+
+* Maintain a consistent visual width ratio
+* Never clip text
+* Never overlap the bottom safe area incorrectly
+* Preserve readable spacing
+* Remain fully visible vertically
+
+If the menu content exceeds the available height at smaller devices, implement scrolling exactly as the real application requires.
+
+Do not arbitrarily hide items.
+
+⸻
+
+Safe-area behavior
+
+Account for modern mobile device safe areas where necessary.
+
+The drawer should not cause:
+
+* Content clipping near the status bar
+* Content clipping near the bottom gesture area
+* Incorrect vertical centering
+
+Use appropriate mobile viewport handling.
+
+⸻
+
+Interaction behavior
+
+Implement only the navigation drawer interaction for this phase:
+
+Closed state
+
+The drawer is not visible.
+
+Opening state
+
+The drawer enters from the left.
+
+Open state
+
+The drawer is fully visible.
+
+Closing state
+
+The drawer exits naturally to the left.
+
+The background overlay should animate in and out with the drawer.
+
+Use a smooth, restrained motion.
+
+Do not implement:
+
+* View Portfolio navigation
+* Forum navigation
+* Scene 5 timeline
+* Like/comment/share
+* Master integration
+
+Those belong to later phases.
+
+⸻
+
+Animation readiness
+
+The drawer must be ready for future Scene 5 animation.
+
+Expose independently addressable elements for:
+
+* Overlay
+* Drawer
+* Profile section
+* View Portfolio
+* Navigation items
+* Divider
+* Support
+* Settings
+
+Assign stable scene-specific IDs/data attributes where practical.
+
+Example:
+
+data-scene5="side-nav"
+data-scene5="side-nav-overlay"
+data-scene5="side-nav-profile"
+data-scene5="view-portfolio"
+data-scene5="nav-store-analytics"
+data-scene5="nav-sales"
+data-scene5="nav-purchases"
+data-scene5="nav-raba-bag"
+data-scene5="nav-subscriptions"
+data-scene5="nav-digital-library"
+data-scene5="nav-masterclass"
+data-scene5="nav-favorite"
+data-scene5="nav-distribution-hub"
+data-scene5="nav-referral"
+data-scene5="nav-support"
+data-scene5="nav-settings"
+
+Use unique IDs or data attributes that will not collide with Scenes 1-4.
+
+⸻
+
+Visual fidelity audit
+
+After implementation, compare the recreated drawer directly against the supplied reference screenshot.
+
+Check:
+
+Layout
+
+* Drawer width
+* Drawer height
+* Profile section position
+* Item positions
+* Vertical spacing
+* Divider position
+* Bottom section placement
+
+Typography
+
+* Profile name
+* View Portfolio
+* Navigation labels
+* Coming Soon badges
+* Font sizes
+* Font weights
+* Line heights
+
+Icons
+
+* Correct icon style
+* Correct dimensions
+* Correct alignment
+* Consistent stroke weight
+
+Colors
+
+* White drawer
+* Dark text
+* Orange View Portfolio
+* Gray icons
+* Gray Coming Soon badges
+* Background overlay
+
+Shape
+
+* Drawer corner radius
+* Badge radius
+* Divider thickness
+* Icon proportions
+
+Responsive behavior
+
+Test at 360px, 390px, 430px and the final 9:16 capture canvas.
+
+⸻
+
+Acceptance criteria
+
+This phase is complete only when:
+
+* The Side Navigation closely matches the reference screenshot.
+* The correct profile image is used.
+* All navigation items are present in the correct order.
+* Coming Soon states match the reference.
+* Support and Settings are included.
+* The overlay behaves correctly.
+* The drawer opens and closes smoothly.
+* No content is clipped.
+* The component is responsive.
+* The component is animation-ready.
+* No Scene 1-4 files have been modified.
+
+⸻
+
+Required deliverable
+
+At the end of this task:
+
+1. Recreated Side Navigation component.
+2. Any new Scene 5-specific styles/data/assets.
+3. A short visual fidelity report describing:
+    * What was matched.
+    * Any assumptions.
+    * Any remaining discrepancies.
+4. A screenshot or browser capture of the recreated Side Navigation for review.
+
+⸻
+
+STOP CONDITION
+
+Stop after completing and auditing the Side Navigation.
+
+Do not proceed to:
+
+* Portfolio
+* Forum
+* Navigation integration
+* Engagement interactions
+* Scene 5 animation
+* Master integration
+
+Those will be handled in subsequent phases after the Side Navigation is reviewed and approved.
