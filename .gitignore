@@ -11,6 +11,14 @@
 /Scene1scene2.gz
 /Scene3Scene4.gz
 
+# ── Extracted-scenes gz archives (authoritative snapshots — now untracked) ───
+# Both archives are snapshots of the two predecessor Replit workspaces. All
+# required content is already extracted and tracked under extracted_scenes/.
+# No build or validation script references these archives.
+# Removed from Git tracking 2026-08-05 (git rm --cached). See REPO_ARTIFACT_CLEANUP.md.
+/extracted_scenes/Scene1scene2.gz
+/extracted_scenes/Scene3Scene4.gz
+
 # ── Extracted tar blobs ───────────────────────────────────────────────────────
 # Raw tar archives extracted from the .gz files above. Re-extract with:
 #   gzip -dc extracted_scenes/Scene1scene2.gz > extracted_scenes/Scene1scene2
