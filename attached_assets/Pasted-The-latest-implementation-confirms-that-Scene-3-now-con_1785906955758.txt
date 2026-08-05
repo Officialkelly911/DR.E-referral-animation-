@@ -1,0 +1,81 @@
+The latest implementation confirms that Scene 3 now contains the complete approved journey:
+
+Referral Home → View Levels → Leaderboard
+
+and Scene 4 continues directly from the Leaderboard.
+
+Before making any further animation changes, perform a final production QA pass on the complete four-scene master.
+
+Phase 1 — Audio QA
+
+Analyze DreamPlanet_Master_v1_audio.mp4 and confirm:
+
+* Exactly one music track is present.
+* No duplicate embedded scene audio exists.
+* No audio restart occurs at any scene boundary.
+* No gaps or silence occur between Scenes 1, 2, 3, and 4.
+* Audio remains synchronized with the full 24.5-second master.
+* The 1-second ending fadeout is intentional and clean.
+
+Report:
+
+* Audio duration
+* Codec
+* Sample rate
+* Channel layout
+* Average bitrate
+* Confirmation of continuous playback
+
+Phase 2 — Visual QA
+
+Review the full DreamPlanet_Master_v1.mp4 and/or DreamPlanet_Master_v1_audio.mp4 from start to finish.
+
+Verify:
+
+1. Scene 1 fills the 9:16 canvas correctly.
+2. Scene 1 → Scene 2 is seamless.
+3. Scene 2 → Scene 3 transition is visually intentional.
+4. Scene 3 starts on the Referral Home with referral code IK54OTRD.
+5. Scene 3 clearly animates:
+    * Referral Home
+    * View Levels
+    * Leaderboard
+6. Tap effects are visible and believable.
+7. Page transitions are smooth and readable.
+8. Scene 3 ends on the full Leaderboard.
+9. Scene 4 begins from the same Leaderboard state without a visible seam.
+10. No UI clipping, frame jumps, flicker, or layout shifts are present.
+
+Phase 3 — Animation decision
+
+Only if the visual review identifies a genuine issue, make targeted animation adjustments.
+
+Do not redesign the UI.
+
+Do not alter approved layouts.
+
+Do not change scene order.
+
+Do not modify Scene 1 or Scene 2 unless a critical production issue is found.
+
+Do not modify audio during the visual animation refinement pass.
+
+Final deliverables
+
+Preserve the existing files and produce a final QA report containing:
+
+* Scene 1 duration
+* Scene 2 duration
+* Scene 3 duration
+* Scene 4 duration
+* Total master duration
+* Resolution
+* Actual FPS
+* Audio details
+* Confirmation of Scene 2 → Scene 3 continuity
+* Confirmation of Scene 3 → Scene 4 continuity
+* Confirmation that the Scene 3 journey is complete
+
+If the master passes all checks, mark:
+
+Scenes 1-4 APPROVED AND LOCKED FOR FINAL CAMPAIGN CONTINUATION.
