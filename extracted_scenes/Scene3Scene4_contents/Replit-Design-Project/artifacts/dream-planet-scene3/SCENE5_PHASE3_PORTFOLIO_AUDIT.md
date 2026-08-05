@@ -47,11 +47,11 @@ interactions, no cinematic animation, no master integration, no Scene 6.
   background); a real transparent play-icon asset (`Play_video_icon__…`)
   was later supplied and is now used directly (trimmed) as the video tile
   overlay. Resolved, no longer a discrepancy.
-- **Media grid completeness:** the reference screenshots show a few
+- **Media grid completeness (final):** the reference screenshots show a few
   original-artwork tiles (e.g. an orange heart abstract, a coin-mosaic
-  heart) that were never included in the supplied asset upload. These are
-  still intentionally omitted rather than invented — the grid uses only the
-  13 photos + 4 video clips actually supplied (17 tiles total).
+  heart). Confirmed these assets don't exist/aren't available, so they are
+  permanently omitted rather than invented — the grid intentionally uses
+  only the 13 photos + 4 video clips actually supplied (17 tiles total).
 - **Stats source:** 47 / 105 reflect the last verified reference values
   supplied for this phase; there's no live data source wired up yet (none
   is expected until a later phase).
