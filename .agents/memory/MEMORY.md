@@ -3,3 +3,5 @@
 - [Dream Planet Scene 3 capture complete](dream-planet-scene3-capture.md) — full 3-page animation captured; master is 24.5s (all 4 scenes); FM v11 AnimationControls fix.
 - [Dream Planet baseline locked](dream-planet-baseline-locked.md) — Scenes 1-4 verified reproducible; archive cleanup done; Scene 5 integration points documented.
 - [Dream Planet Scene 5 phase boundary](dream-planet-scene5-phase2-sidenav.md) — Scene 5 built in strict sequential phases with hard stops; artifact-detection vs. manual workflow collision gotcha on reimport.
+- [Dream Planet Scene 5 Phase 4 (Forum) complete](dream-planet-scene5-phase4-forum.md) — Forum UI recreation locked; next is Phase 5 (engagement interactions).
+- [Dream Planet asset pipeline gotchas](dream-planet-asset-pipeline.md) — where uploaded reference/media files actually live vs. where `@assets` resolves; LFS/zip files never materialized on fresh import.

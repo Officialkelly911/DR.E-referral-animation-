@@ -1,0 +1,736 @@
+Now we move to Phase 4: Forum UI Recreation. This phase should recreate both the Forum Post Feed and Forum Overview as one cohesive Scene 5 module, using the screenshots and screen recordings as the source of truth.
+
+The important distinction here is that we’re building the static Forum experience first. The Like, Comment, Share behavior and the final Portfolio → Forum navigation choreography come afterward.
+
+Use this prompt in Replit:
+
+⸻
+
+DREAM PLANET REFERRAL CAMPAIGN
+
+SCENE 5 — PHASE 4: FORUM UI RECREATION
+
+The Scene 5 Side Navigation and Portfolio UI have now been recreated and audited.
+
+Proceed with Phase 4 only: recreate the Dream Planet Forum experience.
+
+This phase must include both:
+
+1. Forum Post Feed
+2. Forum Overview
+
+Do not proceed to cinematic animation, master integration, or Scene 6.
+
+The Forum should be implemented as a real, editable, responsive interface using the supplied screenshots, screen recordings, and original media assets.
+
+⸻
+
+PROJECT CONSTRAINTS
+
+Scenes 1-4 are approved, locked, and must remain untouched.
+
+Do not modify:
+
+* Scene 1
+* Scene 2
+* Scene 3
+* Scene 4
+* Approved four-scene master
+* Canonical build_master.sh
+* Master validation logic
+* Existing master review page
+
+Do not start Scene 6.
+
+Do not integrate Scene 5 into the master.
+
+Do not implement the final Like/Comment/Share animation choreography yet.
+
+Do not begin cinematic Scene 5 animation yet.
+
+This phase is limited to:
+
+* Forum Post Feed recreation
+* Forum Overview recreation
+* Static visual fidelity
+* Basic internal Forum state switching required for preview
+
+⸻
+
+OBJECTIVE
+
+Recreate the Dream Planet Forum interface shown in the supplied screenshots and screen recordings.
+
+The implementation must be:
+
+* Pixel-faithful
+* Responsive
+* Fully editable
+* Component-based
+* Animation-ready
+* Built from original media assets
+* Compatible with the existing Scene 5 architecture
+
+Do not use the screenshots as a background.
+
+Do not flatten the Forum into one image.
+
+Each post, avatar, control, tab, header, and media element must remain independently addressable.
+
+⸻
+
+SOURCE OF TRUTH
+
+Use the supplied:
+
+* Forum Overview screenshot
+* Forum Post Feed screenshot
+* Portfolio → Forum navigation screen recording
+* Forum page screen recording
+* Original Forum media assets
+* Original member avatars
+
+Treat:
+
+Screenshots = visual source of truth
+
+Screen recordings = behavioral and state-flow source of truth
+
+If the screenshot and recording differ, prioritize the latest observed live application behavior and document the discrepancy.
+
+Do not invent behavior that is not supported by either source.
+
+⸻
+
+COMPONENT ARCHITECTURE
+
+Create Scene 5-specific components.
+
+Recommended structure:
+
+Scene5Forum
+├── Scene5ForumHeader
+├── Scene5ForumBackButton
+├── Scene5ForumTitle
+├── Scene5ForumMemberCount
+├── Scene5ForumEditButton
+├── Scene5ForumTabs
+├── Scene5ForumPostFeed
+├── Scene5ForumPost
+├── Scene5ForumPostHeader
+├── Scene5ForumPostMedia
+├── Scene5ForumEngagementBar
+├── Scene5ForumOverview
+├── Scene5ForumGuidelines
+├── Scene5ForumMembers
+├── Scene5ForumInvite
+├── Scene5ForumShareLink
+└── Scene5ForumFloatingAction
+
+Reuse existing shared components only when they are already compatible with the approved Scene 5 architecture.
+
+Do not create duplicate global components unnecessarily.
+
+⸻
+
+PART 1 — FORUM POST FEED
+
+This is the primary Forum state for the Scene 5 cinematic sequence.
+
+Recreate the Forum Post Feed based on the supplied reference and recording.
+
+⸻
+
+Forum Header
+
+Match the supplied reference.
+
+Include:
+
+Left side
+
+* Back button
+* Circular/rounded button treatment if shown in the reference
+
+Center/left title area
+
+Display the current Forum name as shown in the reference:
+
+dr. Elizabeth Wisnie...
+
+Use the actual truncation behavior shown in the app.
+
+Do not invent a new title format.
+
+Member count
+
+Display:
+
+47 members
+
+Include the appropriate member icon if visible in the reference.
+
+Right side
+
+Display:
+
+Edit Forum
+
+Match:
+
+* Font
+* Weight
+* Color
+* Position
+* Spacing
+
+exactly as closely as practical.
+
+⸻
+
+Forum Header Behavior
+
+The header should remain visually stable while scrolling if that is how the real application behaves.
+
+Use the screen recording to determine whether:
+
+* Header is fixed
+* Header scrolls
+* Header compresses
+* Header changes state
+
+Do not assume sticky behavior without evidence.
+
+Document the observed behavior.
+
+⸻
+
+PART 2 — FORUM POST COMPONENT
+
+Each Forum post must be an independent reusable component.
+
+Recommended structure:
+
+Scene5ForumPost
+├── Scene5ForumPostHeader
+├── Scene5ForumPostContent
+├── Scene5ForumPostMedia
+└── Scene5ForumEngagementBar
+
+⸻
+
+Post Header
+
+Recreate:
+
+* Circular user avatar
+* Username
+* Timestamp
+* Three-dot menu
+
+Match the reference:
+
+* Avatar size
+* Text hierarchy
+* Spacing
+* Alignment
+
+Use the original uploaded avatars wherever available.
+
+Do not use placeholder initials when an original avatar asset exists.
+
+⸻
+
+Post Content
+
+Support posts containing:
+
+* Text
+* Images
+* Artwork
+* Video
+* Mixed media
+
+The component should render the correct content based on structured post data.
+
+Do not hardcode repeated markup for each post.
+
+⸻
+
+Forum Media
+
+Use original uploaded Forum media.
+
+Do not crop screenshots to simulate posts.
+
+Do not replace original media with stock content.
+
+Support:
+
+Image posts
+
+Maintain the correct aspect ratio and crop behavior.
+
+Video posts
+
+Use the original video or supplied thumbnail.
+
+Display the actual video play/pause treatment if shown in the reference.
+
+If a mute/unmute control exists in the supplied recording, recreate it accurately.
+
+Do not add generic video controls that aren’t present in the real interface.
+
+⸻
+
+Engagement Bar
+
+Recreate the visible controls:
+
+* Comment
+* Like
+* Share
+
+Match:
+
+* Order
+* Dividers
+* Icon style
+* Typography
+* Counts
+* Alignment
+
+Do not implement the final interaction behavior yet.
+
+For this phase, the controls only need to render correctly and expose stable hooks for the next interaction phase.
+
+Example:
+
+data-scene5="forum-like"
+data-scene5="forum-comment"
+data-scene5="forum-share"
+
+Do not add fake animation effects yet.
+
+⸻
+
+Post Selection
+
+Select 2-3 representative Forum posts from the supplied references and original media.
+
+Prioritize:
+
+* Visually strong artwork
+* Interesting video
+* Strong creator content
+* Distinctive visual variety
+
+Ensure the posts represent the actual Forum experience.
+
+Do not invent content just to fill space.
+
+⸻
+
+Forum Feed Structure
+
+The feed should support vertical scrolling.
+
+Scrolling must be:
+
+* Smooth
+* Stable
+* Responsive
+* Free of layout shifts
+
+Do not implement infinite scrolling.
+
+Use a deterministic set of posts for the promotional experience.
+
+The feed should be long enough to support the intended Scene 5 cinematic scroll.
+
+⸻
+
+PART 3 — FORUM OVERVIEW
+
+Implement a second Forum state representing the Overview screen shown in the supplied reference.
+
+This must be a real editable state, not a static image.
+
+⸻
+
+Overview Header
+
+Recreate the Forum identity.
+
+Include:
+
+* Forum title
+* Member count
+* Description
+
+Use the exact hierarchy shown in the reference.
+
+⸻
+
+Overview Tabs
+
+Implement the visible tab system:
+
+* Post
+* Overview
+
+The active state should match the reference.
+
+The tabs must be independently addressable.
+
+Example:
+
+data-scene5="forum-tab-post"
+data-scene5="forum-tab-overview"
+
+⸻
+
+Overview Content
+
+Recreate the following sections shown in the reference:
+
+Created date
+
+Display the observed creation date exactly as shown.
+
+Do not invent a different date.
+
+⸻
+
+Guidelines
+
+Include:
+
+Guidelines
+
+and the corresponding:
+
+Update
+
+control if present in the reference.
+
+Match:
+
+* Typography
+* Alignment
+* Spacing
+
+⸻
+
+Members
+
+Display:
+
+Member
+
+and:
+
+See all
+
+Include the horizontal avatar list shown in the reference.
+
+Use original uploaded avatars.
+
+Do not use placeholders where originals are available.
+
+⸻
+
+Invite to Forum
+
+Recreate:
+
+Invite to forum
+
+Include the visible invitation field or URL.
+
+Use the exact URL shown in the reference:
+
+https://dreamplanet.org/forum/100
+
+If the latest source/reference shows a different verified URL, use the latest verified value and document the difference.
+
+⸻
+
+Share Link
+
+Recreate the visible:
+
+Share Link
+
+control.
+
+Do not implement the final Share interaction yet.
+
+Only reproduce the visual state and provide an interaction hook.
+
+⸻
+
+Floating Action Button
+
+Recreate the orange floating + button.
+
+Match:
+
+* Size
+* Color
+* Position
+* Icon
+* Spacing
+
+Keep it independently addressable.
+
+⸻
+
+PART 4 — FORUM STATE SWITCHING
+
+Implement basic switching between:
+
+Post
+↔
+Overview
+
+For this phase, state switching only needs to work in the preview.
+
+Use a clean, restrained transition.
+
+Do not create the final cinematic animation yet.
+
+Recommended:
+
+* Quick crossfade
+* Subtle horizontal transition
+* Minimal opacity change
+
+The exact behavior should be adjusted to match the real app if the screen recording clearly shows one.
+
+⸻
+
+PART 5 — VIEW FORUM PREVIEW CONNECTION
+
+The Portfolio page already includes the View Forum button from Phase 3.
+
+For this phase, connect that button to the Forum module.
+
+The preview flow should now work:
+
+Side Navigation
+↓
+View Portfolio
+↓
+Portfolio
+↓
+View Forum
+↓
+Forum Post Feed
+
+If the real app opens the Forum on the Overview tab instead, follow the behavior demonstrated in the supplied screen recording.
+
+Do not invent the initial Forum state.
+
+⸻
+
+PART 6 — BACK BUTTON
+
+Implement the Forum Back button structurally.
+
+For preview:
+
+Forum
+↓
+Portfolio
+
+Use the natural app behavior shown in the screen recording.
+
+Do not yet connect the Back button to the full Scene 5 cinematic timeline.
+
+That will be handled later.
+
+⸻
+
+PART 7 — DETERMINISTIC CONTENT DATA
+
+Store post and Forum content in structured data.
+
+Recommended:
+
+scene5ForumData.ts
+scene5ForumMembers.ts
+scene5ForumPosts.ts
+scene5ForumOverview.ts
+
+Each post should include properties such as:
+
+type ForumPost = {
+  id: string;
+  avatar: string;
+  username: string;
+  timestamp: string;
+  type: "text" | "image" | "video" | "mixed";
+  media?: string;
+  content?: string;
+  likeCount: number;
+  commentCount: number;
+  shareCount?: number;
+};
+
+Do not implement interaction logic here yet.
+
+The data should be structured so the next phase can add local deterministic state without rewriting the UI.
+
+⸻
+
+PART 8 — RESPONSIVE BEHAVIOR
+
+Test at:
+
+* 360px
+* 390px
+* 430px
+* 1080×1920 capture canvas
+
+Verify:
+
+* Header does not clip
+* Forum title truncates correctly
+* Member count remains readable
+* Edit Forum remains visible
+* Posts do not overflow
+* Images maintain correct proportions
+* Videos remain correctly sized
+* Engagement controls remain aligned
+* Floating + does not clip
+* Overview content remains readable
+
+⸻
+
+PART 9 — VISUAL FIDELITY AUDIT
+
+Compare the recreated Forum against both screenshots.
+
+Post Feed audit
+
+Check:
+
+* Header
+* Back button
+* Forum title
+* Member count
+* Edit Forum
+* Avatar sizes
+* Username typography
+* Timestamp
+* Post layout
+* Media size
+* Media cropping
+* Engagement bar
+* Floating +
+
+Overview audit
+
+Check:
+
+* Forum title
+* Member count
+* Description
+* Tab states
+* Created date
+* Guidelines
+* Update
+* Members
+* See all
+* Avatar row
+* Invite to forum
+* Forum URL
+* Share Link
+* Floating +
+
+Correct any visible discrepancies before proceeding.
+
+⸻
+
+PART 10 — ANIMATION READINESS
+
+Every important Forum element must be independently addressable for future Scene 5 animation.
+
+Use stable Scene 5 identifiers such as:
+
+data-scene5="forum-page"
+data-scene5="forum-header"
+data-scene5="forum-tabs"
+data-scene5="forum-post-feed"
+data-scene5="forum-post"
+data-scene5="forum-post-avatar"
+data-scene5="forum-post-media"
+data-scene5="forum-engagement"
+data-scene5="forum-overview"
+data-scene5="forum-members"
+data-scene5="forum-invite"
+data-scene5="forum-share-link"
+data-scene5="forum-floating-action"
+
+Do not begin the cinematic timeline yet.
+
+⸻
+
+ACCEPTANCE CRITERIA
+
+This phase is complete only when:
+
+* Forum Post Feed matches the supplied reference.
+* Forum Overview matches the supplied reference.
+* Original post media is used.
+* Original avatars are used where available.
+* Post structure is reusable.
+* Feed scrolling works.
+* Overview/Post state switching works.
+* View Forum opens the correct initial Forum state.
+* Back button returns to Portfolio in preview.
+* No placeholder media remains where originals exist.
+* Forum is responsive.
+* Forum is animation-ready.
+* No Scene 1-4 files were modified.
+* No canonical master files were modified.
+* No Like/Comment/Share animation has been implemented yet.
+
+⸻
+
+REQUIRED DELIVERABLE
+
+At the end of this phase, provide:
+
+1. Completed Forum Post Feed.
+2. Completed Forum Overview.
+3. Portfolio → Forum preview navigation.
+4. Forum → Portfolio back navigation.
+5. Structured Forum data files.
+6. Browser screenshot or capture of:
+    * Forum Post Feed
+    * Forum Overview
+7. Visual fidelity audit report containing:
+    * Matched elements
+    * Remaining discrepancies
+    * Any assumptions
+8. Confirmation that the UI is ready for the next interaction phase.
+
+⸻
+
+STOP CONDITION
+
+Stop after completing and auditing the Forum UI.
+
+Do not proceed to:
+
+* Like interaction
+* Comment interaction
+* Share interaction
+* Full cinematic animation
+* Scene 5 capture
+* Scene 5 master integration
+* Scene 6
+
+Those are the next phases after the Forum UI has been reviewed and approved.

@@ -17,6 +17,11 @@
  * bottom-left (rather than top-left) so it doesn't sit on top of the
  * Portfolio header during review/capture.
  *
+ * Phase 4 adds the same kind of preview-only wiring for the Forum:
+ * Portfolio's "View Forum" swaps the harness body to the real
+ * Scene5Forum component, with its own "Back to menu" chrome. Still not
+ * production navigation — that remains a later Scene 5 phase.
+ *
  * The block behind the drawer is a minimal placeholder standing in for
  * the real underlying screen so the overlay's "keep the background
  * visible" behavior can be judged.
@@ -27,16 +32,18 @@ import { useState } from 'react';
 import { Share2, MoreHorizontal, Plus, ArrowLeft } from 'lucide-react';
 import { Scene5SideNavigation } from './Scene5SideNavigation';
 import { Scene5Portfolio } from './Scene5Portfolio';
+import { Scene5Forum } from './Scene5Forum';
+
+type Scene5PreviewScreen = 'home' | 'portfolio' | 'forum';
 
 export function Scene5PreviewApp() {
-  // Harness-only convenience: ?screen=portfolio jumps straight to the
-  // Portfolio page for review/QA without clicking through the drawer.
-  const initialScreen: 'home' | 'portfolio' =
-    typeof window !== 'undefined' && new URLSearchParams(window.location.search).get('screen') === 'portfolio'
-      ? 'portfolio'
-      : 'home';
+  // Harness-only convenience: ?screen=portfolio or ?screen=forum jumps
+  // straight to that page for review/QA without clicking through the drawer.
+  const requestedScreen = typeof window !== 'undefined' ? new URLSearchParams(window.location.search).get('screen') : null;
+  const initialScreen: Scene5PreviewScreen =
+    requestedScreen === 'portfolio' || requestedScreen === 'forum' ? requestedScreen : 'home';
   const [isOpen, setIsOpen] = useState(initialScreen === 'home');
-  const [screen, setScreen] = useState<'home' | 'portfolio'>(initialScreen);
+  const [screen, setScreen] = useState<Scene5PreviewScreen>(initialScreen);
 
   return (
     <div
@@ -65,7 +72,36 @@ export function Scene5PreviewApp() {
         {/* Phase 3 structural preview only: swap in the real Portfolio page. */}
         {screen === 'portfolio' && (
           <>
-            <Scene5Portfolio onViewForum={() => {}} onFloatingAction={() => {}} />
+            <Scene5Portfolio onViewForum={() => setScreen('forum')} onFloatingAction={() => {}} />
+            <button
+              type="button"
+              onClick={() => setScreen('home')}
+              style={{
+                position: 'absolute',
+                bottom: '10px',
+                left: '10px',
+                zIndex: 40,
+                background: 'rgba(0,0,0,0.55)',
+                color: '#fff',
+                border: 'none',
+                borderRadius: '8px',
+                padding: '7px 10px 7px 8px',
+                fontSize: '11px',
+                display: 'flex',
+                alignItems: 'center',
+                gap: '4px',
+                cursor: 'pointer',
+              }}
+            >
+              <ArrowLeft size={13} /> Back to menu (preview only)
+            </button>
+          </>
+        )}
+
+        {/* Phase 4 structural preview only: swap in the real Forum page. */}
+        {screen === 'forum' && (
+          <>
+            <Scene5Forum onBack={() => setScreen('portfolio')} onEditForum={() => {}} onFloatingAction={() => {}} />
             <button
               type="button"
               onClick={() => setScreen('home')}
@@ -94,7 +130,7 @@ export function Scene5PreviewApp() {
         {/* Placeholder underlying screen — stands in for the real Home
             screen behind the drawer, just enough to demonstrate the
             overlay keeps the background visible rather than hiding it. */}
-        <div style={{ position: 'absolute', inset: 0, background: '#f5f5f5', display: screen === 'home' ? 'block' : 'none' }}>
+        <div style={{ position: 'absolute', inset: 0, background: '#f5f5f5', display: screen === 'home' ? 'block' : 'none' }} data-scene5-preview="home-placeholder">
           <div
             style={{
               display: 'flex',
