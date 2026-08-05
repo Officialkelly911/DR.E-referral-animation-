@@ -73,11 +73,18 @@ All shared assets live in `extracted_scenes/Scene3Scene4_contents/Replit-Design-
 
 ## Setup status
 
-Dependencies installed and all four workflows (Scene 3 web, Referral Module web, API Server, mockup-sandbox) verified running and rendering correctly.
+Dependencies installed and all four workflows (Scene 3 web, Referral Module web, API Server, mockup-sandbox) verified running and rendering correctly. The project was re-imported from GitHub; the platform's multi-artifact detection (pnpm workspace stack) auto-created managed workflows and artifact entries for these four services — restart those exact workflows (not new ones) after future changes.
 
-## Scene 5 materials (uploaded, not yet built)
+## Scene 5 materials (uploaded, in progress)
 
-`attached_assets/` contains a full Scene 5 spec ("Creator Portfolio → Community Forum → Engagement") plus reference screenshots, screen recordings, forum/portfolio media, and brand assets. This is a large new feature (new UI screens: side navigation, portfolio, forum feed, forum overview, plus like/comment/share interactions and a new cinematic animation timeline) — scoped as a separate follow-up task rather than done as part of initial project setup.
+`attached_assets/` contains a full Scene 5 spec ("Creator Portfolio → Community Forum → Engagement") plus reference screenshots, screen recordings, forum/portfolio media, and brand assets. This is a large new feature (new UI screens: side navigation, portfolio, forum feed, forum overview, plus like/comment/share interactions and a new cinematic animation timeline).
+
+**Phase 2 — Side Navigation Drawer: done.** Recreated as `Scene5SideNavigation` and children under
+`artifacts/dream-planet-scene3/src/components/scene5/`. Review harness at
+`/dream-planet-scene3/scene5-preview.html` (isolated from Scenes 3/4). See
+`SCENE5_PHASE2_FIDELITY_REPORT.md` for the visual fidelity audit against the reference screenshot.
+Per the phase spec, work stopped here — Portfolio, Forum, engagement interactions, the Scene 5
+animation timeline, and master integration are separate later phases pending review/approval.
 
 ## Final master QA (Aug 5, 2026)
 

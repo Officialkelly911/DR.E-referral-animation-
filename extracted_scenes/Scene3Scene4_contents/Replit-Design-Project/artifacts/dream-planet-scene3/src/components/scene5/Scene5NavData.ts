@@ -22,7 +22,7 @@ import {
   Bookmark,
   Globe,
   Users,
-  LifeBuoy,
+  Headphones,
   Settings,
   type LucideIcon,
 } from 'lucide-react';
@@ -56,6 +56,6 @@ export const SCENE5_MAIN_NAV_ITEMS: Scene5NavItem[] = [
  * visual reference. Flagged in the Phase 2 fidelity report.
  */
 export const SCENE5_BOTTOM_NAV_ITEMS: Scene5NavItem[] = [
-  { id: 'support', label: 'Support', icon: LifeBuoy, dataScene5: 'nav-support' },
+  { id: 'support', label: 'Support', icon: Headphones, dataScene5: 'nav-support' },
   { id: 'settings', label: 'Settings', icon: Settings, dataScene5: 'nav-settings' },
 ];

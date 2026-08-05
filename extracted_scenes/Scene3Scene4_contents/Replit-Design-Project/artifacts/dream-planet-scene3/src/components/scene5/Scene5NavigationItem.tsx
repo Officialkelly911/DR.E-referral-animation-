@@ -28,9 +28,11 @@ export function Scene5NavigationItem({
     <motion.button
       type="button"
       data-scene5={dataScene5}
-      onClick={onSelect}
+      onClick={comingSoon ? undefined : onSelect}
+      disabled={comingSoon || undefined}
       aria-disabled={comingSoon || undefined}
-      whileTap={{ backgroundColor: 'rgba(0,0,0,0.035)' }}
+      tabIndex={comingSoon ? -1 : undefined}
+      whileTap={comingSoon ? undefined : { backgroundColor: 'rgba(0,0,0,0.035)' }}
       transition={{ duration: 0.12 }}
       style={{
         display: 'flex',
@@ -41,7 +43,8 @@ export function Scene5NavigationItem({
         background: 'transparent',
         border: 'none',
         textAlign: 'left',
-        cursor: 'pointer',
+        cursor: comingSoon ? 'default' : 'pointer',
+        pointerEvents: comingSoon ? 'none' : 'auto',
         WebkitTapHighlightColor: 'transparent',
         font: 'inherit',
       }}
