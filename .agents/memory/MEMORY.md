@@ -1,3 +1,4 @@
 - [Dream Planet promo video pipeline](dream-planet-scene1-pipeline.md) — source image choice, hero-still prep recipe, ffmpeg animation technique, font, and audio status for the "Dream Planet" tattoo promo clip.
 - [Dream Planet audio replacement approach](dream-planet-audio-replacement.md) — seamless audio across a straight Scene 1→2 cut; official track paths and output locations.
 - [Dream Planet Scene 3 capture complete](dream-planet-scene3-capture.md) — full 3-page animation captured; master is 24.5s (all 4 scenes); FM v11 AnimationControls fix.
+- [Dream Planet baseline locked](dream-planet-baseline-locked.md) — Scenes 1-4 verified reproducible; archive cleanup done; Scene 5 integration points documented.
