@@ -1,0 +1,88 @@
+The full asset audit is approved, but do not proceed with the 60fps capture experiment yet.
+
+Before optimizing frame rate, address two creative/technical issues in the current master pipeline.
+
+1. Fix Scene 1 and Scene 2 9:16 formatting
+
+The current Scene 1 and Scene 2 sources are 1080×1302 and are being letterboxed into 1080×1920 with 309px black padding at the top and bottom.
+
+This is not acceptable for the final premium 9:16 campaign.
+
+Investigate the best way to produce true full-frame 9:16 versions of Scene 1 and Scene 2.
+
+Preferred solution:
+
+* Re-render Scene 1 and Scene 2 natively at 9:16 and 1080×1920 minimum.
+
+If re-rendering is not practical:
+
+* Preserve the original subject and composition.
+* Use tasteful vertical background extension or cinematic blurred continuation.
+* Do not use black letterboxing.
+* Do not distort the original hand, tattoo, or logo.
+
+Maintain the existing approved visual appearance and motion.
+
+2. Review and correct the Scene 2 → Scene 3 transition
+
+The current master uses a hard cut from Scene 2 followed by a white-dissolve entry into Scene 3.
+
+This is not the intended final creative transition.
+
+The approved creative direction is:
+
+Dream Planet tattoo / DP symbol → clean Dream Planet logo → Dream Planet interface → Referral experience
+
+Replace the current generic hard-cut/white-dissolve handoff with a deliberate visual bridge that communicates this transformation.
+
+The transition should feel continuous and premium.
+
+Avoid:
+
+* fade to black
+* generic white dissolve
+* flash transitions
+* whip pans
+* random zoom transitions
+
+The goal is to make the viewer feel as though the Dream Planet identity naturally evolves from the physical tattoo into the digital Dream Planet ecosystem.
+
+3. Verify final audio
+
+Confirm that DreamPlanet_Master_v1.mp4 contains exactly one continuous music track beginning at 0:00.
+
+Confirm there is:
+
+* no duplicate Scene 1 audio
+* no duplicate Scene 2 audio
+* no music restart between scenes
+* no audio gap at scene boundaries
+
+4. Rebuild the visual master
+
+After fixing the above:
+
+* Re-normalize all scenes.
+* Rebuild Scene 1 + Scene 2 + Scene 3 + Scene 4.
+* Maintain 9:16 throughout.
+* Preserve exact approved durations.
+* Keep the master at 30fps for this validation stage.
+
+Produce:
+
+DreamPlanet_Master_v1_VisualReview.mp4
+
+Also produce:
+
+DreamPlanet_Master_v1_VisualReview_no_audio.mp4
+
+Then verify:
+
+* resolution
+* frame rate
+* duration
+* audio stream
+* scene boundary timing
+* Scene 2 → Scene 3 transition
+
+Do not begin the 60fps capture investigation until this revised 30fps visual master has been reviewed and approved.
