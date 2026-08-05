@@ -65,6 +65,15 @@ All shared assets live in `extracted_scenes/Scene3Scene4_contents/Replit-Design-
 - AI music track: `Ai_music_for_dream_planet_video__1785842118219.mp3`
 - Scene 1+2 reference: `extracted_scenes/Scene1scene2_contents/Dre-animation/Dream Planet Referral Campaign/`
 
+## Final master QA (Aug 5, 2026)
+
+Ran a full production QA pass on the 4-scene master per the approved QA checklist. Result:
+
+- **Real defect found & fixed**: `DreamPlanet_Master_v1.mp4` / `_audio.mp4` / `_no_audio.mp4` (in `extracted_scenes/Scene3Scene4_contents/Scene1scene2_contents/Dre-animation/Dream Planet Referral Campaign/Final Edit/`) previously concatenated `scene3_final.mp4` **without trimming its baked-in ~3s blank white intro**, producing a ~2.9s blank white screen with music but no UI right after Scene 2 ends. Fixed by trimming Scene 3's source at `ss=3.0` before concatenating (same technique already used in `build_visual_review.sh`, just never applied back to the official master). New master duration: **21.53s** (was 24.53s). Pre-fix files archived under `Final Edit/_archive_pre_qa_fix/`.
+- **Not a defect**: the Scene 3→4 cut (Levels page → Leaderboard) is a clean hard cut between two different page background colors (cream vs. white) — frame-by-frame analysis found no white flash frames. A prior QA note calling this a "fade-to-white glitch" did not hold up under verification.
+- Audio: single continuous AAC stereo track (44.1kHz, ~196kbps), no gaps at any scene boundary, clean 1s fadeout re-generated to match the new shorter duration.
+- Scene durations in the fixed master: S1 3.0s, S2 3.0s, S3 6.53s (post-trim), S4 9.0s.
+
 ## User preferences
 
 _No explicit preferences recorded yet._
