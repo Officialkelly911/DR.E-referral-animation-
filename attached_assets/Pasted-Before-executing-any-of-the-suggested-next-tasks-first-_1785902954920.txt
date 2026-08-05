@@ -1,0 +1,50 @@
+Before executing any of the suggested next tasks, first perform a complete project-wide asset and export audit.
+
+Locate every Scene 1 and Scene 2 video/export in the entire project, including the Scene1scene2_contents extraction and any Final Edit or Final Animation directories.
+
+Identify the exact final approved Scene 1 and Scene 2 sources that correspond to the locked versions used in the campaign.
+
+Do not assume that scene1_scene2_combined.mp4 or scene2_final_with_fadeout.mp4 is correct without verifying it.
+
+Compare the available candidates using:
+
+* filename
+* duration
+* resolution
+* visual content
+* transition behavior
+* audio presence
+
+Confirm which files are the authoritative final sources.
+
+Then:
+
+1. Stitch the verified Scene 1 + Scene 2 source with the existing approved Scene 3 and Scene 4 exports into a single master sequence.
+2. Preserve the exact scene order and approved timing.
+3. Verify there is no visible seam between Scene 2 and Scene 3.
+4. Verify there are no timing jumps, color shifts, scale jumps, or duplicated transitions.
+5. Do not add or alter audio yet.
+6. Once the visual master is verified, add the Dream Planet AI music track once at the master level, starting at 0:00 and continuing uninterrupted through the entire sequence.
+7. Trim the audio cleanly to the final master duration.
+8. Verify the final master with ffprobe for duration, frame rate, resolution, and audio stream.
+9. Only after the content and audio are verified, investigate improving capture quality to a true 60 fps workflow.
+10. Do not fake 60 fps by merely changing the output metadata. The resulting file should contain genuinely smooth 60 fps motion where technically possible.
+
+Produce:
+
+* DreamPlanet_Master_v1.mp4
+* DreamPlanet_Master_v1_no_audio.mp4
+* DreamPlanet_Master_v1_audio.mp4
+
+Also provide a short verification report containing:
+
+* Scene 1 duration
+* Scene 2 duration
+* Scene 3 duration
+* Scene 4 duration
+* Total master duration
+* Final resolution
+* Actual frame rate
+* Audio duration
+* Confirmation that the Scene 2 → Scene 3 transition is seamless
+* Confirmation that the soundtrack plays continuously from 0:00 to the end
