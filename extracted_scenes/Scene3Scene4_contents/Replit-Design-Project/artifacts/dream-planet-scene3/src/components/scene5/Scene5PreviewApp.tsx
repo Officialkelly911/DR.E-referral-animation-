@@ -13,7 +13,9 @@
  * production navigation flow, and not part of Scene5Portfolio itself.
  * The small "Back to menu" control below is harness-only chrome so the
  * preview loop (Side Nav → View Portfolio → Portfolio) can be replayed;
- * it is not part of the recreated Portfolio page.
+ * it is not part of the recreated Portfolio page. Pinned to the
+ * bottom-left (rather than top-left) so it doesn't sit on top of the
+ * Portfolio header during review/capture.
  *
  * The block behind the drawer is a minimal placeholder standing in for
  * the real underlying screen so the overlay's "keep the background
@@ -69,7 +71,7 @@ export function Scene5PreviewApp() {
               onClick={() => setScreen('home')}
               style={{
                 position: 'absolute',
-                top: '10px',
+                bottom: '10px',
                 left: '10px',
                 zIndex: 40,
                 background: 'rgba(0,0,0,0.55)',

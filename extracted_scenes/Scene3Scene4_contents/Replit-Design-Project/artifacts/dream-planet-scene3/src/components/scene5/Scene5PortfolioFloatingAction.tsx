@@ -4,9 +4,13 @@
  * The orange floating "+" button pinned over the media grid. Fixed to
  * the bottom-right of the Portfolio's scroll container, matching the
  * reference's on-screen position regardless of scroll offset.
+ *
+ * Renders the real supplied "Add post" icon asset (already a complete
+ * orange-circle + white-plus graphic) rather than the hand-built
+ * div + lucide Plus stand-in used before that asset was provided.
  */
 
-import { Plus } from 'lucide-react';
+import addPostIcon from '@assets/Add_post_icon_trimmed.png';
 
 export interface Scene5PortfolioFloatingActionProps {
   onPress?: () => void;
@@ -28,8 +32,9 @@ export function Scene5PortfolioFloatingAction({ onPress }: Scene5PortfolioFloati
         width: '54px',
         height: '54px',
         borderRadius: '50%',
-        background: '#FF6B1A',
+        background: 'none',
         border: 'none',
+        padding: 0,
         display: 'flex',
         alignItems: 'center',
         justifyContent: 'center',
@@ -39,7 +44,11 @@ export function Scene5PortfolioFloatingAction({ onPress }: Scene5PortfolioFloati
         WebkitTapHighlightColor: 'transparent',
       }}
     >
-      <Plus color="#ffffff" size={26} strokeWidth={2.5} />
+      <img
+        src={addPostIcon}
+        alt=""
+        style={{ width: '100%', height: '100%', borderRadius: '50%', display: 'block', objectFit: 'cover' }}
+      />
     </button>
   );
 }

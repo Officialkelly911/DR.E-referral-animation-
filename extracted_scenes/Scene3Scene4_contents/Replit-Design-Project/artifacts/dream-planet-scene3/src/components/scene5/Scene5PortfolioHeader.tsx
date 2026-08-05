@@ -5,9 +5,15 @@
  * verification badge on the left, and Share / Settings controls on the
  * right. Sits on the same dark near-black-green field as the rest of
  * the header/profile block (see Scene5Portfolio for the shared background).
+ *
+ * Verification badge, Share, and Settings glyphs are the real supplied
+ * icon assets (trimmed to their opaque bounding box) rather than the
+ * lucide-react stand-ins used before those assets were provided.
  */
 
-import { Share2, Settings, BadgeCheck } from 'lucide-react';
+import verificationBadge from '@assets/Verification_badge_icon_trimmed.png';
+import shareIcon from '@assets/Share_icon_trimmed.png';
+import settingsIcon from '@assets/Settings_icon_trimmed.png';
 
 export function Scene5PortfolioHeader() {
   return (
@@ -31,10 +37,11 @@ export function Scene5PortfolioHeader() {
         >
           dr._e
         </span>
-        {/* Verification badge: closest existing icon (lucide BadgeCheck)
-            tinted Dream Planet orange — no original badge asset was
-            supplied, per Phase 3 fidelity notes. */}
-        <BadgeCheck size={18} color="#ffffff" fill="#FF8A1E" strokeWidth={1.75} />
+        <img
+          src={verificationBadge}
+          alt="Verified"
+          style={{ height: '18px', width: 'auto', aspectRatio: '785 / 833', objectFit: 'contain', display: 'block' }}
+        />
       </div>
 
       <div style={{ display: 'flex', alignItems: 'center', gap: '18px' }}>
@@ -50,7 +57,11 @@ export function Scene5PortfolioHeader() {
             WebkitTapHighlightColor: 'transparent',
           }}
         >
-          <Share2 size={21} color="#ffffff" strokeWidth={1.75} />
+          <img
+            src={shareIcon}
+            alt=""
+            style={{ height: '19px', width: 'auto', aspectRatio: '719 / 594', objectFit: 'contain', display: 'block' }}
+          />
         </button>
         <button
           type="button"
@@ -64,7 +75,11 @@ export function Scene5PortfolioHeader() {
             WebkitTapHighlightColor: 'transparent',
           }}
         >
-          <Settings size={21} color="#ffffff" strokeWidth={1.75} />
+          <img
+            src={settingsIcon}
+            alt=""
+            style={{ height: '21px', width: 'auto', aspectRatio: '723 / 716', objectFit: 'contain', display: 'block' }}
+          />
         </button>
       </div>
     </div>

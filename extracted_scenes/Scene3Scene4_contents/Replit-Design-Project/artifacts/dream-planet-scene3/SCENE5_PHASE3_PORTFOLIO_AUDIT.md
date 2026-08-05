@@ -34,19 +34,23 @@ interactions, no cinematic animation, no master integration, no Scene 6.
 | Side Navigation → View Portfolio structural preview | Match — confirmed by browser capture; drawer's "View Portfolio" swaps the harness to the real `Scene5Portfolio`, "Back to menu" returns to the drawer |
 | Scroll behavior | Single continuous column scroll (header/profile/stats + grid share one scroll container, no nested scroll region, no visible scrollbar) |
 
-## Discrepancies / assumptions (carried from implementation, verified still accurate)
+## Discrepancies / assumptions
 
-- **Verification badge:** no original badge asset was available in
-  `attached_assets/`, so it's rendered with the existing lucide `BadgeCheck`
-  icon tinted Dream Planet orange rather than a bespoke graphic.
-- **Play icon:** the only supplied "play button" asset was a full-bleed
-  raster with an opaque background, unusable as a transparent overlay, so
-  the overlay uses the project's existing lucide `Play` icon instead.
+- **Verification badge, Share, Settings, Add-post icons:** originally
+  substituted with lucide-react stand-ins; real assets were later supplied
+  (`Verification_badge_icon__…`, `Share_icon__…`, `Settings_icon__…`,
+  `Add_post_icon__…` in `attached_assets/`) and are now used directly
+  (trimmed to their opaque bounding box; see the `*_trimmed.png` copies next
+  to the originals). Resolved, no longer a discrepancy.
+- **Play icon (video tile overlay):** still unresolved. The only supplied
+  "play button" asset is a full-bleed raster with an opaque background,
+  unusable as a transparent overlay, so the overlay still uses the
+  project's existing lucide `Play` icon.
 - **Media grid completeness:** the reference screenshots show a few
   original-artwork tiles (e.g. an orange heart abstract, a coin-mosaic
   heart) that were never included in the supplied asset upload. These are
-  intentionally omitted rather than invented — the grid uses only the 13
-  photos + 4 video clips actually supplied (17 tiles total).
+  still intentionally omitted rather than invented — the grid uses only the
+  13 photos + 4 video clips actually supplied (17 tiles total).
 - **Stats source:** 47 / 105 reflect the last verified reference values
   supplied for this phase; there's no live data source wired up yet (none
   is expected until a later phase).
