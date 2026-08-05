@@ -1,0 +1,800 @@
+Yes. Now that the UI recreation and deterministic interaction layer are complete, we’re ready for Phase 6: Scene 5 Cinematic Animation.
+
+This is where we turn the functional module into an actual cinematic sequence. The key is to animate the existing approved UI, not redesign it while animating. Very important, because Replit agents have been known to discover their inner art director at inconvenient moments.
+
+Use this prompt:
+
+⸻
+
+DREAM PLANET REFERRAL CAMPAIGN
+
+SCENE 5 — PHASE 6: CINEMATIC ANIMATION AND CAPTURE
+
+The following Scene 5 components and systems have now been completed and audited:
+
+* Side Navigation Drawer
+* Portfolio Page
+* Portfolio Media Grid
+* View Forum button
+* Forum Post Feed
+* Forum Overview
+* Portfolio → Forum navigation
+* Forum → Portfolio back navigation
+* Like interaction
+* Comment interaction
+* Share interaction
+* Deterministic interaction states
+* Controlled Forum scrolling
+* Scene 5 automation hooks
+* Scene 5 interaction QA
+
+Proceed with Phase 6 only: build the final cinematic animation for Scene 5.
+
+Do not begin Scene 6.
+
+Do not integrate Scene 5 into the canonical master yet.
+
+Do not modify Scenes 1-4.
+
+Do not redesign any approved UI.
+
+The goal is to animate the existing Scene 5 experience into a polished cinematic sequence that can later be inserted into the canonical master-build pipeline.
+
+⸻
+
+PRIMARY OBJECTIVE
+
+Create a cinematic Scene 5 journey that communicates:
+
+Creator identity → Portfolio → Community → Participation
+
+The viewer should feel that they are naturally navigating through the Dream Planet ecosystem.
+
+The intended flow is:
+
+Scene 4 ending
+↓
+Open Side Navigation
+↓
+View Portfolio
+↓
+Portfolio profile
+↓
+View Forum
+↓
+Forum Post Feed
+↓
+Community discovery
+↓
+Like / Comment / Share interaction
+↓
+Clean outgoing frame for Scene 6
+
+The final result must feel like a premium brand film, not a screen recording or software tutorial.
+
+⸻
+
+OUTPUT SPECIFICATIONS
+
+Use the established campaign output standard.
+
+Aspect Ratio
+
+9:16 vertical
+
+Resolution
+
+1080 × 1920 minimum
+
+Use the highest available quality consistent with the current project pipeline.
+
+Frame Rate
+
+Use the existing capture standard already established by the campaign.
+
+Do not independently change the campaign-wide frame rate during this task.
+
+Duration
+
+Target:
+
+Approximately 8-10 seconds
+
+The exact duration may be adjusted slightly to preserve readability and pacing.
+
+⸻
+
+CRITICAL CONTINUITY REQUIREMENT
+
+Scene 5 must begin from the exact final visual state of Scene 4.
+
+Do not:
+
+* Reset the application
+* Reinitialize the interface visibly
+* Show a loading screen
+* Start from a blank page
+* Fade to black
+* Use an unrelated transition
+
+The opening should feel like the viewer is continuing directly from the previous scene.
+
+Use the verified Scene 4 final frame as the visual continuity reference.
+
+The first action should be the correct interaction that opens the Side Navigation.
+
+⸻
+
+MASTER ANIMATION PRINCIPLES
+
+Use the same motion language established throughout Scenes 1-4.
+
+The animation should be:
+
+* Elegant
+* Smooth
+* Restrained
+* Cinematic
+* Premium
+* Intentional
+
+Use:
+
+* Smooth easing
+* Gentle camera pushes
+* Controlled UI movement
+* Soft page transitions
+* Subtle depth
+* Minimal micro-interactions
+
+Avoid:
+
+* Bounce effects
+* Glitch transitions
+* Flash transitions
+* Spinning interfaces
+* Aggressive zooms
+* Excessive parallax
+* Random particles
+* Decorative lens flares
+* Overly dramatic 3D effects
+
+The UI should remain readable throughout.
+
+⸻
+
+SCENE 5 TIMELINE
+
+Use this as the starting animation structure.
+
+Adjust only when necessary to match the actual UI behavior, campaign rhythm, and soundtrack timing.
+
+⸻
+
+PHASE 1
+
+SCENE 4 → SIDE NAVIGATION
+
+Approx. 0.0-0.7 seconds
+
+Begin on the exact Scene 4 final state.
+
+The existing Scene 4 interface remains visible.
+
+Trigger the correct navigation control that opens the Side Navigation Drawer.
+
+The opening should feel like a real user interaction.
+
+Sequence:
+
+1. The navigation control receives a subtle tap/press indication.
+2. The Side Navigation Drawer begins sliding in from the left.
+3. The background overlay fades in simultaneously.
+4. Drawer settles into its final position.
+
+Do not:
+
+* Zoom to a new page
+* Fade to black
+* Flash
+* Hard-cut to the drawer
+
+The drawer should feel like it emerged naturally from the current app state.
+
+⸻
+
+PHASE 2
+
+SIDE NAVIGATION → VIEW PORTFOLIO
+
+Approx. 0.7-1.4 seconds
+
+The drawer is fully open.
+
+The profile section is visible.
+
+View Portfolio is already positioned near the top.
+
+Do not artificially scroll the navigation menu.
+
+The camera or focus should subtly move toward:
+
+View Portfolio
+
+Then trigger the deterministic navigation action.
+
+Use the existing interaction system.
+
+Visual sequence:
+
+1. View Portfolio receives a subtle focus cue.
+2. Tap/press state is shown.
+3. Portfolio navigation begins.
+4. Drawer closes naturally.
+
+The transition should feel like normal in-app navigation.
+
+No flashy transitions.
+
+⸻
+
+PHASE 3
+
+PORTFOLIO REVEAL
+
+Approx. 1.4-2.7 seconds
+
+Reveal the Portfolio page.
+
+The viewer should immediately understand:
+
+* This is a personal creator profile.
+* This person has a creative identity.
+* This person has a Portfolio.
+* The Portfolio is connected to a community.
+
+Prioritize the following in the first view:
+
+* Profile image
+* Elizabeth Wisniewski DC PhD
+* Bio
+* 47 Members in forum
+* 105 Posts
+* View Forum
+
+Use a subtle cinematic camera push.
+
+Recommended scale movement:
+
+Approximately:
+
+100% → 106-108%
+
+Keep it slow.
+
+Do not zoom aggressively.
+
+⸻
+
+PORTFOLIO MEDIA REVEAL
+
+Briefly reveal the creative portfolio content.
+
+Use a controlled, short movement or scroll through the media grid.
+
+Reveal 2-3 visually strong pieces of content.
+
+Show enough variety to communicate:
+
+* Creativity
+* Art
+* Personal expression
+* Media
+* Community activity
+
+Do not scroll through the entire Portfolio.
+
+The viewer only needs to understand that this is a living creative profile.
+
+The focus should then naturally return to:
+
+View Forum
+
+⸻
+
+PHASE 4
+
+VIEW FORUM
+
+Approx. 2.7-3.5 seconds
+
+The camera shifts attention toward the View Forum button.
+
+The button receives a realistic press state.
+
+Use the existing deterministic interaction hook.
+
+Then navigate into the Forum.
+
+Use the actual page transition behavior established by the application.
+
+Preferred movement:
+
+* Gentle horizontal transition
+* Smooth easing
+* Slight continuous camera motion
+
+Avoid:
+
+* Logo morphs
+* Fade to black
+* Flash
+* Zoom tunnel
+* Unrelated effects
+
+The viewer should feel that the app is moving deeper into the same ecosystem.
+
+⸻
+
+PHASE 5
+
+FORUM POST FEED REVEAL
+
+Approx. 3.5-4.5 seconds
+
+Enter the verified initial Forum state.
+
+Use the actual starting state determined from the behavioral reference.
+
+Reveal:
+
+* Forum header
+* dr. Elizabeth Wisnie…
+* 47 members
+* Edit Forum
+* First post
+
+Do not show a loading screen.
+
+Do not show a blank page.
+
+Do not wait unnecessarily for content.
+
+The Forum should feel active immediately.
+
+⸻
+
+PHASE 6
+
+COMMUNITY DISCOVERY
+
+Approx. 4.5-6.4 seconds
+
+Use controlled Forum scrolling.
+
+Reveal 2-3 visually strong posts.
+
+Prioritize:
+
+* Artwork
+* Video
+* Creator content
+* Community content
+* Visually distinctive posts
+
+Use the deterministic scroll controls.
+
+Do not scroll rapidly.
+
+The user should have enough time to visually register the content.
+
+The camera may use a very subtle push-in while the feed scrolls.
+
+Maintain stable UI elements.
+
+The header and floating action control should behave according to the real interface.
+
+⸻
+
+PHASE 7
+
+OPTIONAL FORUM OVERVIEW GLIMPSE
+
+Approx. 6.4-7.2 seconds
+
+If pacing allows, briefly reveal the Forum Overview state.
+
+Show:
+
+* Forum identity
+* 47 members
+* Guidelines
+* Member avatars
+
+The purpose is to communicate that the Forum is more than a scrolling feed.
+
+It is an actual community structure.
+
+Do not remain on the Overview for too long.
+
+If this beat makes the scene feel rushed, omit it from the final cinematic animation.
+
+The Overview must still remain available as a functional state in the UI.
+
+⸻
+
+PHASE 8
+
+COMMUNITY ENGAGEMENT
+
+Approx. 7.2-8.5 seconds
+
+Return to the Forum Post Feed if the Overview was shown.
+
+Demonstrate one or more deterministic interactions.
+
+Potential sequence:
+
+Hero post settles
+↓
+Like tapped
+↓
+Like state activates
+↓
+Count updates
+↓
+Comment tapped
+↓
+Comment UI opens
+↓
+Prepared comment appears
+↓
+Comment state closes
+↓
+Share tapped
+↓
+Share confirmation
+
+Do not force all three interactions if the sequence becomes too rushed.
+
+Prioritize whichever interactions look most natural and meaningful.
+
+The engagement should communicate:
+
+People actually participate here.
+
+Do not use exaggerated social-media effects.
+
+No:
+
+* Heart explosions
+* Confetti
+* Particle bursts
+* Large pop animations
+
+unless the real app explicitly uses them.
+
+⸻
+
+PHASE 9
+
+FINAL COMMUNITY FRAME
+
+Approx. 8.5-10.0 seconds
+
+Scroll or settle on a visually compelling community post.
+
+The final frame should feel stable.
+
+Hold briefly.
+
+Do not end:
+
+* Mid-scroll
+* During a button press
+* With the navigation drawer open
+* With a comment panel covering the screen
+* With a share panel obscuring the main content
+
+The outgoing frame must be clean and visually composed for Scene 6.
+
+⸻
+
+CAMERA MOVEMENT
+
+Use a consistent cinematic camera language.
+
+Recommended:
+
+* Subtle push-ins
+* Gentle vertical drift
+* Controlled horizontal movement
+* Minimal parallax
+
+Do not make the UI feel like a flat screen recording.
+
+However, the movement must remain restrained enough that the interface stays readable.
+
+⸻
+
+TRANSITION BEHAVIOR
+
+Use real application transitions where possible.
+
+Scene 4 → Side Navigation
+
+Natural drawer opening.
+
+Side Navigation → Portfolio
+
+Natural page navigation.
+
+Portfolio → Forum
+
+Natural page navigation.
+
+Forum Post ↔ Overview
+
+Natural tab/state transition.
+
+Do not replace genuine app navigation with arbitrary cinematic effects.
+
+The premium effect should come from timing, smoothness, continuity, and visual discipline, not from excessive transitions.
+
+⸻
+
+INTERACTION SYSTEM INTEGRATION
+
+Use the deterministic interaction API created in Phase 5.
+
+The animation controller should call actions similar to:
+
+scene5Actions.openSideNavigation()
+scene5Actions.openPortfolio()
+scene5Actions.openForum()
+scene5Actions.switchForumTab("post")
+scene5Actions.switchForumTab("overview")
+scene5Actions.scrollForumTo("hero-post-1")
+scene5Actions.likePost("hero-post-1")
+scene5Actions.openComments("hero-post-1")
+scene5Actions.showPreparedComment("hero-post-1")
+scene5Actions.closeComments()
+scene5Actions.sharePost("hero-post-2")
+
+Use the actual project API if the function names differ.
+
+Do not recreate the interactions separately inside the animation.
+
+The animation must use the same deterministic state system that manual preview uses.
+
+⸻
+
+ANIMATION TIMELINE ARCHITECTURE
+
+Create a dedicated Scene 5 timeline controller.
+
+Suggested:
+
+Scene5Timeline
+├── scene4Handoff
+├── openNavigation
+├── selectPortfolio
+├── revealPortfolio
+├── selectViewForum
+├── revealForum
+├── communityScroll
+├── optionalOverview
+├── engagementSequence
+└── scene6Handoff
+
+Keep the timeline configuration separate from the UI components.
+
+This allows future timing adjustments without rebuilding the interface.
+
+⸻
+
+CAPTURE REQUIREMENTS
+
+Use the project’s existing capture architecture.
+
+Do not create a second incompatible capture system.
+
+The Scene 5 capture must be:
+
+* Deterministic
+* Reproducible
+* Stable
+* Suitable for automated rendering
+
+The same capture sequence should produce the same result each time.
+
+⸻
+
+TIMING CONTROL
+
+The animation should not depend on arbitrary browser timing.
+
+Wait for explicit states such as:
+
+* Drawer fully open
+* Portfolio fully rendered
+* Forum fully rendered
+* Post positioned
+* Comment panel visible
+* Share confirmation visible
+
+Use deterministic state markers or data attributes.
+
+Avoid fragile fixed delays whenever possible.
+
+When a fixed delay is necessary, keep it centralized in the Scene 5 timeline configuration.
+
+⸻
+
+RESPONSIVE / 9:16 QA
+
+Test the final animation at:
+
+* 360px
+* 390px
+* 430px
+* 1080×1920 capture canvas
+
+Verify:
+
+* No clipping
+* No text overflow
+* No UI deformation
+* No image distortion
+* No interaction controls outside safe areas
+* No comment/share overlays extending beyond the frame
+
+The final animation must look good on a real mobile viewport.
+
+⸻
+
+AUDIO
+
+Do not add or restart the campaign soundtrack during Scene 5.
+
+The canonical master handles music at the master level.
+
+Scene 5 should remain compatible with the existing audio architecture.
+
+Use the campaign soundtrack only as a timing reference if available.
+
+Do not embed a separate music track into the standalone Scene 5 render unless the existing project convention explicitly requires it.
+
+⸻
+
+SCENE 5 OUTPUT
+
+Produce:
+
+scene5_final.mp4
+
+and, if the existing workflow supports it:
+
+scene5_final_no_audio.mp4
+
+Also capture:
+
+scene5_start_frame.png
+scene5_end_frame.png
+
+The start frame must correspond to the Scene 4 handoff point.
+
+The end frame must be clean and suitable for Scene 6.
+
+⸻
+
+VISUAL QA
+
+After capture, review the actual rendered Scene 5.
+
+Check:
+
+Continuity
+
+* Scene 4 → Scene 5
+* Scene 5 outgoing frame
+
+Navigation
+
+* Drawer opens correctly
+* View Portfolio works
+* View Forum works
+
+Portfolio
+
+* Profile is readable
+* Stats visible
+* View Forum is clear
+* Media reveal is smooth
+
+Forum
+
+* Header readable
+* Posts readable
+* Scroll smooth
+* Engagement controls visible
+
+Interactions
+
+* Like state works
+* Comment state works
+* Share state works
+
+Motion
+
+* No jitter
+* No sudden acceleration
+* No frame jumps
+* No flicker
+* No layout shifts
+
+⸻
+
+IMPORTANT: DO NOT INTEGRATE INTO MASTER YET
+
+After Scene 5 is rendered, do not immediately update:
+
+* build_master.sh
+* Master scene list
+* Master output
+* Review page
+
+First complete the Scene 5 review.
+
+If corrections are required, modify only Scene 5.
+
+Do not alter Scenes 1-4.
+
+Only when Scene 5 is explicitly approved should it be integrated into the canonical master.
+
+⸻
+
+REQUIRED DELIVERABLES FOR THIS PHASE
+
+Produce:
+
+1. Scene 5 timeline controller.
+2. Scene 5 cinematic animation.
+3. Scene 5 deterministic capture.
+4. scene5_final.mp4.
+5. Start frame.
+6. End frame.
+7. Scene 5 visual QA report.
+8. Confirmation that the animation uses the existing deterministic interaction system.
+
+The QA report must include:
+
+* Actual duration
+* Resolution
+* FPS
+* Start state
+* End state
+* Scene 4 continuity status
+* Interaction sequence used
+* Any known limitations
+
+⸻
+
+STOP CONDITION
+
+Stop after rendering and reviewing Scene 5.
+
+Do not:
+
+* Modify Scenes 1-4
+* Rebuild the full master
+* Update the canonical master scene list
+* Start Scene 6
+
+The next phase will be:
+
+Scene 5 approval → Canonical master integration → Full Scenes 1-5 rebuild and validation
+
+The goal of this phase is to create a standalone, production-ready Scene 5 that feels like a natural continuation of the Dream Planet campaign and demonstrates the journey:
+
+From creator identity → to portfolio → to community → to participation.

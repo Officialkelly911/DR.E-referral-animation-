@@ -1,21 +1,24 @@
 /**
  * Scene5Forum.tsx
  *
- * Scene 5 — Phase 4: Community Forum UI recreation.
+ * Phase 5 — Forum page shell, now connected to Scene5InteractionStore.
  *
- * Static Forum page only, with the two states shown in the reference
- * screenshots: Post feed (primary) and Overview (secondary), switched
- * via the Post/Overview tabs. No functional engagement interactions
- * (like/comment/share are visual-only), no navigation into individual
- * posts, no cinematic animation, no master integration — those are
- * later Scene 5 phases.
+ * Changes from Phase 4
+ * ────────────────────
+ * • Reads `forumState` (tab) from the interaction store instead of local
+ *   useState, so the automation API can switch tabs without simulating clicks.
+ * • Tab change dispatches SET_FORUM_TAB into the store.
+ * • The scroll container carries data-scene5="forum-page" so the feed's
+ *   scroll helper can find it by attribute rather than DOM traversal.
+ * • No cinematic animation, no master integration (Phase 5 scope only).
  *
- * Like Scene5Portfolio, the whole page scrolls as one column: the dark
- * header/profile block and the white body share a single scroll
- * container.
+ * data-scene5-action attributes added:
+ *   forum-post-tab      → the "Post" tab button
+ *   forum-overview-tab  → the "Overview" tab button
  */
 
-import { useState } from 'react';
+import React from 'react';
+import { useScene5Interaction } from './Scene5InteractionStore';
 import { Scene5ForumHeader } from './Scene5ForumHeader';
 import { Scene5ForumProfileHeader } from './Scene5ForumProfileHeader';
 import { Scene5ForumTabs, type Scene5ForumTab } from './Scene5ForumTabs';
@@ -30,34 +33,41 @@ export interface Scene5ForumProps {
 }
 
 export function Scene5Forum({ onBack, onEditForum, onFloatingAction }: Scene5ForumProps) {
-  // Harness-only convenience: ?tab=overview jumps straight to the
-  // Overview tab for review/QA without clicking through the tab switcher.
-  const initialTab: Scene5ForumTab =
-    typeof window !== 'undefined' && new URLSearchParams(window.location.search).get('tab') === 'overview'
-      ? 'overview'
-      : 'post';
-  const [tab, setTab] = useState<Scene5ForumTab>(initialTab);
+  const { state, dispatch } = useScene5Interaction();
+
+  // Tab state now lives in the store so the automation API can switch it.
+  const tab = state.forumState;
+
+  const handleTabChange = (newTab: Scene5ForumTab) => {
+    dispatch({ type: 'SET_FORUM_TAB', tab: newTab });
+  };
 
   return (
     <div
       data-scene5="forum-page"
+      data-scene5-action="forum-post"
       style={{
         position: 'absolute',
         inset: 0,
         overflowY: 'auto',
         overflowX: 'hidden',
         background: '#ffffff',
-        WebkitOverflowScrolling: 'touch',
-        scrollbarWidth: 'none',
+        WebkitOverflowScrolling: 'touch' as React.CSSProperties['WebkitOverflowScrolling'],
+        scrollbarWidth: 'none' as React.CSSProperties['scrollbarWidth'],
       }}
     >
       <div style={{ background: '#0d120c', paddingTop: 'env(safe-area-inset-top, 14px)' }}>
         <Scene5ForumHeader onBack={onBack} onEditForum={onEditForum} />
         <Scene5ForumProfileHeader compact={tab === 'overview'} />
       </div>
-      <Scene5ForumTabs active={tab} onChange={setTab} />
+
+      {/* Tabs: stable data-scene5-action attributes for each tab button */}
+      <Scene5ForumTabs active={tab} onChange={handleTabChange} />
+
       {tab === 'post' ? <Scene5ForumPostFeed /> : <Scene5ForumOverview />}
+
       {tab === 'post' && <Scene5PortfolioFloatingAction onPress={onFloatingAction} />}
+
       <div style={{ height: '24px' }} />
     </div>
   );

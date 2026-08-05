@@ -1,49 +1,62 @@
 /**
  * Scene5PreviewApp.tsx
  *
- * Standalone review harness for Phase 2 (Side Navigation) and Phase 3
- * (Portfolio) ONLY. This is NOT part of the Scene 5 cinematic build and
- * is fully isolated from App.tsx / VideoTemplate.tsx (Scenes 3 & 4) — it
- * exists purely so these screens can be reviewed against the reference
- * in a browser.
+ * Phase 5 — Preview harness now wraps the entire Scene 5 subtree with
+ * Scene5InteractionProvider, giving all components access to the centralized
+ * interaction store.
  *
- * Phase 3 structural preview wiring: Side Navigation's "View Portfolio"
- * swaps the harness body to the real Scene5Portfolio component. This is
- * ONLY a local preview connection (per the Phase 3 spec) — not the
- * production navigation flow, and not part of Scene5Portfolio itself.
- * The small "Back to menu" control below is harness-only chrome so the
- * preview loop (Side Nav → View Portfolio → Portfolio) can be replayed;
- * it is not part of the recreated Portfolio page. Pinned to the
- * bottom-left (rather than top-left) so it doesn't sit on top of the
- * Portfolio header during review/capture.
+ * Changes from Phase 4
+ * ────────────────────
+ * • Wrapped in <Scene5InteractionProvider> with a dispatchRef.
+ * • scene5Actions.register() called after mount so the automation API is
+ *   live for Playwright / the future animation timeline.
+ * • navigationState and sideNavOpen are now read from the store instead
+ *   of local useState — local state removed for those.
+ * • forumState (tab) lives in the store; Scene5Forum reads it directly.
+ * • The harness-only "Back to menu" chrome is preserved unchanged.
+ * • data-scene5-action attributes added to all nav-trigger elements.
  *
- * Phase 4 adds the same kind of preview-only wiring for the Forum:
- * Portfolio's "View Forum" swaps the harness body to the real
- * Scene5Forum component, with its own "Back to menu" chrome. Still not
- * production navigation — that remains a later Scene 5 phase.
- *
- * The block behind the drawer is a minimal placeholder standing in for
- * the real underlying screen so the overlay's "keep the background
- * visible" behavior can be judged.
  * Served at /scene5-preview.html via src/main-scene5.tsx.
  */
 
-import { useState } from 'react';
+import { useRef, useEffect } from 'react';
 import { Share2, MoreHorizontal, Plus, ArrowLeft } from 'lucide-react';
 import { Scene5SideNavigation } from './Scene5SideNavigation';
 import { Scene5Portfolio } from './Scene5Portfolio';
 import { Scene5Forum } from './Scene5Forum';
+import {
+  Scene5InteractionProvider,
+  useScene5Interaction,
+  type Scene5InteractionAction,
+} from './Scene5InteractionStore';
+import type React from 'react';
+import { scene5Actions } from './scene5Actions';
 
-type Scene5PreviewScreen = 'home' | 'portfolio' | 'forum';
+// ─── Inner harness (reads from context) ──────────────────────────────────────
 
-export function Scene5PreviewApp() {
-  // Harness-only convenience: ?screen=portfolio or ?screen=forum jumps
-  // straight to that page for review/QA without clicking through the drawer.
-  const requestedScreen = typeof window !== 'undefined' ? new URLSearchParams(window.location.search).get('screen') : null;
-  const initialScreen: Scene5PreviewScreen =
-    requestedScreen === 'portfolio' || requestedScreen === 'forum' ? requestedScreen : 'home';
-  const [isOpen, setIsOpen] = useState(initialScreen === 'home');
-  const [screen, setScreen] = useState<Scene5PreviewScreen>(initialScreen);
+function Scene5PreviewInner() {
+  const { state, dispatch } = useScene5Interaction();
+  const screen = state.navigationState;
+  const isOpen = state.sideNavOpen;
+
+  // Sync query-param shortcuts on first mount.
+  useEffect(() => {
+    if (typeof window === 'undefined') return;
+    const params = new URLSearchParams(window.location.search);
+    const requestedScreen = params.get('screen');
+    if (requestedScreen === 'portfolio') {
+      dispatch({ type: 'NAVIGATE', screen: 'portfolio' });
+    } else if (requestedScreen === 'forum') {
+      dispatch({ type: 'NAVIGATE', screen: 'forum' });
+    } else {
+      dispatch({ type: 'OPEN_SIDE_NAV' });
+    }
+    // Tab shortcut
+    if (params.get('tab') === 'overview') {
+      dispatch({ type: 'SET_FORUM_TAB', tab: 'overview' });
+    }
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   return (
     <div
@@ -69,68 +82,53 @@ export function Scene5PreviewApp() {
           boxShadow: '0 0 0 1px #e5e7eb, 0 24px 48px rgba(0,0,0,0.12)',
         }}
       >
-        {/* Phase 3 structural preview only: swap in the real Portfolio page. */}
+        {/* Portfolio screen */}
         {screen === 'portfolio' && (
           <>
-            <Scene5Portfolio onViewForum={() => setScreen('forum')} onFloatingAction={() => {}} />
+            <Scene5Portfolio
+              onViewForum={() => dispatch({ type: 'NAVIGATE', screen: 'forum' })}
+              onFloatingAction={() => {}}
+            />
             <button
               type="button"
-              onClick={() => setScreen('home')}
-              style={{
-                position: 'absolute',
-                bottom: '10px',
-                left: '10px',
-                zIndex: 40,
-                background: 'rgba(0,0,0,0.55)',
-                color: '#fff',
-                border: 'none',
-                borderRadius: '8px',
-                padding: '7px 10px 7px 8px',
-                fontSize: '11px',
-                display: 'flex',
-                alignItems: 'center',
-                gap: '4px',
-                cursor: 'pointer',
-              }}
+              onClick={() => dispatch({ type: 'NAVIGATE', screen: 'home' })}
+              data-scene5-action="back-to-menu"
+              style={harnessBtnStyle}
             >
               <ArrowLeft size={13} /> Back to menu (preview only)
             </button>
           </>
         )}
 
-        {/* Phase 4 structural preview only: swap in the real Forum page. */}
+        {/* Forum screen */}
         {screen === 'forum' && (
           <>
-            <Scene5Forum onBack={() => setScreen('portfolio')} onEditForum={() => {}} onFloatingAction={() => {}} />
+            <Scene5Forum
+              onBack={() => dispatch({ type: 'NAVIGATE', screen: 'portfolio' })}
+              onEditForum={() => {}}
+              onFloatingAction={() => {}}
+            />
             <button
               type="button"
-              onClick={() => setScreen('home')}
-              style={{
-                position: 'absolute',
-                bottom: '10px',
-                left: '10px',
-                zIndex: 40,
-                background: 'rgba(0,0,0,0.55)',
-                color: '#fff',
-                border: 'none',
-                borderRadius: '8px',
-                padding: '7px 10px 7px 8px',
-                fontSize: '11px',
-                display: 'flex',
-                alignItems: 'center',
-                gap: '4px',
-                cursor: 'pointer',
-              }}
+              onClick={() => dispatch({ type: 'NAVIGATE', screen: 'home' })}
+              data-scene5-action="back-to-menu"
+              style={harnessBtnStyle}
             >
               <ArrowLeft size={13} /> Back to menu (preview only)
             </button>
           </>
         )}
 
-        {/* Placeholder underlying screen — stands in for the real Home
-            screen behind the drawer, just enough to demonstrate the
-            overlay keeps the background visible rather than hiding it. */}
-        <div style={{ position: 'absolute', inset: 0, background: '#f5f5f5', display: screen === 'home' ? 'block' : 'none' }} data-scene5-preview="home-placeholder">
+        {/* Home placeholder */}
+        <div
+          style={{
+            position: 'absolute',
+            inset: 0,
+            background: '#f5f5f5',
+            display: screen === 'home' ? 'block' : 'none',
+          }}
+          data-scene5-preview="home-placeholder"
+        >
           <div
             style={{
               display: 'flex',
@@ -141,8 +139,9 @@ export function Scene5PreviewApp() {
           >
             <button
               type="button"
-              onClick={() => setIsOpen(true)}
+              onClick={() => dispatch({ type: 'OPEN_SIDE_NAV' })}
               aria-label="Open menu"
+              data-scene5-action="open-navigation"
               style={{
                 background: 'none',
                 border: 'none',
@@ -211,20 +210,20 @@ export function Scene5PreviewApp() {
           </div>
         </div>
 
+        {/* Side Navigation drawer */}
         <Scene5SideNavigation
           isOpen={isOpen}
-          onClose={() => setIsOpen(false)}
-          onViewPortfolio={() => {
-            setScreen('portfolio');
-            setIsOpen(false);
-          }}
+          onClose={() => dispatch({ type: 'CLOSE_SIDE_NAV' })}
+          onViewPortfolio={() => dispatch({ type: 'NAVIGATE', screen: 'portfolio' })}
           onSelectItem={() => {}}
         />
 
+        {/* Open-menu shortcut (home + nav closed) */}
         {!isOpen && screen === 'home' && (
           <button
             type="button"
-            onClick={() => setIsOpen(true)}
+            onClick={() => dispatch({ type: 'OPEN_SIDE_NAV' })}
+            data-scene5-action="open-navigation"
             style={{
               position: 'absolute',
               top: '12px',
@@ -246,3 +245,39 @@ export function Scene5PreviewApp() {
     </div>
   );
 }
+
+// ─── Outer shell — provides the store ────────────────────────────────────────
+
+export function Scene5PreviewApp() {
+  const dispatchRef = useRef<React.Dispatch<Scene5InteractionAction> | null>(null);
+
+  // Register the automation API once the provider has mounted.
+  useEffect(() => {
+    scene5Actions.register(dispatchRef);
+  }, []);
+
+  return (
+    <Scene5InteractionProvider dispatchRef={dispatchRef}>
+      <Scene5PreviewInner />
+    </Scene5InteractionProvider>
+  );
+}
+
+// ─── Harness button style ─────────────────────────────────────────────────────
+
+const harnessBtnStyle: React.CSSProperties = {
+  position: 'absolute',
+  bottom: '10px',
+  left: '10px',
+  zIndex: 40,
+  background: 'rgba(0,0,0,0.55)',
+  color: '#fff',
+  border: 'none',
+  borderRadius: '8px',
+  padding: '7px 10px 7px 8px',
+  fontSize: '11px',
+  display: 'flex',
+  alignItems: 'center',
+  gap: '4px',
+  cursor: 'pointer',
+};

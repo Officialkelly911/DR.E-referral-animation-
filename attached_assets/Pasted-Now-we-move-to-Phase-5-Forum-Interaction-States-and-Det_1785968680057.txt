@@ -1,0 +1,714 @@
+Now we move to Phase 5: Forum Interaction States and Deterministic Community Engagement.
+
+This phase assumes the Side Navigation, Portfolio, Forum Post Feed, and Forum Overview have been recreated and visually audited. The goal now is to make the community experience feel interactive and real while keeping it deterministic enough for cinematic video capture.
+
+Use this prompt in Replit:
+
+⸻
+
+DREAM PLANET REFERRAL CAMPAIGN
+
+SCENE 5 — PHASE 5: FORUM INTERACTION STATES & DETERMINISTIC COMMUNITY ENGAGEMENT
+
+The Scene 5 UI recreation is now complete for:
+
+* Side Navigation
+* Portfolio
+* View Forum navigation
+* Forum Post Feed
+* Forum Overview
+
+The static UI has been visually audited against the supplied screenshots and screen recordings.
+
+Proceed with Phase 5 only: implement the Forum interaction states and deterministic community engagement behavior.
+
+Do not begin the cinematic Scene 5 animation yet.
+
+Do not integrate Scene 5 into the canonical master yet.
+
+Do not modify Scenes 1-4.
+
+Do not modify the approved four-scene master.
+
+Do not begin Scene 6.
+
+⸻
+
+OBJECTIVE
+
+Make the recreated Dream Planet Forum feel like a real, interactive community experience.
+
+The interaction layer must support:
+
+* Like
+* Comment
+* Share
+* Forum navigation
+* Feed scrolling
+* Forum Post/Overview state switching
+
+The interactions must be:
+
+* Visually faithful
+* Responsive
+* Deterministic
+* Repeatable
+* Animation-ready
+* Safe for automated video capture
+
+The same interaction sequence must produce the same result every time.
+
+Do not depend on a live backend or unpredictable network requests for the cinematic capture.
+
+⸻
+
+CRITICAL PRODUCTION PRINCIPLE
+
+The interaction system should separate:
+
+1. Manual preview behavior
+
+A user can click/tap the UI and interact with it naturally.
+
+2. Automated cinematic behavior
+
+The Scene 5 animation timeline can trigger the same states deterministically without requiring real user input.
+
+Both modes should use the same underlying state logic.
+
+Do not create separate fake UI components exclusively for the video.
+
+⸻
+
+PART 1 — INTERACTION STATE ARCHITECTURE
+
+Create a centralized deterministic state model for Scene 5 Forum interactions.
+
+Recommended structure:
+
+Scene5InteractionState
+├── navigationState
+├── forumState
+├── activePostId
+├── postInteractionState
+├── commentState
+└── shareState
+
+Avoid scattering unrelated interaction state across multiple components.
+
+Use stable post IDs.
+
+Each Forum post should be independently addressable.
+
+⸻
+
+PART 2 — LIKE INTERACTION
+
+Implement the Like interaction according to the confirmed application behavior.
+
+If the real app behavior has been captured, follow it exactly.
+
+If exact behavior is not documented, use a restrained, platform-consistent interaction while keeping the implementation modular.
+
+⸻
+
+Default state
+
+The post renders with:
+
+* Inactive Like icon
+* Original Like count
+
+Example:
+
+0 Like
+
+Use the actual count shown in the supplied reference when known.
+
+Do not invent counts unless required for the prototype.
+
+⸻
+
+Active state
+
+When Like is triggered:
+
+1. Like control enters a pressed state.
+2. Icon changes to active appearance.
+3. Like count increases by one.
+4. The active state remains visible.
+5. The post remains visually stable.
+
+Do not use:
+
+* Heart explosions
+* Confetti
+* Large particles
+* Excessive scaling
+* Flash effects
+
+unless the real app explicitly does so.
+
+⸻
+
+Toggle behavior
+
+If the actual app supports unlike behavior:
+
+Liked
+↓
+Tap again
+↓
+Unliked
+↓
+Count decrements
+
+Implement that behavior.
+
+If the actual app does not support it or has not been verified, keep the interaction state modular and document the assumption.
+
+⸻
+
+PART 3 — COMMENT INTERACTION
+
+Implement the Comment interaction based on the real application’s observed behavior where available.
+
+Possible states include:
+
+* Closed
+* Open
+* Existing comments visible
+* New comment added
+* Comment count updated
+
+Use the actual application behavior if verified.
+
+Do not invent a completely unrelated comment UI.
+
+⸻
+
+Default state
+
+The post displays its original comment count.
+
+Example:
+
+0 Comment
+
+⸻
+
+Open state
+
+When Comment is triggered:
+
+1. Comment control receives a subtle pressed state.
+2. The real comment interface opens.
+3. Existing comments appear if the reference contains them.
+4. The comment container remains readable and visually consistent.
+5. The Forum post remains visually connected to the comment context.
+
+The interface may be:
+
+* Bottom sheet
+* Inline expansion
+* Modal
+* Dedicated page
+
+Use the behavior demonstrated by the real app if available.
+
+⸻
+
+Deterministic comment data
+
+For automated capture, use a predefined comment.
+
+Example structure:
+
+type Scene5Comment = {
+  id: string;
+  username: string;
+  avatar: string;
+  text: string;
+  timestamp: string;
+};
+
+The comment must be stored in data rather than hardcoded directly inside the component.
+
+⸻
+
+Automatic comment sequence
+
+For cinematic capture:
+
+Comment tapped
+↓
+Comment UI opens
+↓
+Prepared comment appears
+↓
+Comment count updates
+
+Do not require:
+
+* Keyboard interaction
+* Real text input
+* External authentication
+* Network requests
+
+Unless those are essential to reproducing the actual interface.
+
+The automated animation should be deterministic.
+
+⸻
+
+PART 4 — SHARE INTERACTION
+
+Implement the Share behavior according to the real application’s confirmed behavior.
+
+Possible states:
+
+* Share panel
+* Copy link
+* Share confirmation
+* Internal share dialog
+* Native share sheet
+
+Use the actual observed behavior whenever available.
+
+If behavior is not yet confirmed, implement the share state as a modular component that can be replaced without changing the Forum architecture.
+
+⸻
+
+Share requirements
+
+The state must be:
+
+* Deterministic
+* Visually subtle
+* Reversible
+* Animation-ready
+
+Avoid opening the operating-system share sheet during automated cinematic capture unless the real app specifically requires it.
+
+System share sheets are not reliably reproducible in browser-based automated capture.
+
+⸻
+
+PART 5 — FORUM FEED SCROLLING
+
+Implement deterministic scrolling for the Forum feed.
+
+The scroll system must support:
+
+* Manual user scrolling
+* Automated timeline scrolling
+
+For automated capture, define exact scroll positions.
+
+Example:
+
+forumScrollState:
+0 = top
+1 = first hero post
+2 = second community post
+3 = third community post
+
+The animation system should be able to move to a specific scroll position reliably.
+
+Do not depend on uncontrolled user wheel input or timing-sensitive inertia.
+
+⸻
+
+PART 6 — HERO POSTS
+
+Select 2-3 visually strong posts for the Scene 5 sequence.
+
+Each hero post should have:
+
+* Stable ID
+* Known media asset
+* Known author
+* Known engagement counts
+* Predictable interaction state
+
+Prioritize content that visually represents the Dream Planet community.
+
+Suggested sequence:
+
+Hero Post 1
+↓
+Like interaction
+↓
+Comment interaction
+↓
+Hero Post 2
+↓
+Share interaction
+↓
+Hero Post 3
+
+Do not force every interaction if it makes the final cinematic sequence feel rushed.
+
+The animation should prioritize story clarity.
+
+⸻
+
+PART 7 — FORUM OVERVIEW STATE
+
+Maintain the Forum Overview state from Phase 4.
+
+The interaction layer should support:
+
+Post
+↔
+Overview
+
+Switching between them must preserve the Forum’s overall context.
+
+Do not reset the entire Forum state unnecessarily.
+
+If a user returns from Overview to Post Feed:
+
+* Restore the appropriate feed position.
+* Preserve interaction state where practical.
+
+For cinematic capture, the animation controller should be able to explicitly select:
+
+* Post state
+* Overview state
+
+without relying on manual clicks.
+
+⸻
+
+PART 8 — NAVIGATION STATE
+
+Ensure the following preview flow is fully functional:
+
+Side Navigation
+↓
+View Portfolio
+↓
+Portfolio
+↓
+View Forum
+↓
+Forum Post Feed
+↓
+Like / Comment / Share
+↓
+Back
+↓
+Portfolio
+
+The navigation should preserve a logical app state.
+
+Do not introduce unnecessary full-page reloads.
+
+Use the existing client-side routing/state architecture where available.
+
+⸻
+
+PART 9 — DETERMINISTIC AUTOMATION API
+
+Create a clean internal API that the future Scene 5 animation timeline can call.
+
+For example:
+
+scene5Actions.openSideNavigation()
+scene5Actions.openPortfolio()
+scene5Actions.openForum()
+scene5Actions.switchForumTab("overview")
+scene5Actions.switchForumTab("post")
+scene5Actions.scrollForumTo("hero-post-1")
+scene5Actions.likePost("hero-post-1")
+scene5Actions.openComments("hero-post-1")
+scene5Actions.showPreparedComment("hero-post-1")
+scene5Actions.sharePost("hero-post-2")
+scene5Actions.closeComments()
+
+The exact implementation can differ, but the important requirement is that the animation system can trigger known states reliably.
+
+Do not expose unnecessary public APIs.
+
+Keep these actions isolated to Scene 5.
+
+⸻
+
+PART 10 — ANIMATION HOOKS
+
+Add stable selectors or data attributes.
+
+Examples:
+
+data-scene5-action="open-navigation"
+data-scene5-action="view-portfolio"
+data-scene5-action="view-forum"
+data-scene5-action="forum-post"
+data-scene5-action="like"
+data-scene5-action="comment"
+data-scene5-action="share"
+data-scene5-action="forum-overview"
+data-scene5-action="forum-post-tab"
+data-scene5-action="forum-scroll"
+
+Use these hooks for automated Playwright/capture control where appropriate.
+
+Avoid brittle selectors based on:
+
+* Deep CSS nesting
+* Auto-generated class names
+* Text that may change
+* Positional nth-child selectors
+
+Stable scene-specific selectors are required.
+
+⸻
+
+PART 11 — INTERACTION TIMING
+
+Do not implement the final cinematic timing yet.
+
+However, verify that each interaction can complete cleanly within predictable time ranges.
+
+Suggested interaction durations:
+
+Like
+
+80-200 ms
+
+Comment open
+
+200-400 ms
+
+Comment reveal
+
+200-500 ms
+
+Share confirmation
+
+300-800 ms
+
+Tab switch
+
+250-500 ms
+
+Feed scroll
+
+300-1,500 ms depending on distance
+
+These are guidelines only.
+
+Use the actual application behavior where known.
+
+⸻
+
+PART 12 — INTERACTION QA
+
+Test manually.
+
+Like
+
+Verify:
+
+* Icon changes correctly.
+* Count updates.
+* State remains stable.
+* No layout shift.
+
+Comment
+
+Verify:
+
+* Comment interface opens.
+* Existing/prepared comment appears.
+* Count updates correctly.
+* Interface can close.
+* Underlying post remains intact.
+
+Share
+
+Verify:
+
+* Share state opens or confirmation appears.
+* State does not break the Forum.
+* Interface can return to normal.
+
+Navigation
+
+Verify:
+
+* Portfolio → Forum works.
+* Forum → Portfolio works.
+* Post ↔ Overview works.
+
+Feed
+
+Verify:
+
+* Scrolling is smooth.
+* Posts remain correctly aligned.
+* Media does not jump.
+* Floating + remains correctly positioned.
+
+⸻
+
+PART 13 — AUTOMATED INTERACTION QA
+
+Create a lightweight automated test or verification flow that can confirm:
+
+1. Open Side Navigation.
+2. Open Portfolio.
+3. Open Forum.
+4. Find hero post.
+5. Trigger Like.
+6. Verify Like state.
+7. Open Comment.
+8. Verify comment state.
+9. Close Comment.
+10. Trigger Share.
+11. Verify Share state.
+12. Switch Overview.
+13. Return to Post.
+14. Verify feed state is preserved.
+
+The automated test should fail clearly if an interaction becomes broken.
+
+Do not integrate this into the canonical master validation yet unless the project already has a suitable test framework.
+
+⸻
+
+PART 14 — RESPONSIVE QA
+
+Test all interaction states at:
+
+* 360px
+* 390px
+* 430px
+* 1080×1920 capture canvas
+
+Verify:
+
+* Comment panel fits.
+* Share state fits.
+* Engagement controls remain aligned.
+* No button clipping.
+* No modal overflow.
+* Feed scrolling remains smooth.
+* No layout shifts occur when counts update.
+
+⸻
+
+PART 15 — DETERMINISTIC CAPTURE QA
+
+Run the interaction sequence at least three times.
+
+Confirm that each run produces the same final states.
+
+For example:
+
+Run 1
+Like → 1 Like
+Comment → 1 Comment
+Share → confirmation
+Run 2
+Like → 1 Like
+Comment → 1 Comment
+Share → confirmation
+Run 3
+Like → 1 Like
+Comment → 1 Comment
+Share → confirmation
+
+No randomization.
+
+No network-dependent changes.
+
+No inconsistent counts.
+
+No timing drift caused by data fetching.
+
+⸻
+
+PART 16 — DOCUMENTATION
+
+Create or update:
+
+SCENE5_INTERACTION_AUDIT.md
+
+Document:
+
+* Confirmed real behavior
+* Simulated deterministic behavior
+* Known assumptions
+* Interaction selectors
+* Automation API
+* Test procedure
+* Known limitations
+
+Clearly distinguish between:
+
+Verified from real application
+
+and
+
+Simulated for deterministic promotional capture
+
+This is important for future maintenance.
+
+⸻
+
+ACCEPTANCE CRITERIA
+
+This phase is complete only when:
+
+* Like interaction works.
+* Comment interaction works.
+* Share interaction works or has a documented modular fallback.
+* Forum scrolling is deterministic.
+* Post and Overview states switch correctly.
+* Portfolio → Forum navigation works.
+* Forum → Portfolio back navigation works.
+* Animation hooks exist.
+* Automation actions can trigger the states.
+* Repeated captures produce identical interaction outcomes.
+* All interaction states are responsive.
+* No Scene 1-4 files were modified.
+* No master files were modified.
+* No cinematic Scene 5 animation has been implemented yet.
+
+⸻
+
+REQUIRED DELIVERABLES
+
+Provide:
+
+1. Deterministic Forum interaction state system.
+2. Like interaction.
+3. Comment interaction.
+4. Share interaction.
+5. Controlled Forum scrolling.
+6. Forum Post/Overview state control.
+7. Scene 5 automation hooks.
+8. Automated interaction verification.
+9. SCENE5_INTERACTION_AUDIT.md.
+10. A short QA report confirming all states work.
+
+⸻
+
+STOP CONDITION
+
+Stop after completing and auditing the interaction layer.
+
+Do not proceed to:
+
+* Scene 5 cinematic animation
+* Scene 5 video capture
+* Canonical master integration
+* Scene 6
+
+The next phase will be the Scene 5 cinematic animation, using the now-completed:
+
+Side Navigation + Portfolio + Forum UI + deterministic interactions
+
+as the foundation.

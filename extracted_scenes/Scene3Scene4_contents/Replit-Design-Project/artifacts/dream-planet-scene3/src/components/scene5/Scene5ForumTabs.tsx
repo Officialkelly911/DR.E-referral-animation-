@@ -28,6 +28,7 @@ export function Scene5ForumTabs({ active, onChange }: Scene5ForumTabsProps) {
             type="button"
             onClick={() => onChange(tab.key)}
             data-scene5={`forum-tab-${tab.key}`}
+            data-scene5-action={tab.key === 'post' ? 'forum-post-tab' : 'forum-overview-tab'}
             style={{
               flex: 1,
               background: 'none',
