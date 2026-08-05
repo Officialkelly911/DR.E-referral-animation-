@@ -1,23 +1,34 @@
 /**
  * Scene5PreviewApp.tsx
  *
- * Standalone review harness for Phase 2 (Side Navigation) ONLY.
- * This is NOT part of the Scene 5 cinematic build and is fully isolated
- * from App.tsx / VideoTemplate.tsx (Scenes 3 & 4) — it exists purely so
- * the drawer can be reviewed against the reference in a browser.
+ * Standalone review harness for Phase 2 (Side Navigation) and Phase 3
+ * (Portfolio) ONLY. This is NOT part of the Scene 5 cinematic build and
+ * is fully isolated from App.tsx / VideoTemplate.tsx (Scenes 3 & 4) — it
+ * exists purely so these screens can be reviewed against the reference
+ * in a browser.
+ *
+ * Phase 3 structural preview wiring: Side Navigation's "View Portfolio"
+ * swaps the harness body to the real Scene5Portfolio component. This is
+ * ONLY a local preview connection (per the Phase 3 spec) — not the
+ * production navigation flow, and not part of Scene5Portfolio itself.
+ * The small "Back to menu" control below is harness-only chrome so the
+ * preview loop (Side Nav → View Portfolio → Portfolio) can be replayed;
+ * it is not part of the recreated Portfolio page.
  *
  * The block behind the drawer is a minimal placeholder standing in for
- * the real underlying screen (which will be built in the Portfolio phase)
- * so the overlay's "keep the background visible" behavior can be judged.
+ * the real underlying screen so the overlay's "keep the background
+ * visible" behavior can be judged.
  * Served at /scene5-preview.html via src/main-scene5.tsx.
  */
 
 import { useState } from 'react';
-import { Share2, MoreHorizontal, Plus } from 'lucide-react';
+import { Share2, MoreHorizontal, Plus, ArrowLeft } from 'lucide-react';
 import { Scene5SideNavigation } from './Scene5SideNavigation';
+import { Scene5Portfolio } from './Scene5Portfolio';
 
 export function Scene5PreviewApp() {
   const [isOpen, setIsOpen] = useState(true);
+  const [screen, setScreen] = useState<'home' | 'portfolio'>('home');
 
   return (
     <div
@@ -43,10 +54,39 @@ export function Scene5PreviewApp() {
           boxShadow: '0 0 0 1px #e5e7eb, 0 24px 48px rgba(0,0,0,0.12)',
         }}
       >
-        {/* Placeholder underlying screen — stands in for the real Portfolio
-            screen (Phase 3), just enough to demonstrate the overlay keeps
-            the background visible rather than hiding it. */}
-        <div style={{ position: 'absolute', inset: 0, background: '#f5f5f5' }}>
+        {/* Phase 3 structural preview only: swap in the real Portfolio page. */}
+        {screen === 'portfolio' && (
+          <>
+            <Scene5Portfolio onViewForum={() => {}} onFloatingAction={() => {}} />
+            <button
+              type="button"
+              onClick={() => setScreen('home')}
+              style={{
+                position: 'absolute',
+                top: '10px',
+                left: '10px',
+                zIndex: 40,
+                background: 'rgba(0,0,0,0.55)',
+                color: '#fff',
+                border: 'none',
+                borderRadius: '8px',
+                padding: '7px 10px 7px 8px',
+                fontSize: '11px',
+                display: 'flex',
+                alignItems: 'center',
+                gap: '4px',
+                cursor: 'pointer',
+              }}
+            >
+              <ArrowLeft size={13} /> Back to menu (preview only)
+            </button>
+          </>
+        )}
+
+        {/* Placeholder underlying screen — stands in for the real Home
+            screen behind the drawer, just enough to demonstrate the
+            overlay keeps the background visible rather than hiding it. */}
+        <div style={{ position: 'absolute', inset: 0, background: '#f5f5f5', display: screen === 'home' ? 'block' : 'none' }}>
           <div
             style={{
               display: 'flex',
@@ -130,11 +170,14 @@ export function Scene5PreviewApp() {
         <Scene5SideNavigation
           isOpen={isOpen}
           onClose={() => setIsOpen(false)}
-          onViewPortfolio={() => {}}
+          onViewPortfolio={() => {
+            setScreen('portfolio');
+            setIsOpen(false);
+          }}
           onSelectItem={() => {}}
         />
 
-        {!isOpen && (
+        {!isOpen && screen === 'home' && (
           <button
             type="button"
             onClick={() => setIsOpen(true)}

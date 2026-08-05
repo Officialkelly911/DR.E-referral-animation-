@@ -1,0 +1,565 @@
+Yes. Now move to Phase 3: Portfolio UI Recreation. This phase should build the Portfolio screen only, using the newly completed Side Navigation as the entry context, but do not wire the final View Forum navigation yet. That comes after the static UI audit.
+
+Use this prompt:
+
+⸻
+
+DREAM PLANET REFERRAL CAMPAIGN
+
+SCENE 5 — PHASE 3: PORTFOLIO UI RECREATION
+
+The Scene 5 Side Navigation Drawer has now been recreated and audited.
+
+Proceed with Phase 3 only: recreate the Dream Planet Portfolio page shown in the supplied screenshots and screen recordings.
+
+Do not proceed to Forum implementation, engagement interactions, cinematic animation, or master integration during this phase.
+
+⸻
+
+PROJECT CONSTRAINTS
+
+Scenes 1-4 are approved, locked, and must remain untouched.
+
+Do not modify:
+
+* Scene 1
+* Scene 2
+* Scene 3
+* Scene 4
+* Approved four-scene master
+* Canonical build_master.sh
+* Master validation logic
+* Existing master review page
+
+Do not start Scene 6.
+
+Do not integrate Scene 5 into the master.
+
+Do not implement the complete Scene 5 navigation flow yet.
+
+This phase is limited to the static Portfolio UI recreation, plus the minimal structural wiring necessary to preview it from the Side Navigation.
+
+⸻
+
+OBJECTIVE
+
+Recreate Dr. Elizabeth’s Dream Planet Portfolio page as a fully editable, responsive, production-quality UI component.
+
+The recreated Portfolio must be visually faithful to the supplied:
+
+* Portfolio screenshot
+* Portfolio → Forum navigation screen recording
+* Original uploaded media assets
+
+Use the screenshot as the visual source of truth.
+
+Use the screen recording to understand:
+
+* Initial page state
+* Scroll behavior
+* Positioning
+* View Forum placement
+* How the Portfolio appears after selecting View Portfolio
+
+Do not use the screenshot itself as a background.
+
+Build the Portfolio from real, editable components.
+
+⸻
+
+COMPONENT ARCHITECTURE
+
+Use Scene 5-specific names.
+
+Recommended structure:
+
+Scene5Portfolio
+├── Scene5PortfolioHeader
+├── Scene5PortfolioProfile
+├── Scene5PortfolioStats
+├── Scene5ViewForumButton
+├── Scene5PortfolioGrid
+├── Scene5PortfolioMediaTile
+├── Scene5PortfolioVideoTile
+└── Scene5PortfolioFloatingAction
+
+Reuse existing shared components only when appropriate.
+
+Do not duplicate components that already exist and are compatible.
+
+⸻
+
+PAGE CANVAS
+
+The Portfolio should be optimized for:
+
+* 360px mobile width
+* 390px mobile width
+* 430px mobile width
+* 1080×1920 vertical capture
+
+Maintain the visual proportions of the reference.
+
+Do not redesign the page for desktop.
+
+The primary target is a vertical mobile experience.
+
+⸻
+
+PORTFOLIO HEADER
+
+Recreate the dark green/near-black header shown in the reference.
+
+The header should include:
+
+Top-left
+
+dr._e
+
+with the orange verification badge.
+
+Use the official Dream Planet styling visible in the screenshot.
+
+Do not recreate the badge as plain text if a suitable original asset exists.
+
+⸻
+
+Top-right controls
+
+Recreate:
+
+* Share control
+* Settings/sun-style control
+
+Use the correct outline visual style.
+
+If the original icon assets are not available, use the closest existing icon system already used by the project.
+
+Do not introduce an unrelated icon family.
+
+⸻
+
+PROFILE SECTION
+
+Recreate the profile presentation accurately.
+
+Include:
+
+Profile image
+
+Use the original uploaded Dr. Elizabeth profile image.
+
+Requirements:
+
+* Circular crop
+* Correct aspect ratio
+* Natural framing
+* No distortion
+* Correct scale
+* Match the screenshot’s visual position
+
+If the reference includes a white border around the avatar, reproduce it.
+
+⸻
+
+Profile name
+
+Display:
+
+Elizabeth Wisniewski DC PhD
+
+Match:
+
+* Font family
+* Font size
+* Weight
+* Color
+* Line height
+* Alignment
+
+to the reference.
+
+⸻
+
+Profile category
+
+Display:
+
+Others
+
+Use the exact visual styling shown in the screenshot.
+
+⸻
+
+Bio
+
+Display:
+
+Entrepreneur | embodied leadership | artist | double doctor
+
+Do not rewrite or abbreviate.
+
+Preserve the exact punctuation and separators.
+
+Match the reference typography and spacing.
+
+⸻
+
+COMMUNITY STATISTICS
+
+Display the current verified values from the latest reference:
+
+47 Members in forum | 105 Posts
+
+The numbers should remain visually prominent.
+
+Match the original hierarchy where:
+
+* 47 is emphasized
+* Members in forum is secondary
+* 105 is emphasized
+* Posts is secondary
+
+If the live source currently displays a different verified number, document the discrepancy and use the current verified source.
+
+Do not invent numbers.
+
+⸻
+
+VIEW FORUM BUTTON
+
+Recreate the primary View Forum action exactly as shown.
+
+This is the most important interactive control on the Portfolio page because it becomes the bridge into the Forum in a later Scene 5 phase.
+
+Requirements:
+
+* White background
+* Dark text
+* Rounded pill
+* Correct dimensions
+* Correct icon
+* Correct internal spacing
+* Correct vertical alignment
+
+The button must remain independently addressable.
+
+Example:
+
+data-scene5="view-forum"
+
+Do not implement the final Forum navigation behavior yet.
+
+For now:
+
+* Render the button.
+* Make it visually pressable.
+* Provide a placeholder callback or event hook.
+* Keep the navigation behavior modular so it can be connected in the next phase.
+
+⸻
+
+PORTFOLIO MEDIA GRID
+
+Recreate the visible three-column Portfolio media grid.
+
+Use the original uploaded assets.
+
+Do not crop the screenshot and use that as the grid.
+
+Build every tile as an independent component.
+
+The grid may contain:
+
+* Personal photos
+* Artwork
+* Video content
+* Quote cards
+* Creative work
+* Lifestyle images
+* Music-related content
+* Other Portfolio media
+
+Preserve the actual order shown in the reference as closely as possible.
+
+⸻
+
+MEDIA TILE TYPES
+
+The implementation should support at least:
+
+Image tile
+
+* object-fit: cover
+* Preserve subject visibility
+
+Video tile
+
+* Original thumbnail/media
+* Editable play overlay
+* Centered play control
+
+Text/quote card
+
+* Preserve the full readable composition
+* Do not crop important text
+* Use contain where necessary
+
+Do not invent captions beneath tiles if they are not present in the reference.
+
+⸻
+
+FLOATING ACTION BUTTON
+
+Recreate the orange floating + button visible on the Portfolio.
+
+Requirements:
+
+* Dream Planet orange
+* Circular
+* White plus sign
+* Correct size
+* Correct position
+* Fixed or floating according to the reference behavior
+
+The button should remain independently addressable.
+
+Example:
+
+data-scene5="portfolio-floating-action"
+
+Do not implement unrelated functionality.
+
+⸻
+
+SCROLL BEHAVIOR
+
+Implement realistic vertical scrolling.
+
+The Portfolio should support the same general scrolling behavior shown in the supplied screen recording.
+
+Requirements:
+
+* Smooth scrolling
+* No visible browser scrollbar in the final cinematic capture
+* No abrupt jumps
+* No layout shifts
+* Media remains aligned
+* Floating + remains in the correct position
+
+Do not create artificial infinite scrolling.
+
+Use the supplied media assets as the actual content.
+
+⸻
+
+INITIAL VIEWPORT STATE
+
+The Portfolio must load into the correct initial position shown in the reference and navigation recording.
+
+At initial load, the viewer should be able to identify:
+
+* Profile image
+* Profile name
+* Bio
+* Member count
+* Post count
+* View Forum button
+
+The creative media grid should be visible enough to establish the Portfolio’s purpose but should not push the main profile information too far below the fold.
+
+Match the reference’s hierarchy.
+
+⸻
+
+ANIMATION READINESS
+
+The page must be prepared for later Scene 5 cinematic animation.
+
+Every major region must be independently addressable:
+
+data-scene5="portfolio-page"
+data-scene5="portfolio-header"
+data-scene5="portfolio-profile"
+data-scene5="portfolio-avatar"
+data-scene5="portfolio-stats"
+data-scene5="view-forum"
+data-scene5="portfolio-grid"
+data-scene5="portfolio-floating-action"
+
+Do not implement the cinematic animation yet.
+
+These hooks are only to prepare for the later animation phase.
+
+⸻
+
+OPTIONAL STRUCTURAL PREVIEW
+
+Because the Side Navigation was built in Phase 2, allow the Side Navigation’s View Portfolio item to open this Portfolio page during local preview.
+
+This is only a structural preview connection.
+
+Do not implement the complete production navigation flow yet.
+
+The goal is to verify:
+
+Side Navigation
+↓
+View Portfolio
+↓
+Portfolio Page
+
+The actual View Forum navigation will be connected in the next interaction phase.
+
+If connecting the preview requires modifying the Side Navigation component, make the smallest possible change and do not alter its approved visual appearance.
+
+⸻
+
+VISUAL FIDELITY AUDIT
+
+After implementing the Portfolio, compare it directly against the supplied reference screenshot.
+
+Audit:
+
+Header
+
+* Background color
+* Header height
+* dr._e
+* Verification badge
+* Share icon
+* Settings icon
+
+Profile
+
+* Avatar size
+* Avatar crop
+* Avatar border
+* Name
+* Category
+* Bio
+
+Statistics
+
+* 47
+* Members in forum
+* 105
+* Posts
+
+Check:
+
+* Font sizes
+* Weight
+* Spacing
+* Baseline alignment
+
+View Forum
+
+Check:
+
+* Width
+* Height
+* Radius
+* Icon
+* Text
+* Position
+* Alignment
+
+Media grid
+
+Check:
+
+* Three columns
+* Tile order
+* Tile dimensions
+* Gutter size
+* Image cropping
+* Video overlays
+* Quote card readability
+
+Floating button
+
+Check:
+
+* Size
+* Color
+* Position
+* Plus icon
+
+⸻
+
+RESPONSIVE QA
+
+Test at:
+
+* 360px
+* 390px
+* 430px
+* 1080×1920 capture canvas
+
+Verify:
+
+* No text clipping
+* No overlapping controls
+* No distorted images
+* No unexpected scaling
+* No incorrect crop behavior
+* No hidden View Forum button
+* No floating button clipping
+
+⸻
+
+ACCEPTANCE CRITERIA
+
+This phase is complete only when:
+
+* Portfolio visually matches the supplied reference.
+* Correct profile image is used.
+* Correct name and bio are displayed.
+* Correct current statistics are displayed.
+* View Forum button is visually accurate.
+* Portfolio media grid is correctly recreated.
+* Video tiles have correct play overlays.
+* Floating + button is correctly positioned.
+* Portfolio scroll behavior is functional.
+* Side Navigation can open Portfolio in preview.
+* Portfolio is responsive.
+* Portfolio is animation-ready.
+* No Scene 1-4 files were modified.
+* No master build files were changed.
+* No Forum implementation has been started beyond the View Forum placeholder/event hook.
+
+⸻
+
+REQUIRED DELIVERABLE
+
+At the end of this phase, provide:
+
+1. Completed Portfolio UI recreation.
+2. Updated Scene 5 component files.
+3. Any new assets/data mappings.
+4. Screenshot/browser capture of the recreated Portfolio.
+5. Visual fidelity audit report containing:
+    * Matched elements
+    * Any discrepancies
+    * Any assumptions
+6. Confirmation that the Side Navigation → View Portfolio preview flow works.
+
+⸻
+
+STOP CONDITION
+
+Stop after completing and auditing the Portfolio UI.
+
+Do not proceed to:
+
+* Forum Feed
+* Forum Overview
+* View Forum navigation implementation
+* Like/Comment/Share
+* Cinematic animation
+* Scene 5 capture
+* Master integration
+* Scene 6
+
+Those will be handled in subsequent phases after the Portfolio is reviewed and approved.
