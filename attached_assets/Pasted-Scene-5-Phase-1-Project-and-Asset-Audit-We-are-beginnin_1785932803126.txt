@@ -1,0 +1,378 @@
+Scene 5 — Phase 1: Project and Asset Audit
+
+We are beginning the implementation of Scene 5 for the Dream Planet Referral Campaign.
+
+Do not switch to Plan mode.
+
+We are executing Scene 5 in controlled phases to conserve agent credits and maintain production quality.
+
+Current project status
+
+Scenes 1-4 are already completed, approved, and reproducible.
+
+The existing canonical master-build pipeline is locked and must remain stable.
+
+Scene 5 will be developed as a new isolated feature and integrated into the master only after its UI, interactions, animation, and QA are complete.
+
+Critical constraints
+
+Do not modify:
+
+* Scene 1
+* Scene 2
+* Scene 3
+* Scene 4
+* The approved four-scene master
+* The canonical master-build pipeline
+* Existing validation logic
+
+Do not rebuild or regenerate previous scenes.
+
+Do not integrate Scene 5 into the master yet.
+
+Do not begin Scene 5 UI implementation during this phase.
+
+This phase is audit and discovery only.
+
+⸻
+
+Audit the entire project
+
+Thoroughly inspect the current repository and determine:
+
+1. Project architecture
+
+Review:
+
+* Source directories
+* Components
+* Routes
+* Design system
+* Shared components
+* Animation libraries
+* Framer Motion implementation
+* Capture scripts
+* Playwright scripts
+* FFmpeg scripts
+* Build scripts
+* Validation scripts
+* Browser review page
+* Scene configuration
+* Asset directories
+
+Identify which existing components can safely be reused for Scene 5.
+
+Do not duplicate existing functionality unnecessarily.
+
+⸻
+
+2. Existing Scene 1-4 structure
+
+Identify:
+
+* Scene 1 source
+* Scene 2 source
+* Scene 3 source
+* Scene 4 source
+* Scene 4 final frame
+* Scene 4 final exported video
+* Scene 4 animation entry point
+
+Document how Scene 5 should connect to the exact ending state of Scene 4.
+
+Do not modify any of these files.
+
+⸻
+
+3. Scene 5 reference material
+
+Locate all Scene 5 reference assets already present in the project.
+
+Find:
+
+* Side Navigation screenshot
+* Portfolio screenshot
+* Forum Overview screenshot
+* Forum Post Feed screenshot
+* Portfolio → Forum navigation screen recording
+* Forum page screen recording
+* Any Like / Comment / Share behavior recording, if available
+
+Treat the screenshots as the visual source of truth.
+
+Treat the screen recordings as the behavioral source of truth.
+
+Do not substitute or reinterpret the references without documenting why.
+
+⸻
+
+4. Scene 5 original media assets
+
+Locate and catalog:
+
+* Dr. Elizabeth profile image
+* Portfolio media
+* Portfolio artwork
+* Portfolio videos
+* Forum post images
+* Forum post artwork
+* Forum videos
+* Forum avatars
+* Any custom icons
+* Dream Planet logo
+* Any relevant fonts
+* Any Scene 5-specific branding assets
+
+Identify whether each asset is:
+
+* Original
+* Derived
+* Generated
+* Placeholder
+* Missing
+
+Do not generate replacement assets during this audit.
+
+⸻
+
+5. Side Navigation analysis
+
+Document the exact UI structure based on the latest reference.
+
+Confirm:
+
+* Drawer width
+* Drawer height
+* Rounded corners
+* Background color
+* Overlay behavior
+* Profile section
+* Profile image
+* Profile name
+* View Portfolio
+* Navigation item order
+* Icons
+* Dividers
+* Coming Soon badges
+* Support
+* Settings
+
+Confirm the exact current labels from the latest reference.
+
+Do not rely on older planning documents if they conflict with the current screenshots or recordings.
+
+⸻
+
+6. Portfolio analysis
+
+Document:
+
+* Header structure
+* dr._e
+* Verification badge
+* Share control
+* Settings control
+* Profile avatar
+* Profile name
+* Category/label
+* Bio
+* Member count
+* Post count
+* View Forum button
+* Media grid
+* Grid dimensions
+* Video tiles
+* Play controls
+* Floating + button
+* Scroll behavior
+
+Use the latest current reference for the displayed statistics.
+
+The latest observed state is:
+
+* 47 Members in forum
+* 105 Posts
+
+If the current source data differs, document the discrepancy rather than silently changing it.
+
+⸻
+
+7. Forum analysis
+
+Document both Forum states.
+
+Forum Post Feed
+
+Record:
+
+* Header
+* Back button
+* Forum name
+* Member count
+* Edit Forum
+* User avatars
+* Usernames
+* Timestamps
+* Post media
+* Post text
+* Three-dot controls
+* Comment control
+* Like control
+* Share control
+* Floating + button
+* Feed scrolling behavior
+
+Forum Overview
+
+Record:
+
+* Forum title
+* Member count
+* Description
+* Created date
+* Guidelines
+* Update
+* Members
+* See all
+* Member avatars
+* Invite to forum
+* Forum URL
+* Share Link
+* Floating + button
+
+Determine which state the real app opens by default when View Forum is selected.
+
+Use the screen recording as the authority.
+
+⸻
+
+8. Interaction analysis
+
+Determine what is known and unknown about:
+
+* Side Navigation open/close
+* View Portfolio navigation
+* View Forum navigation
+* Forum tab navigation
+* Like behavior
+* Comment behavior
+* Share behavior
+* Feed scrolling
+
+Separate findings into:
+
+Confirmed behavior
+
+Inferred behavior
+
+Unknown behavior
+
+Do not invent unknown behavior during this phase.
+
+⸻
+
+9. Scene 5 animation architecture
+
+Inspect the existing capture and animation system and determine the cleanest way to add Scene 5 without disrupting Scenes 1-4.
+
+Identify:
+
+* Existing animation orchestrator
+* Existing timeline system
+* Existing Framer Motion patterns
+* Existing Playwright capture workflow
+* Existing scene naming conventions
+* Existing scene output conventions
+
+Recommend where the following should live:
+
+* Scene 5 UI
+* Scene 5 data
+* Scene 5 interaction state
+* Scene 5 animation timeline
+* Scene 5 capture entry point
+
+Do not create these files yet unless required for the audit itself.
+
+⸻
+
+10. GitHub and merge safety
+
+Review the current repository structure and identify:
+
+* Potential filename collisions
+* Shared components that should be reused
+* Scene-specific components that should be namespaced
+* New dependencies that would be risky
+* Assets that should remain local
+* Files that should not be modified
+
+Keep Scene 5 modular and merge-safe.
+
+⸻
+
+Audit deliverable
+
+At the end of this phase, produce a structured report containing:
+
+A. Current project architecture
+
+B. Existing reusable components
+
+C. Scene 5 reference assets found
+
+D. Scene 5 original media assets found
+
+E. Missing or ambiguous assets
+
+F. Confirmed interaction behavior
+
+G. Unknown or unverified interaction behavior
+
+H. Scene 4 → Scene 5 continuity requirements
+
+I. Recommended Scene 5 file/module structure
+
+J. Recommended implementation order
+
+K. Merge/dependency risks
+
+L. Estimated complexity of each upcoming phase
+
+⸻
+
+Proposed next phases after this audit
+
+Do not execute them yet, but prepare the recommended order:
+
+1. Side Navigation recreation
+2. Portfolio recreation
+3. Forum Feed recreation
+4. Forum Overview recreation
+5. Visual fidelity audit
+6. Navigation interactions
+7. Deterministic Like/Comment/Share states
+8. Interaction QA
+9. Scene 5 cinematic animation
+10. Scene 5 capture
+11. Scene 5 mobile/visual QA
+12. Scene 5 lock
+13. Canonical master integration
+14. Full Scenes 1-5 validation
+
+⸻
+
+Final instruction
+
+Stop after completing the audit report.
+
+Do not:
+
+* Build the Scene 5 UI
+* Modify Scenes 1-4
+* Modify the master
+* Modify build_master.sh
+* Start Scene 6
+* Generate a new video export
+
+The only objective of this phase is to understand the current project and prepare a precise, evidence-based implementation plan for Scene 5.
