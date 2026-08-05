@@ -1,0 +1,254 @@
+Objective
+Recreate the attached mobile screen with pixel-perfect accuracy, matching the layout, spacing, colors, typography, shadows, gradients, borders, animations, and responsiveness of the original screenshot.
+Important:
+I already have every image asset used in this design (avatar PNGs, icons, backgrounds, etc.). Do NOT recreate or redesign any graphics. Use the provided assets exactly as supplied.
+The final result should be visually indistinguishable from the screenshot.
+
+Design Requirements
+Screen Size
+Design primarily for
+	•	iPhone 13 / 14 / 15
+	•	Width: 390px
+	•	Height: 844px
+The UI should also scale gracefully on other mobile devices.
+
+Overall Layout
+The page consists of two major sections:
+	1.	Orange Hero Section
+	2.	White Referral Status Section
+The transition between the two sections must be seamless.
+
+Hero Section
+The hero occupies approximately the top 45–48% of the screen.
+Background:
+	•	Bright orange gradient
+	•	Very subtle radial burst/light rays
+	•	Small floating white dots positioned exactly like the screenshot
+The hero should fill the full width.
+
+Navigation
+Top Left
+Circular white button
+Contains:
+	•	Chevron Left Icon
+Specifications
+	•	White circle
+	•	Soft shadow
+	•	Perfect circle
+	•	Center aligned icon
+Top Right
+Rounded white pill button
+Text:
+Leaderboard
+Specifications
+	•	White background
+	•	Rounded capsule
+	•	Small elevation
+	•	Medium font weight
+
+Heading
+Centered horizontally.
+Text:
+Refer your friends & earn
+Typography:
+	•	Bold
+	•	White
+	•	Large
+	•	Center aligned
+Spacing should match the screenshot precisely.
+
+Avatar Cluster
+Below the heading is a cluster of four avatars.
+Use my supplied PNG assets.
+Do NOT recreate them.
+Each avatar has its own colored badge:
+Yellow
+Pink
+Blue
+Dark Pink
+Arrange them exactly like the screenshot.
+Top Center
+👍 avatar
+Left
+Female glasses avatar
+Right
+Bearded fist avatar
+Bottom Center
+Tongue-out avatar
+They slightly overlap each other.
+Maintain identical scaling and spacing.
+No approximations.
+
+Referral Code Card
+Centered horizontally.
+Large rounded pill.
+White background.
+Contains
+Referral code centered
+IK54OTRD
+Right side:
+Black rounded Share button.
+The Share button sits flush inside the white container.
+Text
+Share
+Centered vertically.
+Everything should align perfectly.
+
+White Bottom Section
+Background
+Pure white.
+Rounded top corners.
+Starts immediately below the orange section.
+Large radius.
+
+Tabs
+Horizontal tabs
+Qualified
+Pending
+Qualified
+Black
+Bold
+Active indicator line below.
+Pending
+Gray
+Regular weight
+Indicator:
+Thin black underline
+Exactly aligned with active tab.
+
+Referral Progress
+Below tabs.
+Left
+bronze
+Lowercase
+Bold
+Orange link underneath
+View Levels
+Underlined.
+Right
+Large
+0 / 10
+Aligned to the right.
+
+Empty State
+Centered vertically.
+Gray text.
+No qualified referrals yet.
+Very subtle.
+
+Typography
+Use
+SF Pro Display
+or
+Inter
+if unavailable.
+Font weights:
+Regular
+Medium
+Semibold
+Bold
+Match Apple's typography closely.
+
+Colors
+Orange Background
+Approx:
+#FF6A00
+Gradient
+#FF7A00
+↓
+#FF5A00
+White
+#FFFFFF
+Black
+#111111
+Gray
+#8E8E93
+Active underline
+#111111
+
+Shadows
+Use extremely soft shadows.
+Nothing exaggerated.
+Buttons:
+0 3px 8px rgba(0,0,0,0.12)
+Cards:
+0 6px 18px rgba(0,0,0,0.12)
+
+Border Radius
+Back button:
+9999px
+Leaderboard:
+9999px
+Referral Code:
+9999px
+Share Button:
+9999px
+Bottom Sheet:
+32px top radius
+
+Spacing
+Recreate spacing exactly.
+No guessing.
+Maintain identical
+Margins
+Padding
+Vertical rhythm
+Horizontal alignment
+Avatar spacing
+Button spacing
+Typography spacing
+
+Responsiveness
+Scale proportionally.
+Never stretch assets.
+Keep the avatar cluster centered.
+Referral code always centered.
+Bottom sheet remains attached to hero section.
+
+Code Requirements
+Use:
+React
+TypeScript
+Tailwind CSS
+Component architecture:
+
+components/
+    Hero.tsx
+    AvatarCluster.tsx
+    ReferralCard.tsx
+    Tabs.tsx
+    ReferralStatus.tsx
+
+
+Asset Handling
+All avatar graphics
+Back icon
+Leaderboard icon (if needed)
+Background assets
+Decorative dots
+will already exist.
+Reference them via imports.
+Do NOT redraw them.
+Do NOT generate replacements.
+
+Pixel Perfect Checklist
+The finished implementation must match:
+✔ Exact spacing
+✔ Exact font sizes
+✔ Exact colors
+✔ Exact gradients
+✔ Exact avatar positions
+✔ Exact shadows
+✔ Exact border radii
+✔ Exact button sizes
+✔ Exact alignment
+✔ Exact vertical spacing
+✔ Exact overall proportions
+There should be no noticeable visual difference between the implementation and the supplied screenshot.
+
+Expected Deliverables
+	1.	Fully responsive React + TypeScript + Tailwind implementation.
+	2.	Clean, reusable component structure.
+	3.	Proper asset imports using the supplied media files.
+	4.	No placeholder graphics or text.
+	5.	Production-ready, maintainable code with comments where helpful.

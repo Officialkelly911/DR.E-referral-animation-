@@ -1,2 +1,5 @@
 Scene1scene2.gz filter=lfs diff=lfs merge=lfs -text
 extracted_scenes/Scene1scene2 filter=lfs diff=lfs merge=lfs -text
+attached_assets/Forum__1785891193152.zip filter=lfs diff=lfs merge=lfs -text
+attached_assets/Screen_recordings__1785890660496.zip filter=lfs diff=lfs merge=lfs -text
+attached_assets/portfolio_media_files__1785891945152.zip filter=lfs diff=lfs merge=lfs -text

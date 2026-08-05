@@ -1,0 +1,807 @@
+Yes. Based on the screenshots and screen recordings you've now supplied, this is the point where we can write the definitive Scene 5 implementation prompt. It combines the latest visual references, the real navigation flow, the updated Portfolio statistics, the Forum states, the deterministic engagement interactions, and the separate-Replit/GitHub merge requirements.
+The prompt below is written so the Replit Agent understands that Scene 5 is both a UI recreation task and a cinematic animation task, while keeping the work isolated from Scenes 1-4.
+
+DREAM PLANET REFERRAL CAMPAIGN
+MASTER IMPLEMENTATION PROMPT
+SCENE 5 — CREATOR PORTFOLIO → COMMUNITY FORUM → ENGAGEMENT
+
+PROJECT CONTEXT
+This task is part of the Dream Planet Referral Campaign promotional video.
+Scenes 1, 2, 3, and 4 have already been developed in previous stages, potentially across separate Replit workspaces and AI agents.
+This Scene 5 implementation is being developed independently and will later be integrated into the main campaign repository through GitHub.
+Therefore, this workspace must remain:
+	•	Modular
+	•	Self-contained
+	•	Merge-safe
+	•	Animation-ready
+	•	Free of unnecessary dependencies on previous scene code
+Do not assume that Scene 1, Scene 2, Scene 3, or Scene 4 source code is available in this workspace.
+Do not rebuild previous scenes.
+Do not modify approved previous-scene assets.
+Use the supplied Scene 4 final video and/or final frame only as continuity references.
+
+PRIMARY OBJECTIVE
+Create Scene 5 as a complete cinematic journey that demonstrates the relationship between a creator's personal Dream Planet Portfolio and the wider Dream Planet community.
+The final story should communicate:
+A creator has a personal identity and portfolio, and that personal space connects directly into a living community where people share, interact, and engage.
+The intended journey is:
+Scene 4 ending
+        ↓
+Open side navigation
+        ↓
+View Portfolio
+        ↓
+Portfolio page
+        ↓
+View Forum
+        ↓
+Forum Post Feed
+        ↓
+Community content
+        ↓
+Like / Comment / Share interaction
+        ↓
+Prepare transition into Scene 6
+This scene should not feel like a generic UI demonstration.
+It should feel like a premium product film showing the actual Dream Planet ecosystem.
+
+CREATIVE ROLE OF SCENE 5
+The campaign narrative is:
+Scene 1
+Curiosity
+Scene 2
+Dream Planet identity
+Scene 3
+Referral participation
+Scene 4
+Referral progression and leaderboard
+Scene 5
+Creator identity and community
+Scene 6
+Final invitation and referral CTA
+Scene 5 should be the moment when the viewer realizes:
+Dream Planet is more than referrals. It is an ecosystem where creators have a personal space and connect with a real community.
+
+SOURCE OF TRUTH
+Use the following uploaded assets and references as the authoritative sources for Scene 5:
+	1.	Side navigation screenshot
+	2.	Portfolio screenshot
+	3.	Forum Overview screenshot
+	4.	Forum Post Feed screenshot
+	5.	Portfolio and Forum navigation screen recording
+	6.	Forum page screen recording
+	7.	All uploaded original media assets
+	8.	Official Dream Planet logo
+	9.	Scene 4 final frame or final video for continuity
+Use the latest screen recordings as the primary source of truth for current interaction behavior and dynamic data.
+Use the latest Portfolio recording/reference for current profile statistics.
+The latest observed state shows:
+47 Members in forum
+105 Posts
+Earlier screenshots may show 104 posts. Treat the latest recording/current reference as authoritative unless the actual current interface displays otherwise.
+Do not invent conflicting values.
+
+IMPORTANT PRODUCTION RULE
+The Scene 5 UI must be recreated as a real editable interface.
+Do not:
+	•	Flatten screenshots into a single image
+	•	Animate screenshots directly as fake UI
+	•	Use the screenshot as a background
+	•	Replace real assets with stock images
+	•	Invent missing features
+	•	Redesign the application
+Every important element must remain individually editable and animation-ready.
+
+OUTPUT SETTINGS
+Primary format:
+9:16 vertical
+Target canvas:
+1080 × 1920 minimum
+Resolution:
+2K minimum, 4K preferred
+Quality:
+Highest available
+Frame rate:
+Match the existing campaign master
+Use the same frame-rate standard already established in Scenes 1-4.
+Ensure the final output is suitable for professional vertical social-media delivery.
+
+SCENE 5 DURATION
+Target:
+Approximately 8-10 seconds
+Do not force the scene into a shorter duration if doing so makes the UI unreadable or the interactions rushed.
+The scene must prioritize:
+	•	Story clarity
+	•	UI readability
+	•	Cinematic pacing
+	•	Smooth interaction
+
+MODULES TO BUILD
+Create Scene 5 as one cohesive feature module containing:
+Scene5CommunityExperience
+
+├── Side Navigation Drawer
+├── Portfolio Page
+├── Portfolio Media Grid
+├── View Forum Navigation
+├── Forum Post Feed
+├── Forum Overview
+├── Forum Post Interaction States
+├── Like Interaction
+├── Comment Interaction
+├── Share Interaction
+└── Scene 5 Animation Timeline
+
+PART 1
+SIDE NAVIGATION DRAWER
+Recreate the actual Dream Planet side navigation shown in the supplied screenshot and recordings.
+The side navigation is a full-height white drawer that enters from the left.
+The underlying application remains visible on the right.
+The underlying application must be covered with a muted gray/dim overlay.
+
+Drawer styling
+Match the reference:
+	•	White background
+	•	Full viewport height
+	•	Large rounded top-right corner
+	•	Large rounded bottom-right corner
+	•	No excessive shadow
+	•	Clean modern layout
+	•	Consistent outline icons
+	•	Spacious vertical rhythm
+Do not redesign the drawer.
+
+Profile section
+At the top of the drawer:
+	•	User profile image
+	•	Elizabeth Wisniewski DC PhD
+	•	View Portfolio
+View Portfolio must use the Dream Planet orange accent visible in the reference.
+The profile image must use the supplied original asset.
+Do not crop it unnaturally.
+
+Navigation items
+Recreate the items shown in the latest screenshot/recording.
+Where visible, include:
+	•	Store Analytics
+	•	Sales
+	•	My purchases
+	•	Raba Bag
+	•	Subscriptions
+	•	Digital Library
+	•	Masterclass — Coming Soon
+	•	Favorite
+	•	Distribution Hub — Coming Soon
+	•	Referral
+Lower section:
+	•	Support
+	•	Settings
+Use the exact labels visible in the latest reference.
+Do not add earlier assumed menu items that are not present.
+Do not remove items that are present in the reference.
+
+Side navigation interaction
+The drawer must support:
+	•	Closed state
+	•	Opening state
+	•	Fully open state
+	•	View Portfolio pressed state
+	•	Closing state
+The drawer should enter from the left using the application's natural animation style.
+Recommended behavior:
+	•	Smooth horizontal slide
+	•	Gentle easing
+	•	Background overlay fades in simultaneously
+	•	No bounce
+	•	No overshoot
+	•	No exaggerated spring motion
+
+PART 2
+PORTFOLIO PAGE
+Recreate the Portfolio page based on the supplied screenshot and screen recording.
+This is the user's personal creator space.
+The Portfolio page should have a deep green/black visual environment matching the reference.
+
+Header
+Include:
+	•	dr._e
+	•	Orange verification badge
+	•	Share icon
+	•	Settings/sun-style icon
+Preserve the exact visual hierarchy from the reference.
+
+Profile section
+Include:
+	•	Circular profile image
+	•	White border around avatar
+	•	Elizabeth Wisniewski DC PhD
+	•	Others
+
+Bio
+Display:
+Entrepreneur | embodied leadership | artist | double doctor
+Preserve:
+	•	Font size
+	•	Weight
+	•	Spacing
+	•	Alignment
+as shown in the supplied reference.
+
+Community statistics
+Use the current observed values from the latest recording/reference:
+47 Members in forum | 105 Posts
+If the live current UI in the supplied workspace differs, treat the latest live/current implementation as authoritative.
+
+Primary action
+The most important button in this scene is:
+View Forum
+Recreate it exactly as shown.
+Include its person/group-style outline icon.
+Use:
+	•	White background
+	•	Dark text
+	•	Large rounded pill
+	•	Correct dimensions
+	•	Correct spacing
+This button will be the primary interaction bridge to the Forum.
+
+PART 3
+PORTFOLIO MEDIA GRID
+Recreate the Portfolio media grid shown in the supplied references.
+Use the original uploaded assets.
+The grid contains:
+	•	Personal photography
+	•	Artwork
+	•	Creative work
+	•	Video content
+	•	Quote cards
+	•	Lifestyle images
+	•	Music-related content
+	•	Other visual posts
+Maintain the 3-column structure.
+Video tiles should include their appropriate play indicators.
+Recreate the orange floating + button.
+Do not invent new content.
+
+PORTFOLIO ANIMATION
+The Portfolio should not appear as a static screenshot.
+Use this presentation:
+	1.	Portfolio page enters.
+	2.	Profile header settles.
+	3.	Avatar and name become readable.
+	4.	Community statistics become visible.
+	5.	Camera gently pushes inward.
+	6.	A brief, controlled movement reveals the creative media grid.
+	7.	Camera returns attention toward View Forum.
+	8.	View Forum becomes the visual focus.
+Do not scroll through the entire Portfolio.
+The purpose is to communicate:
+This is a real creator profile with a real creative portfolio.
+
+PART 4
+VIEW PORTFOLIO INTERACTION
+When the side menu is open:
+	1.	Focus on View Portfolio.
+	2.	Apply a subtle pressed state.
+	3.	Trigger navigation.
+	4.	Close the drawer naturally.
+	5.	Enter Portfolio.
+Do not use:
+	•	Flash transitions
+	•	Logo morphs
+	•	Fade-to-black
+	•	Random zoom transitions
+This is a genuine application navigation event.
+Use a natural page transition.
+
+PART 5
+VIEW FORUM INTERACTION
+On Portfolio:
+	1.	Focus on the View Forum button.
+	2.	Apply a subtle tap/press state.
+	3.	Navigate into Forum.
+Do not morph the Portfolio into the Forum.
+Use a natural app-style navigation transition.
+Recommended:
+	•	Gentle horizontal page movement
+	•	Smooth easing
+	•	Slight continuous camera movement
+	•	No abrupt cut
+The viewer should feel as though they are moving deeper into the same Dream Planet application.
+
+PART 6
+FORUM PAGE
+Recreate the Forum as two interconnected states:
+State A
+Post Feed
+State B
+Overview
+Both must be fully editable.
+
+FORUM POST FEED
+This should be the primary Forum state used in Scene 5.
+Header includes:
+	•	Back button
+	•	dr. Elizabeth Wisnie...
+	•	47 members
+	•	Edit Forum button
+Maintain the exact dark header style shown in the reference.
+
+POST COMPONENT
+Each post should support:
+Header
+	•	Profile avatar
+	•	Username
+	•	Timestamp
+	•	Three-dot menu
+Content
+	•	Text
+	•	Images
+	•	Video
+	•	Artwork
+	•	Creator content
+Engagement
+	•	Comment
+	•	Like
+	•	Share
+Floating control
+	•	Orange + button
+Use the actual supplied media.
+
+FORUM CONTENT
+Select only 2-3 visually strong posts for the cinematic sequence.
+Prioritize:
+	•	Strong artwork
+	•	Interesting video
+	•	Creator content
+	•	Community-driven material
+Do not show dozens of posts.
+The viewer should perceive variety without being overwhelmed.
+
+FORUM SCROLL
+Implement smooth, controlled scrolling.
+The promotional animation should:
+	•	Pause briefly on one strong post
+	•	Scroll gradually
+	•	Reveal a second strong post
+	•	Potentially reveal a third
+	•	Settle on a visually compelling frame
+Do not rapidly scroll.
+Do not use artificial momentum that would make text unreadable.
+
+FORUM OVERVIEW
+Recreate the Overview state shown in the supplied screenshot.
+Include:
+	•	Forum title
+	•	47 members
+	•	Description
+	•	Created date
+	•	Guidelines
+	•	Update
+	•	Member section
+	•	See all
+	•	Member avatars
+	•	Invite to forum
+	•	Forum URL
+	•	Share Link
+	•	Orange floating + button
+The Overview should remain available as an actual state.
+It may be used briefly during Scene 5 if timing permits.
+
+RECOMMENDED FORUM STORY
+Do not make Scene 5 primarily about the Overview.
+The primary flow should be:
+Portfolio
+↓
+View Forum
+↓
+Post Feed
+↓
+Community Content
+Optionally:
+Post Feed
+↓
+Brief Overview reveal
+↓
+Return to Post Feed
+The Post Feed is more visually dynamic and should remain the main focus.
+
+PART 7
+LIKE, COMMENT, SHARE INTERACTIONS
+The interactions should appear real during the promotional video, but they should be deterministic.
+Use controlled local state.
+Do not depend on live backend data.
+
+Like
+Default:
+0 Like
+On interaction:
+Tap Like
+↓
+Like icon becomes active
+↓
+Count increments to 1
+The active state should use the correct real UI styling.
+Do not add exaggerated heart explosions unless the actual platform uses them.
+
+Comment
+Default:
+0 Comment
+On interaction:
+Tap Comment
+↓
+Open the actual recreated comment interface
+↓
+Reveal prepared comment
+↓
+Update count
+The comment interface must be based on the actual reference behavior once confirmed.
+Do not invent a UI that does not resemble the real product.
+
+Share
+On interaction:
+Tap Share
+↓
+Trigger the actual observed Dream Planet share behavior
+If the current real behavior is not yet documented, keep the share implementation modular and easy to replace.
+Do not invent a fake share flow and permanently bake it into the architecture.
+
+IMPORTANT BEHAVIORAL REQUIREMENT
+The supplied screen recordings clearly establish:
+	•	Side navigation behavior
+	•	View Portfolio navigation
+	•	Portfolio layout
+	•	View Forum navigation
+	•	Forum structure
+	•	Forum scrolling
+However, the exact interaction behavior for:
+	•	Like
+	•	Comment
+	•	Share
+must be verified against the real app if a more accurate interaction recording is available.
+Until that behavior is confirmed, implement these interactions as modular local states that can be adjusted without changing the rest of the UI.
+
+PART 8
+SCENE 5 ANIMATION TIMELINE
+Use the following as the default cinematic timeline.
+Adjust timing slightly if required to match the existing Scene 4 ending and the music.
+
+0.0-0.7s
+Scene 4 → Side Navigation
+Start from the exact Scene 4 final frame.
+Open the actual side navigation.
+No fade to black.
+No unrelated transition.
+Maintain visual continuity.
+
+0.7-1.4s
+Select View Portfolio
+Drawer fully visible.
+Focus on View Portfolio.
+Tap.
+Use subtle pressed state.
+
+1.4-2.6s
+Portfolio Reveal
+Portfolio enters.
+Show:
+	•	Profile image
+	•	Name
+	•	Bio
+	•	47 members
+	•	105 posts
+Camera gently pushes in.
+Briefly reveal creative media grid.
+
+2.6-3.4s
+View Forum
+Camera shifts focus to:
+View Forum
+Tap.
+Natural app-style navigation.
+
+3.4-4.3s
+Forum Post Feed
+Forum opens directly into Post Feed unless the current real app behavior dictates otherwise.
+Reveal:
+	•	Header
+	•	Member count
+	•	First post
+No loading screen.
+
+4.3-5.2s
+First Community Post
+Hold on a visually strong piece of content.
+Allow enough time for the audience to recognize:
+	•	Creator
+	•	Media
+	•	Engagement controls
+
+5.2-6.4s
+Controlled Scroll
+Scroll through the feed.
+Reveal additional community content.
+Keep movement slow.
+
+6.4-7.2s
+Optional Overview Glimpse
+If the pacing allows:
+Briefly reveal Forum Overview.
+Show:
+	•	47 members
+	•	Guidelines
+	•	Members
+Do not linger.
+
+7.2-8.3s
+Engagement
+Return to Post Feed.
+Trigger:
+	•	Like
+	•	Comment
+	•	Share
+Use only the interactions that can be demonstrated clearly within the available duration.
+Do not force all three if the sequence becomes rushed.
+
+8.3-9.3s
+Continue Discovery
+Scroll to another strong community post.
+Let the interface breathe.
+
+9.3-10.0s
+Scene 6 Handoff
+Hold on a strong Forum composition.
+Do not end:
+	•	Mid-scroll
+	•	With a menu open
+	•	With comments covering the entire screen
+	•	With a share panel obscuring the content
+Prepare a clean outgoing frame for Scene 6.
+
+PART 9
+MOTION LANGUAGE
+Match the motion style established in Scenes 1-4.
+Use:
+	•	Smooth easing
+	•	Slow camera pushes
+	•	Gentle page movement
+	•	Controlled scroll
+	•	Subtle parallax
+	•	Minimal micro-interactions
+Avoid:
+	•	Bounce animations
+	•	Glitch transitions
+	•	Flash transitions
+	•	Spinning interfaces
+	•	Aggressive zooms
+	•	Unnecessary particles
+	•	Lens flares
+	•	Excessive 3D effects
+Scene 5 should look as though it belongs to the same campaign.
+
+PART 10
+AUDIO
+Do not restart the music.
+Continue the existing campaign soundtrack seamlessly.
+Do not bake a new audio track specifically for Scene 5.
+Use audio only as a timing reference during implementation.
+Final audio composition will be handled during master timeline integration.
+
+PART 11
+VISUAL FIDELITY AUDIT
+Before animation begins, audit each recreated interface.
+Side Navigation
+Verify:
+	•	Drawer width
+	•	Rounded corners
+	•	Overlay opacity
+	•	Profile image
+	•	Profile name
+	•	View Portfolio
+	•	Icons
+	•	Item spacing
+	•	Dividers
+	•	Coming Soon labels
+	•	Support
+	•	Settings
+Portfolio
+Verify:
+	•	Header
+	•	Profile photo
+	•	Verification badge
+	•	Name
+	•	Bio
+	•	Member count
+	•	Post count
+	•	View Forum
+	•	Media grid
+	•	Play overlays
+	•	Floating +
+Forum Feed
+Verify:
+	•	Header
+	•	Back button
+	•	Edit Forum
+	•	Member count
+	•	Author avatars
+	•	Post layout
+	•	Media proportions
+	•	Engagement bar
+	•	Floating +
+Forum Overview
+Verify:
+	•	Tabs
+	•	Forum title
+	•	47 members
+	•	Guidelines
+	•	Members
+	•	Invite link
+	•	Share Link
+	•	Floating +
+No page should proceed to animation until the static UI passes visual comparison.
+
+PART 12
+RESPONSIVE QA
+Test:
+	•	360px
+	•	390px
+	•	430px
+	•	1080 × 1920
+Verify:
+	•	No clipping
+	•	No text overflow
+	•	No hidden controls
+	•	No distorted images
+	•	No incorrect scaling
+	•	No unsafe edge placement
+The video must remain readable on a real mobile screen.
+
+PART 13
+ASSET REQUIREMENTS
+Use the uploaded assets and references.
+Required inputs:
+	•	Side navigation screenshot
+	•	Portfolio screenshot
+	•	Forum Overview screenshot
+	•	Forum Post Feed screenshot
+	•	Portfolio/Forum navigation screen recording
+	•	Forum page screen recording
+	•	Original Portfolio media
+	•	Original Forum media
+	•	Original avatars
+	•	Dream Planet logo
+	•	Dr. E profile photo
+	•	Scene 4 final frame
+	•	Scene 4 final video, if available
+Do not use stock replacements.
+Do not generate missing real assets if the originals are available.
+
+PART 14
+PROJECT ARCHITECTURE
+Keep Scene 5 isolated for later GitHub integration.
+Suggested structure:
+src/
+└── features/
+    └── scene-05-community/
+        ├── assets/
+        ├── references/
+        ├── components/
+        │   ├── Scene5SideNavigation.tsx
+        │   ├── Scene5Portfolio.tsx
+        │   ├── Scene5Forum.tsx
+        │   ├── Scene5ForumPost.tsx
+        │   ├── Scene5ForumOverview.tsx
+        │   ├── Scene5EngagementBar.tsx
+        │   ├── Scene5CommentPanel.tsx
+        │   └── Scene5ShareState.tsx
+        │
+        ├── data/
+        ├── motion/
+        ├── styles/
+        ├── audit/
+        └── README.md
+Use scene-specific naming.
+Avoid generic names like:
+	•	Header.tsx
+	•	Page.tsx
+	•	Card.tsx
+	•	Navigation.tsx
+This reduces future Git merge conflicts.
+
+PART 15
+MERGE SAFETY
+This project will eventually be merged with the main Dream Planet campaign repository.
+Therefore:
+	•	Do not overwrite unrelated scene files.
+	•	Do not modify previous approved scenes.
+	•	Do not rename global files without necessity.
+	•	Reuse existing dependencies where possible.
+	•	Keep Scene 5-specific components namespaced.
+	•	Keep assets organized.
+	•	Document new dependencies.
+	•	Document animation entry points.
+	•	Document integration instructions.
+Do not touch Scene 6 implementation yet.
+
+PART 16
+DELIVERABLES
+Produce:
+	1.	Fully recreated Side Navigation
+	2.	Fully recreated Portfolio
+	3.	Fully recreated Forum Post Feed
+	4.	Fully recreated Forum Overview
+	5.	View Portfolio interaction
+	6.	View Forum interaction
+	7.	Controlled Forum scrolling
+	8.	Like interaction
+	9.	Comment interaction
+	10.	Share interaction
+	11.	Deterministic interaction state
+	12.	Full Scene 5 animation
+	13.	Scene 5 start frame
+	14.	Scene 5 end frame
+	15.	Scene 5 preview export
+	16.	Visual fidelity audit
+	17.	Interaction audit
+	18.	Updated README
+	19.	GitHub merge/integration notes
+Suggested output files:
+DreamPlanet_Scene5_v1.mp4
+DreamPlanet_Scene5_StartFrame.png
+DreamPlanet_Scene5_EndFrame.png
+SCENE5_VISUAL_AUDIT.md
+SCENE5_INTERACTION_AUDIT.md
+SCENE5_ASSET_MAP.md
+SCENE5_INTEGRATION.md
+
+FINAL ACCEPTANCE CRITERIA
+Scene 5 is considered complete only when:
+	•	Side Navigation matches the reference.
+	•	Portfolio matches the reference.
+	•	Forum Feed matches the reference.
+	•	Forum Overview matches the reference.
+	•	View Portfolio navigation works.
+	•	View Forum navigation works.
+	•	Forum scrolling is smooth.
+	•	Engagement controls work predictably.
+	•	Interaction states are deterministic.
+	•	The UI remains editable.
+	•	Animation is smooth.
+	•	Scene 4 → Scene 5 transition is seamless.
+	•	Scene 5 → Scene 6 handoff is clean.
+	•	The full scene works at 9:16.
+	•	No browser or development UI appears in the export.
+	•	No placeholder assets remain.
+	•	No visual seams or layout shifts are present.
+	•	Scene 5 can be merged into the main GitHub campaign repository without unnecessary structural conflicts.
+
+FINAL IMPLEMENTATION RULE
+Do not start Scene 6.
+Complete Scene 5 in this order:
+Recreate UI
+↓
+Visual fidelity audit
+↓
+Correct UI
+↓
+Lock static UI
+↓
+Implement navigation
+↓
+Implement deterministic interactions
+↓
+Interaction audit
+↓
+Build cinematic animation
+↓
+Review Scene 5 on 9:16 mobile viewport
+↓
+Render Scene 5 preview
+↓
+Lock Scene 5
+↓
+Prepare Scene 6
+Treat the uploaded screenshots as the visual source of truth, the uploaded screen recordings as the behavioral source of truth, and the existing Dream Planet campaign scenes as the motion and continuity source of truth.
+The finished result should make the viewer feel that they have followed a real journey inside Dream Planet:
+From referral → to identity → to portfolio → to community → to participation.
+That is the core story Scene 5 needs to tell.

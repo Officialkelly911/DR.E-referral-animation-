@@ -71,6 +71,14 @@ All shared assets live in `extracted_scenes/Scene3Scene4_contents/Replit-Design-
 - AI music track: `Ai_music_for_dream_planet_video__1785842118219.mp3`
 - Scene 1+2 reference: `extracted_scenes/Scene1scene2_contents/Dre-animation/Dream Planet Referral Campaign/`
 
+## Setup status
+
+Dependencies installed and all four workflows (Scene 3 web, Referral Module web, API Server, mockup-sandbox) verified running and rendering correctly.
+
+## Scene 5 materials (uploaded, not yet built)
+
+`attached_assets/` contains a full Scene 5 spec ("Creator Portfolio → Community Forum → Engagement") plus reference screenshots, screen recordings, forum/portfolio media, and brand assets. This is a large new feature (new UI screens: side navigation, portfolio, forum feed, forum overview, plus like/comment/share interactions and a new cinematic animation timeline) — scoped as a separate follow-up task rather than done as part of initial project setup.
+
 ## Final master QA (Aug 5, 2026)
 
 Ran a full production QA pass on the 4-scene master per the approved QA checklist. Result:
