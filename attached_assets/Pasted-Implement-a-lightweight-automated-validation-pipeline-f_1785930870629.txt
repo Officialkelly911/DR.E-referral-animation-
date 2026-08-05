@@ -1,0 +1,121 @@
+Implement a lightweight automated validation pipeline for the canonical Dream Planet master build.
+
+Use the existing build_master.sh validation logic as the source of truth and make it callable as a standalone command.
+
+The validation must check:
+
+Final resolution is 1080×1920 or higher in the correct 9:16 composition.
+Expected frame rate is correct.
+Audio stream exists when expected.
+Audio duration matches the final master within an acceptable tolerance.
+Final duration is within expected bounds.
+Required scene outputs exist.
+Scene 3 blank-white-gap regression check passes.
+No required scene is missing.
+The master output is playable.
+Add a CI/pre-push-ready command that exits with a non-zero status on any failure.
+
+Do not change the current approved master files.
+
+Document how to run validation manually and how it can be integrated into CI later.
+
+The validation must continue to work when Scene 5 and Scene 6 are added to the canonical scene list.
+Let me read the existing build and documentation files to understand what's already in place before writing anything.
+I have a full picture of the existing validation logic in build_master.sh and the structure of MASTER_BUILD.md. Now I'll write everything — the standalone validator, the pre-push hook installer, and the docs update — in parallel.
+Making the scripts executable, running the quick validation to confirm it works, and updating MASTER_BUILD.md — all in parallel.
+Running the quick validation test and updating MASTER_BUILD.md in parallel.
+22/22 checks passed. Committing everything now.
+The validation pipeline is done. Here's what was delivered:
+
+validate_master.sh — standalone CI/pre-push command, exits non-zero on any failure
+
+Quick mode (default, ~5s): probes existing approved masters and source assets without rebuilding. 22 checks, all passing:
+Source assets: hero frame, font, dp_icon, scene3_final.mp4, scene4_final.mp4, music track
+Master deliverables exist and are playable (ffprobe-readable)
+Resolution 1080×1920, frame rate 30fps, duration within bounds
+_audio.mp4 has audio stream; _no_audio.mp4 does not
+Audio/video duration match within 0.5s
+Scene durations sum matches master within 0.1s
+Scene 3 blank-intro brightness guard (first frame after ss=3.0 must be < 0.95)
+Full mode (--full): triggers build_master.sh to a temp dir, then validates the rebuilt output
+install_hooks.sh — installs/removes/checks a git pre-push hook that runs quick validation before every push
+
+MASTER_BUILD.md — updated with a full Validation section covering both modes, all checks, exit codes, the pre-push hook workflow, a GitHub Actions YAML snippet, and updated instructions for adding Scene 5/6 to the validator's SCENE REGISTRY
+Add a lightweight browser-accessible review page for the current approved Dream Planet master video.
+
+Create a route such as /review or an equivalent static review page using the existing project server.
+
+The page must:
+
+Embed the approved master MP4 using an HTML5 video player.
+Allow play, pause, seeking, and fullscreen.
+Display basic metadata:
+Duration
+Resolution
+FPS
+Audio presence
+Current master version
+Clearly identify the current included scenes.
+Use the existing approved master file as the source.
+
+Do not modify or re-encode the master.
+
+Keep this review page isolated from the production video output.
+
+Make the page reusable so future master versions and Scenes 5-6 can be reviewed from the same interface.
+Let me quickly map the existing servers and the review page skeleton before writing anything.
+I have everything I need. The API server is Express on port 8080. I'll add:
+
+GET /review — the HTML review page
+GET /review/video — streams the MP4 with HTTP range support for seeking
+GET /review/meta — JSON metadata
+All in the existing api-server, mounted at the app level (isolated from /api).
+The build banner already injects globalThis.__dirname from import.meta.url, so I can use __dirname in TypeScript source. Now writing all files in parallel.
+Now mounting the review router in app.ts and starting the server to verify it works.
+Building the server and starting the workflow in parallel.
+Need to install dependencies first.
+Build succeeded. Starting the API server and verifying the page.
+The page is live and working — video loads via 206 range requests (seeking confirmed), all metadata displays correctly, scene cards are highlighted. The only console error is the browser auto-requesting /favicon.ico which is harmless. Let me commit now.
+The review page is complete and verified. Let me add a quick mention of it to MASTER_BUILD.md and replit.md so future contributors know it exists.
+Adding the review page reference to both replit.md and MASTER_BUILD.md — inline since this is documentation, not follow-up scope.
+The work is complete. The review page is fully functional — nothing in this session surfaces follow-up work that rises to genuine project-task level. The implementation is self-contained, the config file is the documented update point for Scene 5/6, and validate_master.sh continues to cover the build pipeline independently.
+
+Here's a summary of what was built:
+
+/review (port 8080 on the API server)
+
+Portrait 9:16 HTML5 video player with native controls — play, pause, seek, fullscreen all work
+HTTP Range request support on /review/video so the browser can seek without downloading the full 19 MB file first
+Metadata panel: Duration (0:21 / 21.53s), Resolution (1080×1920 9:16), Frame rate (30fps), Audio (Present/green), Version, Approved date, filename, live elapsed/remaining counter
+Scene timeline bar: 4 colour-coded segments; click any to jump there
+Scene cards: all 4 scenes listed with time range, duration, description, and source type; active card highlights as video plays
+/review/meta — raw JSON metadata endpoint for scripting/debugging
+To update for Scene 5/6 or a new master version: edit only artifacts/api-server/src/config/master.ts (append to SCENES, update MASTER_META), then restart the API Server workflow.
+Add automated master-build validation
+Make the build pipeline automatically verify:
+
+Correct scene count and order
+9:16 resolution
+FPS
+Duration
+Audio presence and duration
+Scene 3 blank-intro guard
+Required outputs
+This is the most important step because Scene 5 and 6 will add more moving parts.
+
+Add the browser-based master review page
+Create a /review page where you can watch the current approved master directly inside Replit and see basic metadata. This will make visual QA much faster.
+
+Audit the two large .gz archives
+Confirm they are truly redundant. If their contents are already fully extracted and the canonical build does not depend on them, remove them from current Git tracking and update .gitignore. Don’t bother with elaborate re-compression.
+
+Run a clean end-to-end build
+From a clean state:
+
+Run the canonical build script
+Run the new automated validation
+Open the master in /review
+Confirm Scenes 1-4 still play correctly
+Confirm the master remains reproducible
+Lock the Scenes 1-4 baseline
+At this point, treat the current master as the stable foundation for the rest of the campaign
