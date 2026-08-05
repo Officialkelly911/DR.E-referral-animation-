@@ -27,8 +27,14 @@ import { Scene5SideNavigation } from './Scene5SideNavigation';
 import { Scene5Portfolio } from './Scene5Portfolio';
 
 export function Scene5PreviewApp() {
-  const [isOpen, setIsOpen] = useState(true);
-  const [screen, setScreen] = useState<'home' | 'portfolio'>('home');
+  // Harness-only convenience: ?screen=portfolio jumps straight to the
+  // Portfolio page for review/QA without clicking through the drawer.
+  const initialScreen: 'home' | 'portfolio' =
+    typeof window !== 'undefined' && new URLSearchParams(window.location.search).get('screen') === 'portfolio'
+      ? 'portfolio'
+      : 'home';
+  const [isOpen, setIsOpen] = useState(initialScreen === 'home');
+  const [screen, setScreen] = useState<'home' | 'portfolio'>(initialScreen);
 
   return (
     <div
