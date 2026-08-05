@@ -1,0 +1,79 @@
+Proceed with Task #3: Clean up stale and regenerable video build artifacts, while preserving the canonical master-build pipeline and all irreplaceable source assets.
+
+Before deleting anything:
+
+1. Audit all tracked files contributing to the approximately 135 MB of video/build artifact bloat.
+2. Categorize each candidate as:
+    * Essential source asset
+    * Regenerable intermediate
+    * Superseded experiment
+    * Final deliverable
+    * Unknown / requires review
+
+Do not delete anything in the Unknown / requires review category automatically.
+
+Preserve:
+
+* Original source media
+* Original audio
+* Logos
+* Screenshots used as references
+* Scene source code
+* Animation source
+* build_master.sh
+* MASTER_BUILD.md
+* replit.md
+* Any required configuration
+
+Remove from Git tracking only files that are clearly:
+
+* Regenerable by build_master.sh
+* Temporary build outputs
+* Intermediate scene renders
+* Contact sheets
+* Generated frame sequences
+* Superseded experimental outputs
+* Duplicate final exports that are not required as source inputs
+
+Update .gitignore to prevent those regenerable artifacts from being re-added.
+
+Ensure that all temporary build outputs are generated under a dedicated ignored directory such as:
+
+tmp_dp_master_build/
+
+or another clearly documented temporary build path.
+
+After cleanup:
+
+1. Run the canonical build_master.sh from a clean state.
+2. Verify the full four-scene master still builds successfully.
+3. Verify all validation checks pass.
+4. Confirm the resulting approved master remains byte-identical to the current approved version where deterministic encoding is expected.
+5. Confirm Scene 3’s enforced blank-intro guard still works.
+6. Confirm no required source assets were accidentally removed.
+7. Confirm the repository’s tracked size has materially decreased.
+
+Do not rewrite Git history in this task.
+
+Do not use git filter-repo, BFG, or force-push operations.
+
+At the end, generate:
+
+REPO_ARTIFACT_CLEANUP.md
+
+documenting:
+
+* Files/directories removed
+* Approximate storage reclaimed
+* Files intentionally retained and why
+* .gitignore changes
+* How to regenerate the removed assets
+* Confirmation that the canonical master build still passes
+
+Finally, report:
+
+* Before tracked artifact size
+* After tracked artifact size
+* Approximate reduction
+* Build verification status
+* Any files left for manual review
