@@ -1,0 +1,978 @@
+Now is the right time to move into Scene 5. The important thing is that the Scenes 1-4 baseline is already stable, the canonical master-build pipeline exists, and the repository has a repeatable build process. Scene 5 should now be developed as a new self-contained feature, then integrated into the master only after it passes visual and animation QA.
+
+Use this as the next Replit Agent prompt:
+
+⸻
+
+DREAM PLANET REFERRAL CAMPAIGN
+
+SCENE 5 — CREATOR PORTFOLIO → COMMUNITY FORUM → ENGAGEMENT
+
+Implementation, Audit, Animation, and Master Integration
+
+PROJECT STATUS
+
+The Dream Planet promotional campaign currently has a stable, reproducible baseline containing:
+
+* Scene 1
+* Scene 2
+* Scene 3
+* Scene 4
+
+The canonical master-build pipeline is already implemented and validated.
+
+The project now has:
+
+* A committed canonical build_master.sh
+* Automated build validation
+* A browser-based master review workflow
+* Authoritative scene sources
+* A reproducible four-scene master
+* Scene 1-4 approved as the current baseline
+
+Do not modify or destabilize Scenes 1-4 during this task.
+
+Scene 5 must be developed as a new, isolated feature and integrated into the master only after the Scene 5 UI and animation are fully reviewed and approved.
+
+⸻
+
+PRIMARY OBJECTIVE
+
+Create Scene 5 as a cinematic journey showing the relationship between:
+
+Creator identity → Personal Portfolio → Community Forum → Community interaction
+
+The narrative should communicate that Dream Planet is not merely a referral or rewards platform.
+
+It provides:
+
+* A personal creator identity
+* A creative portfolio
+* A direct connection to a community
+* A place where people share and interact
+
+The intended journey is:
+
+Scene 4 ending on Leaderboard
+        ↓
+Open Side Navigation
+        ↓
+View Portfolio
+        ↓
+Creator Portfolio
+        ↓
+View Forum
+        ↓
+Forum Post Feed
+        ↓
+Community content
+        ↓
+Controlled engagement interaction
+        ↓
+Scene 6 handoff
+
+⸻
+
+CRITICAL PRODUCTION RULE
+
+Do not immediately modify the canonical master.
+
+The implementation order must be:
+
+Audit current project
+↓
+Recreate Scene 5 UI
+↓
+Visual fidelity audit
+↓
+Correct UI
+↓
+Lock Scene 5 UI
+↓
+Implement deterministic interactions
+↓
+Interaction QA
+↓
+Build Scene 5 cinematic animation
+↓
+Review Scene 5
+↓
+Lock Scene 5 animation
+↓
+Integrate Scene 5 into canonical build
+↓
+Update browser review page
+↓
+Rebuild master
+↓
+Run full Scenes 1-5 validation
+
+Do not add Scene 5 to the final master until Scene 5 has passed all QA gates.
+
+⸻
+
+STEP 1 — AUDIT THE CURRENT PROJECT
+
+Before changing anything, inspect the entire project.
+
+Review:
+
+* build_master.sh
+* MASTER_BUILD.md
+* replit.md
+* Scene 1-4 source files
+* Scene 1-4 exported files
+* Existing animation framework
+* Existing Framer Motion setup
+* Existing review page
+* Existing scene configuration/list
+* Existing asset directories
+* Existing design tokens
+* Existing reusable UI components
+* Existing capture scripts
+* Existing validation scripts
+
+Determine:
+
+* Where Scene 5 should live.
+* Which existing components can safely be reused.
+* Which scene-specific components must be created.
+* How the canonical scene list is structured.
+* How the browser review page is structured.
+* How the existing Playwright/Framer Motion capture workflow works.
+
+Do not duplicate functionality that already exists.
+
+Do not refactor unrelated code.
+
+Do not modify Scenes 1-4.
+
+⸻
+
+STEP 2 — LOCATE SCENE 5 REFERENCE MATERIAL
+
+Locate and use the supplied Scene 5 reference material already present in the project.
+
+The reference package includes:
+
+Visual references
+
+* Side Navigation screenshot
+* Portfolio screenshot
+* Forum Overview screenshot
+* Forum Post Feed screenshot
+
+Behavioral references
+
+* Portfolio → Forum navigation recording
+* Forum page recording
+
+Assets
+
+* Dr. E profile image
+* Portfolio media
+* Forum media
+* Forum avatars
+* Dream Planet branding
+* Original post images/videos
+
+Treat the supplied screenshots as the visual source of truth.
+
+Treat the supplied screen recordings as the behavioral source of truth.
+
+Do not replace original assets with stock media.
+
+Do not invent missing interface elements without documenting the assumption.
+
+⸻
+
+STEP 3 — SCENE 5 UI MODULE
+
+Create Scene 5 as an isolated feature module.
+
+Recommended structure:
+
+src/
+└── features/
+    └── scene-05-community/
+        ├── assets/
+        ├── references/
+        ├── components/
+        │   ├── Scene5SideNavigation.tsx
+        │   ├── Scene5NavigationItem.tsx
+        │   ├── Scene5Portfolio.tsx
+        │   ├── Scene5PortfolioHeader.tsx
+        │   ├── Scene5PortfolioGrid.tsx
+        │   ├── Scene5ViewForumButton.tsx
+        │   ├── Scene5Forum.tsx
+        │   ├── Scene5ForumPost.tsx
+        │   ├── Scene5ForumOverview.tsx
+        │   ├── Scene5EngagementBar.tsx
+        │   ├── Scene5CommentPanel.tsx
+        │   └── Scene5ShareState.tsx
+        │
+        ├── data/
+        ├── motion/
+        ├── styles/
+        ├── audit/
+        ├── Scene5CommunityExperience.tsx
+        └── README.md
+
+Use namespaced Scene 5 components.
+
+Avoid generic names such as:
+
+* Header.tsx
+* Card.tsx
+* Page.tsx
+* Navigation.tsx
+
+The project will eventually be merged and maintained alongside multiple scenes.
+
+⸻
+
+STEP 4 — RECREATE THE SIDE NAVIGATION
+
+Recreate the actual left-side navigation drawer from the supplied reference.
+
+The drawer must have:
+
+* White background
+* Full-height layout
+* Rounded top-right corner
+* Rounded bottom-right corner
+* Profile section
+* Navigation items
+* Dividers
+* Dimmed background overlay
+
+The underlying application remains visible behind the drawer.
+
+⸻
+
+Profile section
+
+Use:
+
+* Original Dr. Elizabeth profile image
+* Elizabeth Wisniewski DC PhD
+* View Portfolio
+
+View Portfolio should use the correct Dream Planet orange accent.
+
+⸻
+
+Navigation items
+
+Recreate the labels visible in the current reference:
+
+* Store Analytics
+* Sales
+* My purchases
+* Raba Bag
+* Subscriptions
+* Digital Library
+* Masterclass — Coming Soon
+* Favorite
+* Distribution Hub — Coming Soon
+* Referral
+
+Lower section:
+
+* Support
+* Settings
+
+Use the exact reference labels and ordering.
+
+Do not rely on earlier planning documents where they conflict with the latest screenshot.
+
+⸻
+
+STEP 5 — RECREATE THE PORTFOLIO PAGE
+
+The Portfolio page must faithfully match the supplied reference.
+
+Header
+
+Include:
+
+* dr._e
+* Orange verification badge
+* Share icon
+* Settings-style icon
+
+Profile
+
+Include:
+
+* Original circular profile image
+* White border
+* Elizabeth Wisniewski DC PhD
+* Others
+
+Bio
+
+Use:
+
+Entrepreneur | embodied leadership | artist | double doctor
+
+Current statistics
+
+Use the latest current reference value:
+
+47 Members in forum | 105 Posts
+
+If the current live/source data differs, use the current verified source value and document the discrepancy.
+
+⸻
+
+View Forum button
+
+Recreate exactly.
+
+The button is one of the most important elements in Scene 5.
+
+It must include:
+
+* White background
+* Dark text
+* Rounded pill shape
+* Person/group outline icon
+* Correct dimensions
+* Correct spacing
+
+The button should remain independently addressable for animation.
+
+⸻
+
+STEP 6 — RECREATE PORTFOLIO MEDIA GRID
+
+Recreate the three-column media grid.
+
+Use original supplied media assets.
+
+Support:
+
+* Images
+* Artwork
+* Video tiles
+* Quote cards
+* Creative content
+
+Video tiles should have their proper play overlays.
+
+Include the orange floating + button.
+
+Do not use the entire Portfolio as a long scrolling animation.
+
+Only reveal enough of the Portfolio to communicate:
+
+Real creator identity + real creative output.
+
+⸻
+
+STEP 7 — RECREATE THE FORUM
+
+Build two states:
+
+Forum Post Feed
+
+Primary state for Scene 5.
+
+Forum Overview
+
+Secondary state available for optional reveal.
+
+⸻
+
+FORUM POST FEED
+
+Include:
+
+* Back button
+* dr. Elizabeth Wisnie...
+* 47 members
+* Edit Forum
+* User avatars
+* Usernames
+* Timestamps
+* Three-dot menus
+* Post text
+* Images
+* Videos
+* Artwork
+* Comment control
+* Like control
+* Share control
+* Orange floating + button
+
+Use the original assets supplied in the project.
+
+⸻
+
+FORUM OVERVIEW
+
+Include:
+
+* Forum title
+* 47 members
+* Description
+* Created date
+* Guidelines
+* Update
+* Member section
+* See all
+* Member avatars
+* Invite to forum
+* Forum URL
+* Share Link
+* Floating +
+
+Do not make the Overview the primary Scene 5 destination unless the behavioral reference demonstrates that the real app opens there first.
+
+The supplied screen recording should determine the actual initial state.
+
+⸻
+
+STEP 8 — NAVIGATION BEHAVIOR
+
+Implement:
+
+Side Navigation
+
+Closed → Open → Closed
+
+View Portfolio
+
+Navigation → Portfolio
+
+View Forum
+
+Portfolio → Forum
+
+Use the actual application navigation behavior demonstrated in the screen recording.
+
+Do not invent a new navigation pattern.
+
+Recommended animation:
+
+* Horizontal page transition
+* Smooth easing
+* No hard visual reset
+* No fade to black
+* No unnecessary transition effects
+
+⸻
+
+STEP 9 — DETERMINISTIC COMMUNITY INTERACTIONS
+
+Implement local deterministic interaction states.
+
+Do not depend on a live backend for the promotional animation.
+
+⸻
+
+Like
+
+State:
+
+0 Like
+
+Interaction:
+
+Tap
+→ active Like state
+→ count increments
+
+Use the real UI styling.
+
+⸻
+
+Comment
+
+State:
+
+0 Comment
+
+Interaction:
+
+Tap
+→ Comment interface opens
+→ Prepared comment appears
+→ Count updates
+
+The interface must remain modular so it can be adjusted when exact live behavior is verified.
+
+⸻
+
+Share
+
+Implement the observed or documented real share behavior.
+
+If exact share behavior is not yet confirmed:
+
+* Keep the implementation modular.
+* Use a deterministic placeholder state only where necessary.
+* Document the assumption.
+* Do not hardcode an irreversible fake interaction.
+
+⸻
+
+STEP 10 — VISUAL FIDELITY AUDIT
+
+Before implementing cinematic animation, audit all screens.
+
+Compare:
+
+Side Navigation
+
+* Width
+* Corners
+* Overlay
+* Profile
+* Labels
+* Icons
+* Dividers
+* Coming Soon badges
+
+Portfolio
+
+* Header
+* Avatar
+* Verification
+* Name
+* Bio
+* Stats
+* View Forum
+* Media grid
+* Floating +
+
+Forum
+
+* Header
+* Back button
+* Edit Forum
+* Member count
+* Post structure
+* Engagement bar
+* Media proportions
+* Floating +
+
+Overview
+
+* Tabs
+* Guidelines
+* Members
+* Invite link
+* Share Link
+
+The UI must pass the audit before animation begins.
+
+⸻
+
+STEP 11 — SCENE 5 ANIMATION
+
+Target duration:
+
+8-10 seconds
+
+Output:
+
+9:16
+
+Resolution:
+
+1080×1920 minimum
+
+Frame rate:
+
+Use the project’s established capture standard
+
+Do not independently change the campaign-wide frame rate during this task.
+
+⸻
+
+Timeline
+
+0.0–0.7s
+
+Scene 4 → Side Navigation
+
+Start from the exact final frame of Scene 4.
+
+Open the actual navigation control.
+
+No fade to black.
+
+⸻
+
+0.7–1.4s
+
+View Portfolio
+
+Focus on View Portfolio.
+
+Tap.
+
+Close the drawer naturally.
+
+⸻
+
+1.4–2.6s
+
+Portfolio Reveal
+
+Show:
+
+* Profile image
+* Name
+* Bio
+* 47 members
+* 105 posts
+* Creative media
+
+Camera gently pushes in.
+
+⸻
+
+2.6–3.4s
+
+View Forum
+
+Shift focus to View Forum.
+
+Tap.
+
+Navigate naturally into Forum.
+
+⸻
+
+3.4–4.3s
+
+Forum Feed
+
+Enter directly into the verified initial Forum state.
+
+Reveal:
+
+* Header
+* Member count
+* First post
+
+⸻
+
+4.3–6.4s
+
+Community Discovery
+
+Controlled feed scroll.
+
+Reveal 2-3 visually strong community posts.
+
+Do not scroll rapidly.
+
+⸻
+
+6.4–7.2s
+
+Optional Overview
+
+If pacing allows:
+
+Briefly reveal Forum Overview.
+
+Show:
+
+* 47 members
+* Guidelines
+* Members
+
+Then return to Post Feed.
+
+If this feels rushed, omit this optional beat from the final cinematic render.
+
+The Overview must still exist as a functional UI state.
+
+⸻
+
+7.2–8.5s
+
+Engagement
+
+Demonstrate one or more:
+
+* Like
+* Comment
+* Share
+
+Do not force all interactions if they make the sequence unreadable.
+
+Prioritize clarity over quantity.
+
+⸻
+
+8.5–10.0s
+
+Scene 6 Handoff
+
+Settle on a strong community post.
+
+Do not end:
+
+* Mid-scroll
+* With a navigation drawer open
+* With a comment panel obscuring the screen
+* With a share modal covering the main content
+
+Prepare a clean outgoing frame for Scene 6.
+
+⸻
+
+STEP 12 — MOTION LANGUAGE
+
+Match Scenes 1-4.
+
+Use:
+
+* Smooth easing
+* Slow push-ins
+* Controlled UI motion
+* Minimal parallax
+* Natural app navigation
+* Restrained micro-interactions
+
+Avoid:
+
+* Bounce
+* Glitch
+* Flash
+* Spinning UI
+* Excessive zoom
+* Random particles
+* Decorative effects
+
+The scene should feel like the same premium campaign.
+
+⸻
+
+STEP 13 — SCENE 5 CAPTURE
+
+Use the existing project’s established Scene 3/4 capture system where possible.
+
+Do not create a separate incompatible capture workflow unless required.
+
+The Scene 5 capture should be:
+
+* Deterministic
+* Reproducible
+* Compatible with the canonical build
+* Compatible with the existing validation system
+
+Produce:
+
+scene5_final.mp4
+
+Also produce:
+
+scene5_final_no_audio.mp4
+
+if that is consistent with the existing workflow.
+
+Do not embed a separate music track into Scene 5 if the canonical master adds music at the master level.
+
+⸻
+
+STEP 14 — QA
+
+Verify:
+
+* Scene 4 → Scene 5 transition
+* Side navigation opening
+* View Portfolio tap
+* Portfolio rendering
+* View Forum tap
+* Forum rendering
+* Feed scrolling
+* Interaction state changes
+* Scene 5 ending frame
+
+Use the real 9:16 preview.
+
+Check:
+
+* No clipping
+* No layout shifts
+* No flicker
+* No missing assets
+* No placeholder media
+* No broken navigation
+* No animation jitter
+
+⸻
+
+STEP 15 — DO NOT MODIFY THE MASTER YET
+
+Do not immediately add Scene 5 to build_master.sh.
+
+First create:
+
+scene5_final.mp4
+
+Then run the Scene 5 QA.
+
+Only after Scene 5 is approved should you:
+
+1. Add Scene 5 to the canonical scene list.
+2. Update build_master.sh.
+3. Update MASTER_BUILD.md.
+4. Update the browser review page.
+5. Run a clean master rebuild.
+6. Run all automated validation.
+7. Review the full Scenes 1-5 master.
+
+⸻
+
+STEP 16 — MASTER INTEGRATION
+
+After Scene 5 passes QA, add it to the canonical build pipeline.
+
+The scene list should become:
+
+Scene 1
+Scene 2
+Scene 3
+Scene 4
+Scene 5
+
+Do not change the existing Scene 1-4 source definitions.
+
+Add Scene 5 as one new scene entry.
+
+The build must continue to:
+
+* Validate resolution
+* Validate FPS
+* Validate audio
+* Validate scene completeness
+* Run Scene 3 blank-intro guard
+* Generate the full master
+* Update the browser review page
+
+⸻
+
+STEP 17 — UPDATED REVIEW PAGE
+
+Add Scene 5 to the browser review page.
+
+The review page should display:
+
+* Master video
+* Scene list
+* Scene 5 duration
+* Scene 5 status
+* Scene 5 start/end information
+
+Keep the page reusable for Scene 6.
+
+⸻
+
+STEP 18 — DOCUMENTATION
+
+Create:
+
+SCENE5_IMPLEMENTATION.md
+SCENE5_VISUAL_AUDIT.md
+SCENE5_INTERACTION_AUDIT.md
+
+Document:
+
+* Screens recreated
+* Original assets used
+* Interaction states
+* Animation timeline
+* Known assumptions
+* Capture process
+* Scene 4 handoff
+* Scene 6 handoff
+* Integration point in canonical master
+
+Update:
+
+* MASTER_BUILD.md
+* replit.md
+* Main README
+
+Only after Scene 5 is approved.
+
+⸻
+
+STEP 19 — FINAL ACCEPTANCE CRITERIA
+
+Scene 5 is complete when:
+
+* Side Navigation is visually faithful.
+* Portfolio is visually faithful.
+* Forum Feed is visually faithful.
+* Forum Overview exists and is usable.
+* View Portfolio works.
+* View Forum works.
+* Forum scrolling works.
+* Like interaction works.
+* Comment interaction works.
+* Share state works or is clearly documented if behavior is awaiting verification.
+* Scene 5 animation is smooth.
+* Scene 4 → Scene 5 is seamless.
+* Scene 5 → Scene 6 has a clean outgoing state.
+* Scene 5 works at 9:16.
+* Scene 5 capture is reproducible.
+* Scene 5 passes QA.
+* Scene 5 is integrated into the canonical build only after approval.
+* Scenes 1-4 remain unchanged.
+
+⸻
+
+FINAL INSTRUCTION
+
+Do not start Scene 6.
+
+Do not modify the approved Scene 1-4 visual content.
+
+Do not rebuild the existing master until Scene 5 has passed its own QA.
+
+The correct sequence is:
+
+Build Scene 5 UI
+↓
+Audit UI
+↓
+Lock UI
+↓
+Build interaction states
+↓
+Audit interactions
+↓
+Animate Scene 5
+↓
+Capture Scene 5
+↓
+Review Scene 5
+↓
+Approve Scene 5
+↓
+Integrate into canonical build
+↓
+Rebuild Scenes 1-5 master
+↓
+Run full validation
+↓
+Lock Scenes 1-5
+
+The end goal of Scene 5 is to make the viewer feel that they have moved from referral mechanics into the human side of Dream Planet:
+
+You have a profile.
+You create.
+You have a portfolio.
+You belong to a community.
+You participate.
+
+That is the story this scene should tell before Scene 6 delivers the final invitation.
