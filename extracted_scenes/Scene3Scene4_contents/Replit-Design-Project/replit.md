@@ -2,10 +2,11 @@
 
 A video production workspace for the **Dream Planet Referral Campaign**, containing:
 
-- **Scenes 1 & 2**: Already completed as final `.mp4` files (in `extracted_scenes/Scene1scene2_contents/`)
-- **Scene 3 animation**: Cinematic 9.5-second Referral Home journey (built, running)
-- **Scene 4 animation**: Cinematic 9.0-second deeper discovery (Leaderboard → Levels → CTA)
-- **Referral Module UI**: The locked React/TypeScript app used in both Scene 3 and Scene 4
+- **Scenes 1 & 2**: ✅ Complete — locked final `.mp4` files (in `extracted_scenes/Scene1scene2_contents/`)
+- **Scene 3 animation**: ✅ Complete — 9.5s cinematic journey: Referral Home → View Levels → Leaderboard (captured, locked)
+- **Scene 4 animation**: ✅ Complete — 9.0s deeper discovery: Leaderboard → Levels → Referral Home CTA (captured, locked)
+- **Master video**: ✅ Complete — all 4 scenes stitched, 24.5s total (with audio + visual review variants)
+- **Referral Module UI**: Locked React/TypeScript app (pixel reference, do not modify)
 
 ## Running the project
 
@@ -50,7 +51,15 @@ This produces:
 | `scene4_final.mp4` | `Scene1scene2_contents/…/Scene 4/Final Animation/` |
 | `DreamPlanet_Master_v1.mp4` | `Scene1scene2_contents/…/Final Edit/` |
 
-**Current output:** the master contains Scene 3+4 only (18.5s). Scene 1+2 source was not present at capture time. Once it is added, re-run the script and it will stitch all four scenes automatically (see Task #3).
+**Current output (all complete — August 2026):**
+
+| File | Duration | Notes |
+|------|----------|-------|
+| `scene3_final.mp4` | 9.52s | Scene 3 only, 1080×1920, H.264 CRF16 |
+| `scene4_final.mp4` | 9.0s | Scene 4 only, 1080×1920, H.264 CRF16 |
+| `DreamPlanet_Master_v1.mp4` | 24.5s | All 4 scenes, no audio |
+| `DreamPlanet_Master_v1_audio.mp4` | 24.5s | All 4 scenes + AI music track |
+| `DreamPlanet_Master_v1_VisualReview.mp4` | 24.5s | Visual review with effects overlay |
 
 ## Scene 3 animation — what's built
 

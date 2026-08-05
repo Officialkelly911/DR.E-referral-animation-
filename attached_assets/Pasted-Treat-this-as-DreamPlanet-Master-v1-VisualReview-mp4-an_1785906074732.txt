@@ -1,0 +1,81 @@
+Treat this as:
+
+DreamPlanet_Master_v1_VisualReview.mp4
+
+and preserve it.
+
+Then:
+
+Step 1
+
+Watch the actual master from beginning to end.
+
+Review:
+
+Scene 1 opening
+Scene 1 → Scene 2 cut
+Tattoo → logo continuity
+Scene 2 → Scene 3 dissolve
+Scene 3 opening state
+Scene 3 → Scene 4 cut
+Audio continuity
+Final fadeout
+Step 2
+
+Confirm the creative sequence is approved.
+
+Step 3
+
+Begin the true 60fps capture experiment for Scene 3 and Scene 4 only.
+
+Step 4
+
+Generate:
+
+DreamPlanet_Master_v2_60fps.mp4
+
+Step 5
+
+Compare v1 vs v2.
+
+The comparison should focus on:
+
+Motion smoothness
+Text clarity
+UI animation smoothness
+Scroll quality
+CPU/GPU artifacts
+Frame pacing
+File size
+Render time
+If the 60fps version is genuinely smoother without introducing new artifacts, use it as the final master. The current DreamPlanet_Master_v1_VisualReview.mp4 has passed the visual and audio reconstruction checks and should now be preserved as the approved 30fps baseline.
+
+Before beginning the 60fps experiment, do one final end-to-end review of the actual rendered master and confirm that:
+
+Scene 1 fills the 9:16 frame with no letterboxing.
+Scene 1 → Scene 2 is seamless.
+Scene 2 → Scene 3 uses the intended tattoo-to-digital-interface dissolve.
+The opening state of Scene 3 matches the approved campaign story order.
+Scene 3 → Scene 4 is seamless.
+The audio is one continuous track from 0:00 to the end with no restarts or gaps.
+Do not overwrite DreamPlanet_Master_v1_VisualReview.mp4.
+
+Once the above review passes, investigate a genuine 60fps capture workflow for Scene 3 and Scene 4.
+
+Preferred methods, in order:
+
+Native 60fps capture if supported.
+Deterministic frame-by-frame rendering at 60fps.
+CDP screencast or equivalent high-frequency capture.
+Do not simply change metadata from 30fps to 60fps.
+
+Preserve the current animation timing and visual composition exactly.
+
+Produce a separate 60fps test render and verify it with ffprobe for:
+
+Resolution
+Actual frame rate
+Duration
+Audio presence
+Audio duration
+Do not replace the approved 30fps baseline until the 60fps version has been visually compared and verified.
