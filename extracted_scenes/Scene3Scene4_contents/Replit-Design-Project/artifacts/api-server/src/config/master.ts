@@ -25,6 +25,9 @@ export const VIDEO_FILENAME = "DreamPlanet_Master_v1_audio.mp4";
 // Resolved from __dirname (dist/), which the build banner injects from import.meta.url.
 // Chain: dist/ → api-server/ → artifacts/ → Replit-Design-Project/ →
 //        Scene3Scene4_contents/ → extracted_scenes/ → REPO_ROOT
+//
+// If the api-server is ever moved to a different depth in the repo tree,
+// adjust the number of ".." entries here to match the new depth.
 const REPO_ROOT = resolve(
   __dirname,
   "..",         // api-server/

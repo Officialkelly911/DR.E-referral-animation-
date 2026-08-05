@@ -15,6 +15,12 @@ cd extracted_scenes/Scene3Scene4_contents/Replit-Design-Project
 pnpm install
 ```
 
+**Master video review page** (port 8080, `/review`) — embed player, metadata, scene timeline:
+```sh
+pnpm --filter @workspace/api-server run dev
+```
+Then open `http://localhost:8080/review`. Also exposes `/review/meta` (JSON) and `/review/video` (MP4 stream). To update the review page for a new master version or Scene 5/6, edit `artifacts/api-server/src/config/master.ts`.
+
 **Scene 3 animation preview** (port 24448, `/dream-planet-scene3/`):
 ```sh
 pnpm --filter @workspace/dream-planet-scene3 run dev
