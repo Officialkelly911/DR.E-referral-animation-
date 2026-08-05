@@ -76,6 +76,8 @@ still lands correctly if scene durations change.
 
 ## Validation
 
+### Built-in (build_master.sh)
+
 After every build, before any deliverable is copied out, the script checks
 (via `ffprobe`):
 
@@ -93,7 +95,107 @@ deliverables in the output directory — the previous approved files are left
 untouched. A build report (resolution, frame rate, durations, per-scene
 timeline, output paths) prints on success.
 
+### Standalone validator (validate_master.sh)
+
+`validate_master.sh` is a CI/pre-push-ready command that validates the
+campaign master independently of the build. It exits 0 on full pass, 1 on
+any failure. No arguments needed for everyday use.
+
+**Quick mode** (default, ~5s) — probes the existing approved masters and
+source assets without rebuilding anything. Safe to run at any time:
+
+```sh
+cd "extracted_scenes/Scene3Scene4_contents/Scene1scene2_contents/Dre-animation/Dream Planet Referral Campaign/Final Edit"
+./validate_master.sh
+```
+
+**Full mode** (~60s) — runs a clean rebuild via `build_master.sh` to a temp
+dir, then validates the rebuilt output. Use this before approving a new master:
+
+```sh
+./validate_master.sh --full
+./validate_master.sh --full --out /tmp/my_verify_dir   # keep the rebuilt files
+```
+
+**Verbose output** — prints each individual check (even on pass):
+
+```sh
+./validate_master.sh --verbose
+```
+
+**Checks performed:**
+
+| # | Check | Mode |
+|---|-------|------|
+| 1 | All source assets exist and are non-empty | quick + full |
+| 2 | scene3_final.mp4 and scene4_final.mp4 are readable by ffprobe | quick + full |
+| 3 | Music track exists | quick + full |
+| 4 | All three master deliverables exist and are playable | quick + full |
+| 5 | Resolution is 1080×1920 (or ≥1080p in 9:16) | quick + full |
+| 6 | Frame rate is 30fps | quick + full |
+| 7 | Total duration is within expected bounds | quick + full |
+| 8 | `_audio.mp4` has an audio stream | quick + full |
+| 9 | `_no_audio.mp4` has no audio stream | quick + full |
+| 10 | Audio/video duration match within 0.5s | quick + full |
+| 11 | `_v1.mp4` and `_audio.mp4` durations match | quick + full |
+| 12 | Normalized scene clips exist and sum to master duration | full (quick if work dir present) |
+| 13 | Scene 3 blank-intro guard: first frame after ss=3.0 is not near-white | quick + full |
+
+**Exit codes:** `0` = all pass · `1` = validation failure · `2` = usage/prereq error
+
+### Pre-push hook
+
+To automatically validate before every `git push`:
+
+```sh
+./install_hooks.sh             # install
+./install_hooks.sh --status    # check if installed
+./install_hooks.sh --remove    # uninstall
+```
+
+The hook runs `validate_master.sh --quick` and blocks the push if any check
+fails. It appends to an existing pre-push hook rather than replacing it.
+
+### CI integration
+
+Add a validation step to your CI pipeline (GitHub Actions example):
+
+```yaml
+# .github/workflows/validate-master.yml
+name: Validate Dream Planet Master
+
+on:
+  push:
+  pull_request:
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Install dependencies
+        run: |
+          sudo apt-get update -qq
+          sudo apt-get install -y ffmpeg imagemagick
+
+      - name: Validate master (quick)
+        working-directory: "extracted_scenes/Scene3Scene4_contents/Scene1scene2_contents/Dre-animation/Dream Planet Referral Campaign/Final Edit"
+        run: bash validate_master.sh --quick --verbose
+
+      - name: Full rebuild + validate (on main only)
+        if: github.ref == 'refs/heads/main'
+        working-directory: "extracted_scenes/Scene3Scene4_contents/Scene1scene2_contents/Dre-animation/Dream Planet Referral Campaign/Final Edit"
+        run: bash validate_master.sh --full --verbose
+```
+
+For other CI systems (CircleCI, Bitbucket Pipelines, GitLab CI), the
+equivalent is: install `ffmpeg` and `imagemagick`, then run
+`bash validate_master.sh --quick` from the `Final Edit/` directory.
+
 ## Adding Scene 5 / Scene 6
+
+### In build_master.sh
 
 1. Add a source variable near the top of the script, e.g.:
    ```sh
@@ -113,6 +215,30 @@ timeline, output paths) prints on success.
    pattern in `build_scene3()`: a named trim-point constant plus a
    post-trim sanity check (e.g. brightness, or a known-good duration range).
 
+### In validate_master.sh
+
+The validator has a dedicated **SCENE REGISTRY** section (clearly marked near
+the top) — the only section that needs updating when adding a new scene:
+
+1. **Flat video source**: add to `FLAT_SCENE_SRCS`:
+   ```sh
+   FLAT_SCENE_SRCS[scene5]="$S34_BASE/Scene 5/Final Animation/scene5_final.mp4"
+   ```
+2. **Procedural scene** (generated from assets like S1/S2): add its input
+   assets to `PROC_ASSETS` instead.
+3. **Trim guard** (if the scene has a baked-in blank intro): add to `TRIM_GUARDS`:
+   ```sh
+   TRIM_GUARDS[scene5]="2.0"   # seconds to skip before first real frame
+   ```
+4. Add the scene name to `SCENE_ORDER`:
+   ```sh
+   SCENE_ORDER=(scene1 scene2 scene3 scene4 scene5)
+   ```
+5. Adjust `MIN_DURATION` / `MAX_DURATION` if the total duration changes
+   significantly.
+
+Nothing outside the SCENE REGISTRY section needs to change.
+
 ## Troubleshooting missing assets
 
 The script fails fast (`set -euo pipefail`) with FFmpeg's own "No such file
@@ -125,3 +251,4 @@ or directory" error naming the exact missing input. Common causes:
 
 Update the corresponding `*_SRC`/`MASTER_FRAME`/`FONT`/`DP_ICON`/`MUSIC`
 variable at the top of the script to match the new path, then re-run.
+Also update the matching variable in `validate_master.sh`'s SCENE REGISTRY.
