@@ -1,0 +1,99 @@
+Proceed with Plan #2: Save a repeatable build script for the master video.
+
+The current DreamPlanet_Master_v1.mp4, _audio.mp4, and _no_audio.mp4 are approved as the current visual baseline and must not be deleted or overwritten during development.
+
+Create a canonical, repeatable master-build pipeline that can regenerate the campaign video from the authoritative scene sources without relying on manually typed FFmpeg commands.
+
+Requirements
+
+1. Identify and explicitly define the authoritative source file for:
+    * Scene 1
+    * Scene 2
+    * Scene 3
+    * Scene 4
+    * Campaign music
+2. Preserve the currently approved scene order:
+    Scene 1 → Scene 2 → Scene 3 → Scene 4
+3. Enforce the correct Scene 3 trim so the previously removed blank/white intro cannot reappear on future builds.
+4. Preserve the approved Scene 2 → Scene 3 transition exactly as it exists in the current approved master.
+5. Preserve the approved Scene 3 → Scene 4 handoff.
+6. Normalize all source videos to the required final output:
+    * 9:16
+    * 1080×1920 minimum
+    * Consistent frame rate
+7. Handle audio at the master level only.
+    * One continuous campaign soundtrack.
+    * No duplicate scene audio.
+    * No audio restart between scenes.
+    * Clean final fadeout.
+8. The script must generate:
+    * DreamPlanet_Master_v1_no_audio.mp4
+    * DreamPlanet_Master_v1_audio.mp4
+    * DreamPlanet_Master_v1.mp4
+9. Add validation after every build using ffprobe or equivalent.
+
+Validate:
+
+* Final duration
+* Resolution
+* Frame rate
+* Audio stream presence
+* Audio duration
+* Scene ordering
+
+10. Produce a concise build report after each run.
+
+Reproducibility requirement
+
+The build must be deterministic and rerunnable from a clean environment.
+
+Do not rely on:
+
+* manual FFmpeg commands
+* temporary files that are not documented
+* files generated only once and then assumed to exist
+* arbitrary folder contents
+
+If intermediate files are required, create them in a clearly named temporary/build directory and document their purpose.
+
+Future Scene integration
+
+Structure the script so that Scene 5 and Scene 6 can later be added without rewriting the entire pipeline.
+
+The scene list should be represented as a clearly editable configuration or array, for example:
+
+SCENES = [scene1, scene2, scene3, scene4]
+
+so that future scenes can be appended safely.
+
+Documentation
+
+Create or update:
+
+MASTER_BUILD.md
+
+documenting:
+
+* authoritative input files
+* build command
+* scene durations
+* transitions
+* audio source
+* output files
+* validation steps
+* how to add Scene 5 and Scene 6
+* troubleshooting for missing assets
+
+Also update the main README to point to this canonical build process.
+
+Important
+
+Do not alter the visual design or animation of Scenes 1-4.
+
+Do not regenerate scenes unnecessarily.
+
+Do not change the approved master creative direction.
+
+The purpose of this task is to make the existing approved production reproducible and prevent the previously fixed blank-screen intro or other stitching bugs from returning.
+
+After implementation, run the script once from the current authoritative sources and verify that the generated master matches the approved current version within expected encoding differences.
