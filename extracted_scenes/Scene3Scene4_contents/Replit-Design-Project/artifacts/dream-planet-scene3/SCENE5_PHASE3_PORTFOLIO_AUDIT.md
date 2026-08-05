@@ -42,10 +42,11 @@ interactions, no cinematic animation, no master integration, no Scene 6.
   `Add_post_icon__…` in `attached_assets/`) and are now used directly
   (trimmed to their opaque bounding box; see the `*_trimmed.png` copies next
   to the originals). Resolved, no longer a discrepancy.
-- **Play icon (video tile overlay):** still unresolved. The only supplied
-  "play button" asset is a full-bleed raster with an opaque background,
-  unusable as a transparent overlay, so the overlay still uses the
-  project's existing lucide `Play` icon.
+- **Play icon (video tile overlay):** originally unresolved (the first
+  supplied "play button" asset was a full-bleed raster with an opaque
+  background); a real transparent play-icon asset (`Play_video_icon__…`)
+  was later supplied and is now used directly (trimmed) as the video tile
+  overlay. Resolved, no longer a discrepancy.
 - **Media grid completeness:** the reference screenshots show a few
   original-artwork tiles (e.g. an orange heart abstract, a coin-mosaic
   heart) that were never included in the supplied asset upload. These are

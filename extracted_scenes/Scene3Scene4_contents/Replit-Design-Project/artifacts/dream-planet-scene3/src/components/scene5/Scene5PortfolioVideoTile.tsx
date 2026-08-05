@@ -2,17 +2,12 @@
  * Scene5PortfolioVideoTile.tsx
  *
  * A video tile in the Portfolio grid: the original clip rendered as its
- * own first-frame thumbnail (via a paused <video>), with a centered,
- * independently styled play overlay on top.
- *
- * No original play-icon asset was usable as an overlay graphic (the
- * supplied "Play button assets" file is a full-bleed raster with an
- * opaque background, not a transparent icon) — the overlay is built
- * from the project's existing lucide-react icon system instead, per
- * the Phase 3 spec's fallback allowance.
+ * own first-frame thumbnail (via a paused <video>), with a centered play
+ * overlay on top using the real supplied play-icon asset (trimmed to its
+ * opaque bounding box).
  */
 
-import { Play } from 'lucide-react';
+import playIcon from '@assets/Play_video_icon_trimmed.png';
 import type { Scene5PortfolioMediaItem } from './Scene5PortfolioData';
 
 export interface Scene5PortfolioVideoTileProps {
@@ -45,26 +40,23 @@ export function Scene5PortfolioVideoTile({ item }: Scene5PortfolioVideoTileProps
           display: 'block',
         }}
       />
-      <div
+      <img
         data-scene5="portfolio-video-play-overlay"
+        src={playIcon}
+        alt=""
         style={{
           position: 'absolute',
           top: '50%',
           left: '50%',
           transform: 'translate(-50%, -50%)',
-          width: '38px',
-          height: '38px',
-          borderRadius: '50%',
-          background: 'rgba(0,0,0,0.32)',
-          border: '1.5px solid rgba(255,255,255,0.85)',
-          display: 'flex',
-          alignItems: 'center',
-          justifyContent: 'center',
+          width: '40px',
+          height: 'auto',
+          aspectRatio: '656 / 767',
+          objectFit: 'contain',
+          filter: 'drop-shadow(0 1px 4px rgba(0,0,0,0.5))',
           pointerEvents: 'none',
         }}
-      >
-        <Play size={16} color="#ffffff" fill="#ffffff" style={{ marginLeft: '2px' }} />
-      </div>
+      />
     </div>
   );
 }
