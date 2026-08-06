@@ -34,10 +34,10 @@ const URL          = `http://localhost:${PORT}${BASE_PATH}`;
 const WIDTH        = 1080;
 const HEIGHT       = 1920;
 
-// S5 total = 9.5s + 0.8s buffer for encoder flush
-const S5_DURATION_MS = 9_500;
+// S5 total = 10.0s + 0.8s buffer for encoder flush
+const S5_DURATION_MS = 10_000;
 const RECORD_MS      = S5_DURATION_MS + 800;
-const TRIM_S         = S5_DURATION_MS / 1000 - 0.3; // trim buffer tail
+const TRIM_S         = S5_DURATION_MS / 1000 - 0.2; // trim buffer tail
 
 const CAPTURED_DIR   = path.join(ARTIFACT_DIR, 'captured');
 

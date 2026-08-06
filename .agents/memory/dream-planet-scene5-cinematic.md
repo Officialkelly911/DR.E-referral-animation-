@@ -6,11 +6,11 @@ description: Phase 6 capture complete; output location, key timing decisions, an
 # Dream Planet — Scene 5 Cinematic (Phase 6)
 
 ## Status (August 2026)
-Capture complete and QA'd. Standalone review cut ready; NOT yet in master.
+Full spec capture complete and QA'd (v2 — 9.8s, all 8 phases including Portfolio media scroll, Forum Overview, and Share). Standalone review cut ready; NOT yet in master.
 
 ## Output file
 `extracted_scenes/Scene3Scene4_contents/Scene1scene2_contents/Dre-animation/Dream Planet Referral Campaign/Scene 5/Final Animation/scene5_final.mp4`
-- Duration: 9.2 s
+- Duration: 9.8 s
 - Resolution: 1080 × 1920 (9:16)
 - FPS: 25
 - Codec: H.264 (CRF 16, slow)
