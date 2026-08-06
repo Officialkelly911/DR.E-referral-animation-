@@ -1,10 +1,36 @@
 # Dream Planet Master Build
 
-`build_master.sh` regenerates the campaign master deliverables
-(`DreamPlanet_Master_v1.mp4`, `_audio.mp4`, `_no_audio.mp4`) deterministically
+## Release history
+
+### Master v2 — Approved 2026-08-06 (tag: `master-v2-approved`)
+
+**5-scene campaign — Scenes 1–5 (41.300s)**
+
+| Scene | Label | Start | End | Duration |
+|-------|-------|-------|-----|----------|
+| 1 | Tattoo Reveal | 0.000s | 3.000s | 3.000s |
+| 2 | Creator Discovery | 3.000s | 6.000s | 3.000s |
+| 3 | Referral Journey (v3) | 6.000s | 19.433s | 13.433s |
+| 4 | Leaderboard | 19.433s | 28.433s | 9.000s |
+| 5 | Community & Participation | 28.433s | 41.300s | 12.867s |
+
+**What changed from v1:**
+- Scene 5 added (Creator Portfolio → Community Forum → Engagement interactions)
+- Scene 3 rebuilt to v3 (readability pass); trim updated 3.0s → 0.7s for standalone capture
+- Build script: `build_master_v2.sh`
+- Baseline snapshot: `archive/scene5_v1/MASTER_V2_BASELINE.md`
+
+### Master v1 — Approved 2026-08-05
+
+**4-scene campaign — Scenes 1–4 (21.533s)**  
+Build script: `build_master.sh`. Files preserved as `DreamPlanet_Master_v1*.mp4`.
+
+---
+
+`build_master_v2.sh` regenerates the Master v2 campaign deliverables
+(`DreamPlanet_Master_v2.mp4`, `_audio.mp4`, `_no_audio.mp4`) deterministically
 from the authoritative scene sources — no manually typed FFmpeg commands, no
-one-off temp files. Verified byte-for-byte reproducible against the current
-approved master (Aug 5, 2026).
+one-off temp files. Verified reproducible against the approved master (2026-08-06).
 
 ## Authoritative inputs
 

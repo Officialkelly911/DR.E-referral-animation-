@@ -1,0 +1,232 @@
+That’s the right sequence. At this stage, you want to treat Master v2 (Scenes 1-5) as a stable release and never build Scene 6 directly into it. Think of it as freezing a finished chapter before writing the next one. Software has a habit of breaking the thing you swore you weren’t touching.
+
+Here’s the implementation prompt I’d use.
+
+⸻
+
+Phase 9 – Lock Master v2 and Prepare the Scene 6 Development Branch
+
+Objective
+
+Freeze the approved five-scene campaign as Master v2 and prepare a clean development environment for Scene 6.
+
+This phase is infrastructure only.
+
+Do NOT begin implementing Scene 6 yet.
+
+The goal is to ensure all future work is isolated and fully reversible.
+
+⸻
+
+Part 1 — Lock Master v2
+
+Requirements
+
+Treat the following as the canonical approved release:
+
+* DreamPlanet_Master_v2.mp4
+* DreamPlanet_Master_v2_audio.mp4
+* DreamPlanet_Master_v2_no_audio.mp4
+
+These files are now considered frozen.
+
+No future task should overwrite them.
+
+⸻
+
+Git Release
+
+Create a release point.
+
+Either:
+
+* Git tag
+
+master-v2-approved
+
+or
+
+scene5-approved
+
+depending on the existing naming convention.
+
+Do not rewrite history.
+
+⸻
+
+Documentation
+
+Update documentation.
+
+Record:
+
+* approval date
+* scene count
+* total runtime
+* resolution
+* fps
+* audio format
+* pipeline version
+
+Add a short release summary describing what changed from Master v1.
+
+⸻
+
+Part 2 — Archive Scene 5
+
+Create an archive folder.
+
+Example
+
+archive/
+scene5_v1/
+
+Move or copy all final approved assets.
+
+Include:
+
+scene5_final.mp4
+scene5_final_no_audio.mp4
+scene5_start_frame.png
+scene5_end_frame.png
+SCENE5_ANIMATION_QA.md
+
+Do not archive temporary renders.
+
+Keep only approved deliverables.
+
+⸻
+
+Part 3 — Create Scene 6 Module
+
+Create a completely isolated module.
+
+Example
+
+scene6/
+assets/
+src/
+captures/
+renders/
+qa/
+README.md
+
+No Scene 6 code should exist inside Scene 5.
+
+No Scene 6 assets should modify Master v2.
+
+⸻
+
+Part 4 — Prepare Scene 6 Integration Hook
+
+Update the master build system.
+
+The builder should support:
+
+Scenes 1–5
++
+optional Scene 6
+
+without changing existing behavior.
+
+Example
+
+SCENES = [
+scene1,
+scene2,
+scene3,
+scene4,
+scene5
+]
+// later
+SCENES.push(scene6)
+
+Do not enable Scene 6 yet.
+
+Just prepare the hook.
+
+⸻
+
+Part 5 — QA Baseline Snapshot
+
+Generate a baseline report.
+
+Include:
+
+* file sizes
+* durations
+* checksums
+* frame rate
+* resolution
+* scene durations
+* audio duration
+
+This becomes the reference for future regressions.
+
+⸻
+
+Part 6 — Verify Clean Rebuild
+
+Run the build from scratch.
+
+Confirm Master v2 rebuilds identically.
+
+Validation should include:
+
+* checksum comparison
+* duration comparison
+* frame count
+* fps
+* audio
+* scene validation
+
+Master v2 must remain byte-identical.
+
+⸻
+
+Part 7 — Prepare Scene 6 README
+
+Inside scene6/README.md, include placeholders for:
+
+* objective
+* storyboard
+* timing
+* UI screens
+* animation sequence
+* transition requirements
+* assets required
+* QA checklist
+
+Do not implement any Scene 6 functionality.
+
+⸻
+
+Do NOT Modify
+
+Do not edit:
+
+* Scenes 1–5
+* Master v2
+* Review UI
+* Build pipeline logic (except optional Scene 6 hook)
+* Existing animations
+* Existing assets
+
+⸻
+
+Acceptance Criteria
+
+The task is complete when:
+
+* Master v2 is frozen.
+* A Git tag or release marks the approved version.
+* Scene 5 assets are archived.
+* A clean scene6/ workspace exists.
+* The build system is ready to accept Scene 6 later.
+* Master v2 rebuilds identically after a clean build.
+* Documentation has been updated.
+* No existing approved assets have changed.
+
+⸻
+
+Once this is complete, the project will be in an excellent position to begin Scene 6 without risking the approved five-scene campaign. That separation pays dividends later when revisions inevitably arrive with cheerful messages like, “It’s just one tiny change,” which in software usually translates to “please rearrange reality.”

@@ -70,7 +70,12 @@ TARGET_H=1920
 TARGET_FPS=30
 
 # ── Scene order ──────────────────────────────────────────────────────────────
+# Master v2: Scenes 1–5 (locked 2026-08-06, tag: master-v2-approved)
 SCENE_ORDER=(scene1 scene2 scene3 scene4 scene5)
+# Scene 6 hook — uncomment when scene6_final.mp4 is approved and placed at SCENE6_SRC:
+# SCENE6_SRC="$REPO_ROOT/extracted_scenes/Scene3Scene4_contents/Scene1scene2_contents/Dre-animation/Dream Planet Referral Campaign/Scene 6/Final Animation/scene6_final.mp4"
+# SCENE6_TRIM_START=0.0   # set to actual preamble trim value once known
+# SCENE_ORDER=(scene1 scene2 scene3 scene4 scene5 scene6)
 
 # ══════════════════════════════════════════════════════════════════════════
 # Scene builders — each produces "$WORK/<scene>_normalized.mp4"

@@ -43,7 +43,7 @@ Usage: $(basename "$0") [OPTIONS]
 
 Options:
   --quick          Probe existing approved masters and source assets (default, ~5s)
-  --full           Rebuild to temp dir via build_master.sh, then validate (~60s)
+  --full           Rebuild to temp dir via build_master_v2.sh, then validate (~60s)
   --out DIR        Output dir for --full rebuild (default: auto temp dir)
   --verbose        Print per-check detail even on pass
   --help           Show this message
@@ -91,7 +91,10 @@ done
 # ══════════════════════════════════════════════════════════════════════════════
 
 # ── Scene order ───────────────────────────────────────────────────────────────
-SCENE_ORDER=(scene1 scene2 scene3 scene4)
+# Master v2: Scenes 1–5 (locked 2026-08-06, tag: master-v2-approved)
+SCENE_ORDER=(scene1 scene2 scene3 scene4 scene5)
+# Scene 6 hook (uncomment when scene6_final.mp4 is approved):
+# SCENE_ORDER=(scene1 scene2 scene3 scene4 scene5 scene6)
 
 # ── Flat video sources (scenes whose source is a pre-rendered .mp4) ───────────
 S2_BASE="$REPO_ROOT/extracted_scenes/Scene1scene2_contents/Dre-animation/Dream Planet Referral Campaign"
@@ -100,6 +103,9 @@ S34_BASE="$REPO_ROOT/extracted_scenes/Scene3Scene4_contents/Scene1scene2_content
 declare -A FLAT_SCENE_SRCS
 FLAT_SCENE_SRCS[scene3]="$S34_BASE/Scene 3/Final Animation/scene3_final.mp4"
 FLAT_SCENE_SRCS[scene4]="$S34_BASE/Scene 4/Final Animation/scene4_final.mp4"
+FLAT_SCENE_SRCS[scene5]="$S34_BASE/Scene 5/Final Animation/scene5_final.mp4"
+# Scene 6 hook (uncomment when approved):
+# FLAT_SCENE_SRCS[scene6]="$S34_BASE/Scene 6/Final Animation/scene6_final.mp4"
 
 # ── Procedural scene assets (scenes 1 & 2 are generated from these) ───────────
 S1_LOCKED="$S2_BASE/Scene 1 (LOCKED)"
@@ -112,7 +118,10 @@ PROC_ASSETS=(
 # ── Trim guards (scene → trim_start_seconds) ──────────────────────────────────
 # Scenes listed here must pass a first-frame brightness check after trimming.
 declare -A TRIM_GUARDS
-TRIM_GUARDS[scene3]="3.0"
+TRIM_GUARDS[scene3]="0.7"   # v2 value: Scene 3 v3 standalone capture preamble
+TRIM_GUARDS[scene5]="0.9"   # Scene 5 standalone capture preamble
+# Scene 6 hook (add trim guard here if scene6 has a baked-in blank intro):
+# TRIM_GUARDS[scene6]="<trim_start_seconds>"
 
 # ── Campaign music ────────────────────────────────────────────────────────────
 MUSIC="$REPO_ROOT/extracted_scenes/Scene3Scene4_contents/Replit-Design-Project/attached_assets/Ai_music_for_dream_planet_video__1785842118219.mp3"
@@ -126,7 +135,8 @@ TARGET_H=1920
 TARGET_FPS=30
 
 # Duration bounds (seconds). Update when adding scenes that change total length.
-MIN_DURATION=15.0
+# Master v2 (Scenes 1–5): 41.300s. Allow ±5s headroom for minor trim adjustments.
+MIN_DURATION=36.0
 MAX_DURATION=120.0
 
 # Tolerances
@@ -176,11 +186,11 @@ if [[ "$MODE" == "full" ]]; then
 
   echo ""
   echo "── Running build_master.sh ──────────────────────────────────────────────────"
-  if bash "$SCRIPT_DIR/build_master.sh" "$FULL_OUT_DIR"; then
-    echo "── build_master.sh finished ─────────────────────────────────────────────────"
+  if bash "$SCRIPT_DIR/build_master_v2.sh" "$FULL_OUT_DIR"; then
+    echo "── build_master_v2.sh finished ──────────────────────────────────────────────"
   else
     echo ""
-    echo "ERROR: build_master.sh exited with an error. Validation aborted." >&2
+    echo "ERROR: build_master_v2.sh exited with an error. Validation aborted." >&2
     [[ "${_CLEANUP_OUT:-0}" == "1" ]] && rm -rf "$FULL_OUT_DIR"
     exit 1
   fi
