@@ -642,14 +642,13 @@ function buildReviewPage(videoExists: boolean): string {
 // ─────────────────────────────────────────────────────────────────────────────
 
 const SCENE5_PHASES = [
-  { id: "P1", time: "0.0 – 0.7 s", label: "Entry dissolve — home screen / Scene 4 handoff" },
-  { id: "P2", time: "0.7 – 1.4 s", label: "Side nav opens → View Portfolio tap" },
-  { id: "P3", time: "1.4 – 2.7 s", label: "Portfolio reveal + camera push-in (1.08×)" },
-  { id: "P4", time: "2.7 – 3.5 s", label: "View Forum tap → Forum enters" },
-  { id: "P5", time: "3.5 – 4.5 s", label: "Forum reveal + camera push-in (1.06×)" },
-  { id: "P6", time: "4.5 – 7.2 s", label: "Community feed scroll + Forum Overview (47 members)" },
-  { id: "P7", time: "7.2 – 8.8 s", label: "Engagement — Like + Comment (prepared) + Share" },
-  { id: "P8", time: "8.8 – 9.8 s", label: "Final push-in, hold on clean forum feed" },
+  { id: "P1", time: "0.00 – 1.20 s", label: "Scene 4 handoff — white dissolve → home → Side Nav opens, holds to read" },
+  { id: "P2", time: "1.20 – 2.50 s", label: "View Portfolio tap → Portfolio slides in" },
+  { id: "P3", time: "2.50 – 5.20 s", label: "Portfolio reveal — profile/stats hold, media grid scroll (floating + visible)" },
+  { id: "P4", time: "5.20 – 6.50 s", label: "View Forum tap → Forum enters (floating + disappears)" },
+  { id: "P5", time: "6.50 – 8.00 s", label: "Forum reveal + camera push-in — header, 47 members, post 1" },
+  { id: "P6", time: "8.00 – 12.60 s", label: "Multi-post discovery — p1 (Like) → p2 → p3 (Comment) → p4, 3 controlled scrolls" },
+  { id: "P7", time: "12.60 – 13.80 s", label: "Final push-in, hold on clean forum feed (p4)" },
 ];
 
 function buildScene5Page(videoExists: boolean): string {
@@ -732,7 +731,7 @@ function buildScene5Page(videoExists: boolean): string {
     <p class="eyebrow">Dream Planet Referral Campaign</p>
     <h1>SCENE 5 — COMMUNITY &amp; PARTICIPATION</h1>
     <div class="chips">
-      <span><strong>9.8 s</strong> duration</span>
+      <span><strong>13.8 s</strong> duration</span>
       <span><strong>1080 × 1920</strong> 9:16</span>
       <span><strong>25 fps</strong></span>
       <span><strong>H.264</strong> CRF 16</span>
