@@ -1,0 +1,380 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Dream Planet — Scene 5 Review</title>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      background: #0a0a0a;
+      color: #eee;
+      font-family: system-ui, -apple-system, sans-serif;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 32px 20px 48px;
+      gap: 28px;
+    }
+
+    header {
+      width: 100%;
+      max-width: 560px;
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+
+    .eyebrow {
+      font-size: 10px;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: #555;
+    }
+
+    h1 {
+      font-size: 15px;
+      font-weight: 600;
+      color: #f64a01;
+      letter-spacing: 0.5px;
+    }
+
+    .meta {
+      font-size: 11px;
+      color: #555;
+      display: flex;
+      gap: 16px;
+      flex-wrap: wrap;
+      margin-top: 2px;
+    }
+
+    .meta span { color: #888; }
+    .meta strong { color: #bbb; }
+
+    /* Phone shell */
+    .phone-shell {
+      position: relative;
+      width: 270px;
+      background: #111;
+      border-radius: 36px;
+      border: 2px solid #2a2a2a;
+      box-shadow:
+        0 0 0 1px #1a1a1a,
+        0 32px 80px rgba(0,0,0,0.7),
+        inset 0 1px 0 rgba(255,255,255,0.06);
+      padding: 14px 10px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0;
+    }
+
+    /* Notch */
+    .notch {
+      width: 80px;
+      height: 6px;
+      background: #1e1e1e;
+      border-radius: 3px;
+      margin-bottom: 10px;
+    }
+
+    /* Screen area: 9:16 at 250px wide */
+    .screen {
+      width: 250px;
+      height: 444px;   /* 250 × (16/9) */
+      border-radius: 12px;
+      overflow: hidden;
+      background: #000;
+      position: relative;
+    }
+
+    video {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
+    /* Home button */
+    .home-bar {
+      width: 80px;
+      height: 4px;
+      background: #2a2a2a;
+      border-radius: 2px;
+      margin-top: 10px;
+    }
+
+    /* Controls row */
+    .controls {
+      display: flex;
+      gap: 10px;
+      align-items: center;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+
+    button {
+      background: #1a1a1a;
+      border: 1px solid #333;
+      color: #ccc;
+      font-size: 12px;
+      padding: 7px 16px;
+      border-radius: 6px;
+      cursor: pointer;
+      transition: background 0.15s, border-color 0.15s, color 0.15s;
+      white-space: nowrap;
+    }
+
+    button:hover { background: #252525; border-color: #444; color: #fff; }
+    button.primary {
+      background: #f64a01;
+      border-color: #f64a01;
+      color: #fff;
+      font-weight: 600;
+    }
+    button.primary:hover { background: #d43f00; border-color: #d43f00; }
+
+    /* QA table */
+    .qa {
+      width: 100%;
+      max-width: 560px;
+      background: #111;
+      border: 1px solid #222;
+      border-radius: 10px;
+      overflow: hidden;
+    }
+
+    .qa-title {
+      font-size: 10px;
+      font-weight: 600;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      color: #555;
+      padding: 12px 16px 8px;
+      border-bottom: 1px solid #1e1e1e;
+    }
+
+    table { width: 100%; border-collapse: collapse; }
+
+    td {
+      padding: 7px 16px;
+      font-size: 12px;
+      border-bottom: 1px solid #1a1a1a;
+      color: #888;
+    }
+
+    tr:last-child td { border-bottom: none; }
+    td:first-child { color: #555; width: 50%; }
+    td:last-child { color: #bbb; text-align: right; }
+
+    .ok   { color: #22c55e !important; }
+    .warn { color: #f59e0b !important; }
+
+    /* Phase list */
+    .phases {
+      width: 100%;
+      max-width: 560px;
+      background: #111;
+      border: 1px solid #222;
+      border-radius: 10px;
+      overflow: hidden;
+    }
+
+    .phase {
+      display: flex;
+      gap: 12px;
+      align-items: baseline;
+      padding: 9px 16px;
+      border-bottom: 1px solid #1a1a1a;
+      font-size: 12px;
+    }
+
+    .phases > .phase:last-child { border-bottom: none; }
+
+    .phase-num {
+      font-size: 10px;
+      color: #f64a01;
+      font-weight: 700;
+      min-width: 22px;
+      letter-spacing: 0.5px;
+    }
+
+    .phase-time {
+      color: #444;
+      font-size: 10px;
+      min-width: 68px;
+      font-variant-numeric: tabular-nums;
+    }
+
+    .phase-label { color: #999; flex: 1; }
+    .phase-check { color: #22c55e; font-size: 13px; }
+
+    .live-link {
+      width: 100%;
+      max-width: 560px;
+      background: #0f1a0f;
+      border: 1px solid #1a2e1a;
+      border-radius: 10px;
+      padding: 14px 16px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+    }
+
+    .live-link p { font-size: 12px; color: #4a7c4a; line-height: 1.5; }
+    .live-link p strong { color: #6dbf6d; display: block; margin-bottom: 2px; }
+
+    a.btn {
+      display: inline-block;
+      background: #1a2e1a;
+      border: 1px solid #2a4a2a;
+      color: #6dbf6d;
+      font-size: 12px;
+      padding: 7px 14px;
+      border-radius: 6px;
+      text-decoration: none;
+      white-space: nowrap;
+      transition: background 0.15s;
+    }
+
+    a.btn:hover { background: #223a22; }
+  </style>
+</head>
+<body>
+
+  <header>
+    <div class="eyebrow">Dream Planet Referral Campaign</div>
+    <h1>SCENE 5 — COMMUNITY &amp; PARTICIPATION</h1>
+    <div class="meta">
+      <div><strong>9.80 s</strong> <span>duration</span></div>
+      <div><strong>1080 × 1920</strong> <span>resolution</span></div>
+      <div><strong>25 fps</strong></div>
+      <div><strong>H.264</strong> <span>CRF 16</span></div>
+      <div><strong>No audio</strong> <span>(master handles score)</span></div>
+    </div>
+  </header>
+
+  <!-- Phone shell + video player -->
+  <div class="phone-shell">
+    <div class="notch"></div>
+    <div class="screen">
+      <video id="vid" src="../scene5_final.mp4" playsinline preload="auto"></video>
+    </div>
+    <div class="home-bar"></div>
+  </div>
+
+  <!-- Controls -->
+  <div class="controls">
+    <button class="primary" onclick="play()">▶ Play</button>
+    <button onclick="restart()">↺ Restart</button>
+    <button onclick="pause()">⏸ Pause</button>
+    <button onclick="toggleLoop()">⟳ Loop: <span id="loop-label">Off</span></button>
+    <button onclick="document.getElementById('vid').currentTime=0">⤺ Reset</button>
+  </div>
+
+  <!-- QA table -->
+  <div class="qa">
+    <div class="qa-title">Technical Verification</div>
+    <table>
+      <tr><td>Duration</td><td class="ok">9.80 s ✓</td></tr>
+      <tr><td>Resolution</td><td class="ok">1080 × 1920 ✓</td></tr>
+      <tr><td>Frame rate</td><td class="ok">25 fps ✓</td></tr>
+      <tr><td>Codec</td><td class="ok">H.264 CRF 16 ✓</td></tr>
+      <tr><td>Audio</td><td class="ok">None (as required) ✓</td></tr>
+      <tr><td>Scene 4 → 5 continuity</td><td class="ok">White dissolve ✓</td></tr>
+      <tr><td>End frame</td><td class="ok">Clean forum feed ✓</td></tr>
+      <tr><td>Scenes 1–4 modified</td><td class="ok">No ✓</td></tr>
+    </table>
+  </div>
+
+  <!-- Phase summary -->
+  <div class="phases">
+    <div class="qa-title">8 Phases</div>
+    <div class="phase">
+      <span class="phase-num">P1</span>
+      <span class="phase-time">0.00–0.70 s</span>
+      <span class="phase-label">Scene 4 handoff — white dissolve → home → Side Nav opens</span>
+      <span class="phase-check">✓</span>
+    </div>
+    <div class="phase">
+      <span class="phase-num">P2</span>
+      <span class="phase-time">0.70–1.40 s</span>
+      <span class="phase-label">View Portfolio tap — Portfolio slides in</span>
+      <span class="phase-check">✓</span>
+    </div>
+    <div class="phase">
+      <span class="phase-num">P3</span>
+      <span class="phase-time">1.40–3.00 s</span>
+      <span class="phase-label">Portfolio reveal — profile push-in + media grid scroll</span>
+      <span class="phase-check">✓</span>
+    </div>
+    <div class="phase">
+      <span class="phase-num">P4</span>
+      <span class="phase-time">3.00–3.80 s</span>
+      <span class="phase-label">View Forum tap — Forum slides in</span>
+      <span class="phase-check">✓</span>
+    </div>
+    <div class="phase">
+      <span class="phase-num">P5</span>
+      <span class="phase-time">3.80–4.80 s</span>
+      <span class="phase-label">Forum header + first post reveal</span>
+      <span class="phase-check">✓</span>
+    </div>
+    <div class="phase">
+      <span class="phase-num">P6</span>
+      <span class="phase-time">4.80–6.40 s</span>
+      <span class="phase-label">Community discovery — feed scroll p1 → p2 → p1</span>
+      <span class="phase-check">✓</span>
+    </div>
+    <div class="phase">
+      <span class="phase-num">P6b</span>
+      <span class="phase-time">6.40–7.20 s</span>
+      <span class="phase-label">Forum Overview — 47 members, guidelines, avatars</span>
+      <span class="phase-check">✓</span>
+    </div>
+    <div class="phase">
+      <span class="phase-num">P7</span>
+      <span class="phase-time">7.20–8.80 s</span>
+      <span class="phase-label">Engagement — Like + Comment (prepared) + Share</span>
+      <span class="phase-check">✓</span>
+    </div>
+    <div class="phase">
+      <span class="phase-num">P8</span>
+      <span class="phase-time">8.80–9.80 s</span>
+      <span class="phase-label">Final frame — gentle push-in, hold on clean feed</span>
+      <span class="phase-check">✓</span>
+    </div>
+  </div>
+
+  <!-- Live animation link -->
+  <div class="live-link">
+    <p>
+      <strong>Live animation</strong>
+      Watch the React animation running in real time (auto-plays on load).
+    </p>
+    <a class="btn" href="../../scene5-cinematic.html" target="_blank">Open live ↗</a>
+  </div>
+
+  <script>
+    const vid = document.getElementById('vid');
+    let looping = false;
+
+    function play()    { vid.play(); }
+    function pause()   { vid.pause(); }
+    function restart() { vid.currentTime = 0; vid.play(); }
+
+    function toggleLoop() {
+      looping = !looping;
+      vid.loop = looping;
+      document.getElementById('loop-label').textContent = looping ? 'On' : 'Off';
+    }
+
+    // Auto-play when page loads
+    vid.addEventListener('canplay', () => { vid.play(); }, { once: true });
+  </script>
+
+</body>
+</html>
