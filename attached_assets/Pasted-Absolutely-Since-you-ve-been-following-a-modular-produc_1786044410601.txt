@@ -1,0 +1,511 @@
+Absolutely. Since you’ve been following a modular, production-quality workflow, the Scene 6 prompt should continue that philosophy: build Scene 6 as a completely isolated module, with no dependency on the master until it’s approved.
+
+One thing I’d change from the earlier draft is how the commercial ends.
+
+Based on the journey you’ve built:
+
+* Scene 1 → Identity
+* Scene 2 → Discover Dream Planet
+* Scene 3 → Referral Journey
+* Scene 4 → Leaderboard & Rewards
+* Scene 5 → Portfolio & Community
+
+…the ending shouldn’t suddenly become a static advertisement. It should feel like the natural conclusion of the user’s journey inside the app, almost as if the viewer has now become part of Dream Planet.
+
+⸻
+
+DREAM PLANET REFERRAL CAMPAIGN
+
+SCENE 6 IMPLEMENTATION
+
+“Join the Movement”
+
+Objective
+
+Develop Scene 6 as the final cinematic conclusion of the Dream Planet referral campaign.
+
+This scene should not introduce any new application features.
+
+Instead, it should emotionally reinforce everything shown throughout Scenes 1–5 and leave the viewer with one unmistakable action:
+
+Download Dream Planet and join using the referral code.
+
+Scene 6 must be developed completely independently.
+
+Do not modify:
+
+* Scene 1
+* Scene 2
+* Scene 3
+* Scene 4
+* Scene 5
+* Master v2
+* build_master.sh
+* Review page
+* Existing QA pipeline
+
+Scene 6 is a standalone module.
+
+Integration into Master v3 will happen only after approval.
+
+⸻
+
+Creative Direction
+
+The ending should feel like the reward after the entire journey.
+
+Avoid feeling like:
+
+“Here’s another feature.”
+
+Instead it should feel like:
+
+“Now it’s your turn.”
+
+Think:
+
+Premium
+
+Modern
+
+Elegant
+
+Confident
+
+Minimal
+
+Cinematic
+
+⸻
+
+Scene Length
+
+Target:
+
+6–8 seconds
+
+Do not artificially extend it.
+
+Every second should have purpose.
+
+⸻
+
+Scene Flow
+
+SECTION 1
+
+Community Completion
+
+Begin exactly where Scene 5 ends.
+
+The Forum has settled.
+
+The final post remains visible.
+
+Hold approximately:
+
+0.5–1 second.
+
+The viewer should have enough time to appreciate the community.
+
+⸻
+
+SECTION 2
+
+UI Dissolve
+
+Instead of cutting away…
+
+Allow the interface to slowly dissolve.
+
+The Forum gently fades.
+
+Cards soften.
+
+Blur increases slightly.
+
+Background darkens.
+
+The orange Dream Planet brand color becomes dominant.
+
+This should feel like the interface transforming into the brand itself.
+
+Avoid a hard fade.
+
+⸻
+
+SECTION 3
+
+Logo Reveal
+
+The Dream Planet logo emerges naturally from the dissolving interface.
+
+Suggested motion:
+
+* opacity fade
+* scale 92% → 100%
+* subtle glow
+* premium easing
+
+No spinning.
+
+No bouncing.
+
+No exaggerated motion.
+
+The logo should feel confident.
+
+⸻
+
+SECTION 4
+
+Brand Message
+
+Below the logo:
+
+Display one strong message.
+
+Examples:
+
+More than followers.
+
+or
+
+Fans become partners.
+
+or
+
+Your community has value.
+
+Use whichever slogan best matches Dream Planet’s approved branding.
+
+Keep typography clean.
+
+⸻
+
+SECTION 5
+
+Primary Call-To-Action
+
+The headline becomes:
+
+Join Dream Planet Today
+
+Secondary copy:
+
+Start earning together with your community.
+
+or similar approved marketing copy.
+
+Avoid paragraphs.
+
+Keep it concise.
+
+⸻
+
+SECTION 6
+
+Referral Card
+
+Animate a premium referral card.
+
+Include:
+
+Dream Planet icon
+
+Referral label
+
+Referral code
+
+Example:
+
+Referral Code
+IK54OTRD
+
+Use the actual campaign referral code.
+
+Animation:
+
+Small upward motion.
+
+Soft scale.
+
+Very gentle glow.
+
+No aggressive pulsing.
+
+The referral code should remain perfectly readable.
+
+⸻
+
+SECTION 7
+
+Download Prompt
+
+Reveal:
+
+App Store badge
+
+Google Play badge
+
+(if available)
+
+If the campaign includes a QR code:
+
+Display it.
+
+Otherwise omit.
+
+Below:
+
+Download Dream Planet Today
+
+Keep this visually secondary to the referral code.
+
+⸻
+
+SECTION 8
+
+Final Hold
+
+Everything settles.
+
+No additional motion.
+
+Only:
+
+Subtle background particles.
+
+Very gentle logo glow.
+
+The referral code remains visible.
+
+Hold:
+
+Approximately:
+
+2–3 seconds.
+
+The audience needs time to remember it.
+
+⸻
+
+Background
+
+Use a premium Dream Planet environment.
+
+Suggested:
+
+Soft gradient
+
+Glass reflections
+
+Orange light bloom
+
+Very subtle floating particles
+
+No distracting motion.
+
+⸻
+
+Typography
+
+Maintain the typography established in earlier scenes.
+
+Hierarchy:
+
+Logo
+
+↓
+
+Headline
+
+↓
+
+Referral Code
+
+↓
+
+Store badges
+
+↓
+
+Small supporting copy
+
+⸻
+
+Color Palette
+
+Continue the existing campaign palette.
+
+Primary:
+
+Dream Planet Orange
+
+White
+
+Dark Charcoal
+
+Soft Gray
+
+Accent glow:
+
+Warm Orange
+
+Avoid introducing new colors.
+
+⸻
+
+Motion Principles
+
+Use only premium transitions.
+
+Allowed:
+
+Fade
+
+Opacity
+
+Scale
+
+Blur
+
+Glow
+
+Very slow floating particles
+
+Very slight camera push
+
+Avoid:
+
+Bounce
+
+Elastic easing
+
+Fast zooms
+
+Rotations
+
+Flash effects
+
+Aggressive particle systems
+
+⸻
+
+Audio
+
+Continue the existing campaign soundtrack.
+
+No restart.
+
+No silence.
+
+No interruption.
+
+As the logo appears:
+
+Music reaches its emotional peak.
+
+Allow a natural ending.
+
+Maintain the existing fade-out.
+
+⸻
+
+Technical Requirements
+
+Resolution:
+
+1080 × 1920
+
+Frame Rate:
+
+30 FPS
+
+Match previous scenes exactly.
+
+⸻
+
+Files to Produce
+
+Generate:
+
+scene6_final.mp4
+scene6_final_no_audio.mp4
+scene6_start_frame.png
+scene6_end_frame.png
+SCENE6_ANIMATION_QA.md
+
+⸻
+
+QA Requirements
+
+Verify:
+
+✓ Transition from Scene 5 is seamless
+
+✓ Logo animation is smooth
+
+✓ Referral code is readable
+
+✓ CTA remains visible long enough
+
+✓ Audio remains synchronized
+
+✓ No dropped frames
+
+✓ No blank frames
+
+✓ No visual artifacts
+
+✓ Final hold lasts approximately 2–3 seconds
+
+✓ Scene duration is approximately 6–8 seconds
+
+⸻
+
+Deliverables
+
+Produce:
+
+* Final Scene 6 render
+* No-audio render
+* Start frame
+* End frame
+* QA report
+* Duration report
+* Asset inventory
+
+⸻
+
+STOP CONDITION
+
+When Scene 6 is complete:
+
+* Do not integrate it into the campaign master.
+* Do not modify Master v2.
+* Do not begin Master v3.
+
+Stop after rendering and QA.
+
+Report:
+
+* Total Scene 6 duration
+* Final resolution
+* FPS
+* Audio status
+* QA status
+* Confirmation that Scene 6 is ready for review.
+
+One creative recommendation
+
+Rather than ending on a static logo, consider making the referral code the hero of the final frame. The logo builds trust, but the referral code drives the action you actually want. A polished ending could look like this:
+
+           Dream Planet Logo
+        Join Dream Planet Today
+            IK54OTRD
+        (large, centered, elegant)
+   [App Store]   [Google Play]
+      More than followers.
+
+Hold that composition for the last 2.5–3 seconds. It’s clean, memorable, and gives viewers enough time to read the referral code before the music fades out. That ending ties the entire campaign back to its purpose without feeling like a generic app advertisement.
