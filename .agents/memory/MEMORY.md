@@ -4,4 +4,5 @@
 - [Dream Planet baseline locked](dream-planet-baseline-locked.md) — Scenes 1-4 verified reproducible; archive cleanup done; Scene 5 integration points documented.
 - [Dream Planet Scene 5 phase boundary](dream-planet-scene5-phase2-sidenav.md) — Scene 5 built in strict sequential phases with hard stops; artifact-detection vs. manual workflow collision gotcha on reimport.
 - [Dream Planet Scene 5 Phase 4 (Forum) complete](dream-planet-scene5-phase4-forum.md) — Forum UI recreation locked; next is Phase 5 (engagement interactions).
+- [Dream Planet Scene 5 cinematic captured](dream-planet-scene5-cinematic.md) — Phase 6 done; 9.2s MP4 at scene5_final.mp4; ready for master concat (Scenes 1–5).
 - [Dream Planet asset pipeline gotchas](dream-planet-asset-pipeline.md) — where uploaded reference/media files actually live vs. where `@assets` resolves; LFS/zip files never materialized on fresh import.
