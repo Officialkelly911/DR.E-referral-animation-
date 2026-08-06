@@ -7,3 +7,4 @@
 - [Dream Planet Scene 5 Phase 4 (Forum) complete](dream-planet-scene5-phase4-forum.md) — Forum UI recreation locked; next is Phase 5 (engagement interactions).
 - [Dream Planet Scene 5 cinematic captured](dream-planet-scene5-cinematic.md) — Phase 6 done; 9.2s MP4 at scene5_final.mp4; ready for master concat (Scenes 1–5).
 - [Dream Planet asset pipeline gotchas](dream-planet-asset-pipeline.md) — where uploaded reference/media files actually live vs. where `@assets` resolves; LFS/zip files never materialized on fresh import.
+- [Dream Planet Scene 6 complete](dream-planet-scene6-complete.md) — Scene 6 captured (7.920s); QA passed; integration checklist in scene6/README.md; path gotcha for SCENE6_DIR in capture script.
