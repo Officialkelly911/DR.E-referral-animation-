@@ -82,11 +82,13 @@ export const MASTER_META = {
 } as const;
 
 // ── Scene list ────────────────────────────────────────────────────────────────
-// When adding Scene 5 / Scene 6: append to this array.
+// When adding Scene 6: append to this array.
 // startTime / endTime are seconds in the final master.
 export interface SceneEntry {
   id: string;
   label: string;
+  /** Short descriptive name shown as a subtitle in the review UI (e.g. "Tattoo Reveal"). */
+  shortLabel: string;
   startTime: number;
   endTime: number;
   description: string;
@@ -97,6 +99,7 @@ export const SCENES: SceneEntry[] = [
   {
     id: "scene1",
     label: "Scene 1",
+    shortLabel: "Tattoo Reveal",
     startTime: 0,
     endTime: 3.0,
     description: "Luxury tattoo reveal — ken-burns zoom, light streak, \"More than followers\"",
@@ -105,6 +108,7 @@ export const SCENES: SceneEntry[] = [
   {
     id: "scene2",
     label: "Scene 2",
+    shortLabel: "Creator Discovery",
     startTime: 3.0,
     endTime: 6.0,
     description: "Dream Planet identity reveal — DP icon + \"Dream Planet\" lockup",
@@ -113,6 +117,7 @@ export const SCENES: SceneEntry[] = [
   {
     id: "scene3",
     label: "Scene 3",
+    shortLabel: "Referral Journey",
     startTime: 6.0,
     endTime: 19.433,
     description: "Referral experience — Referral Home UI with push-in, code emphasis, levels tease",
@@ -121,6 +126,7 @@ export const SCENES: SceneEntry[] = [
   {
     id: "scene4",
     label: "Scene 4",
+    shortLabel: "Leaderboard",
     startTime: 19.433,
     endTime: 28.433,
     description: "Leaderboard & referral levels — full referral programme overview",
@@ -129,6 +135,7 @@ export const SCENES: SceneEntry[] = [
   {
     id: "scene5",
     label: "Scene 5",
+    shortLabel: "Community & Participation",
     startTime: 28.433,
     endTime: 41.300,
     description: "Community & participation — Creator Portfolio → Community Forum → engagement interactions",

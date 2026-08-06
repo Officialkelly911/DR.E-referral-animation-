@@ -125,13 +125,13 @@ function formatDuration(seconds: number): string {
 }
 
 // Assign a distinct brand-palette colour to each scene slot.
-// Extend this array when Scene 5 / Scene 6 are added.
+// Extend this array when Scene 6 is added.
 const SCENE_COLOURS = [
   "#F64A01", // Scene 1 — Dream Planet orange
   "#E8370A", // Scene 2 — deeper orange
   "#C9A84C", // Scene 3 — warm gold
   "#8AB4A0", // Scene 4 — muted teal
-  "#A78BDB", // Scene 5 (reserved)
+  "#A78BDB", // Scene 5 — soft violet
   "#6BA3BE", // Scene 6 (reserved)
 ];
 
@@ -160,7 +160,7 @@ function buildReviewPage(videoExists: boolean): string {
     return `<div class="scene-card" data-start="${s.startTime}" data-end="${s.endTime}">
         <div class="scene-dot" style="background:${colour}"></div>
         <div class="scene-info">
-          <span class="scene-label" style="color:${colour}">${s.label}</span>
+          <span class="scene-label" style="color:${colour}">${s.label} <span class="scene-short-label">${s.shortLabel}</span></span>
           <span class="scene-time">${formatDuration(s.startTime)} – ${formatDuration(s.endTime)} &nbsp;·&nbsp; ${dur}s</span>
           <span class="scene-desc">${s.description}</span>
           <span class="scene-source">${s.source === "procedural" ? "⚙ procedurally rendered" : "▶ flat video source"}</span>
@@ -435,6 +435,7 @@ function buildReviewPage(videoExists: boolean): string {
     .scene-dot { width: 10px; height: 10px; border-radius: 50%; flex-shrink: 0; margin-top: 3px; }
     .scene-info { display: flex; flex-direction: column; gap: 3px; }
     .scene-label { font-size: 13px; font-weight: 600; }
+    .scene-short-label { font-weight: 400; color: var(--muted); font-size: 12px; margin-left: 4px; }
     .scene-time { font-family: var(--mono); font-size: 11px; color: var(--muted); }
     .scene-desc { font-size: 12px; color: #aaa; line-height: 1.5; margin-top: 2px; }
     .scene-source { font-size: 10px; color: #555; margin-top: 2px; }
@@ -517,10 +518,14 @@ function buildReviewPage(videoExists: boolean): string {
           <div class="meta-val ${meta.hasAudio ? "green" : "red"}">${meta.hasAudio ? "Present" : "None"}</div>
         </div>
         <div class="meta-cell">
+          <div class="meta-key">Scenes</div>
+          <div class="meta-val orange">${SCENES.length}<span class="meta-unit">&nbsp;scenes</span></div>
+        </div>
+        <div class="meta-cell">
           <div class="meta-key">Version</div>
           <div class="meta-val orange">${meta.version}</div>
         </div>
-        <div class="meta-cell">
+        <div class="meta-cell" style="grid-column:span 2">
           <div class="meta-key">Approved</div>
           <div class="meta-val" style="font-size:13px">${meta.approvedDate}</div>
         </div>
@@ -594,7 +599,7 @@ function buildReviewPage(videoExists: boolean): string {
 
     // Badge
     dot.style.background = colour;
-    namEl.textContent = scene.label + ' — ' + scene.description.split('—')[0].trim();
+    namEl.textContent = scene.label + ' · ' + (scene.shortLabel || scene.description.split('—')[0].trim());
 
     // Timeline segments
     segs.forEach((seg, i) => seg.classList.toggle('active', i === idx));
@@ -731,9 +736,10 @@ function buildScene5Page(videoExists: boolean): string {
     <p class="eyebrow">Dream Planet Referral Campaign</p>
     <h1>SCENE 5 — COMMUNITY &amp; PARTICIPATION</h1>
     <div class="chips">
-      <span><strong>13.8 s</strong> duration</span>
+      <span><strong>13.8 s</strong> source duration</span>
+      <span><strong>12.9 s</strong> in master (0.9 s trim)</span>
       <span><strong>1080 × 1920</strong> 9:16</span>
-      <span><strong>25 fps</strong></span>
+      <span><strong>25 fps</strong> → 30 fps in master</span>
       <span><strong>H.264</strong> CRF 16</span>
       <span><strong>No audio</strong> (master adds score)</span>
     </div>
