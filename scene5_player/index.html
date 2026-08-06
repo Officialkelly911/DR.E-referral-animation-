@@ -3,183 +3,354 @@
 <head>
   <meta charset="UTF-8"/>
   <meta name="viewport" content="width=device-width,initial-scale=1"/>
-  <title>Scene 5 — Dream Planet</title>
+  <title>Dream Planet — Campaign Preview</title>
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
     body {
-      background: #0a0a0a;
+      background: #080808;
       color: #ddd;
       font-family: system-ui, -apple-system, sans-serif;
       min-height: 100vh;
       display: flex;
       flex-direction: column;
       align-items: center;
-      justify-content: flex-start;
-      padding: 28px 20px 56px;
-      gap: 20px;
+      padding: 32px 20px 64px;
+      gap: 0;
     }
 
-    header { text-align: center; }
-    .eye { font-size: 10px; letter-spacing: 2px; text-transform: uppercase; color: #444; margin-bottom: 6px; }
-    h1 { font-size: 15px; font-weight: 600; color: #f64a01; margin-bottom: 10px; }
-    .chips { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; font-size: 11px; color: #555; }
-    .chips strong { color: #aaa; }
+    /* ── Header ── */
+    header {
+      text-align: center;
+      margin-bottom: 32px;
+    }
+    .eyebrow {
+      font-size: 10px;
+      letter-spacing: 2.5px;
+      text-transform: uppercase;
+      color: #3a3a3a;
+      margin-bottom: 8px;
+    }
+    .campaign-title {
+      font-size: 17px;
+      font-weight: 700;
+      color: #fff;
+      margin-bottom: 4px;
+    }
+    .campaign-sub {
+      font-size: 11px;
+      color: #444;
+    }
 
-    /* Direct open button — most reliable playback */
+    /* ── Tab bar ── */
+    .tabs {
+      display: flex;
+      gap: 0;
+      background: #111;
+      border: 1px solid #1e1e1e;
+      border-radius: 10px;
+      overflow: hidden;
+      margin-bottom: 28px;
+    }
+    .tab {
+      padding: 9px 22px;
+      font-size: 12px;
+      font-weight: 600;
+      color: #555;
+      cursor: pointer;
+      border: none;
+      background: transparent;
+      transition: color 0.15s, background 0.15s;
+      white-space: nowrap;
+    }
+    .tab.active {
+      background: #f64a01;
+      color: #fff;
+    }
+    .tab:not(.active):hover { color: #999; }
+
+    /* ── Player card ── */
+    .player-card {
+      display: none;
+      flex-direction: column;
+      align-items: center;
+      gap: 18px;
+      width: 100%;
+      max-width: 480px;
+    }
+    .player-card.visible { display: flex; }
+
+    .scene-label {
+      text-align: center;
+    }
+    .scene-name {
+      font-size: 13px;
+      font-weight: 700;
+      color: #f64a01;
+      letter-spacing: 0.5px;
+      text-transform: uppercase;
+      margin-bottom: 5px;
+    }
+    .scene-chips {
+      display: flex;
+      gap: 10px;
+      justify-content: center;
+      flex-wrap: wrap;
+      font-size: 10px;
+      color: #444;
+    }
+    .scene-chips strong { color: #888; }
+
+    /* ── NEW badge ── */
+    .badge-new {
+      display: inline-block;
+      background: #f64a01;
+      color: #fff;
+      font-size: 9px;
+      font-weight: 800;
+      letter-spacing: 0.8px;
+      padding: 2px 7px;
+      border-radius: 4px;
+      vertical-align: middle;
+      margin-left: 6px;
+    }
+
+    /* ── Open button ── */
     .open-btn {
       display: inline-flex;
       align-items: center;
-      gap: 8px;
+      gap: 7px;
       background: #f64a01;
       color: #fff;
-      font-size: 13px;
+      font-size: 12px;
       font-weight: 600;
-      padding: 10px 22px;
+      padding: 9px 20px;
       border-radius: 8px;
       text-decoration: none;
-      letter-spacing: 0.3px;
       transition: background 0.15s;
     }
     .open-btn:hover { background: #d43f00; }
-    .open-hint { font-size: 11px; color: #444; margin-top: 6px; text-align: center; }
+    .open-hint { font-size: 10px; color: #3a3a3a; text-align: center; margin-top: 4px; }
 
-    /* Phone shell */
+    /* ── Phone shell ── */
     .shell {
-      width: 280px;
+      width: 270px;
       background: #111;
       border-radius: 40px;
-      border: 2px solid #252525;
-      box-shadow: 0 0 0 1px #181818, 0 32px 72px rgba(0,0,0,.75);
+      border: 2px solid #202020;
+      box-shadow: 0 0 0 1px #161616, 0 40px 80px rgba(0,0,0,.85);
       padding: 16px 12px;
       display: flex;
       flex-direction: column;
       align-items: center;
     }
-    .notch { width: 72px; height: 5px; background: #1c1c1c; border-radius: 3px; margin-bottom: 12px; }
+    .notch { width: 68px; height: 5px; background: #1a1a1a; border-radius: 3px; margin-bottom: 12px; }
     .screen {
-      width: 256px;
-      height: 455px;
-      border-radius: 14px;
+      width: 246px;
+      height: 437px;
+      border-radius: 12px;
       overflow: hidden;
       background: #000;
       position: relative;
       cursor: pointer;
     }
-    video {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      display: block;
-    }
+    video { width: 100%; height: 100%; object-fit: cover; display: block; }
 
     /* Tap-to-play overlay */
     .play-overlay {
-      position: absolute;
-      inset: 0;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      background: rgba(0,0,0,0.35);
+      position: absolute; inset: 0;
+      display: flex; align-items: center; justify-content: center;
+      background: rgba(0,0,0,0.30);
       transition: opacity 0.2s;
     }
     .play-overlay.hidden { opacity: 0; pointer-events: none; }
     .play-circle {
-      width: 64px;
-      height: 64px;
-      border-radius: 50%;
-      background: rgba(246,74,1,0.9);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      box-shadow: 0 4px 24px rgba(246,74,1,0.5);
+      width: 60px; height: 60px; border-radius: 50%;
+      background: rgba(246,74,1,0.92);
+      display: flex; align-items: center; justify-content: center;
+      box-shadow: 0 4px 24px rgba(246,74,1,0.55);
     }
-    .play-circle svg { width: 28px; height: 28px; fill: #fff; margin-left: 4px; }
+    .play-circle svg { width: 26px; height: 26px; fill: #fff; margin-left: 4px; }
 
-    .home-bar { width: 70px; height: 4px; background: #252525; border-radius: 2px; margin-top: 12px; }
+    .home-bar { width: 68px; height: 4px; background: #202020; border-radius: 2px; margin-top: 12px; }
 
-    /* Phase table */
-    .phases { width: 100%; max-width: 460px; background: #111; border: 1px solid #1e1e1e; border-radius: 10px; overflow: hidden; }
-    .ph-title { font-size: 10px; font-weight: 600; letter-spacing: 1.5px; text-transform: uppercase; color: #444; padding: 10px 16px 8px; border-bottom: 1px solid #1a1a1a; }
+    /* ── Phase table ── */
+    .phases {
+      width: 100%;
+      max-width: 460px;
+      background: #0e0e0e;
+      border: 1px solid #1a1a1a;
+      border-radius: 10px;
+      overflow: hidden;
+    }
+    .ph-title {
+      font-size: 9px;
+      font-weight: 700;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: #333;
+      padding: 10px 16px 8px;
+      border-bottom: 1px solid #161616;
+    }
     table { width: 100%; border-collapse: collapse; }
-    td { padding: 8px 14px; font-size: 11px; border-bottom: 1px solid #181818; vertical-align: top; }
+    td { padding: 7px 14px; font-size: 11px; border-bottom: 1px solid #141414; vertical-align: top; }
     tr:last-child td { border-bottom: none; }
-    .pi { font-weight: 700; color: #f64a01; white-space: nowrap; width: 36px; }
-    .pt { color: #555; white-space: nowrap; padding-right: 8px; width: 116px; }
+    .pi { font-weight: 700; color: #f64a01; white-space: nowrap; width: 32px; }
+    .pt { color: #444; white-space: nowrap; padding-right: 8px; width: 110px; }
+    .pd { color: #888; line-height: 1.4; }
   </style>
 </head>
 <body>
+
   <header>
-    <p class="eye">Dream Planet Referral Campaign</p>
-    <h1>SCENE 5 — COMMUNITY &amp; PARTICIPATION</h1>
-    <div class="chips">
-      <span><strong>13.8 s</strong></span>
-      <span><strong>1080×1920</strong> 9:16</span>
-      <span><strong>25 fps · H.264</strong></span>
-      <span><strong>No audio</strong></span>
-    </div>
+    <p class="eyebrow">Dream Planet Referral Campaign</p>
+    <h1 class="campaign-title">Campaign Preview</h1>
+    <p class="campaign-sub">Scenes 5 &amp; 6 · Master v2 + Scene 6</p>
   </header>
 
-  <!-- Most reliable: open raw MP4 directly in a new tab, full browser controls -->
-  <div style="display:flex;flex-direction:column;align-items:center;gap:6px">
-    <a class="open-btn" href="/scene5_final.mp4" target="_blank">
-      <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M6 3H3a1 1 0 0 0-1 1v9a1 1 0 0 0 1 1h9a1 1 0 0 0 1-1v-3" stroke="#fff" stroke-width="1.5" stroke-linecap="round"/><path d="M9 2h5v5" stroke="#fff" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/><path d="M14 2 8 8" stroke="#fff" stroke-width="1.5" stroke-linecap="round"/></svg>
-      Open video in new tab
-    </a>
-    <p class="open-hint">Recommended — full controls + seeking</p>
+  <!-- Tab bar -->
+  <div class="tabs">
+    <button class="tab" onclick="switchScene('s5')" id="tab-s5">Scene 5</button>
+    <button class="tab active" onclick="switchScene('s6')" id="tab-s6">Scene 6 <span class="badge-new">NEW</span></button>
   </div>
 
-  <!-- Inline player with tap-to-play overlay -->
-  <div class="shell">
-    <div class="notch"></div>
-    <div class="screen" id="screenWrap">
-      <video id="vid" src="/scene5_final.mp4" muted playsinline preload="auto" loop></video>
-      <div class="play-overlay" id="overlay">
-        <div class="play-circle">
-          <svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
-        </div>
+  <!-- Scene 6 -->
+  <div class="player-card visible" id="card-s6">
+    <div class="scene-label">
+      <div class="scene-name">Scene 6 — Join the Dream Planet Movement</div>
+      <div class="scene-chips">
+        <span><strong>7.9 s</strong></span>
+        <span><strong>1080×1920</strong> 9:16</span>
+        <span><strong>H.264</strong></span>
+        <span><strong>No audio</strong></span>
       </div>
     </div>
-    <div class="home-bar"></div>
+
+    <div style="display:flex;flex-direction:column;align-items:center;gap:5px">
+      <a class="open-btn" href="/scene6_final.mp4" target="_blank">
+        <svg width="15" height="15" viewBox="0 0 16 16" fill="none"><path d="M6 3H3a1 1 0 0 0-1 1v9a1 1 0 0 0 1 1h9a1 1 0 0 0 1-1v-3" stroke="#fff" stroke-width="1.5" stroke-linecap="round"/><path d="M9 2h5v5" stroke="#fff" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/><path d="M14 2 8 8" stroke="#fff" stroke-width="1.5" stroke-linecap="round"/></svg>
+        Open in new tab — full controls
+      </a>
+      <p class="open-hint">Recommended for full seeking &amp; zoom</p>
+    </div>
+
+    <div class="shell">
+      <div class="notch"></div>
+      <div class="screen" id="wrap-s6">
+        <video id="vid-s6" src="/scene6_final.mp4" muted playsinline preload="auto"></video>
+        <div class="play-overlay" id="ov-s6">
+          <div class="play-circle"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div>
+        </div>
+      </div>
+      <div class="home-bar"></div>
+    </div>
+
+    <div class="phases">
+      <div class="ph-title">Phase breakdown</div>
+      <table>
+        <tr><td class="pi">P1</td><td class="pt">0.00 – 0.75 s</td><td class="pd">Scene 5 Forum final frame — static hold</td></tr>
+        <tr><td class="pi">P2</td><td class="pt">0.75 – 2.25 s</td><td class="pd">UI dissolve — forum blurs &amp; fades, orange glow rises, particles converge to center</td></tr>
+        <tr><td class="pi">P3</td><td class="pt">2.25 – 3.20 s</td><td class="pd">Dream Planet logo assembles — DP mark glows orange</td></tr>
+        <tr><td class="pi">P4</td><td class="pt">3.20 – 3.70 s</td><td class="pd">"MORE THAN FOLLOWERS" tagline fades in</td></tr>
+        <tr><td class="pi">P5</td><td class="pt">3.70 – 4.70 s</td><td class="pd">"Join Dream Planet Today" + "Start earning with your community."</td></tr>
+        <tr><td class="pi">P5b</td><td class="pt">4.50 – 5.20 s</td><td class="pd">Referral card slides up — glass card, IK54OTRD in orange</td></tr>
+        <tr><td class="pi">P6</td><td class="pt">5.20 – 5.70 s</td><td class="pd">Store badges appear (Google Play + App Store)</td></tr>
+        <tr><td class="pi">P7</td><td class="pt">5.70 – 7.70 s</td><td class="pd">Final hold — full poster composition (~2 s read time)</td></tr>
+        <tr><td class="pi">End</td><td class="pt">7.70 – 7.92 s</td><td class="pd">Fade to black</td></tr>
+      </table>
+    </div>
   </div>
 
-  <div class="phases">
-    <div class="ph-title">Phase breakdown</div>
-    <table>
-      <tr><td class="pi">P1</td><td class="pt">0.00 – 1.20 s</td><td>Scene 4 handoff — white dissolve → home → Side Nav opens, holds</td></tr>
-      <tr><td class="pi">P2</td><td class="pt">1.20 – 2.50 s</td><td>View Portfolio tap → Portfolio slides in</td></tr>
-      <tr><td class="pi">P3</td><td class="pt">2.50 – 5.20 s</td><td>Portfolio reveal — profile/stats hold, media grid scroll (+ visible)</td></tr>
-      <tr><td class="pi">P4</td><td class="pt">5.20 – 6.50 s</td><td>View Forum tap → Forum enters (+ disappears)</td></tr>
-      <tr><td class="pi">P5</td><td class="pt">6.50 – 8.00 s</td><td>Forum reveal + camera push-in — header, members, post 1</td></tr>
-      <tr><td class="pi">P6</td><td class="pt">8.00 – 12.60 s</td><td>Multi-post discovery: p1 Like → p2 → p3 Comment → p4</td></tr>
-      <tr><td class="pi">P7</td><td class="pt">12.60 – 13.80 s</td><td>Final push-in, hold on clean forum feed (p4)</td></tr>
-    </table>
+  <!-- Scene 5 -->
+  <div class="player-card" id="card-s5">
+    <div class="scene-label">
+      <div class="scene-name">Scene 5 — Community &amp; Participation</div>
+      <div class="scene-chips">
+        <span><strong>13.8 s</strong></span>
+        <span><strong>1080×1920</strong> 9:16</span>
+        <span><strong>H.264</strong></span>
+        <span><strong>No audio</strong></span>
+      </div>
+    </div>
+
+    <div style="display:flex;flex-direction:column;align-items:center;gap:5px">
+      <a class="open-btn" href="/scene5_final.mp4" target="_blank">
+        <svg width="15" height="15" viewBox="0 0 16 16" fill="none"><path d="M6 3H3a1 1 0 0 0-1 1v9a1 1 0 0 0 1 1h9a1 1 0 0 0 1-1v-3" stroke="#fff" stroke-width="1.5" stroke-linecap="round"/><path d="M9 2h5v5" stroke="#fff" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/><path d="M14 2 8 8" stroke="#fff" stroke-width="1.5" stroke-linecap="round"/></svg>
+        Open in new tab — full controls
+      </a>
+      <p class="open-hint">Recommended for full seeking &amp; zoom</p>
+    </div>
+
+    <div class="shell">
+      <div class="notch"></div>
+      <div class="screen" id="wrap-s5">
+        <video id="vid-s5" src="/scene5_final.mp4" muted playsinline preload="auto"></video>
+        <div class="play-overlay" id="ov-s5">
+          <div class="play-circle"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div>
+        </div>
+      </div>
+      <div class="home-bar"></div>
+    </div>
+
+    <div class="phases">
+      <div class="ph-title">Phase breakdown</div>
+      <table>
+        <tr><td class="pi">P1</td><td class="pt">0.00 – 1.20 s</td><td class="pd">Scene 4 handoff — white dissolve → home → Side Nav opens</td></tr>
+        <tr><td class="pi">P2</td><td class="pt">1.20 – 2.50 s</td><td class="pd">View Portfolio tap → Portfolio slides in</td></tr>
+        <tr><td class="pi">P3</td><td class="pt">2.50 – 5.20 s</td><td class="pd">Portfolio reveal — profile/stats, media grid scroll</td></tr>
+        <tr><td class="pi">P4</td><td class="pt">5.20 – 6.50 s</td><td class="pd">View Forum tap → Forum enters</td></tr>
+        <tr><td class="pi">P5</td><td class="pt">6.50 – 8.00 s</td><td class="pd">Forum reveal + camera push-in — header, members, post 1</td></tr>
+        <tr><td class="pi">P6</td><td class="pt">8.00 – 12.60 s</td><td class="pd">Multi-post community discovery: Like p1 → p2 → Comment p3 → p4</td></tr>
+        <tr><td class="pi">P7</td><td class="pt">12.60 – 13.80 s</td><td class="pd">Final push-in, hold on clean forum feed</td></tr>
+      </table>
+    </div>
   </div>
 
   <script>
-    const vid = document.getElementById('vid');
-    const overlay = document.getElementById('overlay');
-
-    function startPlay() {
-      vid.play().then(() => {
-        overlay.classList.add('hidden');
-      }).catch(() => {});
+    // ── Scene switching ──────────────────────────────────────────────
+    function switchScene(id) {
+      ['s5', 's6'].forEach(s => {
+        document.getElementById('card-' + s).classList.toggle('visible', s === id);
+        document.getElementById('tab-'  + s).classList.toggle('active',  s === id);
+        // Pause the video we're leaving
+        const v = document.getElementById('vid-' + s);
+        if (s !== id && v) { v.pause(); v.currentTime = 0; showOverlay(s); }
+      });
+      // Auto-play the entering scene
+      const entering = document.getElementById('vid-' + id);
+      if (entering) tryPlay(id);
     }
 
-    // Try autoplay immediately (works if browser allows it)
-    startPlay();
+    // ── Playback helpers ─────────────────────────────────────────────
+    function showOverlay(id) {
+      document.getElementById('ov-' + id).classList.remove('hidden');
+    }
+    function hideOverlay(id) {
+      document.getElementById('ov-' + id).classList.add('hidden');
+    }
 
-    // Tapping the phone screen plays/pauses
-    document.getElementById('screenWrap').addEventListener('click', () => {
-      if (vid.paused) {
-        startPlay();
-      } else {
-        vid.pause();
-        overlay.classList.remove('hidden');
-      }
+    function tryPlay(id) {
+      const vid = document.getElementById('vid-' + id);
+      vid.play().then(() => hideOverlay(id)).catch(() => {});
+    }
+
+    // Wire up click-to-play for each scene
+    ['s5', 's6'].forEach(id => {
+      const wrap = document.getElementById('wrap-' + id);
+      const vid  = document.getElementById('vid-'  + id);
+
+      wrap.addEventListener('click', () => {
+        if (vid.paused) { tryPlay(id); }
+        else { vid.pause(); showOverlay(id); }
+      });
+
+      vid.addEventListener('play',   () => hideOverlay(id));
+      vid.addEventListener('pause',  () => showOverlay(id));
+      vid.addEventListener('ended',  () => showOverlay(id));
     });
 
-    vid.addEventListener('play',  () => overlay.classList.add('hidden'));
-    vid.addEventListener('pause', () => overlay.classList.remove('hidden'));
+    // Auto-play Scene 6 on load (it's the active tab)
+    tryPlay('s6');
   </script>
 </body>
 </html>
