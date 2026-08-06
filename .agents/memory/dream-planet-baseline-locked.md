@@ -1,29 +1,46 @@
 ---
 name: Dream Planet baseline locked
-description: Scenes 1–4 clean-rebuild verified; .gz archives removed from Git; Scene 5 integration points documented in SCENE5_INTEGRATION.md.
+description: Master v2 (Scenes 1–5) locked and tagged; archive and Scene 6 workspace created; validate_master.sh updated for 5 scenes.
 ---
 
-## Current approved master (Aug 5, 2026)
+## Current approved master — Master v2 (2026-08-06)
 
-- File: `DreamPlanet_Master_v1_audio.mp4` / `_no_audio.mp4` / `_v1.mp4`
+- Git tag: `master-v2-approved`
+- Files: `DreamPlanet_Master_v2.mp4` / `_audio.mp4` / `_no_audio.mp4`
 - Location: `extracted_scenes/Scene3Scene4_contents/Scene1scene2_contents/Dre-animation/Dream Planet Referral Campaign/Final Edit/`
-- Duration: 21.533s | 1080×1920 | 30fps | audio present
-- Build: `Final Edit/build_master.sh` (deterministic; verified byte-for-byte reproducible)
-- Validation: `validate_master.sh --full` → 22/22 checks pass (including Scene 3 blank-intro brightness guard 0.685 < 0.95)
+- Duration: 41.300s | 1080×1920 | 30fps | audio present (AAC ~197kbps)
+- Build: `Final Edit/build_master_v2.sh` (deterministic)
+- Baseline checksums: `archive/scene5_v1/MASTER_V2_BASELINE.md`
 
-## Archive cleanup (Aug 5, 2026)
+## Scene timeline (v2)
 
-`extracted_scenes/Scene1scene2.gz` (64 MB) and `Scene3Scene4.gz` (43 MB) removed from Git tracking via `git rm --cached`. Both were predecessor Replit workspace snapshots — all required content already extracted and tracked. No build or validation script references them. Added to `.gitignore`.
+| Scene | Start | End | Duration |
+|-------|-------|-----|----------|
+| 1 Tattoo Reveal | 0.000s | 3.000s | 3.000s |
+| 2 Creator Discovery | 3.000s | 6.000s | 3.000s |
+| 3 Referral Journey (v3) | 6.000s | 19.433s | 13.433s |
+| 4 Leaderboard | 19.433s | 28.433s | 9.000s |
+| 5 Community & Participation | 28.433s | 41.300s | 12.867s |
 
-**Why:** Saves ~107 MB from clones; no rebuild impact confirmed by post-cleanup 22/22 pass.
+## Master v1 (2026-08-05) — preserved
 
-## Scene 5 integration
+- Files: `DreamPlanet_Master_v1*.mp4` (same Final Edit dir)
+- Duration: 21.533s | Scenes 1–4 only
+- Build: `build_master.sh`
 
-All integration points are documented in `SCENE5_INTEGRATION.md` (repo root). The four files to edit when Scene 5 export is approved:
+## validate_master.sh — v2 state
 
-1. `Final Edit/build_master.sh` — add `SCENE5_SRC`, `build_scene5()`, append to `SCENE_ORDER`
-2. `Final Edit/validate_master.sh` — add to `FLAT_SCENE_SRCS` and `SCENE_ORDER` in SCENE REGISTRY section
-3. `artifacts/api-server/src/config/master.ts` — append to `SCENES`, update `MASTER_META.duration`
-4. Canonical source path: `...Dream Planet Referral Campaign/Scene 5/Final Animation/scene5_final.mp4`
+SCENE REGISTRY updated: `SCENE_ORDER=(scene1 scene2 scene3 scene4 scene5)`
+`FLAT_SCENE_SRCS[scene5]` and `TRIM_GUARDS[scene5]="0.9"` added.
+`--full` mode now calls `build_master_v2.sh`. `MIN_DURATION=36.0`.
+Commented Scene 6 hooks in place throughout.
 
-**How to apply:** When Scene 5 export is in hand, follow `SCENE5_INTEGRATION.md` step-by-step, run `build_master.sh /tmp/verify` first, then `validate_master.sh --full` before committing the new master.
+## Scene 5 archive
+
+`archive/scene5_v1/` — approved deliverables + QA frames + manifest + baseline doc.
+
+## Scene 6 scaffold
+
+`scene6/` — isolated workspace (assets/ src/ captures/ renders/ qa/ README.md).
+Scene 6 integration hooks commented out in `build_master_v2.sh` and `validate_master.sh`.
+See `scene6/README.md` for the integration checklist when Scene 6 is ready.
