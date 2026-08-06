@@ -50,6 +50,20 @@ export const FINAL_EDIT_DIR = resolve(
 
 export const VIDEO_PATH = resolve(FINAL_EDIT_DIR, VIDEO_FILENAME);
 
+// ── Scene 5 standalone preview ────────────────────────────────────────────────
+// Served at /review/scene5 — no audio (score added at master concat stage).
+export const SCENE5_VIDEO_PATH = resolve(
+  REPO_ROOT,
+  "extracted_scenes",
+  "Scene3Scene4_contents",
+  "Scene1scene2_contents",
+  "Dre-animation",
+  "Dream Planet Referral Campaign",
+  "Scene 5",
+  "Final Animation",
+  "scene5_final.mp4",
+);
+
 // ── Known video metadata ──────────────────────────────────────────────────────
 // Sourced from ffprobe at the time the master was approved (Aug 5, 2026).
 // Update when the master is regenerated with new scenes or a trim change.

@@ -9,7 +9,7 @@
 
 import { Router, type IRouter, type Request, type Response } from "express";
 import { createReadStream, statSync, existsSync } from "node:fs";
-import { VIDEO_PATH, MASTER_META, SCENES } from "../config/master";
+import { VIDEO_PATH, MASTER_META, SCENES, SCENE5_VIDEO_PATH } from "../config/master";
 
 const router: IRouter = Router();
 
@@ -60,6 +60,49 @@ router.get("/review/video", (req: Request, res: Response) => {
     res.setHeader("Content-Length", fileSize);
     createReadStream(VIDEO_PATH).pipe(res);
   }
+});
+
+// ── GET /review/scene5/video ──────────────────────────────────────────────────
+// Streams scene5_final.mp4 with full HTTP Range support (seeking works).
+router.get("/review/scene5/video", (req: Request, res: Response) => {
+  if (!existsSync(SCENE5_VIDEO_PATH)) {
+    res.status(404).json({
+      error: "Scene 5 video not found",
+      path: SCENE5_VIDEO_PATH,
+    });
+    return;
+  }
+
+  const stat = statSync(SCENE5_VIDEO_PATH);
+  const fileSize = stat.size;
+  const rangeHeader = req.headers.range;
+
+  res.setHeader("Accept-Ranges", "bytes");
+  res.setHeader("Content-Type", "video/mp4");
+  res.setHeader("Cache-Control", "no-store");
+
+  if (rangeHeader) {
+    const parts = rangeHeader.replace(/bytes=/, "").split("-");
+    const start = parseInt(parts[0]!, 10);
+    const end = parts[1] ? parseInt(parts[1], 10) : fileSize - 1;
+    const chunkSize = end - start + 1;
+
+    res.status(206);
+    res.setHeader("Content-Range", `bytes ${start}-${end}/${fileSize}`);
+    res.setHeader("Content-Length", chunkSize);
+    createReadStream(SCENE5_VIDEO_PATH, { start, end }).pipe(res);
+  } else {
+    res.setHeader("Content-Length", fileSize);
+    createReadStream(SCENE5_VIDEO_PATH).pipe(res);
+  }
+});
+
+// ── GET /review/scene5 ────────────────────────────────────────────────────────
+router.get("/review/scene5", (_req: Request, res: Response) => {
+  const exists = existsSync(SCENE5_VIDEO_PATH);
+  res.setHeader("Content-Type", "text/html; charset=utf-8");
+  res.setHeader("Cache-Control", "no-store");
+  res.send(buildScene5Page(exists));
 });
 
 // ── GET /review ───────────────────────────────────────────────────────────────
@@ -590,6 +633,138 @@ function buildReviewPage(videoExists: boolean): string {
   }
 })();
 </script>
+</body>
+</html>`;
+}
+
+// ─────────────────────────────────────────────────────────────────────────────
+// Scene 5 HTML template — minimal portrait player, reliable native controls
+// ─────────────────────────────────────────────────────────────────────────────
+
+const SCENE5_PHASES = [
+  { id: "P1", time: "0.0 – 0.7 s", label: "Entry dissolve — home screen / Scene 4 handoff" },
+  { id: "P2", time: "0.7 – 1.4 s", label: "Side nav opens → View Portfolio tap" },
+  { id: "P3", time: "1.4 – 2.7 s", label: "Portfolio reveal + camera push-in (1.08×)" },
+  { id: "P4", time: "2.7 – 3.5 s", label: "View Forum tap → Forum enters" },
+  { id: "P5", time: "3.5 – 4.5 s", label: "Forum reveal + camera push-in (1.06×)" },
+  { id: "P6", time: "4.5 – 7.2 s", label: "Community feed scroll + Forum Overview (47 members)" },
+  { id: "P7", time: "7.2 – 8.8 s", label: "Engagement — Like + Comment (prepared) + Share" },
+  { id: "P8", time: "8.8 – 9.8 s", label: "Final push-in, hold on clean forum feed" },
+];
+
+function buildScene5Page(videoExists: boolean): string {
+  const phaseRows = SCENE5_PHASES.map((p) =>
+    `<tr><td class="ph-id">${p.id}</td><td class="ph-time">${p.time}</td><td>${p.label}</td></tr>`
+  ).join("\n");
+
+  const noVideoWarning = videoExists ? "" : `
+    <div class="warn">
+      ⚠ Video file not found at expected path. Run the Scene 5 capture pipeline first.
+    </div>`;
+
+  return `<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width,initial-scale=1"/>
+  <title>Dream Planet — Scene 5 Preview</title>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      background: #0a0a0a;
+      color: #ddd;
+      font-family: system-ui, -apple-system, sans-serif;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 32px 20px 56px;
+      gap: 28px;
+    }
+    header { width: 100%; max-width: 480px; }
+    .eyebrow { font-size: 10px; letter-spacing: 2px; text-transform: uppercase; color: #444; margin-bottom: 6px; }
+    h1 { font-size: 15px; font-weight: 600; color: #f64a01; margin-bottom: 8px; }
+    .chips { display: flex; gap: 12px; flex-wrap: wrap; font-size: 11px; color: #555; }
+    .chips strong { color: #aaa; }
+    /* Phone shell */
+    .shell {
+      position: relative;
+      width: 270px;
+      background: #111;
+      border-radius: 38px;
+      border: 2px solid #252525;
+      box-shadow: 0 0 0 1px #181818, 0 32px 72px rgba(0,0,0,.75), inset 0 1px 0 rgba(255,255,255,.05);
+      padding: 14px 10px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+    .notch { width: 72px; height: 5px; background: #1c1c1c; border-radius: 3px; margin-bottom: 10px; }
+    .screen { width: 250px; height: 444px; border-radius: 12px; overflow: hidden; background: #000; }
+    video { width: 100%; height: 100%; object-fit: cover; display: block; }
+    .home-bar { width: 70px; height: 4px; background: #252525; border-radius: 2px; margin-top: 10px; }
+    /* Warn */
+    .warn {
+      width: 100%; max-width: 480px;
+      background: #1e1200; border: 1px solid #5a3000;
+      border-radius: 8px; padding: 12px 16px;
+      font-size: 12px; color: #e8a020;
+    }
+    /* Phase table */
+    .phases { width: 100%; max-width: 480px; background: #111; border: 1px solid #1e1e1e; border-radius: 10px; overflow: hidden; }
+    .phases-title {
+      font-size: 10px; font-weight: 600; letter-spacing: 1.5px;
+      text-transform: uppercase; color: #444;
+      padding: 12px 16px 8px; border-bottom: 1px solid #1a1a1a;
+    }
+    table { width: 100%; border-collapse: collapse; }
+    td { padding: 9px 14px; font-size: 11px; border-bottom: 1px solid #181818; vertical-align: top; }
+    tr:last-child td { border-bottom: none; }
+    .ph-id { font-weight: 700; color: #f64a01; white-space: nowrap; width: 36px; }
+    .ph-time { color: #555; white-space: nowrap; padding-right: 8px; width: 120px; }
+    .back { font-size: 11px; color: #444; }
+    .back a { color: #f64a01; text-decoration: none; }
+    .back a:hover { text-decoration: underline; }
+  </style>
+</head>
+<body>
+  <header>
+    <p class="eyebrow">Dream Planet Referral Campaign</p>
+    <h1>SCENE 5 — COMMUNITY &amp; PARTICIPATION</h1>
+    <div class="chips">
+      <span><strong>9.8 s</strong> duration</span>
+      <span><strong>1080 × 1920</strong> 9:16</span>
+      <span><strong>25 fps</strong></span>
+      <span><strong>H.264</strong> CRF 16</span>
+      <span><strong>No audio</strong> (master adds score)</span>
+    </div>
+  </header>
+
+  ${noVideoWarning}
+
+  <div class="shell">
+    <div class="notch"></div>
+    <div class="screen">
+      <video
+        src="/review/scene5/video"
+        controls
+        autoplay
+        muted
+        playsinline
+        preload="auto"
+      ></video>
+    </div>
+    <div class="home-bar"></div>
+  </div>
+
+  <div class="phases">
+    <div class="phases-title">Phase breakdown</div>
+    <table>
+      ${phaseRows}
+    </table>
+  </div>
+
+  <p class="back">← <a href="/review">Back to master review</a></p>
 </body>
 </html>`;
 }
