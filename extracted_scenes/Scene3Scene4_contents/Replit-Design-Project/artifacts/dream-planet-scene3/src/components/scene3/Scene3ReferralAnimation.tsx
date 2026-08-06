@@ -1,19 +1,21 @@
 /**
  * Scene3ReferralAnimation.tsx
  *
- * Full Scene 3 cinematic orchestrator — 9.5 second journey through:
+ * Full Scene 3 cinematic orchestrator — 11.84 second journey through:
  *   Referral Home → View Levels → Leaderboard
  *
- * Timeline:
- *   Phase 1  (0.0–0.4s)   Entry         — white overlay dissolves (from Scene 2)
- *   Phase 2  (0.4–1.4s)   Home reveal   — UI rises from below with scale settle
- *   Phase 3  (1.4–3.0s)   Home push-in  — camera 100% → 106% toward code card
- *   Phase 4  (3.0–3.6s)   Code emphasis — referral card breathes (1.028× pulse)
- *   Phase 4b (3.6–4.0s)   Levels tease  — "View Levels" link draws the eye
- *   Phase 5  (4.0–5.0s)   Tap + push to Levels — ripple, camera resets, iOS slide
- *   Phase 6  (5.0–6.6s)   Levels        — stagger reveal + camera push-in
- *   Phase 7  (6.6–7.6s)   Tap + push to Leaderboard — ripple, camera resets, iOS slide
- *   Phase 8  (7.6–9.5s)   Leaderboard   — stagger reveal + push-in + hold
+ * Timeline (v2 — pacing revision, +24.6% from original 9.5s):
+ *   Phase 1  (0.0–0.5s)    Entry         — white overlay dissolves (from Scene 2)
+ *   Phase 2  (0.5–1.7s)    Home reveal   — UI rises from below with scale settle
+ *   Phase 3  (1.7–3.7s)    Home push-in  — camera 100% → 106% toward code card
+ *   Phase 4  (3.7–4.4s)    Code emphasis — referral card breathes (1.028× pulse)
+ *   Phase 4b (4.4–4.9s)    Levels tease  — "View Levels" link draws the eye
+ *   Phase 5  (4.9–6.0s)    Tap + push to Levels — ripple, camera resets, iOS slide
+ *   Phase 6  (6.0–8.1s)    Levels        — stagger reveal + camera push-in
+ *   Phase 7  (8.1–9.2s)    Tap + push to Leaderboard — ripple, camera resets, iOS slide
+ *   Phase 8  (9.2–11.84s)  Leaderboard   — stagger reveal + push-in + extended hold
+ *
+ * No UI, layout, transition, asset, or color changes from v1 — timing only.
  */
 
 import React, { useEffect, useRef, useState } from 'react';
@@ -55,41 +57,41 @@ export function Scene3ReferralAnimation() {
     startedRef.current = true;
 
     const run = async () => {
-      // ── PHASE 1: Entry (0.0–0.4s) ──────────────────────────────────────
+      // ── PHASE 1: Entry (0.0–0.5s) ──────────────────────────────────────
       // White dissolves — gives the impression of emerging from Scene 2.
       overlayControls.start({
         opacity: 0,
-        transition: { duration: 0.4, ease: 'easeOut' },
+        transition: { duration: 0.5, ease: 'easeOut' },
       });
-      await delay(400);
+      await delay(500);
 
-      // ── PHASE 2: Referral Home Reveal (0.4–1.4s) ───────────────────────
+      // ── PHASE 2: Referral Home Reveal (0.5–1.7s) ───────────────────────
       await homeRevealControls.start({
         opacity: 1,
         scale: 1,
         y: 0,
-        transition: { duration: 1.0, ease: EASE_EXPO_OUT },
+        transition: { duration: 1.2, ease: EASE_EXPO_OUT },
       });
 
-      // ── PHASE 3: Home Camera Push-in (1.4–3.0s) ────────────────────────
+      // ── PHASE 3: Home Camera Push-in (1.7–3.7s) ────────────────────────
       // Slow cinematic push toward the referral code card area.
       await cameraControls.start({
         scale: 1.06,
         y: '-1.5%',
-        transition: { duration: 1.6, ease: EASE_SMOOTH },
+        transition: { duration: 2.0, ease: EASE_SMOOTH },
       });
 
-      // ── PHASE 4: Referral Code Emphasis (3.0–3.6s) ─────────────────────
+      // ── PHASE 4: Referral Code Emphasis (3.7–4.4s) ─────────────────────
       await codeCardControls.start({
         scale: [1, 1.028, 1],
-        transition: { duration: 0.6, ease: 'easeInOut', times: [0, 0.45, 1] },
+        transition: { duration: 0.7, ease: 'easeInOut', times: [0, 0.45, 1] },
       });
 
-      // ── PHASE 4b: View Levels Tease (3.6–4.0s) ─────────────────────────
+      // ── PHASE 4b: View Levels Tease (4.4–4.9s) ─────────────────────────
       await viewLevelsControls.start({
         scale: [1, 1.14, 1],
         opacity: [1, 0.6, 1],
-        transition: { duration: 0.4, times: [0, 0.5, 1] },
+        transition: { duration: 0.5, times: [0, 0.5, 1] },
       });
 
       // ── PHASE 5: Tap "View Levels" + Camera Reset + Transition ──────────
@@ -101,23 +103,23 @@ export function Scene3ReferralAnimation() {
         y: 0,
         transition: { duration: 0.35, ease: EASE_SMOOTH },
       });
-      await delay(500);
+      await delay(600);
       setTapPos(null);
 
       // iOS-style push: Home slides left, Levels slides in from right
       setCurrentPage('levels');
       await delay(520); // let the 450ms transition finish + small buffer
 
-      // ── PHASE 6: Levels Reveal (5.0–5.4s) ──────────────────────────────
+      // ── PHASE 6: Levels Reveal (6.0–6.5s) ──────────────────────────────
       // Fire stagger reveal on the levels content
       levelsRevealControls.start('visible');
-      await delay(400); // let the stagger start before the camera moves
+      await delay(500); // let the stagger start before the camera moves
 
-      // ── PHASE 6b: Levels Camera Push-in (5.4–6.6s) ─────────────────────
+      // ── PHASE 6b: Levels Camera Push-in (6.5–8.1s) ─────────────────────
       await cameraControls.start({
         scale: 1.05,
         y: '-1%',
-        transition: { duration: 1.2, ease: EASE_SMOOTH },
+        transition: { duration: 1.6, ease: EASE_SMOOTH },
       });
 
       // ── PHASE 7: Tap "Leaderboard" Header Button + Camera Reset ─────────
@@ -128,26 +130,26 @@ export function Scene3ReferralAnimation() {
         y: 0,
         transition: { duration: 0.35, ease: EASE_SMOOTH },
       });
-      await delay(500);
+      await delay(600);
       setTapPos(null);
 
       // Levels slides left, Leaderboard slides in from right
       setCurrentPage('leaderboard');
       await delay(520);
 
-      // ── PHASE 8: Leaderboard Reveal (7.6–8.0s) ──────────────────────────
+      // ── PHASE 8: Leaderboard Reveal (9.2–9.7s) ──────────────────────────
       leaderboardRevealControls.start('visible');
-      await delay(400);
+      await delay(500);
 
-      // ── PHASE 8b: Leaderboard Push-in + Hold (8.0–9.5s) ─────────────────
+      // ── PHASE 8b: Leaderboard Push-in + Hold (9.7–11.84s) ───────────────
       await cameraControls.start({
         scale: 1.05,
         y: '-1%',
-        transition: { duration: 1.0, ease: EASE_SMOOTH },
+        transition: { duration: 1.1, ease: EASE_SMOOTH },
       });
 
-      // End frame — clean hold before the loop restarts
-      await delay(450);
+      // Extended end frame — clean hold before the loop restarts
+      await delay(1000);
     };
 
     run().catch(console.error);
