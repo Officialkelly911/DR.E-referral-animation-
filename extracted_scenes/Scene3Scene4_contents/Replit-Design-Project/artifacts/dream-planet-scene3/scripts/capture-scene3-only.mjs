@@ -13,7 +13,7 @@
  *   - ffmpeg available
  *   - Playwright ffmpeg installed: npx playwright install ffmpeg
  *
- * Outputs (Scene 3 v2 — 11.84s pacing revision):
+ * Outputs (Scene 3 v3 — 14.14s readability pass):
  *   captured/scene3_start_frame.png
  *   captured/scene3_end_frame.png
  *   Scene 3/Final Animation/scene3_final.mp4         (canonical source)
@@ -38,11 +38,11 @@ const URL       = `http://localhost:${PORT}${BASE_PATH}`;
 const WIDTH     = 1080;
 const HEIGHT    = 1920;
 
-// S3 total = 11.84s (Scene3Timeline.ts S3.TOTAL, v2 pacing revision).
+// S3 total = 14.14s (Scene3Timeline.ts S3.TOTAL, v3 readability pass).
 // Keep this literal in sync with S3.TOTAL in ../src/components/scene3/Scene3Timeline.ts
-const S3_DURATION_MS = 11_840;
+const S3_DURATION_MS = 14_140;
 const RECORD_MS      = S3_DURATION_MS + 800;   // +0.8s buffer for encoder flush
-const TRIM_S         = S3_DURATION_MS / 1000 - 0.2; // trim encoder flush tail
+const TRIM_S         = S3_DURATION_MS / 1000;  // exact scene duration — no content trimmed
 
 const CAPTURED_DIR  = path.join(ARTIFACT_DIR, 'captured');
 const SCENE_DIR     = path.resolve(
@@ -82,7 +82,7 @@ function findSystemChromium() {
 
 const CHROMIUM_PATH = findSystemChromium();
 console.log(`\n🌐  Using Chromium: ${CHROMIUM_PATH}`);
-console.log(`\n🎬  Dream Planet — Scene 3 Capture (v2 pacing revision)`);
+console.log(`\n🎬  Dream Planet — Scene 3 Capture (v3 readability pass)`);
 console.log(`   Duration: ${S3_DURATION_MS / 1000}s  |  Recording: ${RECORD_MS / 1000}s  |  Trim: ${TRIM_S}s`);
 console.log(`   Target: ${URL}`);
 console.log(`   Viewport: ${WIDTH}×${HEIGHT} (9:16)\n`);
@@ -173,6 +173,6 @@ console.log('  ✓ Frames copied to Final Animation/');
 console.log('\n  → Verifying output…');
 execSync(`ffprobe -v error -show_entries format=duration,size -of default=noprint_wrappers=1 "${mp4Out}"`, { stdio: 'inherit' });
 
-console.log('\n✅  Scene 3 capture complete (v2 — 11.84s pacing revision).');
+console.log('\n✅  Scene 3 capture complete (v3 — 14.14s readability pass).');
 console.log(`   scene3_final.mp4      → ${mp4Out}`);
 console.log(`   scene3_final_no_audio → ${noAudioOut}`);

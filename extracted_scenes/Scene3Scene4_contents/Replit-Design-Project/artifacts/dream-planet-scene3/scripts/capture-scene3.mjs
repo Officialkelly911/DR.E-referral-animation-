@@ -28,8 +28,8 @@ const BASE_PATH  = '/dream-planet-scene3/';
 const URL        = `http://localhost:${PORT}${BASE_PATH}`;
 const WIDTH      = 1080;
 const HEIGHT     = 1920;
-// 9.5s animation + 0.5s buffer to ensure stopRecording fires
-const RECORD_MS  = 10_500;
+// 14.14s animation + 0.8s buffer to ensure stopRecording fires
+const RECORD_MS  = 14_940;
 const VIDEO_DIR  = path.join(ARTIFACT_DIR, 'captured');
 const FINAL_DIR  = path.resolve(
   __dirname,
@@ -110,12 +110,15 @@ const finalStart   = path.join(FINAL_DIR, 'Final Animation', START_FRAME_NAME);
 const finalEnd     = path.join(FINAL_DIR, 'Final Animation', END_FRAME_NAME);
 
 console.log('\n  → Converting WebM → MP4 (this may take a moment)…');
+// Trim to exact Scene 3 duration — prevents any Scene 4 content bleeding in
+// if the VideoTemplate loops before the capture context closes.
+const S3_TRIM_S = 14.14;
 execSync(
   `ffmpeg -i "${webmPath}" ` +
   `-vf "crop=${WIDTH}:${HEIGHT}:0:0" ` +
   `-c:v libx264 -crf 16 -preset slow -pix_fmt yuv420p ` +
   `-movflags +faststart ` +
-  `-t ${RECORD_MS / 1000 - 0.5} ` +
+  `-t ${S3_TRIM_S} ` +
   `-y "${finalMp4}"`,
   { stdio: 'inherit' }
 );

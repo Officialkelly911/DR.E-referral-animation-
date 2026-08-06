@@ -28,10 +28,13 @@ const URL           = `http://localhost:${PORT}${BASE_PATH}`;
 const WIDTH         = 1080;
 const HEIGHT        = 1920;
 
-// Scene 3 = 9.5s + 0.5s buffer; Scene 4 = 9.0s + 0.5s buffer
-const S3_RECORD_MS  = 10_000;
-const S4_RECORD_MS  = 9_500;
-const TOTAL_MS      = S3_RECORD_MS + S4_RECORD_MS;
+// Scene 3 = 14.14s + 0.8s buffer (v3 readability pass); Scene 4 = 9.0s + 0.5s buffer
+const S3_DURATION_MS = 14_140;
+const S3_RECORD_MS   = S3_DURATION_MS + 800;
+const S3_TRIM_S      = S3_DURATION_MS / 1000; // exact scene duration — no content removed
+const S4_RECORD_MS   = 9_500;
+const S4_TRIM_S      = S4_RECORD_MS / 1000 - 0.5; // S4 unchanged at 9.0s
+const TOTAL_MS       = S3_RECORD_MS + S4_RECORD_MS;
 
 const CAPTURED_DIR  = path.join(ARTIFACT_DIR, 'captured');
 const SCENE_DIR     = path.resolve(
@@ -84,7 +87,7 @@ console.log(`\n🌐  Using Chromium: ${CHROMIUM_PATH}`);
 console.log(`\n🎬  Dream Planet — Scene 3 + 4 Capture`);
 console.log(`   Target: ${URL}`);
 console.log(`   Viewport: ${WIDTH}×${HEIGHT} (9:16)`);
-console.log(`   Duration: ${TOTAL_MS / 1000}s total (S3: ${S3_RECORD_MS/1000}s + S4: ${S4_RECORD_MS/1000}s)\n`);
+console.log(`   S3: ${S3_DURATION_MS/1000}s (v3)  |  S4: 9.0s  |  Recording: ${TOTAL_MS/1000}s total\n`);
 
 // ── Launch browser ──────────────────────────────────────────────────────────
 const browser = await chromium.launch({
@@ -102,7 +105,7 @@ const browser = await chromium.launch({
 });
 
 // ── Capture Scene 3 ─────────────────────────────────────────────────────────
-console.log('  → Capturing Scene 3 (9.5s)…');
+console.log(`  → Capturing Scene 3 (${S3_DURATION_MS/1000}s — v3)…`);
 
 const ctxS3 = await browser.newContext({
   viewport:          { width: WIDTH, height: HEIGHT },
@@ -130,7 +133,7 @@ console.log('  ✓ Scene 3 start frame saved');
 // Wait for Scene 3 animation
 await pageS3.waitForTimeout(S3_RECORD_MS);
 
-// End frame (should now be on Scene 4 — leaderboard opening)
+// End frame — should show Leaderboard in final settled hold (Scene 3 v3 end)
 const s3EndPath = path.join(CAPTURED_DIR, 'scene3_end_frame.png');
 await pageS3.screenshot({ path: s3EndPath });
 console.log('  ✓ Scene 3 end frame saved');
@@ -181,7 +184,6 @@ console.log(`  ✓ Scene 4 WebM: ${path.basename(webmS4)}`);
 
 // ── Convert Scene 3 WebM → MP4 ──────────────────────────────────────────────
 const s3Mp4  = path.join(S3_FINAL_DIR, 'scene3_final.mp4');
-const s3Trim = S3_RECORD_MS / 1000 - 0.5;
 
 console.log('\n  → Converting Scene 3 WebM → MP4…');
 execSync(
@@ -189,7 +191,7 @@ execSync(
   `-vf "crop=${WIDTH}:${HEIGHT}:0:0" ` +
   `-c:v libx264 -crf 16 -preset slow -pix_fmt yuv420p ` +
   `-movflags +faststart ` +
-  `-t ${s3Trim} ` +
+  `-t ${S3_TRIM_S} ` +
   `-y "${s3Mp4}"`,
   { stdio: 'inherit' }
 );
@@ -199,8 +201,8 @@ console.log(`  ✓ Scene 3 MP4: ${s3Mp4}`);
 // The S4 context records the whole navigation including S3 wait time,
 // so we trim the first S3_RECORD_MS seconds off to get just Scene 4.
 const s4Mp4   = path.join(S4_FINAL_DIR, 'scene4_final.mp4');
-const s4Start = S3_RECORD_MS / 1000;
-const s4Trim  = S4_RECORD_MS / 1000 - 0.5;
+// Skip past Scene 3 using exact scene duration (not the record buffer)
+const s4Start = S3_DURATION_MS / 1000;
 
 console.log('\n  → Converting Scene 4 WebM → MP4…');
 execSync(
@@ -208,7 +210,7 @@ execSync(
   `-vf "crop=${WIDTH}:${HEIGHT}:0:0" ` +
   `-c:v libx264 -crf 16 -preset slow -pix_fmt yuv420p ` +
   `-movflags +faststart ` +
-  `-t ${s4Trim} ` +
+  `-t ${S4_TRIM_S} ` +
   `-y "${s4Mp4}"`,
   { stdio: 'inherit' }
 );

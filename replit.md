@@ -3,7 +3,7 @@
 A video production workspace for the **Dream Planet Referral Campaign**, containing:
 
 - **Scenes 1 & 2**: Already completed as final `.mp4` files (in `extracted_scenes/Scene1scene2_contents/`)
-- **Scene 3 animation**: Cinematic 4.5-second reveal of the Referral Home (built, running)
+- **Scene 3 animation**: Full 14.14s cinematic journey — Referral Home → View Levels → Leaderboard (built, running; v3 readability pass)
 - **Referral Module UI**: The locked React/TypeScript app animating in Scene 3 (and planned for Scene 4)
 
 ## Running the project
@@ -33,16 +33,19 @@ pnpm --filter @workspace/dream-planet-referral run dev
 
 ## Scene 3 animation — what's built
 
-All 6 phases are implemented in Framer Motion:
+Full 14.14s cinematic journey (v3 — readability pass) implemented in Framer Motion:
 
 | Phase | Time | Description |
 |-------|------|-------------|
-| 1 Entry | 0.0–0.6s | White overlay dissolves out (Scene 2 handoff) |
-| 2 Reveal | 0.6–1.8s | Referral Home rises in: fade + scale settle |
-| 3 Push-in | 1.8–3.0s | Slow camera scale 100% → 108% toward referral code |
-| 4 Code Emphasis | 3.0–3.7s | Code card breathes: soft 1.028× pulse |
-| 5 Levels Tease | 3.7–4.2s | "View Levels" link draws the eye |
-| 6 Exit | 4.2–4.5s | White overlay fades in (Scene 4 handoff) |
+| 1 Entry | 0.0–0.5s | White overlay dissolves (Scene 2 handoff) |
+| 2 Reveal | 0.5–1.7s | Referral Home rises in: fade + scale settle |
+| 3 Push-in | 1.7–4.2s | Camera 100% → 106% toward referral code card |
+| 4 Code Emphasis | 4.2–4.9s | Code card breathes: soft 1.028× pulse |
+| 4b Levels Tease | 4.9–5.4s | "View Levels" link draws the eye |
+| 5 Tap + Transition | 5.4–7.2s | Tap ripple → iOS-style push to Levels page |
+| 6 Levels | 7.2–9.2s | Stagger reveal + camera push-in |
+| 7 Tap + Transition | 9.2–10.3s | Tap ripple → iOS-style push to Leaderboard |
+| 8 Leaderboard | 10.3–14.14s | Stagger reveal + push-in + extended hold |
 
 Key files:
 - `artifacts/dream-planet-scene3/src/components/scene3/Scene3Timeline.ts` — all timing constants

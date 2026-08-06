@@ -1,0 +1,145 @@
+
+DREAM PLANET CAMPAIGN
+
+PHASE 7 — Integrate Approved Scene 5 into the Canonical Master
+
+The revised standalone Scene 5 has now been reviewed and approved.
+
+Proceed with integrating Scene 5 into the canonical master-build pipeline.
+
+Requirements
+
+Do not manually append Scene 5 to an existing MP4.
+
+Instead, regenerate the campaign master using the canonical build pipeline and authoritative scene sources.
+
+Maintain the deterministic build architecture already established.
+
+⸻
+
+Preserve Existing Scenes
+
+Do not modify:
+
+* Scene 1
+* Scene 2
+* Scene 3 (approved version)
+* Scene 4
+* Existing build validation
+* Existing audio synchronization
+* Existing regression guards
+
+⸻
+
+Add Scene 5
+
+Include the approved scene5_final.mp4 as the fifth scene.
+
+The scene order must now be:
+
+Scene 1
+↓
+Scene 2
+↓
+Scene 3
+↓
+Scene 4
+↓
+Scene 5
+
+⸻
+
+Master Build
+
+Update the canonical scene list used by build_master.sh.
+
+Rebuild from source.
+
+Do not concatenate manually.
+
+⸻
+
+Audio
+
+Maintain the existing soundtrack continuity.
+
+Do not restart the music.
+
+Do not introduce gaps.
+
+Maintain any existing fade-out at the end of the campaign.
+
+⸻
+
+Validation
+
+Run the complete validation suite.
+
+Verify:
+
+* Resolution
+* Frame rate
+* Scene order
+* Audio continuity
+* Total duration
+* Scene 3 regression guard
+* Scene 4 → Scene 5 continuity
+* Scene completeness
+* Successful deterministic rebuild
+
+⸻
+
+Deliverables
+
+Generate:
+
+DreamPlanet_Master_v2.mp4
+DreamPlanet_Master_v2_audio.mp4
+DreamPlanet_Master_v2_no_audio.mp4
+
+Create:
+
+MASTER_V2_QA.md
+
+Include:
+
+* Scene durations
+* Total duration
+* Resolution
+* FPS
+* Audio verification
+* Scene order
+* Validation results
+* Confirmation that the rebuild completed successfully
+
+⸻
+
+Preserve Rollback
+
+Keep the previous four-scene master as:
+
+Master v1
+
+Treat the new five-scene campaign as:
+
+Master v2
+
+Do not overwrite or delete the approved Master v1 files.
+
+⸻
+
+Stop Condition
+
+Stop after:
+
+* Master v2 has been rebuilt.
+* Validation passes.
+* QA report is generated.
+
+Do not begin Scene 6.
+
+⸻
+
+One recommendation before you lock Master v2
+
+Because you’ve extended the timing of Scene 3 and Scene 5, watch the full campaign from start to finish after the rebuild. Pay attention to the overall rhythm, not just individual scenes. If the middle of the commercial starts to feel a little heavy, you can trim half a second here or there before locking the master. A good commercial leaves the audience wanting one more second, not checking whether their popcorn has finished popping. That final pacing pass is often what separates a polished campaign from a merely functional one.

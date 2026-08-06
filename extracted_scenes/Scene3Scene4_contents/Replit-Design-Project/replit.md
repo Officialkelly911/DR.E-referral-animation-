@@ -3,7 +3,7 @@
 A video production workspace for the **Dream Planet Referral Campaign**, containing:
 
 - **Scenes 1 & 2**: ✅ Complete — locked final `.mp4` files (in `extracted_scenes/Scene1scene2_contents/`)
-- **Scene 3 animation**: ✅ Complete — 9.5s cinematic journey: Referral Home → View Levels → Leaderboard (captured, locked)
+- **Scene 3 animation**: ✅ Complete — 14.14s cinematic journey: Referral Home → View Levels → Leaderboard (v3 readability pass — timing only)
 - **Scene 4 animation**: ✅ Complete — 9.0s deeper discovery: Leaderboard → Levels → Referral Home CTA (captured, locked)
 - **Master video**: ✅ Complete — all 4 scenes stitched, 24.5s total (with audio + visual review variants)
 - **Referral Module UI**: Locked React/TypeScript app (pixel reference, do not modify)
@@ -22,7 +22,7 @@ pnpm install
 pnpm --filter @workspace/dream-planet-scene3 run dev
 ```
 
-The preview loops Scene 3 (9.5s) then Scene 4 (9.0s) continuously at 1080×1920.
+The preview loops Scene 3 (14.14s — v3) then Scene 4 (9.0s) continuously at 1080×1920.
 
 **Referral Module UI** (for reference):
 ```sh
@@ -51,31 +51,33 @@ This produces:
 | `scene4_final.mp4` | `Scene1scene2_contents/…/Scene 4/Final Animation/` |
 | `DreamPlanet_Master_v1.mp4` | `Scene1scene2_contents/…/Final Edit/` |
 
-**Current output (all complete — August 2026):**
+**Current output:**
 
-| File | Duration | Notes |
-|------|----------|-------|
-| `scene3_final.mp4` | 9.52s | Scene 3 only, 1080×1920, H.264 CRF16 |
-| `scene4_final.mp4` | 9.0s | Scene 4 only, 1080×1920, H.264 CRF16 |
-| `DreamPlanet_Master_v1.mp4` | 24.5s | All 4 scenes, no audio |
-| `DreamPlanet_Master_v1_audio.mp4` | 24.5s | All 4 scenes + AI music track |
-| `DreamPlanet_Master_v1_VisualReview.mp4` | 24.5s | Visual review with effects overlay |
+| File | Duration | Status | Notes |
+|------|----------|--------|-------|
+| `scene3_final.mp4` | 14.16s | ✅ Current | Scene 3 v3, 1080×1920, H.264 CRF16 |
+| `scene4_final.mp4` | 9.0s | ✅ Current | Scene 4, 1080×1920, H.264 CRF16 |
+| `DreamPlanet_Master_v1.mp4` | 24.5s | ⚠️ Stale | Built with S3 v2 (11.84s) — rebuild needed |
+| `DreamPlanet_Master_v1_audio.mp4` | 24.5s | ⚠️ Stale | Rebuild needed |
+| `DreamPlanet_Master_v1_VisualReview.mp4` | 24.5s | ⚠️ Stale | Rebuild needed |
+
+> **To rebuild the master:** run `build_master.sh` in `Scene1scene2_contents/…/Final Edit/` after Scene 3 update.
 
 ## Scene 3 animation — what's built
 
-All 8 phases are implemented in Framer Motion:
+All 8 phases are implemented in Framer Motion (v3 — 14.14s readability pass):
 
 | Phase | Time | Description |
 |-------|------|-------------|
-| 1 Entry | 0.0–0.4s | White overlay dissolves out (Scene 2 handoff) |
-| 2 Reveal | 0.4–1.4s | Referral Home rises in: fade + scale settle |
-| 3 Push-in | 1.4–3.0s | Slow camera push toward referral code |
-| 4 Code Emphasis | 3.0–3.6s | Code card breathes: soft 1.028× pulse |
-| 4b Levels Tease | 3.6–4.0s | "View Levels" link draws the eye |
-| 5 Tap → Levels | 4.0–5.0s | iOS-style right-push to Levels page |
-| 6 Levels reveal | 5.0–6.6s | Levels page stagger + Bronze push-in |
-| 7 Tap → Leaderboard | 6.6–7.6s | Tap back → Leaderboard iOS push |
-| 8 Leaderboard | 7.6–9.5s | Leaderboard reveal + push-in + hold |
+| 1 Entry | 0.0–0.5s | White overlay dissolves out (Scene 2 handoff) |
+| 2 Reveal | 0.5–1.7s | Referral Home rises in: fade + scale settle |
+| 3 Push-in | 1.7–4.2s | Slow camera push toward referral code (+0.5s) |
+| 4 Code Emphasis | 4.2–4.9s | Code card breathes: soft 1.028× pulse |
+| 4b Levels Tease | 4.9–5.4s | "View Levels" link draws the eye |
+| 5 Tap → Levels | 5.4–7.2s | Tap ripple + iOS-style push to Levels page |
+| 6 Levels | 7.2–9.2s | Stagger reveal + camera push-in (+0.6s) |
+| 7 Tap → Leaderboard | 9.2–10.3s | Tap ripple + iOS-style push to Leaderboard |
+| 8 Leaderboard | 10.3–14.14s | Reveal + push-in + extended hold (+1.2s) |
 
 ## Scene 4 animation — what's built
 

@@ -1,21 +1,21 @@
 /**
  * Scene3ReferralAnimation.tsx
  *
- * Full Scene 3 cinematic orchestrator — 11.84 second journey through:
+ * Full Scene 3 cinematic orchestrator — 14.14 second journey through:
  *   Referral Home → View Levels → Leaderboard
  *
- * Timeline (v2 — pacing revision, +24.6% from original 9.5s):
- *   Phase 1  (0.0–0.5s)    Entry         — white overlay dissolves (from Scene 2)
- *   Phase 2  (0.5–1.7s)    Home reveal   — UI rises from below with scale settle
- *   Phase 3  (1.7–3.7s)    Home push-in  — camera 100% → 106% toward code card
- *   Phase 4  (3.7–4.4s)    Code emphasis — referral card breathes (1.028× pulse)
- *   Phase 4b (4.4–4.9s)    Levels tease  — "View Levels" link draws the eye
- *   Phase 5  (4.9–6.0s)    Tap + push to Levels — ripple, camera resets, iOS slide
- *   Phase 6  (6.0–8.1s)    Levels        — stagger reveal + camera push-in
- *   Phase 7  (8.1–9.2s)    Tap + push to Leaderboard — ripple, camera resets, iOS slide
- *   Phase 8  (9.2–11.84s)  Leaderboard   — stagger reveal + push-in + extended hold
+ * Timeline (v3 — readability pass, +19.4% from v2 11.84s):
+ *   Phase 1  (0.0–0.5s)     Entry         — white overlay dissolves (from Scene 2)
+ *   Phase 2  (0.5–1.7s)     Home reveal   — UI rises from below with scale settle
+ *   Phase 3  (1.7–4.2s)     Home push-in  — camera 100% → 106% toward code card
+ *   Phase 4  (4.2–4.9s)     Code emphasis — referral card breathes (1.028× pulse)
+ *   Phase 4b (4.9–5.4s)     Levels tease  — "View Levels" link draws the eye
+ *   Phase 5  (5.4–7.2s)     Tap + push to Levels — ripple, camera resets, iOS slide
+ *   Phase 6  (7.2–9.2s)     Levels        — stagger reveal + camera push-in
+ *   Phase 7  (9.2–10.3s)    Tap + push to Leaderboard — ripple, camera resets, iOS slide
+ *   Phase 8  (10.3–14.14s)  Leaderboard   — stagger reveal + push-in + extended hold
  *
- * No UI, layout, transition, asset, or color changes from v1 — timing only.
+ * No UI, layout, transition, asset, or color changes — timing only.
  */
 
 import React, { useEffect, useRef, useState } from 'react';
@@ -73,12 +73,12 @@ export function Scene3ReferralAnimation() {
         transition: { duration: 1.2, ease: EASE_EXPO_OUT },
       });
 
-      // ── PHASE 3: Home Camera Push-in (1.7–3.7s) ────────────────────────
+      // ── PHASE 3: Home Camera Push-in (1.7–4.2s) ────────────────────────
       // Slow cinematic push toward the referral code card area.
       await cameraControls.start({
         scale: 1.06,
         y: '-1.5%',
-        transition: { duration: 2.0, ease: EASE_SMOOTH },
+        transition: { duration: 2.5, ease: EASE_SMOOTH },
       });
 
       // ── PHASE 4: Referral Code Emphasis (3.7–4.4s) ─────────────────────
@@ -110,16 +110,16 @@ export function Scene3ReferralAnimation() {
       setCurrentPage('levels');
       await delay(520); // let the 450ms transition finish + small buffer
 
-      // ── PHASE 6: Levels Reveal (6.0–6.5s) ──────────────────────────────
+      // ── PHASE 6: Levels Reveal (6.5–7.2s) ──────────────────────────────
       // Fire stagger reveal on the levels content
       levelsRevealControls.start('visible');
-      await delay(500); // let the stagger start before the camera moves
+      await delay(700); // let the stagger settle before the camera moves (+0.2s)
 
-      // ── PHASE 6b: Levels Camera Push-in (6.5–8.1s) ─────────────────────
+      // ── PHASE 6b: Levels Camera Push-in (7.2–9.2s) ─────────────────────
       await cameraControls.start({
         scale: 1.05,
         y: '-1%',
-        transition: { duration: 1.6, ease: EASE_SMOOTH },
+        transition: { duration: 2.0, ease: EASE_SMOOTH },
       });
 
       // ── PHASE 7: Tap "Leaderboard" Header Button + Camera Reset ─────────
@@ -137,19 +137,19 @@ export function Scene3ReferralAnimation() {
       setCurrentPage('leaderboard');
       await delay(520);
 
-      // ── PHASE 8: Leaderboard Reveal (9.2–9.7s) ──────────────────────────
+      // ── PHASE 8: Leaderboard Reveal (10.3–11.0s) ────────────────────────
       leaderboardRevealControls.start('visible');
-      await delay(500);
+      await delay(700); // let the podium settle before the camera moves (+0.2s)
 
-      // ── PHASE 8b: Leaderboard Push-in + Hold (9.7–11.84s) ───────────────
+      // ── PHASE 8b: Leaderboard Push-in + Hold (11.0–14.14s) ──────────────
       await cameraControls.start({
         scale: 1.05,
         y: '-1%',
         transition: { duration: 1.1, ease: EASE_SMOOTH },
       });
 
-      // Extended end frame — clean hold before the loop restarts
-      await delay(1000);
+      // Extended end frame — generous hold so viewer can read leaderboard
+      await delay(2000);
     };
 
     run().catch(console.error);

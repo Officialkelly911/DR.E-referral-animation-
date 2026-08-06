@@ -6,14 +6,15 @@ description: State of the Scene 3 Playwright capture, the full 4-scene master ou
 # Dream Planet Scene 3 Capture — Complete
 
 ## Status (August 2026)
-All scenes are captured and stitched. No further pipeline work needed unless animation content changes.
+Scene 3 updated to **v3 (14.14s readability pass)** — timing only, no UI/design changes.
+The 4-scene master (`DreamPlanet_Master_v1.mp4`) is now **stale** — it was built with Scene 3 v2 (11.84s).
+Master must be rebuilt via `build_master.sh` before the campaign master is current.
 
 ## Output files (all at `extracted_scenes/Scene3Scene4_contents/Scene1scene2_contents/Dre-animation/Dream Planet Referral Campaign/`)
-- `Scene 3/Final Animation/scene3_final.mp4` — 9.52s, 1080×1920, H.264 CRF16, 25fps
-- `Scene 4/Final Animation/scene4_final.mp4` — 9.0s, 1080×1920, H.264 CRF16, 25fps
-- `Final Edit/DreamPlanet_Master_v1.mp4` — 24.5s, all 4 scenes, no audio
-- `Final Edit/DreamPlanet_Master_v1_audio.mp4` — 24.5s, AI music mixed in
-- `Final Edit/DreamPlanet_Master_v1_VisualReview.mp4` — 29MB visual review variant
+- `Scene 3/Final Animation/scene3_final.mp4` — **13.96s** (v3), 1080×1920, H.264 CRF16, 25fps
+- `Scene 3/Final Animation/scene3_final_no_audio.mp4` — identical copy, ready for concat
+- `Scene 4/Final Animation/scene4_final.mp4` — 9.0s, 1080×1920, H.264 CRF16, 25fps (unchanged)
+- `Final Edit/DreamPlanet_Master_v1.mp4` — **STALE** (built with S3 v2); rebuild needed
 
 ## Scene 3 content (verified via start/end frames)
 - Start: Referral Home (orange sunburst, IK54OTRD code, friend stickers)
