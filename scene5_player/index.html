@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width,initial-scale=1"/>
+  <title>Scene 5 — Dream Planet</title>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      background: #0a0a0a;
+      color: #ddd;
+      font-family: system-ui, -apple-system, sans-serif;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: flex-start;
+      padding: 28px 20px 56px;
+      gap: 20px;
+    }
+
+    header { text-align: center; }
+    .eye { font-size: 10px; letter-spacing: 2px; text-transform: uppercase; color: #444; margin-bottom: 6px; }
+    h1 { font-size: 15px; font-weight: 600; color: #f64a01; margin-bottom: 10px; }
+    .chips { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; font-size: 11px; color: #555; }
+    .chips strong { color: #aaa; }
+
+    /* Direct open button — most reliable playback */
+    .open-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: #f64a01;
+      color: #fff;
+      font-size: 13px;
+      font-weight: 600;
+      padding: 10px 22px;
+      border-radius: 8px;
+      text-decoration: none;
+      letter-spacing: 0.3px;
+      transition: background 0.15s;
+    }
+    .open-btn:hover { background: #d43f00; }
+    .open-hint { font-size: 11px; color: #444; margin-top: 6px; text-align: center; }
+
+    /* Phone shell */
+    .shell {
+      width: 280px;
+      background: #111;
+      border-radius: 40px;
+      border: 2px solid #252525;
+      box-shadow: 0 0 0 1px #181818, 0 32px 72px rgba(0,0,0,.75);
+      padding: 16px 12px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+    .notch { width: 72px; height: 5px; background: #1c1c1c; border-radius: 3px; margin-bottom: 12px; }
+    .screen {
+      width: 256px;
+      height: 455px;
+      border-radius: 14px;
+      overflow: hidden;
+      background: #000;
+      position: relative;
+      cursor: pointer;
+    }
+    video {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
+    /* Tap-to-play overlay */
+    .play-overlay {
+      position: absolute;
+      inset: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: rgba(0,0,0,0.35);
+      transition: opacity 0.2s;
+    }
+    .play-overlay.hidden { opacity: 0; pointer-events: none; }
+    .play-circle {
+      width: 64px;
+      height: 64px;
+      border-radius: 50%;
+      background: rgba(246,74,1,0.9);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 4px 24px rgba(246,74,1,0.5);
+    }
+    .play-circle svg { width: 28px; height: 28px; fill: #fff; margin-left: 4px; }
+
+    .home-bar { width: 70px; height: 4px; background: #252525; border-radius: 2px; margin-top: 12px; }
+
+    /* Phase table */
+    .phases { width: 100%; max-width: 460px; background: #111; border: 1px solid #1e1e1e; border-radius: 10px; overflow: hidden; }
+    .ph-title { font-size: 10px; font-weight: 600; letter-spacing: 1.5px; text-transform: uppercase; color: #444; padding: 10px 16px 8px; border-bottom: 1px solid #1a1a1a; }
+    table { width: 100%; border-collapse: collapse; }
+    td { padding: 8px 14px; font-size: 11px; border-bottom: 1px solid #181818; vertical-align: top; }
+    tr:last-child td { border-bottom: none; }
+    .pi { font-weight: 700; color: #f64a01; white-space: nowrap; width: 36px; }
+    .pt { color: #555; white-space: nowrap; padding-right: 8px; width: 116px; }
+  </style>
+</head>
+<body>
+  <header>
+    <p class="eye">Dream Planet Referral Campaign</p>
+    <h1>SCENE 5 — COMMUNITY &amp; PARTICIPATION</h1>
+    <div class="chips">
+      <span><strong>9.8 s</strong></span>
+      <span><strong>1080×1920</strong> 9:16</span>
+      <span><strong>25 fps · H.264</strong></span>
+      <span><strong>No audio</strong></span>
+    </div>
+  </header>
+
+  <!-- Most reliable: open raw MP4 directly in a new tab, full browser controls -->
+  <div style="display:flex;flex-direction:column;align-items:center;gap:6px">
+    <a class="open-btn" href="/scene5_final.mp4" target="_blank">
+      <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M6 3H3a1 1 0 0 0-1 1v9a1 1 0 0 0 1 1h9a1 1 0 0 0 1-1v-3" stroke="#fff" stroke-width="1.5" stroke-linecap="round"/><path d="M9 2h5v5" stroke="#fff" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/><path d="M14 2 8 8" stroke="#fff" stroke-width="1.5" stroke-linecap="round"/></svg>
+      Open video in new tab
+    </a>
+    <p class="open-hint">Recommended — full controls + seeking</p>
+  </div>
+
+  <!-- Inline player with tap-to-play overlay -->
+  <div class="shell">
+    <div class="notch"></div>
+    <div class="screen" id="screenWrap">
+      <video id="vid" src="/scene5_final.mp4" muted playsinline preload="auto" loop></video>
+      <div class="play-overlay" id="overlay">
+        <div class="play-circle">
+          <svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+        </div>
+      </div>
+    </div>
+    <div class="home-bar"></div>
+  </div>
+
+  <div class="phases">
+    <div class="ph-title">Phase breakdown</div>
+    <table>
+      <tr><td class="pi">P1</td><td class="pt">0.0 – 0.7 s</td><td>Entry dissolve — home screen / Scene 4 handoff</td></tr>
+      <tr><td class="pi">P2</td><td class="pt">0.7 – 1.4 s</td><td>Side nav opens → View Portfolio tap</td></tr>
+      <tr><td class="pi">P3</td><td class="pt">1.4 – 2.7 s</td><td>Portfolio reveal + camera push-in (1.08×)</td></tr>
+      <tr><td class="pi">P4</td><td class="pt">2.7 – 3.5 s</td><td>View Forum tap → Forum enters</td></tr>
+      <tr><td class="pi">P5</td><td class="pt">3.5 – 4.5 s</td><td>Forum reveal + camera push-in (1.06×)</td></tr>
+      <tr><td class="pi">P6</td><td class="pt">4.5 – 7.2 s</td><td>Community feed scroll + Forum Overview (47 members)</td></tr>
+      <tr><td class="pi">P7</td><td class="pt">7.2 – 8.8 s</td><td>Like + Comment (prepared text) + Share panel</td></tr>
+      <tr><td class="pi">P8</td><td class="pt">8.8 – 9.8 s</td><td>Final push-in, hold on clean forum feed</td></tr>
+    </table>
+  </div>
+
+  <script>
+    const vid = document.getElementById('vid');
+    const overlay = document.getElementById('overlay');
+
+    function startPlay() {
+      vid.play().then(() => {
+        overlay.classList.add('hidden');
+      }).catch(() => {});
+    }
+
+    // Try autoplay immediately (works if browser allows it)
+    startPlay();
+
+    // Tapping the phone screen plays/pauses
+    document.getElementById('screenWrap').addEventListener('click', () => {
+      if (vid.paused) {
+        startPlay();
+      } else {
+        vid.pause();
+        overlay.classList.remove('hidden');
+      }
+    });
+
+    vid.addEventListener('play',  () => overlay.classList.add('hidden'));
+    vid.addEventListener('pause', () => overlay.classList.remove('hidden'));
+  </script>
+</body>
+</html>

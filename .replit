@@ -1,6 +1,10 @@
 modules = ["nodejs-20", "bash", "python-3.12", "web"]
 
 [[ports]]
+localPort = 5000
+externalPort = 5000
+
+[[ports]]
 localPort = 7654
 externalPort = 3002
 
@@ -24,3 +28,25 @@ externalPort = 3001
 channel = "stable-25_05"
 
 [workflows]
+runButton = "Project"
+
+[[workflows.workflow]]
+name = "Project"
+mode = "parallel"
+author = "agent"
+
+[[workflows.workflow.tasks]]
+task = "workflow.run"
+args = "Scene 5 Preview"
+
+[[workflows.workflow]]
+name = "Scene 5 Preview"
+author = "agent"
+
+[workflows.workflow.metadata]
+outputType = "webview"
+
+[[workflows.workflow.tasks]]
+task = "shell.exec"
+args = "node /home/runner/workspace/scene5_player/server.mjs"
+waitForPort = 5000
