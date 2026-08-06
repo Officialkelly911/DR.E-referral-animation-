@@ -70,7 +70,7 @@ export const SCENE5_VIDEO_PATH = resolve(
 export const MASTER_META = {
   version: MASTER_VERSION,
   filename: VIDEO_FILENAME,
-  duration: 41.633,          // seconds
+  duration: 41.300,          // seconds
   durationFormatted: "0:41", // mm:ss
   width: 1080,
   height: 1920,
@@ -114,23 +114,23 @@ export const SCENES: SceneEntry[] = [
     id: "scene3",
     label: "Scene 3",
     startTime: 6.0,
-    endTime: 19.567,
+    endTime: 19.433,
     description: "Referral experience — Referral Home UI with push-in, code emphasis, levels tease",
     source: "video",
   },
   {
     id: "scene4",
     label: "Scene 4",
-    startTime: 19.567,
-    endTime: 28.567,
+    startTime: 19.433,
+    endTime: 28.433,
     description: "Leaderboard & referral levels — full referral programme overview",
     source: "video",
   },
   {
     id: "scene5",
     label: "Scene 5",
-    startTime: 28.567,
-    endTime: 41.633,
+    startTime: 28.433,
+    endTime: 41.300,
     description: "Community & participation — Creator Portfolio → Community Forum → engagement interactions",
     source: "video",
   },

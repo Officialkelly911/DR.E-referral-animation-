@@ -52,15 +52,17 @@ SCENE5_SRC="$REPO_ROOT/extracted_scenes/Scene3Scene4_contents/Scene1scene2_conte
 MUSIC="$REPO_ROOT/extracted_scenes/Scene3Scene4_contents/Replit-Design-Project/attached_assets/Ai_music_for_dream_planet_video__1785842118219.mp3"
 
 # ── Scene 3 trim guard (v2 value) ───────────────────────────────────────────
-# Scene 3 v3 standalone capture has ~0.6s of Playwright preamble.
-# The brightness guard checks at t=0.5s post-trim (approx animation t=1.1s)
-# where the Referral Home is clearly visible — guards against blank-intro regressions.
-SCENE3_TRIM_START=0.6
+# Scene 3 v3 standalone capture: Playwright preamble is pure white through t=0.6s;
+# animation fade-in begins at ~t=0.7s (brightness drops to ~0.85). Trim at 0.7s
+# so the first frame of Scene 3 in the master is the intended Scene 2-handoff
+# white dissolve (by design), not a dead browser-startup white frame.
+SCENE3_TRIM_START=0.7
 
 # ── Scene 5 trim guard ───────────────────────────────────────────────────────
-# Scene 5 standalone capture has ~0.7s of Playwright preamble.
-# Brightness guard checks at t=0.5s post-trim where live UI is visible.
-SCENE5_TRIM_START=0.7
+# Scene 5 standalone capture: Playwright preamble stays pure white through t=0.8s;
+# animation content (home screen / side nav) begins at ~t=0.9s (brightness ~0.85).
+# Trim at 0.9s so the first frame is live animation, not browser startup white.
+SCENE5_TRIM_START=0.9
 
 # ── Required output spec ─────────────────────────────────────────────────────
 TARGET_W=1080

@@ -17,18 +17,23 @@ cd "extracted_scenes/Scene3Scene4_contents/Scene1scene2_contents/Dre-animation/D
 - `MASTER_V2_QA.md` — 9/9 validation checks documented
 
 ## V2 vs V1 key differences
-- Scene 3 trim: 0.6 s (was 3.0 s for v3 standalone capture vs original VideoTemplate)
-- Scene 5 added with 0.7 s Playwright preamble trim
-- Total: 41.633 s (was 21.533 s)
+- Scene 3 v3 canonical; trim 0.7 s (preamble is pure white through 0.6 s; animation at 0.7 s)
+- Scene 5 trim 0.9 s (preamble pure white through 0.8 s; animation at 0.9 s)
+- Total: 41.300 s (was 21.533 s)
 
-## Timeline
+## Trim constants gotcha
+Initial v2 used S3=0.6s, S5=0.7s — frame probe showed both still pure white at those
+points. Corrected to S3=0.7s, S5=0.9s after extracting frames at 0.1s increments.
+**Always probe first frames of normalized clips after changing trim constants.**
+
+## Timeline (final, corrected)
 | Scene | Start | End | Duration |
 |-------|-------|-----|----------|
 | 1 | 0.0 s | 3.0 s | 3.0 s |
 | 2 | 3.0 s | 6.0 s | 3.0 s |
-| 3 | 6.0 s | 19.567 s | 13.567 s |
-| 4 | 19.567 s | 28.567 s | 9.0 s |
-| 5 | 28.567 s | 41.633 s | 13.067 s |
+| 3 (v3) | 6.0 s | 19.433 s | 13.433 s |
+| 4 | 19.433 s | 28.433 s | 9.0 s |
+| 5 | 28.433 s | 41.300 s | 12.867 s |
 
 ## API server config
 `artifacts/api-server/src/config/master.ts` — updated to v2 (MASTER_VERSION, VIDEO_FILENAME, MASTER_META, SCENES array includes Scene 5).
