@@ -89,6 +89,29 @@ Dependencies installed and all four workflows (Scene 3 web, Referral Module web,
 Per the phase spec, work stopped here — Portfolio, Forum, engagement interactions, the Scene 5
 animation timeline, and master integration are separate later phases pending review/approval.
 
+## Phase 7 — Master v2 (Aug 6, 2026)
+
+Scene 5 integrated into the canonical master pipeline via `build_master_v2.sh`. All 9/9 validation checks pass.
+
+- **Master v2:** `DreamPlanet_Master_v2.mp4` / `_audio.mp4` / `_no_audio.mp4` (in `Final Edit/`)
+- **Duration:** 41.633 s (was 21.533 s) — Scenes 1–5
+- **Build:** `Final Edit/build_master_v2.sh` (deterministic, fully reproducible)
+- **QA report:** `Final Edit/MASTER_V2_QA.md` — 9/9 checks passed
+- **Master v1 preserved:** `DreamPlanet_Master_v1*.mp4` — untouched, 21.533 s, Scenes 1–4
+- **API server config** updated: `artifacts/api-server/src/config/master.ts` → v2 metadata + Scene 5 entry
+
+### v2 Scene Timeline
+
+| Scene | Start | End | Duration |
+|-------|-------|-----|----------|
+| 1 | 0.000 s | 3.000 s | 3.000 s |
+| 2 | 3.000 s | 6.000 s | 3.000 s |
+| 3 | 6.000 s | 19.567 s | 13.567 s |
+| 4 | 19.567 s | 28.567 s | 9.000 s |
+| 5 | 28.567 s | 41.633 s | 13.067 s |
+
+---
+
 ## Final master QA (Aug 5, 2026)
 
 Ran a full production QA pass on the 4-scene master per the approved QA checklist. Result:

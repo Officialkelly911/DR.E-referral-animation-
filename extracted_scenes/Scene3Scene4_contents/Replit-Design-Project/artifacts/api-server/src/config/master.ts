@@ -15,11 +15,11 @@
 import { resolve } from "node:path";
 
 // ── Master version label (shown in the review UI) ─────────────────────────────
-export const MASTER_VERSION = "v1";
+export const MASTER_VERSION = "v2";
 
 // ── Video filename (inside the Final Edit directory) ─────────────────────────
 // Use the _audio variant so the review player has the campaign soundtrack.
-export const VIDEO_FILENAME = "DreamPlanet_Master_v1_audio.mp4";
+export const VIDEO_FILENAME = "DreamPlanet_Master_v2_audio.mp4";
 
 // ── Path to the Final Edit directory ─────────────────────────────────────────
 // Resolved from __dirname (dist/), which the build banner injects from import.meta.url.
@@ -70,15 +70,15 @@ export const SCENE5_VIDEO_PATH = resolve(
 export const MASTER_META = {
   version: MASTER_VERSION,
   filename: VIDEO_FILENAME,
-  duration: 21.533,          // seconds
-  durationFormatted: "0:21", // mm:ss
+  duration: 41.633,          // seconds
+  durationFormatted: "0:41", // mm:ss
   width: 1080,
   height: 1920,
   aspectRatio: "9:16",
   fps: 30,
   hasAudio: true,
-  approvedDate: "2026-08-05",
-  buildScript: "build_master.sh",
+  approvedDate: "2026-08-06",
+  buildScript: "build_master_v2.sh",
 } as const;
 
 // ── Scene list ────────────────────────────────────────────────────────────────
@@ -114,16 +114,24 @@ export const SCENES: SceneEntry[] = [
     id: "scene3",
     label: "Scene 3",
     startTime: 6.0,
-    endTime: 12.533,
+    endTime: 19.567,
     description: "Referral experience — Referral Home UI with push-in, code emphasis, levels tease",
     source: "video",
   },
   {
     id: "scene4",
     label: "Scene 4",
-    startTime: 12.533,
-    endTime: 21.533,
+    startTime: 19.567,
+    endTime: 28.567,
     description: "Leaderboard & referral levels — full referral programme overview",
+    source: "video",
+  },
+  {
+    id: "scene5",
+    label: "Scene 5",
+    startTime: 28.567,
+    endTime: 41.633,
+    description: "Community & participation — Creator Portfolio → Community Forum → engagement interactions",
     source: "video",
   },
 ];

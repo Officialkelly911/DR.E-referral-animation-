@@ -1,0 +1,150 @@
+DREAM PLANET CAMPAIGN
+
+Rebuild Canonical Master Using Approved Scene 3 v3
+
+The updated Scene 3 timing adjustment has been reviewed and approved.
+
+Scene 3 v3 (approximately 14.14 seconds) is now the authoritative version and must replace the previous Scene 3 in the canonical build.
+
+Rebuild the campaign master using the approved scene sources.
+
+⸻
+
+Source of Truth
+
+Use the latest approved versions only:
+
+* Scene 1 (locked)
+* Scene 2 (locked)
+* Scene 3 v3 (approved timing revision)
+* Scene 4 (locked)
+* Scene 5 (latest approved revision, if already approved for integration)
+
+Do not use any older Scene 3 exports.
+
+⸻
+
+Canonical Build
+
+Regenerate the master using the existing deterministic build pipeline.
+
+Do not manually concatenate videos.
+
+Use the canonical build_master.sh workflow.
+
+Maintain all existing validation and regression safeguards.
+
+⸻
+
+Audio
+
+Maintain one continuous soundtrack.
+
+Do not restart the music.
+
+Maintain correct synchronization across every scene.
+
+Preserve the existing campaign ending fade-out.
+
+⸻
+
+Continuity Validation
+
+Perform a detailed visual review of the following transitions:
+
+Scene 2 → Scene 3
+
+Verify:
+
+* Existing tattoo-to-referral transition still feels natural.
+* Timing increase does not make the transition feel abrupt.
+* No blank frames.
+* No duplicated frames.
+* No jump cuts.
+
+⸻
+
+Scene 3 → Scene 4
+
+Verify:
+
+* Leaderboard handoff remains seamless.
+* No visual pop.
+* No camera jump.
+* No duplicated leaderboard frames.
+* Scene 4 begins from the correct state.
+
+⸻
+
+Scene 4 → Scene 5 (if Scene 5 is included)
+
+Verify:
+
+* Navigation opens naturally.
+* No visual discontinuity.
+* No timing mismatch.
+
+⸻
+
+Technical Validation
+
+Verify:
+
+* Resolution
+* Frame rate
+* Audio continuity
+* Scene ordering
+* Total duration
+* Scene completeness
+* Scene 3 regression guard
+* Successful deterministic rebuild
+
+⸻
+
+Deliverables
+
+Generate the updated master outputs:
+
+DreamPlanet_Master_v2.mp4
+DreamPlanet_Master_v2_audio.mp4
+DreamPlanet_Master_v2_no_audio.mp4
+
+Update:
+
+MASTER_V2_QA.md
+
+Include:
+
+* Duration of each scene
+* Total runtime
+* Resolution
+* FPS
+* Audio verification
+* Scene transition verification
+* Validation results
+* Confirmation that Scene 3 v3 is now the canonical source
+
+⸻
+
+Preserve Previous Master
+
+Do not overwrite or delete the previous approved master.
+
+Keep it available as a rollback reference.
+
+⸻
+
+Stop Condition
+
+Stop after:
+
+* Master rebuild completes successfully.
+* All validation passes.
+* Transition verification is complete.
+* QA report is generated.
+
+Do not begin Scene 6.
+
+⸻
+
+One additional recommendation: wait until the revised Scene 5 has also been integrated before calling this “Master v2”. If Scene 5 is already integrated, then naming it Master v2 is perfect. If not, rebuild a temporary internal master for validation, and only designate it as Master v2 once it contains all approved revisions, including the extended Scene 3 and the finalized Scene 5. That keeps your version history clean and avoids ending up with two different files both claiming to be “v2.”
