@@ -1,0 +1,272 @@
+Here’s a detailed implementation prompt you can give to the Replit Agent for Plan #5.
+
+⸻
+
+Phase 8 – Update the /review Timeline to Support the 5-Scene Campaign
+
+Objective
+
+Update the existing /review page so it fully supports the new 5-scene Master v2 campaign instead of the original 4-scene version.
+
+This is strictly a review UI update.
+
+Do NOT modify any animation assets, scene videos, rendering logic, or the master build pipeline.
+
+The approved DreamPlanet_Master_v2_audio.mp4 is already the canonical build.
+
+⸻
+
+Background
+
+The campaign has now expanded from:
+
+* Scene 1
+* Scene 2
+* Scene 3
+* Scene 4
+
+to
+
+* Scene 1
+* Scene 2
+* Scene 3
+* Scene 4
+* Scene 5 (Community & Participation)
+
+The backend API already exposes the correct metadata.
+
+The review frontend still assumes only four scenes.
+
+Update the review interface so it accurately represents the approved five-scene campaign.
+
+⸻
+
+Requirements
+
+1. Timeline Strip
+
+Replace every hardcoded 4-scene assumption.
+
+The timeline must render dynamically from metadata.
+
+Display all five scenes.
+
+Example:
+
+Scene 1
+Scene 2
+Scene 3
+Scene 4
+Scene 5
+
+Each scene should:
+
+* display correct label
+* display correct duration
+* display correct start/end position
+* be clickable
+* seek playback immediately
+
+⸻
+
+2. Metadata Panel
+
+Update the metadata panel.
+
+Replace:
+
+4 Scenes
+21.5 seconds
+
+with the actual metadata returned by the API.
+
+Display:
+
+* total duration
+* total scene count
+* video resolution
+* fps
+* audio present
+* build version
+
+Example:
+
+Campaign
+Master v2
+Scenes: 5
+Duration:
+41.3 seconds
+Resolution:
+1080 × 1920
+FPS:
+30
+Audio:
+Present
+
+No hardcoded values.
+
+⸻
+
+3. Scene Labels
+
+Use descriptive names.
+
+Example:
+
+Scene 1
+Introduction
+Scene 2
+Creator Discovery
+Scene 3
+Referral Journey
+Scene 4
+Leaderboard
+Scene 5
+Community & Participation
+
+Use whichever labels already exist in metadata whenever possible.
+
+Avoid duplicating label definitions in multiple places.
+
+⸻
+
+4. Playback Synchronization
+
+Selecting a scene should:
+
+* seek immediately
+* highlight active scene
+* move playhead
+* update current timestamp
+
+Verify synchronization works for all five scenes.
+
+⸻
+
+5. Progress Bar
+
+Ensure progress bar scales correctly for the longer campaign.
+
+Old assumptions based on ~21 s should be removed.
+
+The playhead should travel smoothly across the full runtime (~41 s).
+
+⸻
+
+6. Timestamp Display
+
+Update:
+
+Current Time
+
+Remaining Time
+
+Progress Percentage
+
+to work correctly for the full campaign duration.
+
+⸻
+
+7. Responsive Layout
+
+Verify nothing overflows after adding Scene 5.
+
+Timeline should remain readable on:
+
+* Desktop
+* Tablet
+* Mobile
+
+If necessary:
+
+* reduce spacing slightly
+* enable horizontal scrolling
+* preserve accessibility
+
+Do not redesign the page.
+
+⸻
+
+8. Remove Magic Numbers
+
+Search for any hardcoded values related to:
+
+4 scenes
+21.5 s
+Scene 4 last index
+timeline width
+scene count
+duration
+seek offsets
+
+Replace with metadata-driven logic.
+
+⸻
+
+9. Regression Protection
+
+Confirm that:
+
+* existing review controls still work
+* keyboard shortcuts still work
+* seeking works
+* pause/play works
+* no console errors
+* metadata loads correctly
+
+⸻
+
+Files Likely Affected
+
+Only modify files required for the review UI.
+
+Possible examples:
+
+review/
+review/index.html
+review.js
+timeline.ts
+timeline.js
+metadata.ts
+metadata.js
+
+Avoid touching unrelated files.
+
+⸻
+
+Do NOT Modify
+
+Do NOT edit:
+
+* Scene 1
+* Scene 2
+* Scene 3
+* Scene 4
+* Scene 5
+* master videos
+* build_master.sh
+* ffmpeg scripts
+* render pipeline
+* QA scripts
+
+This task is UI-only.
+
+⸻
+
+Acceptance Criteria
+
+The task is complete when:
+
+* /review displays all five scenes.
+* Timeline accurately reflects the full campaign.
+* Scene 5 appears as Community & Participation (or the metadata equivalent).
+* Total duration displays approximately 41.3 seconds.
+* Scene seeking works for every scene.
+* Metadata panel matches the API.
+* No hardcoded four-scene assumptions remain.
+* No regressions are introduced.
+* Existing review functionality continues to operate normally.
+
+⸻
+
+This is a relatively low-risk task compared to the animation work you’ve already completed. Ironically, the hardest part is usually hunting down the ancient hardcoded "4" that some past version of the project scattered around like confetti. Such is the glamorous life of software maintenance.
