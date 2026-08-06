@@ -1,0 +1,156 @@
+Scene 6 Revision Pass (Animation Polish & UX Corrections)
+
+The overall structure of Scene 6 is approved, but several issues were identified during QA. Please address the following without changing the overall flow or timing unless specified.
+
+1. Fix forum scrolling animation (Highest Priority)
+
+Current issue
+
+The forum feed jumps from one position to another.
+
+Expected behavior
+
+The feed should scroll vertically in one continuous, smooth motion similar to Instagram, Threads, or X.
+
+Requirements:
+
+* smooth easing
+* constant velocity
+* no snapping
+* no frame skips
+* no sudden position changes
+* momentum should feel like a natural finger swipe
+
+Posts should continuously move upward.
+
+Avoid restarting the scroll midway.
+
+The viewer should feel that the app is genuinely scrolling through a live feed.
+
+⸻
+
+2. Eliminate animation stutter
+
+The animation currently appears to lag and jerk during several transitions.
+
+Investigate and correct any causes such as:
+
+* dropped frames
+* uneven interpolation
+* inconsistent frame timing
+* overlapping tweens
+* unnecessary layout recalculations
+* heavy repaint operations
+
+Goal:
+
+The entire Scene 6 should maintain a premium 60 FPS feel.
+
+Every transition should feel fluid from beginning to end.
+
+⸻
+
+3. Fix sidebar background
+
+Current issue:
+
+When the side navigation drawer opens, the background does not display the Home Feed.
+
+Expected behavior:
+
+The sidebar should slide over the Home Feed exactly as in the real Dream Planet application.
+
+The background behind the drawer should be the Home Feed, not another page or placeholder.
+
+The Home Feed should remain visible with the appropriate dim overlay while the navigation drawer is open.
+
+⸻
+
+4. Replace Community Forum summary screen with Notifications screen
+
+Replace the intermediate “Community Forum” overview screen before the final CTA.
+
+Instead, use the supplied Notifications screen as the intermediate scene.
+
+Use the uploaded screenshot as the visual reference.
+
+Requirements:
+
+* recreate the layout accurately
+* maintain Dream Planet styling
+* animate naturally
+
+Notification list should gently scroll upward.
+
+The first notification may remain highlighted as “New.”
+
+Reuse realistic engagement text from the previous Community Forum mockups where appropriate.
+
+Example notifications:
+
+Benjamin commented:
+“Glasses look good on your post”
+
+Benjamin liked your post
+
+Benjamin commented:
+“Awesome vibe on your post”
+
+Jose liked your post
+
+Nosaduke commented:
+“Floral Princess on your post”
+
+Nosaduke liked your post
+
+Maintain realistic spacing and timestamps.
+
+The motion should be subtle and elegant rather than fast.
+
+⸻
+
+5. Maintain existing Scene 6 timing
+
+Do not shorten the scene.
+
+Any additional time needed for smoother scrolling should come from slowing the existing animations slightly rather than removing content.
+
+⸻
+
+6. Preserve approved assets
+
+Do NOT modify:
+
+* CTA screen
+* referral code
+* logo animation
+* color palette
+* typography
+* ending composition
+
+Only update the animation and intermediate notification section.
+
+⸻
+
+Deliverables
+
+Produce:
+
+* scene6_final_v2.mp4
+* scene6_final_v2_no_audio.mp4
+* SCENE6_REVISION_QA.md
+
+The QA report should specifically confirm:
+
+* ✓ Smooth continuous forum scrolling
+* ✓ Stable 60 FPS animation
+* ✓ Sidebar overlays the Home Feed correctly
+* ✓ Notifications screen replaces the previous Community Forum summary screen
+* ✓ CTA remains unchanged
+* ✓ No regressions introduced elsewhere in Scene 6
+
+⸻
+
+I have one additional recommendation that will make Scene 6 feel even more like a real app.
+
+When the Notifications screen appears, don’t have it instantly populate with a full list. Animate it as though the page has just loaded: let the first few notifications slide into place over about 300-500 ms, then begin the gentle upward scroll. It’s a small detail, but it avoids the “static screenshot” feeling and makes the interface look convincingly alive. Humans are oddly good at spotting fake interfaces, despite spending half their lives staring at real ones.
