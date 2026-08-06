@@ -1,4 +1,4 @@
-modules = ["nodejs-20", "bash", "python-3.12", "web"]
+modules = ["web", "nodejs-20", "bash", "python-3.12"]
 
 [[ports]]
 localPort = 5000
