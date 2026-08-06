@@ -1,5 +1,5 @@
 import { createServer } from "node:http";
-import { createReadStream, statSync, readFileSync } from "node:fs";
+import { createReadStream, statSync } from "node:fs";
 import { join, extname } from "node:path";
 import { fileURLToPath } from "node:url";
 
@@ -13,15 +13,24 @@ const MIME = {
   ".png":  "image/png",
 };
 
-createServer((req, res) => {
-  const url = req.url === "/" ? "/index.html" : req.url;
-  const filePath = join(DIR, url.split("?")[0]);
-
+function resolve(rawUrl) {
+  let pathname = rawUrl.split("?")[0];
+  if (pathname === "/" || pathname === "") pathname = "/index.html";
+  let filePath = join(DIR, pathname);
   let stat;
-  try { stat = statSync(filePath); } catch {
-    res.writeHead(404); res.end("Not found"); return;
+  try { stat = statSync(filePath); } catch { return null; }
+  if (stat.isDirectory()) {
+    filePath = join(filePath, "index.html");
+    try { stat = statSync(filePath); } catch { return null; }
   }
+  return { filePath, stat };
+}
 
+createServer((req, res) => {
+  const found = resolve(req.url);
+  if (!found) { res.writeHead(404); res.end("Not found"); return; }
+
+  const { filePath, stat } = found;
   const ext = extname(filePath).toLowerCase();
   const contentType = MIME[ext] ?? "application/octet-stream";
   const fileSize = stat.size;
