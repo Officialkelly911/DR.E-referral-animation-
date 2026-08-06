@@ -1,0 +1,492 @@
+Absolutely. Before writing another implementation prompt, I always like to create a Creation Guide first. Think of it as the director’s blueprint rather than the construction manual. If the creation guide is solid, the implementation becomes much easier and the final scene stays consistent with the rest of the campaign.
+
+One thing I do want to challenge from the previous concept, though.
+
+I wouldn’t end Scene 6 on a plain logo, referral code, and store badges. That’s how most app commercials end, and after five carefully crafted scenes, it would feel a little anticlimactic.
+
+Instead, Scene 6 should feel like the Dream Planet universe has come full circle. The viewer has gone from discovering the app to becoming part of it.
+
+⸻
+
+DREAM PLANET REFERRAL CAMPAIGN
+
+SCENE 6 CREATION GUIDE
+
+Scene Name
+
+Join the Dream Planet Movement
+
+⸻
+
+Purpose
+
+Scene 6 is not another feature demonstration.
+
+It is the emotional payoff of the commercial.
+
+Everything the audience has seen should now make sense.
+
+By the end of this scene the audience should naturally think:
+
+“I want to join Dream Planet.”
+
+⸻
+
+Emotional Goal
+
+The emotional progression should be:
+
+Curiosity
+↓
+Discovery
+↓
+Opportunity
+↓
+Success
+↓
+Community
+↓
+Belonging
+
+Scene 6 represents:
+
+Belonging.
+
+⸻
+
+Story Continuity
+
+Current campaign flow:
+
+Scene 1
+Identity
+↓
+Scene 2
+Dream Planet
+↓
+Scene 3
+Referral
+↓
+Scene 4
+Leaderboard
+↓
+Scene 5
+Community
+↓
+Scene 6
+Invitation
+
+Notice that every scene advances the story.
+
+Scene 6 should not repeat previous scenes.
+
+⸻
+
+Opening
+
+Begin exactly where Scene 5 finishes.
+
+The Forum has stopped scrolling.
+
+The final post remains visible.
+
+No movement.
+
+Allow approximately:
+
+0.75 seconds.
+
+The audience has reached the community.
+
+⸻
+
+Interface Dissolve
+
+Instead of cutting away…
+
+The UI slowly transforms.
+
+The cards begin disappearing.
+
+Blur increases.
+
+Background brightness softens.
+
+Orange highlights remain.
+
+The interface slowly becomes abstract.
+
+This transition should feel symbolic.
+
+The app is becoming the Dream Planet brand itself.
+
+⸻
+
+Camera Direction
+
+Very subtle.
+
+Avoid dramatic moves.
+
+Recommended:
+
+Tiny push-in.
+
+Approximately:
+
+2-4%.
+
+The audience should barely notice the camera movement.
+
+⸻
+
+Logo Formation
+
+Instead of simply fading in…
+
+Allow elements from the interface to contribute.
+
+Examples:
+
+Orange accent lines
+
+Glow particles
+
+Light reflections
+
+Small UI fragments
+
+All gently converge.
+
+The Dream Planet logo appears naturally.
+
+This creates the feeling:
+
+“The community becomes the brand.”
+
+⸻
+
+Hero Moment
+
+The logo now occupies the center.
+
+Hold briefly.
+
+This is the strongest branding moment in the entire campaign.
+
+Do not clutter the screen.
+
+⸻
+
+Supporting Message
+
+Choose one message only.
+
+Examples:
+
+More Than Followers
+
+or
+
+Fans Become Partners
+
+or
+
+Your Community Has Value
+
+Never stack multiple slogans.
+
+One memorable line is stronger than three forgettable ones.
+
+⸻
+
+Call-To-Action
+
+Headline:
+
+Join Dream Planet Today
+
+Subheading:
+
+A short supporting sentence.
+
+Examples:
+
+“Download the app and start earning together.”
+
+or
+
+“Turn your community into opportunity.”
+
+Keep it under two lines.
+
+⸻
+
+Referral Reveal
+
+Now reveal the referral card.
+
+This should feel premium.
+
+Rounded glass card.
+
+Soft shadow.
+
+Orange accent.
+
+Include:
+
+Dream Planet icon
+
+Referral label
+
+Referral code
+
+Example:
+
+Referral Code
+IK54OTRD
+
+Animation:
+
+Opacity
+
+Scale
+
+Small upward motion
+
+Very soft glow
+
+Nothing exaggerated.
+
+⸻
+
+Store Availability
+
+If available:
+
+Display:
+
+Google Play
+
+App Store
+
+Use official badges.
+
+Do not dominate the screen.
+
+The referral code should remain the hero.
+
+⸻
+
+Background Design
+
+Continue the premium style established earlier.
+
+Recommended:
+
+Soft radial gradient
+
+Dream Planet orange glow
+
+Dark charcoal edges
+
+Glass reflections
+
+Tiny floating particles
+
+Nothing distracting.
+
+⸻
+
+Color Language
+
+Maintain consistency.
+
+Primary:
+
+Dream Planet Orange
+
+White
+
+Dark Gray
+
+Light Gray
+
+No additional colors.
+
+⸻
+
+Typography
+
+Maintain the same typography hierarchy used throughout the campaign.
+
+Hierarchy:
+
+Logo
+
+↓
+
+Headline
+
+↓
+
+Referral Card
+
+↓
+
+Store Badges
+
+↓
+
+Supporting Copy
+
+⸻
+
+Motion Language
+
+Only premium movement.
+
+Allowed:
+
+Fade
+
+Opacity
+
+Blur
+
+Scale
+
+Glow
+
+Tiny floating particles
+
+Very subtle camera push
+
+Not allowed:
+
+Bounce
+
+Elastic easing
+
+Fast zooms
+
+Rotations
+
+Flash transitions
+
+Oversized particles
+
+⸻
+
+Audio
+
+Continue the existing soundtrack.
+
+Do not restart music.
+
+Do not introduce a second song.
+
+As the logo forms:
+
+Allow the music to reach its emotional peak.
+
+The last note should feel satisfying.
+
+Maintain the campaign fade-out.
+
+⸻
+
+Final Composition
+
+The final frame should feel like a premium poster.
+
+Example layout:
+
+        Dream Planet Logo
+     More Than Followers
+      Join Dream Planet
+      [ Referral Card ]
+       IK54OTRD
+ App Store     Google Play
+
+Everything centered.
+
+Balanced spacing.
+
+No clutter.
+
+⸻
+
+Final Hold
+
+Hold approximately:
+
+2.5-3 seconds.
+
+No scrolling.
+
+No movement except:
+
+Very subtle glow.
+
+Tiny particles.
+
+The audience should have enough time to:
+
+Read.
+
+Remember.
+
+Act.
+
+⸻
+
+Visual Quality Goals
+
+Every frame should feel:
+
+Premium
+
+Luxury
+
+Modern
+
+Minimal
+
+Confident
+
+Trustworthy
+
+High-end
+
+⸻
+
+What This Scene Must Communicate
+
+Without words, the viewer should understand:
+
+* Dream Planet has a thriving creator community.
+* Joining is simple.
+* There is real value in participating.
+* They can start today.
+* They know exactly how to join using the referral code.
+
+⸻
+
+Success Criteria
+
+The scene is successful if, after watching the full campaign:
+
+* The transition from Scene 5 feels seamless.
+* The brand identity is reinforced without overwhelming the viewer.
+* The referral code is immediately noticeable and memorable.
+* The call-to-action is clear, concise, and actionable.
+* The ending feels polished, premium, and emotionally satisfying.
+* The final frame is strong enough to pause on and still communicate the message.
+
+Final Creative Recommendation
+
+I would add one subtle storytelling touch that ties the entire campaign together:
+
+As the Forum UI dissolves, let small orange UI elements, notification dots, and interface highlights gently drift toward the center, where they assemble into the Dream Planet logo. It visually suggests that every creator, fan, referral, leaderboard entry, and community interaction contributes to something larger. It’s understated, elegant, and gives the ending a sense of completion rather than simply fading to a logo. That’s the kind of detail viewers may not consciously notice, but it makes the commercial feel cohesive and intentionally crafted.
