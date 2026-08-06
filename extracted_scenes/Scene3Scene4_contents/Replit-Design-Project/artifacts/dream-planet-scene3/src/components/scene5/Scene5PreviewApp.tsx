@@ -106,7 +106,6 @@ function Scene5PreviewInner() {
             <Scene5Forum
               onBack={() => dispatch({ type: 'NAVIGATE', screen: 'portfolio' })}
               onEditForum={() => {}}
-              onFloatingAction={() => {}}
             />
             <button
               type="button"

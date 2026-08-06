@@ -1,6 +1,39 @@
 # SCENE 5 ANIMATION QA
 **Dream Planet Referral Campaign — Phase 6 Cinematic Capture**
-Report date: 2026-08-06
+Report date: 2026-08-06 (original capture) · Revised: 2026-08-06
+
+---
+
+## Revision — Targeted Pacing & Forum Content Fix
+
+This is a **targeted revision** of the approved Scene 5 cinematic, not a rebuild. Scene 5's
+architecture, camera system, and interaction plumbing (`scene5Actions`, the interaction store,
+generic post/comment/share components) are unchanged. Three fixes were requested and implemented:
+
+1. **Floating "+" (add post) button removed from the Forum entirely.** It previously appeared
+   on the Forum's Post tab (a bug — it belongs to the Portfolio only). `Scene5Forum.tsx` no
+   longer renders it under any tab. Verified programmatically: `document.querySelectorAll('[data-scene5="portfolio-floating-action"]')`
+   returns 0 elements on both the Forum Post and Overview tabs, and 1 element on the Portfolio.
+2. **Duration extended from 9.80 s to 13.80 s** (target range 13–16 s) by restructuring the
+   timeline (`Scene5Timeline.ts`) into 7 phases with deliberately longer holds — enough time to
+   actually read the Portfolio profile/stats and the Forum header before any scrolling begins.
+3. **Forum content expanded from 2 posts to 4 posts**, each visually distinct, with 3 controlled
+   scroll-and-hold beats (not continuous/momentum scrolling):
+   - **p1** — adeoshodin (photographer) — arrive, hold, **Like**
+   - **p2** — sonyavocals (studio singer) — scroll, hold, **no interaction**
+   - **p3** — erosky❤️ ("Good Life EP" cover art, new media) — scroll, hold, **Comment** (prepared comment from saintcarl23)
+   - **p4** — joanna (campaign shoot photo, new media) — scroll, final hold, **no interaction**
+
+   Share remains available in the data/action layer (`SHARE_DATA`, `scene5Actions.openShare`)
+   but is not used in this cut's on-screen sequence, per the requested restrained pacing.
+
+| | Before (v1) | After (v2 — this revision) |
+|---|---|---|
+| Duration | 9.80 s | **13.80 s** |
+| Forum posts | 2 | **4** |
+| Forum scrolls | 1 | **3** |
+| Floating "+" on Forum | Present (bug, Post tab) | **Absent (both tabs)** |
+| Interactions shown | Like + Comment (p1), Share (p2) | Like (p1), Comment (p3) — restrained |
 
 ---
 
@@ -8,14 +41,14 @@ Report date: 2026-08-06
 
 | Property       | Specification          | Actual                            | Status |
 |----------------|------------------------|-----------------------------------|--------|
-| Duration       | 8–10 s                 | **9.80 s**                        | ✅ Pass |
+| Duration       | 13–16 s (revised spec) | **13.80 s**                       | ✅ Pass |
 | Resolution     | 1080 × 1920 minimum    | **1080 × 1920** (9:16 portrait)   | ✅ Pass |
 | Frame rate     | Project standard       | **25 fps**                        | ✅ Pass |
-| Total frames   | —                      | **245**                           | — |
 | Video codec    | H.264                  | **H.264** (libx264, CRF 16, slow) | ✅ Pass |
 | Pixel format   | —                      | **yuv420p**                       | — |
 | Audio          | None (master handles)  | **No audio track**                | ✅ Pass |
 | Output file    | scene5_final.mp4       | `Scene 5/Final Animation/scene5_final.mp4` | ✅ Pass |
+| Floating "+" on Forum | Must be absent   | **Absent — verified 0 elements on both tabs** | ✅ Pass |
 
 ---
 
@@ -23,10 +56,10 @@ Report date: 2026-08-06
 
 | File | Location | Size |
 |---|---|---|
-| `scene5_final.mp4` | `Scene 5/Final Animation/` | ~7.9 MB |
-| `scene5_final_no_audio.mp4` | `Scene 5/Final Animation/` | ~7.9 MB (identical copy reserved for master concat) |
-| `scene5_start_frame.png` | `Scene 5/Final Animation/` | ~104 KB |
-| `scene5_end_frame.png` | `Scene 5/Final Animation/` | ~1.5 MB |
+| `scene5_final.mp4` | `Scene 5/Final Animation/` | ~9.6 MB |
+| `scene5_final_no_audio.mp4` | `Scene 5/Final Animation/` | ~9.6 MB (identical copy reserved for master concat) |
+| `scene5_start_frame.png` | `Scene 5/Final Animation/` | ~97 KB |
+| `scene5_end_frame.png` | `Scene 5/Final Animation/` | ~1.3 MB |
 
 ---
 
@@ -48,11 +81,11 @@ Visible elements:
 
 ## End State
 
-**Screen:** Forum Post Feed — post p1 (adeoshodin photographer) visible, post p2 share panel just closed
+**Screen:** Forum Post Feed — post p4 (joanna, campaign shoot photo) in final hold, no overlays open
 
 Visible elements:
-- Forum header: "dr. Elizabeth Wisnie…", 47 members, Edit Forum button
-- Hero post p1 with Like heart in **active state** (orange)
+- Post p3 (erosky❤️, EP cover) partially visible above, comment count updated to 1
+- Post p4 (joanna) fully in view — clean card, no interaction applied (per restrained pacing plan)
 - Clean forum feed — no overlays, no open sheets, no open drawers
 - Camera settled at gentle 4% push-in with slight upward drift
 
@@ -60,19 +93,17 @@ The final frame is stable and compositionally clean. It provides a direct visual
 
 ---
 
-## Scene 5 Sequence Summary
+## Scene 5 Sequence Summary (Revised — 13.80 s)
 
 | Phase | Timing | Description | Status |
 |---|---|---|---|
-| 1 — Scene 4 handoff | 0.00–0.70 s | White dissolve reveals home. Hamburger tap. Side Nav drawer enters from left with background overlay. | ✅ |
-| 2 — View Portfolio | 0.70–1.40 s | Camera drifts toward "View Portfolio". Tap. Portfolio slides in from right. Drawer closes naturally. | ✅ |
-| 3 — Portfolio reveal | 1.40–3.00 s | Profile push-in (100%→108%). Hold on Dr. Elizabeth Wisniewski DC PhD profile, stats (47 members, 105 posts), View Forum. Camera pulls back. Portfolio scrolls down to reveal media grid. Scrolls back to top. Camera resets. | ✅ |
-| 4 — View Forum | 3.00–3.80 s | Tap on "View Forum" button. Forum slides in from right. | ✅ |
-| 5 — Forum reveal | 3.80–4.80 s | Camera push-in (100%→106%). Forum header, 47 members, Edit Forum visible. First post appears. Camera resets. | ✅ |
-| 6 — Community discovery | 4.80–6.40 s | Feed scroll to p1 (adeoshodin post). Camera drifts down. Scroll to p2 (sonyavocals post). Scroll back to p1. | ✅ |
-| 6b — Forum Overview | 6.40–7.20 s | Tab switch to Overview (community identity, 47 members, guidelines, member avatars). Hold. Tab switch back to Post Feed. Settle. | ✅ |
-| 7 — Engagement | 7.20–8.80 s | Like p1 (heart goes orange, count updates). Open comments. Prepared comment reveals. Close comments. Scroll to p2. Open share panel. Confirm share ("Link Copied"). Close share. | ✅ |
-| 8 — Final frame | 8.80–9.80 s | Gentle final push-in (4%). Settle on clean forum feed. Hold. | ✅ |
+| 1 — Scene 4 handoff | 0.00–1.20 s | White dissolve reveals home. Hamburger tap. Side Nav drawer enters from left, holds long enough to read. | ✅ |
+| 2 — View Portfolio | 1.20–2.50 s | Camera drifts toward "View Portfolio". Tap. Portfolio slides in from right. Drawer closes naturally. | ✅ |
+| 3 — Portfolio reveal | 2.50–5.20 s | Profile push-in (100%→108%). Long hold on Dr. Elizabeth Wisniewski DC PhD profile, stats (47 members, 105 posts), View Forum. Camera pulls back. Portfolio scrolls down to reveal media grid, holds, scrolls back to top. Camera resets. Floating "+" visible throughout (Portfolio-only). | ✅ |
+| 4 — View Forum | 5.20–6.50 s | Tap on "View Forum" button. Forum slides in from right — floating "+" disappears immediately (never rendered by Forum). | ✅ |
+| 5 — Forum initial reveal | 6.50–8.00 s | Camera push-in (100%→106%). Forum header, 47 members, Edit Forum, and post p1 visible. No scrolling yet — deliberate read time. Camera resets. | ✅ |
+| 6 — Multi-post discovery | 8.00–12.60 s | Hold on p1, **Like**. Controlled scroll to p2 (sonyavocals), hold, no interaction. Controlled scroll to p3 (erosky❤️, EP cover), hold, **Comment** opens + prepared comment reveals + closes. Controlled scroll to p4 (joanna). | ✅ |
+| 7 — Final frame | 12.60–13.80 s | Gentle final push-in (4%). Settle on p4, clean feed, no overlays. Hold. | ✅ |
 
 ---
 
@@ -83,11 +114,15 @@ The final frame is stable and compositionally clean. It provides a direct visual
 | Side Navigation open | — | ✅ Shown |
 | Portfolio navigation | — | ✅ Shown |
 | Portfolio media grid | — | ✅ Shown (scroll reveal) |
+| Portfolio floating "+" button | — | ✅ Shown (Portfolio only) |
 | Forum navigation | — | ✅ Shown |
-| Forum Overview tab | — | ✅ Shown |
-| Like | p1 (adeoshodin) | ✅ Shown — count updates |
-| Comment (prepared) | p1 | ✅ Shown — sheet opens, comment reveals |
-| Share (link copied) | p2 (sonyavocals) | ✅ Shown — panel opens, confirmed |
+| Forum floating "+" button | — | ✅ **Confirmed absent** on both Post and Overview tabs |
+| Multi-post scroll (3 controlled scrolls, no momentum) | p1 → p2 → p3 → p4 | ✅ Shown |
+| Like | p1 (adeoshodin) | ✅ Shown — count updates, heart turns orange |
+| — (no interaction, by design) | p2 (sonyavocals) | ✅ Shown — visual hold only |
+| Comment (prepared) | p3 (erosky❤️) | ✅ Shown — sheet opens, comment from saintcarl23 reveals, closes |
+| — (final visual hold, by design) | p4 (joanna) | ✅ Shown — no interaction, closing frame |
+| Share (available but unused this cut) | — | Infra intact (`SHARE_DATA`, `scene5Actions.openShare`) — not exercised on-screen per restrained pacing plan |
 
 ---
 

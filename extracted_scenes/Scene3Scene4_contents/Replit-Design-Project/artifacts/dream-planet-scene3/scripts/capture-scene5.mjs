@@ -34,8 +34,10 @@ const URL          = `http://localhost:${PORT}${BASE_PATH}`;
 const WIDTH        = 1080;
 const HEIGHT       = 1920;
 
-// S5 total = 10.0s + 0.8s buffer for encoder flush
-const S5_DURATION_MS = 10_000;
+// S5 total = 14.0s (Scene5Timeline.ts S5.TOTAL) + 0.8s buffer for encoder flush.
+// Keep this literal in sync with S5.TOTAL in ../src/components/scene5/Scene5Timeline.ts
+// (this script runs standalone via node, so it can't import the .ts constant directly).
+const S5_DURATION_MS = 14_000;
 const RECORD_MS      = S5_DURATION_MS + 800;
 const TRIM_S         = S5_DURATION_MS / 1000 - 0.2; // trim buffer tail
 

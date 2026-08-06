@@ -1,7 +1,7 @@
 /**
  * Scene5CinematicAnimation.tsx
  *
- * Phase 6 — Cinematic Scene 5 animation (~10.0 s).
+ * Targeted revision — Cinematic Scene 5 animation (~14.0 s).
  *
  * Architecture
  * ────────────
@@ -23,17 +23,26 @@
  * then scroll back before triggering View Forum. This is the only place where
  * a raw DOM scroll is used — everything else goes through scene5Actions.
  *
- * Timeline (all timings sourced from Scene5Timeline.ts)
+ * Floating "+" button (targeted fix)
+ * ───────────────────────────────────
+ * Scene5Portfolio always renders Scene5PortfolioFloatingAction — that is
+ * correct and unchanged. Scene5Forum no longer renders it at all (neither
+ * Post tab nor Overview), so it disappears the instant the Forum mounts.
+ * No camera/animation logic is needed for this — it's a render-condition
+ * fix in the page components themselves.
+ *
+ * Timeline (all timings sourced from Scene5Timeline.ts) — extended from
+ * 10.0s to 14.0s so every state gets enough time to read, and the Forum
+ * feed now shows 4 distinct posts across 3 deliberate scroll-and-hold beats
+ * instead of 1 post / 1 scroll.
  * ────────
- *   Phase 1  (0.00–0.70s)  Scene 4 handoff → Side Nav opens
- *   Phase 2  (0.70–1.40s)  View Portfolio tap → Portfolio enters
- *   Phase 3  (1.40–3.00s)  Portfolio reveal — profile push + media grid scroll
- *   Phase 4  (3.00–3.80s)  View Forum tap → Forum enters
- *   Phase 5  (3.80–4.80s)  Forum header + first post reveal
- *   Phase 6  (4.80–6.40s)  Community discovery — feed scroll
- *   Phase 6b (6.40–7.20s)  Forum Overview beat
- *   Phase 7  (7.20–8.80s)  Engagement — Like + Comment + Share
- *   Phase 8  (8.80–10.0s)  Final frame — settle + hold
+ *   Phase 1  (0.00–1.20s)   Scene 4 handoff → Side Nav opens
+ *   Phase 2  (1.20–2.50s)   View Portfolio tap → Portfolio enters
+ *   Phase 3  (2.50–5.20s)   Portfolio reveal — profile push + media grid scroll
+ *   Phase 4  (5.20–6.50s)   View Forum tap → Forum enters
+ *   Phase 5  (6.50–8.00s)   Forum header + first post reveal (no scroll yet)
+ *   Phase 6  (8.00–12.60s)  Multi-post community discovery — p1→p2→p3→p4
+ *   Phase 7  (12.60–14.0s)  Final frame — settle + hold
  */
 
 import React, { useEffect, useRef, useState } from 'react';
@@ -191,142 +200,133 @@ export function Scene5CinematicInner() {
 
     const run = async () => {
 
-      // ══ Phase 1: Scene 4 → Side Navigation (0.0–0.70s) ══════════════════
+      // ══ Phase 1: Scene 4 → Side Navigation (0.00–1.20s) ══════════════════
       // Entry white overlay dissolves out — reveals home screen (Scene 4 handoff)
       await delay(80);
       setEntryOpacity(0); // CSS transition fades the overlay
 
-      // Hamburger tap at ~0.25s
+      // Hamburger tap.
       await delay(s5t(S5.TAP_HAMBURGER) - 80);
       await showTap(28, 68); // hamburger icon: x=28, y=68 in 390px space
 
       await delay(60);
       scene5Actions.openSideNavigation();
-      // Drawer slides in (~320ms animation). Wait until SIDE_NAV_HOLD.
+      // Drawer slides in (~320ms). Hold long enough to recognize the menu + profile.
       await delay(s5t(S5.SIDE_NAV_HOLD - S5.OPEN_SIDE_NAV) - 60);
 
-      // ══ Phase 2: Side Navigation → Portfolio (0.70–1.40s) ════════════════
+      // ══ Phase 2: Side Navigation → Portfolio (1.20–2.50s) ════════════════
       // Subtle camera drift towards "View Portfolio" in the drawer.
       cam(1.04, '-0.5%', 0.30);
-      await delay(280);
+      await delay(s5t(S5.TAP_VIEW_PORTFOLIO - S5.CAMERA_TOWARD_PORTFOLIO));
 
       // "View Portfolio" tap — inside the 390px nav, roughly center-left.
       await showTap(185, 148);
-      await delay(60);
+      await delay(s5t(S5.OPEN_PORTFOLIO - S5.TAP_VIEW_PORTFOLIO) - 280);
 
       scene5Actions.openPortfolio();
 
       // Camera resets as drawer exits.
       cam(1.0, 0, 0.25);
 
-      // Wait for drawer exit (~320ms) + Portfolio slide-in (~380ms).
-      await delay(480);
+      // Wait for drawer exit + Portfolio slide-in to fully complete.
+      await delay(s5t(S5.PORTFOLIO_ENTER - S5.OPEN_PORTFOLIO));
 
-      // ══ Phase 3: Portfolio reveal — profile + media grid (1.40–3.00s) ════
+      // ══ Phase 3: Portfolio reveal — profile + stats + media (2.50–5.20s) ═
+      // Give the profile real breathing room: name, bio, "47 members",
+      // "105 posts", then 2-3 media tiles, then back to "View Forum".
+      // The floating "+" stays visible throughout — it belongs to Portfolio.
 
       // 3a: Cinematic push toward profile header.
       cam(1.08, '-2%', S5.PORTFOLIO_PUSH_DURATION);
-      await delay(s5t(S5.PORTFOLIO_PUSH_DURATION + 0.10));
+      await delay(s5t(S5.PORTFOLIO_PUSH_DURATION));
 
-      // 3b: Pull back a little while we scroll to media grid.
-      cam(1.04, '0%', 0.40);
-      await delay(200);
+      // 3b: Hold on profile/stats/View Forum — long, deliberate read time.
+      // (PORTFOLIO_ENTER + PORTFOLIO_PUSH_DURATION = absolute time the push finishes.)
+      await delay(s5t(S5.PORTFOLIO_PROFILE_HOLD - S5.PORTFOLIO_ENTER - S5.PORTFOLIO_PUSH_DURATION));
 
-      // 3c: Scroll portfolio page down to reveal the media grid.
-      //     Approximate scroll offset to clear the dark header (~340px in 390px space).
+      // 3c: Pull back a touch while we scroll to the media grid.
+      cam(1.04, '0%', 0.35);
+      await delay(s5t(S5.PORTFOLIO_SCROLL_DOWN - S5.PORTFOLIO_PROFILE_HOLD));
+
       scrollPortfolioTo(320);
       await delay(s5t(S5.PORTFOLIO_MEDIA_HOLD - S5.PORTFOLIO_SCROLL_DOWN));
 
-      // 3d: Scroll back to top so "View Forum" is visible.
+      // 3d: Scroll back to top so "View Forum" is visible again.
       scrollPortfolioTo(0);
       await delay(s5t(S5.CAMERA_RESET_START - S5.PORTFOLIO_SCROLL_UP));
 
       // 3e: Camera reset before View Forum tap.
       cam(1.0, 0, S5.CAMERA_RESET_DURATION);
-      await delay(s5t(S5.CAMERA_RESET_DURATION + 0.05));
+      await delay(s5t(S5.TAP_VIEW_FORUM - S5.CAMERA_RESET_START));
 
-      // ══ Phase 4: View Forum tap → Forum (3.00–3.80s) ═════════════════════
+      // ══ Phase 4: "View Forum" tap → Forum (5.20–6.50s) ═══════════════════
       // Slight drift toward "View Forum" button in the portfolio profile area.
       cam(1.03, '-0.5%', 0.20);
-      await delay(180);
+      await delay(s5t(S5.OPEN_FORUM - S5.TAP_VIEW_FORUM) - 180);
 
       // "View Forum" tap — bottom of the dark profile header, right side.
       await showTap(298, 222);
-      await delay(60);
+      await delay(180);
 
       scene5Actions.openForum();
       cam(1.0, 0, 0.25);
 
-      // Wait for Forum slide-in (~380ms).
+      // Wait for Forum slide-in to fully complete. The Portfolio floating
+      // "+" button disappears the instant this mounts (Scene5Forum simply
+      // never renders it) — no extra logic needed here.
       await delay(s5t(S5.FORUM_ENTER - S5.OPEN_FORUM));
 
-      // ══ Phase 5: Forum reveal (3.80–4.80s) ════════════════════════════════
+      // ══ Phase 5: Forum initial reveal (6.50–8.00s) ═══════════════════════
+      // Read the header, member count, "Edit Forum", and the first post —
+      // no scrolling yet. This is a deliberate hold, not a rushed cut.
+      await delay(s5t(S5.FORUM_PUSH_START - S5.FORUM_ENTER));
+
       cam(1.06, '-1%', S5.FORUM_PUSH_DURATION);
-      await delay(s5t(S5.FORUM_PUSH_DURATION + 0.15));
+      await delay(s5t(S5.FORUM_HOLD - S5.FORUM_PUSH_START));
 
-      // Pull back before scroll begins.
-      cam(1.0, 0, 0.35);
-      await delay(350);
+      // Pull back before the discovery scroll sequence begins.
+      cam(1.0, 0, S5.FORUM_CAMERA_RESET - S5.FORUM_HOLD);
+      await delay(s5t(S5.P1_HOLD_START - S5.FORUM_HOLD));
 
-      // ══ Phase 6: Community discovery — feed scroll (4.80–6.40s) ══════════
-      scene5Actions.scrollForumTo('p1');
-      await delay(700);
+      // ══ Phase 6: Multi-post community discovery (8.00–12.60s) ═══════════
+      // 4 distinct posts, 3 deliberate scroll-and-hold beats — no continuous
+      // momentum scrolling. Restrained interactions: Like (p1) → nothing
+      // (p2) → Comment (p3) → final visual hold (p4).
 
-      // Gentle downward camera drift as we scroll toward post 2.
-      cam(1.03, '1%', 0.55);
-      scene5Actions.scrollForumTo('p2');
-      await delay(s5t(S5.P2_HOLD - S5.SCROLL_TO_P2));
-
-      // Reset camera, scroll back toward post 1 before Overview.
-      cam(1.0, 0, 0.40);
-      scene5Actions.scrollForumTo('p1');
-      await delay(400);
-
-      // ══ Phase 6b: Forum Overview beat (6.40–7.20s) ═══════════════════════
-      // Switch to Overview tab — shows community identity, members, guidelines.
-      scene5Actions.switchForumTab('overview');
-      await delay(s5t(S5.OVERVIEW_HOLD - S5.SWITCH_TO_OVERVIEW));
-
-      // Switch back to Post Feed and let it settle.
-      scene5Actions.switchForumTab('post');
-      await delay(s5t(S5.POST_FEED_SETTLE - S5.SWITCH_BACK_TO_POST));
-
-      // ══ Phase 7: Community engagement (7.20–8.80s) ════════════════════════
-
-      // 7a: Like hero post 1.
+      // Post 1 — already in view on Forum entry. Brief hold, then Like.
+      await delay(s5t(S5.LIKE_P1 - S5.P1_HOLD_START));
       scene5Actions.likePost('p1');
-      await delay(s5t(S5.OPEN_COMMENTS_P1 - S5.LIKE_P1));
+      await delay(s5t(S5.SCROLL_TO_P2 - S5.LIKE_P1));
 
-      // 7b: Open comment sheet.
-      scene5Actions.openComments('p1');
-      await delay(s5t(S5.SHOW_COMMENT - S5.OPEN_COMMENTS_P1));
-
-      // 7c: Reveal prepared comment.
-      scene5Actions.showPreparedComment('p1');
-      await delay(s5t(S5.CLOSE_COMMENTS - S5.SHOW_COMMENT));
-
-      // 7d: Close comment sheet + scroll to post 2 for share.
-      scene5Actions.closeComments();
-      await delay(250);
+      // Post 2 — smooth controlled scroll, hold, no interaction.
+      cam(1.02, '1%', 0.45);
       scene5Actions.scrollForumTo('p2');
-      await delay(s5t(S5.OPEN_SHARE_P2 - S5.CLOSE_COMMENTS) - 250);
+      await delay(s5t(S5.SCROLL_TO_P3 - S5.SCROLL_TO_P2));
 
-      // 7e: Open share panel on post 2.
-      scene5Actions.openShare('p2');
-      await delay(s5t(S5.CONFIRM_SHARE_P2 - S5.OPEN_SHARE_P2));
+      // Post 3 — smooth controlled scroll, hold, Comment interaction.
+      cam(1.0, 0, 0.40);
+      scene5Actions.scrollForumTo('p3');
+      await delay(s5t(S5.OPEN_COMMENTS_P3 - S5.SCROLL_TO_P3));
 
-      // 7f: Confirm share — "Link Copied" state.
-      scene5Actions.confirmShare('p2');
-      await delay(s5t(S5.CLOSE_SHARE - S5.CONFIRM_SHARE_P2));
+      scene5Actions.openComments('p3');
+      await delay(s5t(S5.SHOW_COMMENT_P3 - S5.OPEN_COMMENTS_P3));
 
-      // 7g: Close share panel — clean feed.
-      scene5Actions.closeShare();
-      await delay(200);
+      scene5Actions.showPreparedComment('p3');
+      await delay(s5t(S5.CLOSE_COMMENTS_P3 - S5.SHOW_COMMENT_P3));
 
-      // ══ Phase 8: Final frame — settle + hold (8.80–10.0s) ════════════════
-      // Gentle final push. Settle on the community forum feed.
+      scene5Actions.closeComments();
+      await delay(s5t(S5.SCROLL_TO_P4 - S5.CLOSE_COMMENTS_P3));
+
+      // Post 4 — optional final post, smooth controlled scroll, settle.
+      cam(1.02, '1%', 0.45);
+      scene5Actions.scrollForumTo('p4');
+      await delay(s5t(S5.FINAL_PUSH_START - S5.SCROLL_TO_P4));
+
+      // ══ Phase 7: Final frame — settle + hold (12.60–14.0s) ═══════════════
+      // Gentle final push. Settle on the community forum feed, clean and
+      // free of overlays — suitable for a hard cut into Scene 6.
       cam(1.04, '-1%', S5.FINAL_PUSH_DURATION);
-      await delay(s5t(S5.FINAL_PUSH_DURATION + 0.05));
+      await delay(s5t(S5.FINAL_PUSH_DURATION));
 
       // Hold on the clean final frame until capture ends.
       await delay(s5t(S5.TOTAL - S5.FINAL_HOLD_START));
@@ -398,7 +398,6 @@ export function Scene5CinematicInner() {
                 <Scene5Forum
                   onBack={() => scene5Actions.openPortfolio()}
                   onEditForum={() => {}}
-                  onFloatingAction={() => {}}
                 />
               </motion.div>
             )}

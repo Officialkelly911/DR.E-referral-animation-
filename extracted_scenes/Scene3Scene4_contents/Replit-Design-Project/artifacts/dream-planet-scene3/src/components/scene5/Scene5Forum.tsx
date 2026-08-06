@@ -15,6 +15,14 @@
  * data-scene5-action attributes added:
  *   forum-post-tab      → the "Post" tab button
  *   forum-overview-tab  → the "Overview" tab button
+ *
+ * Revision (targeted Scene 5 fix)
+ * ────────────────────────────────
+ * The Portfolio's floating "+" (add post) button must never appear on the
+ * Forum — neither the Post Feed tab nor the Overview tab. Per the real
+ * Dream Planet interface, that action belongs to the Portfolio page only.
+ * The button is intentionally NOT rendered here at all (previously it was
+ * shown on the 'post' tab, which was incorrect).
  */
 
 import React from 'react';
@@ -24,15 +32,13 @@ import { Scene5ForumProfileHeader } from './Scene5ForumProfileHeader';
 import { Scene5ForumTabs, type Scene5ForumTab } from './Scene5ForumTabs';
 import { Scene5ForumPostFeed } from './Scene5ForumPostFeed';
 import { Scene5ForumOverview } from './Scene5ForumOverview';
-import { Scene5PortfolioFloatingAction } from './Scene5PortfolioFloatingAction';
 
 export interface Scene5ForumProps {
   onBack?: () => void;
   onEditForum?: () => void;
-  onFloatingAction?: () => void;
 }
 
-export function Scene5Forum({ onBack, onEditForum, onFloatingAction }: Scene5ForumProps) {
+export function Scene5Forum({ onBack, onEditForum }: Scene5ForumProps) {
   const { state, dispatch } = useScene5Interaction();
 
   // Tab state now lives in the store so the automation API can switch it.
@@ -65,8 +71,6 @@ export function Scene5Forum({ onBack, onEditForum, onFloatingAction }: Scene5For
       <Scene5ForumTabs active={tab} onChange={handleTabChange} />
 
       {tab === 'post' ? <Scene5ForumPostFeed /> : <Scene5ForumOverview />}
-
-      {tab === 'post' && <Scene5PortfolioFloatingAction onPress={onFloatingAction} />}
 
       <div style={{ height: '24px' }} />
     </div>

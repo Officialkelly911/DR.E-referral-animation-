@@ -27,6 +27,8 @@ export interface Scene5PostBaseData {
 export const FORUM_POST_BASE_DATA: Record<string, Scene5PostBaseData> = {
   p1: { id: 'p1', likes: 0, comments: 0 },
   p2: { id: 'p2', likes: 0, comments: 0 },
+  p3: { id: 'p3', likes: 0, comments: 0 },
+  p4: { id: 'p4', likes: 0, comments: 0 },
 };
 
 // ─── Prepared comments ────────────────────────────────────────────────────────
@@ -59,6 +61,13 @@ export const PREPARED_COMMENTS: Record<string, Scene5Comment> = {
     username: 'erosky❤️',
     avatar: '',
     text: "Can't wait to hear the new vocals 🎤✨",
+    timestamp: 'Just now',
+  },
+  p3: {
+    id: 'cmt-p3-1',
+    username: 'saintcarl23',
+    avatar: '',
+    text: 'This cover is stunning 😍 congrats on the EP!',
     timestamp: 'Just now',
   },
 };
@@ -101,4 +110,6 @@ export const FORUM_SCROLL_TARGETS = {
   TOP: 'top',
   HERO_POST_1: 'p1',
   HERO_POST_2: 'p2',
+  HERO_POST_3: 'p3',
+  HERO_POST_4: 'p4',
 } as const;
