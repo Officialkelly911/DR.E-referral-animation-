@@ -47,7 +47,7 @@
 |-------|--------|
 | Dream Planet logo | `attached_assets/dp_logo_v1.svg` (from Logos.zip) |
 | App icon | `attached_assets/App_icon__1786044722968.WEBP` |
-| Store badges | `attached_assets/store_badges.jpeg` (626×626) |
+| Platform cue | Text-only “Available on mobile” line; store badge artwork intentionally omitted |
 | Referral code | IK54OTRD |
 | Referral URL | dreamplanet.org/referral/IK54OTRD |
 | CTA headline | "Your Community Has Value" |
@@ -93,7 +93,7 @@
 - [x] Correct referral code: IK54OTRD
 - [x] CTA eyebrow: "The Dream Planet Movement"
 - [x] Correct CTA: "Your Community Has Value" / "Turn your influence into income. Start earning with your community today."
-- [x] Store badges visible
+- [x] Google Play / App Store badge artwork excluded from the CTA
 - [x] Duration within target range (15.480s ≈ 15.5s)
 - [x] No audio (music added at master concat)
 - [x] Fade to black end transition

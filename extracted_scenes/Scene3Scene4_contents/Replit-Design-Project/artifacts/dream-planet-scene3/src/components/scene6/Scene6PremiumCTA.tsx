@@ -11,8 +11,8 @@
 
 import { motion } from 'framer-motion';
 import { Copy } from 'lucide-react';
-import logoUrl from '@assets/dp_logo_v1.svg';
-import appIconUrl from '@assets/App_icon__1786044722968.WEBP';
+import premiumLogoUrl from '@assets/DP_premium_logo__1786104503908.PNG';
+import appIconUrl from '@assets/App_icon__1786104449387.WEBP';
 
 const EASE_SMOOTH = [0.25, 0.46, 0.45, 0.94] as const;
 const EASE_LUXURY = [0.16, 1.00, 0.30, 1.00] as const;
@@ -33,64 +33,6 @@ function LightSweep({ play, delay = 0 }: { play: boolean; delay?: number }) {
       animate={play ? { x: '220%' } : { x: '-140%' }}
       transition={{ duration: 1.1, delay: delay + 0.15, ease: 'easeInOut' }}
     />
-  );
-}
-
-function GooglePlayIcon() {
-  return (
-    <svg width="18" height="18" viewBox="0 0 24 24">
-      <path d="M3.6 2.4c-.3.3-.5.7-.5 1.2v16.8c0 .5.2.9.5 1.2l.1.1L13 12.3v-.2L3.7 2.3l-.1.1z" fill="#00D2FF" />
-      <path d="M16.2 15.5 13 12.3v-.2l3.2-3.2 3.6 2c1 .6 1 1.5 0 2.1l-3.6 2z" fill="#FFCF00" />
-      <path d="M16.2 15.5 13 12.2 3.6 21.6c.4.4 1 .4 1.7.1l10.9-6.2" fill="#FF3A44" />
-      <path d="M16.2 8.9 5.3 2.7c-.7-.4-1.3-.3-1.7.1L13 12.2l3.2-3.3z" fill="#00F076" />
-    </svg>
-  );
-}
-
-function AppleIcon() {
-  return (
-    <svg width="16" height="19" viewBox="0 0 384 512">
-      <path
-        fill="#0e0e11"
-        d="M318.7 268.7c-.2-36.7 16.4-64.4 50-84.8-18.8-26.9-47.2-41.7-84.7-44.6-35.5-2.8-74.3 20.7-88.5 20.7-15 0-49.4-19.7-76.4-19.7C63.3 141 4 184.8 4 273.5c0 25.9 4.7 52.6 14.1 80.2 12.6 36.7 58.1 126.7 105.6 125.2 24.8-.6 42.3-17.6 74.6-17.6 31.4 0 47.6 17.6 75.1 17.6 47.9-.7 89-82.5 101-119.3-64.2-30.2-55.7-88.5-55.7-90.9zM261.9 88.8c26.9-32 24.5-61.2 23.7-71.7-23.8 1.4-51.4 16.4-67.2 34.9-17.4 19.5-27.6 43.6-25.4 70.7 25.9 2 49.5-11.4 68.9-33.9z"
-      />
-    </svg>
-  );
-}
-
-function DownloadButton({ platform, delay, play }: { platform: 'google' | 'apple'; delay: number; play: boolean }) {
-  return (
-    <motion.div
-      initial={{ opacity: 0, y: 14 }}
-      animate={play ? { opacity: 1, y: 0 } : { opacity: 0, y: 14 }}
-      transition={{ duration: 0.5, delay, ease: EASE_SMOOTH }}
-      style={{
-        position: 'relative', overflow: 'hidden',
-        display: 'flex', alignItems: 'center', gap: '12px',
-        background: 'linear-gradient(145deg, rgba(255,255,255,0.13), rgba(255,255,255,0.055))',
-        backdropFilter: 'blur(16px)', WebkitBackdropFilter: 'blur(16px)',
-        border: '1px solid rgba(255,255,255,0.20)',
-        borderRadius: '16px',
-        padding: '13px 22px',
-        minWidth: '218px',
-        boxShadow: '0 10px 26px rgba(0,0,0,0.34), 0 0 0 1px rgba(255,107,0,0.05) inset',
-      }}
-    >
-      <div style={{
-        width: '34px', height: '34px', borderRadius: '9px', background: '#fff',
-        display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0,
-      }}>
-        {platform === 'google' ? <GooglePlayIcon /> : <AppleIcon />}
-      </div>
-      <div style={{ lineHeight: 1.15 }}>
-        <div style={{ color: 'rgba(255,255,255,0.58)', fontSize: '10px', fontWeight: 600, letterSpacing: '0.015em' }}>
-          {platform === 'google' ? 'GET IT ON' : 'Download on the'}
-        </div>
-        <div style={{ color: '#fff', fontSize: '16px', fontWeight: 750, letterSpacing: '-0.01em' }}>
-          {platform === 'google' ? 'Google Play' : 'App Store'}
-        </div>
-      </div>
-    </motion.div>
   );
 }
 
@@ -145,13 +87,13 @@ export function Scene6PremiumCTA({
           background: 'radial-gradient(ellipse 88% 84% at 50% 48%, transparent 42%, rgba(0,0,0,0.70) 100%)',
         }} />
         {/* Large blurred watermark logo, intentionally visible for depth */}
-        <img
-          src={logoUrl}
+           <img
+           src={premiumLogoUrl}
           alt=""
           aria-hidden
           style={{
             position: 'absolute', top: '43%', left: '50%',
-            width: '920px', transform: 'translate(-50%,-50%)',
+             width: '980px', transform: 'translate(-50%,-50%)',
             opacity: 0.115, filter: 'blur(5px) saturate(0.85)',
           }}
         />
@@ -204,7 +146,7 @@ export function Scene6PremiumCTA({
             transition: 'filter 1.3s ease-out',
              padding: '10px',
           }}>
-             <img src={logoUrl} alt="Dream Planet" style={{ width: '214px', height: 'auto', display: 'block' }} />
+             <img src={premiumLogoUrl} alt="Dream Planet" style={{ width: '270px', height: 'auto', display: 'block' }} />
           </div>
           <LightSweep play={logoVisible} delay={0.3} />
         </motion.div>
@@ -276,11 +218,25 @@ export function Scene6PremiumCTA({
           </motion.div>
         </motion.div>
 
-        {/* Download buttons — horizontal, equal size, glass */}
-         <div style={{ display: 'flex', gap: '16px', marginBottom: '30px' }}>
-          <DownloadButton platform="google" delay={0.0} play={buttonsVisible} />
-          <DownloadButton platform="apple" delay={0.12} play={buttonsVisible} />
-        </div>
+        {/* Store badge artwork is intentionally omitted. This quiet platform cue
+            keeps the referral code as the focal point of the final frame. */}
+        <motion.div
+          initial={{ opacity: 0, y: 10 }}
+          animate={buttonsVisible ? { opacity: 1, y: 0 } : { opacity: 0, y: 10 }}
+          transition={{ duration: 0.5, ease: EASE_SMOOTH }}
+          style={{
+            display: 'flex', alignItems: 'center', gap: '11px',
+            color: 'rgba(255,255,255,0.62)', fontSize: '13px', fontWeight: 600,
+            letterSpacing: '0.08em', textTransform: 'uppercase',
+            marginBottom: '30px',
+          }}
+        >
+          <span style={{
+            width: '5px', height: '5px', borderRadius: '50%',
+            background: '#FF8A32', boxShadow: '0 0 10px rgba(255,138,50,0.8)',
+          }} />
+          Available on mobile
+        </motion.div>
 
         {/* CTA button — genuine button, not plain text */}
         <motion.button

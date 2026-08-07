@@ -43,7 +43,7 @@ function NotificationRow({ item, index, staggerIn }: { item: NotificationItem; i
       style={{
         display: 'flex', alignItems: 'flex-start', gap: '14px',
         padding: '16px 20px',
-        borderBottom: '1px solid rgba(255,255,255,0.055)',
+        borderBottom: '1px solid rgba(15,23,42,0.07)',
       }}
       initial={isStaggered ? { opacity: 0, y: 16 } : { opacity: 1, y: 0 }}
       animate={isStaggered && staggerIn ? { opacity: 1, y: 0 } : (isStaggered ? {} : { opacity: 1, y: 0 })}
@@ -58,14 +58,14 @@ function NotificationRow({ item, index, staggerIn }: { item: NotificationItem; i
         <Zap size={17} color="#fff" fill="#fff" />
       </div>
       <div style={{ flex: 1, minWidth: 0 }}>
-        <p style={{ color: '#e5e7eb', fontSize: '13px', fontWeight: 500, margin: 0, lineHeight: 1.4 }}>
+        <p style={{ color: '#16181d', fontSize: '13px', fontWeight: 500, margin: 0, lineHeight: 1.4 }}>
           <span style={{ fontWeight: 700 }}>{item.name}</span> {item.action}
         </p>
-        <span style={{ color: '#6b7280', fontSize: '11px' }}>{item.time}</span>
+        <span style={{ color: '#9ca0a6', fontSize: '11px' }}>{item.time}</span>
       </div>
       {item.isNew && (
         <span style={{
-          background: 'rgba(255,140,58,0.18)', color: '#FF8C3A',
+          background: '#fff0e8', color: '#c84b18',
           fontSize: '10px', fontWeight: 700,
           padding: '4px 10px', borderRadius: '10px',
           flexShrink: 0,
@@ -79,7 +79,7 @@ export function Scene6Notifications({ staggerIn, scrollActive }: { staggerIn: bo
   return (
     <div style={{
       position: 'absolute', inset: 0,
-      background: '#111114',
+       background: '#ffffff',
       fontFamily: "'Inter', sans-serif",
       overflow: 'hidden',
     }}>
@@ -87,10 +87,10 @@ export function Scene6Notifications({ staggerIn, scrollActive }: { staggerIn: bo
       <div style={{
         display: 'flex', alignItems: 'center', gap: '14px',
         padding: '54px 20px 18px',
-        borderBottom: '1px solid rgba(255,255,255,0.06)',
+        borderBottom: '1px solid rgba(15,23,42,0.07)',
       }}>
-        <ChevronLeft size={22} color="#e5e7eb" />
-        <span style={{ color: '#fff', fontSize: '18px', fontWeight: 700 }}>Notification</span>
+         <ChevronLeft size={22} color="#101114" />
+         <span style={{ color: '#101114', fontSize: '18px', fontWeight: 600 }}>Notification</span>
       </div>
 
       <div style={{ position: 'relative', height: 'calc(100% - 96px)', overflow: 'hidden' }}>
@@ -105,7 +105,7 @@ export function Scene6Notifications({ staggerIn, scrollActive }: { staggerIn: bo
         </motion.div>
         <div style={{
           position: 'absolute', bottom: 0, left: 0, right: 0, height: '18px',
-          background: 'linear-gradient(transparent, #111114)', pointerEvents: 'none',
+          background: 'linear-gradient(transparent, #ffffff)', pointerEvents: 'none',
         }} />
       </div>
     </div>
