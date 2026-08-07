@@ -17,8 +17,8 @@
  *   scene6_start_frame.png
  *   scene6_end_frame.png
  *
- * Phase 10 — Scene 6: "Join the Dream Planet Movement"
- * Duration: 8.0s (S6.TOTAL in Scene6Timeline.ts)
+ * Phase 10 — Scene 6: "Join the Dream Planet Movement" (Revision Pass)
+ * Duration: 15.5s (S6.TOTAL in Scene6Timeline.ts)
  */
 
 import { chromium } from 'playwright-core';
@@ -38,9 +38,8 @@ const WIDTH     = 1080;
 const HEIGHT    = 1920;
 
 // Keep in sync with S6.TOTAL in Scene6Timeline.ts
-const S6_DURATION_MS = 8_000;
-const RECORD_MS      = S6_DURATION_MS + 1_000;  // 1s encoder flush buffer
-const TRIM_S         = S6_DURATION_MS / 1000 - 0.1;
+const S6_DURATION_MS = 15_500;
+const TAIL_BUFFER_MS = 1_000;  // encoder flush buffer recorded after content ends
 
 const CAPTURES_DIR = path.join(ARTIFACT_DIR, 'captured');
 
@@ -94,7 +93,7 @@ console.log(`\n🎬  Dream Planet — Scene 6 Capture`);
 console.log(`   Scene:    "Join the Dream Planet Movement"`);
 console.log(`   Target:   ${URL}`);
 console.log(`   Viewport: ${WIDTH}×${HEIGHT} (9:16 portrait)`);
-console.log(`   Duration: ${RECORD_MS / 1000}s recording (${S6_DURATION_MS / 1000}s content)\n`);
+console.log(`   Content:  ${S6_DURATION_MS / 1000}s (startup offset measured dynamically)\n`);
 
 // ── Launch browser ───────────────────────────────────────────────────────────
 const browser = await chromium.launch({
@@ -129,32 +128,55 @@ page.on('console', msg => {
 page.on('pageerror', err => console.error('  [page exception]', err.message));
 
 // ── Navigate & record ────────────────────────────────────────────────────────
+// IMPORTANT: Playwright's recordVideo starts recording the moment the page
+// is created — BEFORE navigation, network load, and React mount complete.
+// That gap ("startup offset") varies run to run. If it's ignored, a fixed
+// total-recording-length silently truncates whatever lands at the very end
+// of the timeline (here: the final fade-to-black). So we measure the offset
+// directly via a DOM marker the component sets when its own timeline starts
+// (see `data-s6-started` in Scene6CinematicAnimation.tsx), and schedule
+// every subsequent wait relative to that measured moment instead of a guess.
+const recordingStartedAt = Date.now();
+
 console.log('  → Navigating to Scene 6 cinematic…');
 await page.goto(URL, { waitUntil: 'networkidle' });
 
-// Start frame — captured immediately after first paint (Phase 1: Forum hold)
-await page.waitForTimeout(200);
+console.log('  → Waiting for animation timeline to start…');
+await page.waitForFunction(() => document.documentElement.hasAttribute('data-s6-started'));
+const animationStartedAt = Date.now();
+const startupOffsetMs = animationStartedAt - recordingStartedAt;
+console.log(`  ✓ Timeline started (measured startup offset: ${startupOffsetMs}ms)`);
+
+// Start frame — captured immediately after first paint (Phase 1: Home Feed hold)
+await page.waitForTimeout(50);
 const startFramePath = path.join(CAPTURES_DIR, 'scene6_start_frame.png');
 await page.screenshot({ path: startFramePath });
-console.log('  ✓ Start frame captured (Phase 1 — Forum hold)');
+console.log('  ✓ Start frame captured (Phase 1 — Home Feed hold)');
 
-// Wait until full composition is visible (after badges at 5.70s) but
-// BEFORE the fade-to-black which begins at 7.70s. Snapshot at t≈6.5s.
-const END_FRAME_MS = 6_500;
-console.log(`  → Waiting ${END_FRAME_MS / 1000}s for full composition…`);
-await page.waitForTimeout(END_FRAME_MS);
+// Wait until the full premium CTA composition is visible (CTA button lands
+// at ~12.69s) but BEFORE the fade-to-black which begins at 14.64s.
+// Snapshot at t≈13.4s — also usable as the thumbnail-quality end frame.
+const END_FRAME_MS = 13_400;
+const alreadyWaitedMs = 50;
+console.log(`  → Waiting ${(END_FRAME_MS - alreadyWaitedMs) / 1000}s for full composition…`);
+await page.waitForTimeout(END_FRAME_MS - alreadyWaitedMs);
 const endFramePath = path.join(CAPTURES_DIR, 'scene6_end_frame.png');
 await page.screenshot({ path: endFramePath });
-console.log('  ✓ End frame captured (t=6.5s — full composition, pre-fade)');
+console.log('  ✓ End frame captured (t=13.4s — full composition, pre-fade)');
 
-// Record remaining duration (includes fade-to-black).
-const remainingMs = RECORD_MS - END_FRAME_MS;
+// Record remaining duration (includes the full fade-to-black) plus an
+// encoder flush buffer so the trim below never runs past what was recorded.
+const remainingMs = (S6_DURATION_MS - END_FRAME_MS) + TAIL_BUFFER_MS;
 console.log(`  → Recording remaining ${remainingMs / 1000}s to completion…`);
 await page.waitForTimeout(remainingMs);
 
 const video = await page.video();
 await ctx.close();
 await browser.close();
+
+// Trim point, in VIDEO time (recording started before the animation did),
+// with a small safety margin so the last fade frame is never clipped.
+const TRIM_S = (startupOffsetMs + S6_DURATION_MS) / 1000 + 0.15;
 
 // ── Retrieve WebM ─────────────────────────────────────────────────────────────
 const webmPath = await video.path();

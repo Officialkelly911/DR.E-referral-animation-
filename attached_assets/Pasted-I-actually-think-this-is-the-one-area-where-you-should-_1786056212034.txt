@@ -1,0 +1,249 @@
+I actually think this is the one area where you should be more demanding. The CTA is the last thing people see. If it feels generic, the entire commercial loses some of its premium finish, no matter how polished the earlier scenes are. Humans have an annoying tendency to remember the ending more vividly than the middle.
+
+I wouldn’t ask the agent to “polish” the CTA. I’d ask it to redesign it from scratch while preserving the message.
+
+⸻
+
+Scene 6 Final CTA Redesign (Premium Version)
+
+The current CTA screen is not approved.
+
+While it is technically correct, it does not match the premium visual quality established throughout the campaign.
+
+The CTA should feel like the climax of the commercial, not a placeholder.
+
+Discard the current layout and redesign the final CTA while preserving the approved messaging.
+
+⸻
+
+Overall Creative Direction
+
+The final screen should immediately communicate:
+
+* Premium
+* Modern
+* Aspirational
+* Clean
+* Confident
+* Luxury technology
+
+It should look comparable to launch videos from Apple, Airbnb, Stripe, or Notion, rather than a typical mobile app advertisement.
+
+Avoid templates or generic social-media styling.
+
+⸻
+
+Background
+
+Remove the flat black background.
+
+Instead, use one of these approaches:
+
+Option A (Preferred)
+
+A deep charcoal gradient with subtle Dream Planet orange lighting.
+
+Example feel:
+
+* charcoal → dark graphite
+* soft orange glow behind the logo
+* subtle vignette
+* elegant depth
+
+⸻
+
+Option B
+
+A softly blurred Dream Planet interface with a dark overlay, creating depth while keeping the CTA readable.
+
+⸻
+
+Dream Planet Logo
+
+The logo must become the hero element.
+
+It should:
+
+* appear near the upper center
+* animate in gracefully
+* remain sharp
+* have breathing room
+* never compete with surrounding elements
+
+Avoid placing it in a corner.
+
+⸻
+
+Typography
+
+Replace the existing typography hierarchy.
+
+Large headline.
+
+Smaller supporting text.
+
+Large referral code.
+
+Strong CTA button.
+
+Clear visual spacing.
+
+No cramped layout.
+
+No oversized blocks of text.
+
+⸻
+
+Referral Code
+
+The referral code is the most important conversion element.
+
+Design it as a premium card.
+
+Suggestions:
+
+* rounded rectangle
+* subtle glow
+* slight elevation
+* copy icon
+* orange accent border
+
+The referral code should be immediately noticeable.
+
+⸻
+
+Download Buttons
+
+Current placement is not approved.
+
+Reposition them into a clean horizontal row.
+
+Requirements:
+
+* equal spacing
+* equal sizing
+* aligned perfectly
+* generous padding
+
+Maintain Apple’s Human Interface style.
+
+⸻
+
+CTA Button
+
+Instead of plain text, create a genuine button.
+
+Example styling:
+
+* Dream Planet orange
+* soft shadow
+* rounded corners
+* premium hover/press animation feel
+* centered
+
+⸻
+
+Motion
+
+The CTA should build elegantly.
+
+Suggested sequence:
+
+0.0 s
+
+Background fades in.
+
+0.4 s
+
+Logo appears.
+
+0.8 s
+
+Headline fades upward.
+
+1.2 s
+
+Referral card animates into place.
+
+1.7 s
+
+Download buttons appear.
+
+2.2 s
+
+CTA button appears.
+
+2.5 s+
+
+Subtle ambient glow and breathing animation.
+
+Everything should feel calm and intentional.
+
+⸻
+
+Color Palette
+
+Use Dream Planet branding.
+
+Primary:
+
+* Dream Planet Orange
+
+Supporting:
+
+* White
+
+Background:
+
+* Deep charcoal
+* Graphite
+
+Accent:
+
+* Soft orange glow
+
+Avoid flat black.
+
+Avoid random gradients.
+
+⸻
+
+Visual Quality
+
+The final screen should be strong enough that a single frame could be used as:
+
+* App Store promotional artwork
+* Website hero banner
+* Press kit image
+* YouTube thumbnail
+* Investor presentation
+
+⸻
+
+Do Not Change
+
+Keep:
+
+* referral message
+* referral code
+* download destinations
+* campaign branding
+
+Only redesign the presentation.
+
+⸻
+
+Deliverables
+
+Produce:
+
+* scene6_cta_v2.mp4
+* scene6_cta_v2.png
+* scene6_final_v3.mp4
+* SCENE6_CTA_REDESIGN.md
+
+The redesign should clearly surpass the previous version in polish, composition, branding, and perceived production quality.
+
+⸻
+
+One more improvement I’d make: don’t let the video simply end on the CTA. Hold the final frame for about 1.5 to 2 seconds with only very subtle ambient motion, such as a gentle glow behind the logo or a slow shimmer on the referral card. Many viewers won’t process the referral code or download options instantly. Giving them a brief, polished pause increases the chance they’ll actually read the CTA instead of having it vanish the moment their brain catches up.
