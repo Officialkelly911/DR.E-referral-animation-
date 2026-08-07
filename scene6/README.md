@@ -1,6 +1,6 @@
 # Dream Planet Referral Campaign — Scene 6
 
-> **Status: COMPLETE — Awaiting creative review and approval before Master v3 integration.**
+> **Status: COMPLETE — CTA polish revision rendered; awaiting creative review and approval before Master v3 integration.**
 >
 > Master v2 (Scenes 1–5) remains frozen. Scene 6 is self-contained and must not
 > touch any Scene 1–5 assets, the master build pipeline, or existing deliverables.
@@ -11,7 +11,7 @@
 
 **Name:** Join the Dream Planet Movement  
 **Phase:** Phase 10  
-**Duration:** 7.920s (target: 8.0s)  
+**Duration:** 15.480s (target: 15.5s)  
 **Resolution:** 1080 × 1920  
 **FPS:** 25 (WebM cap; normalized to 30fps at master concat)
 
@@ -21,15 +21,11 @@
 
 | Beat | Time | Visual Description |
 |------|------|--------------------|
-| P1 | 0.0–0.75s | Scene 5 Forum final frame — static hold |
-| P2 | 0.75–2.25s | UI dissolve: forum fades + blurs, orange glow emerges, particles drift to center |
-| P3 | 2.25–3.20s | Dream Planet logo assembles — DP mark with orange glow drop-shadow |
-| P4 | 3.20–3.70s | Tagline: "MORE THAN FOLLOWERS" fades in |
-| P5 | 3.70–4.70s | CTA: "Join Dream Planet Today" + "Start earning with your community." |
-| P5b | 4.50–5.20s | Referral card slides up — glass card, orange border, IK54OTRD code |
-| P6 | 5.20–5.70s | Store badges appear (Google Play + App Store) |
-| P7 | 5.70–7.70s | Final hold — full composition |
-| End | 7.70–7.92s | Fade to black |
+| P1–P8 | 0.0–9.94s | Home Feed → sidebar → Forum scroll → Notifications |
+| P9 | 9.94–10.34s | Notifications crossfade into CTA background |
+| P10 | 10.34–12.94s | Logo, headline, referral card, download buttons, and final CTA button ease in |
+| P11 | 12.94–14.64s | Full premium CTA composition holds for reading |
+| End | 14.64–15.50s | Glow and composition fade to black |
 
 ---
 
@@ -37,11 +33,11 @@
 
 | Property | Value |
 |----------|-------|
-| Actual duration | 7.920s |
+| Actual duration | 15.480s |
 | Scene 5 end time | 41.300s |
 | Scene 6 start time (in master) | 41.300s |
-| Scene 6 end time (in master) | ~49.220s |
-| Total master duration (after Scene 6) | ~49.220s |
+| Scene 6 end time (in master) | ~56.780s |
+| Total master duration (after Scene 6) | ~56.780s |
 
 ---
 
@@ -54,9 +50,9 @@
 | Store badges | `attached_assets/store_badges.jpeg` (626×626) |
 | Referral code | IK54OTRD |
 | Referral URL | dreamplanet.org/referral/IK54OTRD |
-| CTA headline | "Join Dream Planet Today" |
-| CTA subtext | "Start earning with your community." |
-| Tagline | "More Than Followers" |
+| CTA headline | "Your Community Has Value" |
+| CTA subtext | "Turn your influence into income. Start earning with your community today." |
+| CTA eyebrow | "The Dream Planet Movement" |
 
 ---
 
@@ -95,10 +91,10 @@
 - [x] No blank/pure-white intro frames
 - [x] Correct logo (DP mark, orange circle)
 - [x] Correct referral code: IK54OTRD
-- [x] Correct tagline: "More Than Followers"
-- [x] Correct CTA: "Join Dream Planet Today" / "Start earning with your community."
+- [x] CTA eyebrow: "The Dream Planet Movement"
+- [x] Correct CTA: "Your Community Has Value" / "Turn your influence into income. Start earning with your community today."
 - [x] Store badges visible
-- [x] Duration within target range (7.920s ≈ 8.0s)
+- [x] Duration within target range (15.480s ≈ 15.5s)
 - [x] No audio (music added at master concat)
 - [x] Fade to black end transition
 - [x] All motion language rules followed (no bounce, elastic, rotation, flash)
@@ -118,7 +114,7 @@
    - Uncomment `TRIM_GUARDS[scene6]` (probe first frame to find correct trim)
 4. Update `artifacts/api-server/src/config/master.ts`:
    - Append Scene 6 entry to `SCENES` array
-   - Update `MASTER_META.duration` to ~49.220s
+   - Update `MASTER_META.duration` to ~56.780s
    - Bump `MASTER_VERSION` to "v3"
 5. Run `./build_master_v2.sh` → verify all checks pass
 6. Run `./validate_master.sh --verbose` → all checks pass

@@ -2,8 +2,8 @@
 
 **Scene:** "Join the Dream Planet Movement"  
 **Phase:** Phase 10 — Scene 6 Implementation  
-**Date captured:** 2026-08-06  
-**Status:** ✅ PASSED — Ready for creative review
+**Date captured:** 2026-08-07  
+**Status:** ✅ PASSED — CTA polish revision ready for creative review
 
 ---
 
@@ -13,11 +13,11 @@
 |----------|--------|--------|--------|
 | Resolution | 1080 × 1920 | 1080 × 1920 | ✅ |
 | Frame rate | 30 fps | 25 fps (WebM cap) | ⚠️ Note 1 |
-| Duration | 8.0s | 7.920s | ✅ |
+| Duration | 15.5s | 15.480s | ✅ |
 | Codec | H.264 | H.264 (libx264 CRF 16) | ✅ |
 | Pixel format | yuv420p | yuv420p | ✅ |
 | Audio | None (master adds) | None | ✅ |
-| File size | — | ~452 KB | ✅ |
+| File size | — | ~3.3 MB | ✅ |
 
 > **Note 1 (FPS):** Playwright's WebM recorder captures at 25 fps. All prior scenes (3–5) use the same pipeline and share this characteristic. The master concat step uses ffmpeg's `-r 30` flag to normalize to 30fps during assembly, consistent with Master v2 methodology.
 
@@ -39,15 +39,11 @@
 
 | Phase | Timing | Check | Result |
 |-------|--------|-------|--------|
-| P1 Forum hold | 0.0–0.75s | Static Forum frame visible | ✅ |
-| P2 UI dissolve | 0.75–2.25s | Forum fades + blurs, orange glow emerges, particles drift | ✅ |
-| P3 Logo formation | 2.25–3.20s | DP logo scales in (0.90→1.0) with orange drop-shadow glow | ✅ |
-| P4 Tagline | 3.20–3.70s | "MORE THAN FOLLOWERS" fades in below logo | ✅ |
-| P5 CTA | 3.70–4.70s | "Join Dream Planet Today" + subtext fade in | ✅ |
-| P5b Referral card | 4.50–5.20s | Glass card slides up with orange glow border | ✅ |
-| P6 Store badges | 5.20–5.70s | Google Play + App Store badges fade in | ✅ |
-| P7 Final hold | 5.70–7.70s | Full composition holds ~2.0s | ✅ |
-| End | 7.70–7.92s | Fade to black | ✅ |
+| P1–P8 Journey | 0.0–9.94s | Home, sidebar, Forum scroll, Notifications | ✅ |
+| P9 CTA reveal | 9.94–10.34s | Notifications crossfade into layered CTA background | ✅ |
+| P10 CTA build | 10.34–12.94s | Logo → headline → referral card → downloads → CTA button | ✅ |
+| P11 Final hold | 12.94–14.64s | Full composition holds for reading | ✅ |
+| End | 14.64–15.50s | Glow and composition fade to black | ✅ |
 
 ---
 
@@ -58,9 +54,9 @@
 | Logo | DP mark (orange circle, white letterform) | ✅ Correct |
 | Referral code | IK54OTRD | ✅ Correct, prominent in orange |
 | Referral URL | dreamplanet.org/referral/IK54OTRD | ✅ Shown in card |
-| Tagline | "More Than Followers" | ✅ |
-| CTA headline | "Join Dream Planet Today" | ✅ |
-| CTA subtext | "Start earning with your community." | ✅ |
+| CTA eyebrow | "The Dream Planet Movement" | ✅ |
+| CTA headline | "Your Community Has Value" | ✅ |
+| CTA subtext | "Turn your influence into income. Start earning with your community today." | ✅ |
 | Primary color | Dream Planet Orange (#FF6B00) | ✅ |
 | Background | Dark charcoal + orange radial glow | ✅ |
 | Typography | Inter, consistent weight hierarchy | ✅ |
@@ -69,23 +65,27 @@
 
 ## Final Frame Assessment
 
-The final composition (t=6.5s) presents:
+The final composition (t=13.4s) presents:
 
 ```
          DP Logo (orange glow)
-      MORE THAN FOLLOWERS
-    Join Dream Planet Today
-  Start earning with your community.
+       YOUR COMMUNITY
+          HAS VALUE
+   Turn your influence into income.
      ┌─────────────────────┐
      │  [icon]  Referral   │
      │  REFERRAL CODE      │
      │  IK54OTRD           │
      │  dreamplanet.org/…  │
      └─────────────────────┘
-      [ Google Play | App Store ]
+   [ Google Play ] [ App Store ]
+      [ Join Dream Planet ]
 ```
 
-The frame is legible, premium, and holds long enough to read all elements.
+The revised frame gives the logo and referral code enough scale to read as a
+campaign climax. The glass card is the visual centerpiece, while the layered
+light field, watermark, dust, sweeps, and restrained ambient motion add depth
+without competing with the message.
 
 ---
 
@@ -132,7 +132,7 @@ Scene 6 has passed QA and is ready for creative review.
 
 | Property | Value |
 |----------|-------|
-| Duration | 7.920s |
+| Duration | 15.480s |
 | Resolution | 1080 × 1920 |
 | FPS | 25 (WebM) → 30 at master concat |
 | Audio | None (added at master stage) |

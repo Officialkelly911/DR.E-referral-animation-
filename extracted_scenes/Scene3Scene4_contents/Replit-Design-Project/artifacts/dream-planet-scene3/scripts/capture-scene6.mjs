@@ -174,9 +174,12 @@ const video = await page.video();
 await ctx.close();
 await browser.close();
 
-// Trim point, in VIDEO time (recording started before the animation did),
-// with a small safety margin so the last fade frame is never clipped.
-const TRIM_S = (startupOffsetMs + S6_DURATION_MS) / 1000 + 0.15;
+// The recording starts before the React timeline does. Trim away that
+// navigation/boot lead-in, then keep exactly the authored scene duration so
+// the exported clip starts on the first Scene 6 frame and preserves its
+// complete fade-to-black.
+const START_TRIM_S = startupOffsetMs / 1000;
+const CONTENT_DURATION_S = S6_DURATION_MS / 1000;
 
 // ── Retrieve WebM ─────────────────────────────────────────────────────────────
 const webmPath = await video.path();
@@ -190,8 +193,9 @@ execSync(
   `ffmpeg -i "${webmPath}" ` +
   `-vf "crop=${WIDTH}:${HEIGHT}:0:0" ` +
   `-c:v libx264 -crf 16 -preset slow -pix_fmt yuv420p ` +
-  `-movflags +faststart ` +
-  `-t ${TRIM_S} ` +
+    `-movflags +faststart ` +
+    `-ss ${START_TRIM_S.toFixed(3)} ` +
+    `-t ${CONTENT_DURATION_S} ` +
   `-an ` +
   `-y "${s6Mp4}"`,
   { stdio: 'inherit' }
