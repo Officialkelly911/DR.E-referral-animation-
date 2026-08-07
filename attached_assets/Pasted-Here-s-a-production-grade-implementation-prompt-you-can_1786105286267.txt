@@ -1,0 +1,369 @@
+Here’s a production-grade implementation prompt you can hand directly to the Replit agent after the Scene 6 revisions are approved.
+
+⸻
+
+Dream Planet Campaign Production Polish & Master v3 Implementation
+
+Objective
+
+Scene 6 has been revised based on QA feedback and is now considered the candidate for final approval.
+
+The goal of this task is NOT to redesign the campaign.
+
+The objective is to complete the final production pipeline by:
+
+* validating Scene 6,
+* integrating it into the campaign,
+* performing a complete cinematic polish,
+* conducting full QA,
+* and preparing the final release assets.
+
+Scenes 1–5 are approved and locked.
+
+Only integrate the newly approved Scene 6.
+
+⸻
+
+Scope
+
+This task consists of six phases.
+
+No phase should begin until the previous one passes QA.
+
+⸻
+
+Phase 1 — Validate Scene 6
+
+Before integrating anything:
+
+Perform a complete QA review of Scene 6.
+
+Review:
+
+* animation smoothness
+* easing
+* FPS consistency
+* scroll smoothness
+* transition timing
+* CTA readability
+* logo placement
+* typography hierarchy
+* spacing
+* audio sync
+* particle effects
+* glow intensity
+* referral code readability
+* App Store / Google Play visibility
+
+Ensure:
+
+* no dropped frames
+* no stuttering
+* no animation hitching
+* no abrupt transitions
+* no layout shifts
+
+Deliver:
+
+SCENE6_FINAL_QA.md
+
+Include:
+
+* checklist
+* screenshots
+* issues found
+* fixes applied
+* final approval summary
+
+⸻
+
+Phase 2 — Build Master v3
+
+Once Scene 6 passes QA:
+
+Create
+
+DreamPlanet_Master_v3.mp4
+
+using
+
+Scene 1
+
+↓
+
+Scene 2
+
+↓
+
+Scene 3
+
+↓
+
+Scene 4
+
+↓
+
+Scene 5
+
+↓
+
+Approved Scene 6
+
+Maintain:
+
+* resolution
+* FPS
+* audio synchronization
+* color profile
+* encoding settings
+
+No edits to Scenes 1–5.
+
+Only append Scene 6.
+
+⸻
+
+Phase 3 — Cinematic Polish Pass
+
+Perform a full visual consistency audit.
+
+This is NOT feature work.
+
+This is refinement.
+
+Inspect every scene for consistency.
+
+Review:
+
+Animation
+
+* easing curves
+* acceleration
+* deceleration
+* transition rhythm
+
+Lighting
+
+* glow intensity
+* bloom consistency
+* shadows
+* highlights
+
+Typography
+
+* sizing
+* weight
+* spacing
+* alignment
+* readability
+
+Branding
+
+* Dream Planet orange
+* logo consistency
+* icon treatment
+
+UI
+
+* corner radius
+* shadows
+* blur
+* depth
+* spacing
+
+Motion
+
+* motion blur
+* scroll speed
+* gesture timing
+* camera movement
+
+Audio
+
+* music transitions
+* fade timing
+* synchronization
+
+Every scene should feel like it belongs to one commercial.
+
+Not six different projects.
+
+⸻
+
+Phase 4 — End-to-End QA
+
+Watch the entire commercial from beginning to end.
+
+Review as a first-time viewer.
+
+Check:
+
+Scene transitions
+
+Scene pacing
+
+Music progression
+
+Visual consistency
+
+Brand consistency
+
+CTA clarity
+
+Referral visibility
+
+Readability
+
+Flow
+
+Ensure:
+
+Scene 2 → Scene 3
+
+Scene 3 → Scene 4
+
+Scene 4 → Scene 5
+
+Scene 5 → Scene 6
+
+all feel seamless.
+
+No abrupt cuts.
+
+No dead frames.
+
+No brightness flashes.
+
+No black frames.
+
+No white flashes.
+
+No timing issues.
+
+Generate
+
+MASTER_V3_QA.md
+
+Include:
+
+✓ Pass / Fail checklist
+
+✓ Scene durations
+
+✓ Audio verification
+
+✓ Transition verification
+
+✓ Visual verification
+
+✓ Final approval
+
+⸻
+
+Phase 5 — Release Assets
+
+Generate the production package.
+
+Exports:
+
+DreamPlanet_Master_v3.mp4
+DreamPlanet_Master_v3_no_audio.mp4
+DreamPlanet_Master_v3_thumbnail.png
+DreamPlanet_Master_v3_poster.png
+
+Generate:
+
+CHANGELOG_v3.md
+
+Include:
+
+Scenes added
+
+Improvements
+
+Bug fixes
+
+QA revisions
+
+Version notes
+
+⸻
+
+Generate
+
+RELEASE_NOTES.md
+
+Summarize:
+
+* campaign duration
+* total scenes
+* supported platforms
+* export settings
+* production summary
+
+⸻
+
+Phase 6 — Repository Finalization
+
+After QA approval:
+
+Create
+
+v3.0
+
+Git tag.
+
+Archive:
+
+Approved Scene 6 assets.
+
+Mark:
+
+DreamPlanet_Master_v3.mp4
+
+as the production master.
+
+Preserve previous masters.
+
+Do not overwrite previous approved versions.
+
+⸻
+
+Deliverables
+
+Expected output:
+
+scene6_final_v2.mp4
+SCENE6_FINAL_QA.md
+DreamPlanet_Master_v3.mp4
+DreamPlanet_Master_v3_no_audio.mp4
+DreamPlanet_Master_v3_thumbnail.png
+DreamPlanet_Master_v3_poster.png
+MASTER_V3_QA.md
+CHANGELOG_v3.md
+RELEASE_NOTES.md
+
+⸻
+
+Acceptance Criteria
+
+The task is complete only if:
+
+* Scene 6 passes QA with no unresolved issues.
+* Master v3 builds successfully without modifying Scenes 1–5.
+* The entire commercial plays smoothly from start to finish.
+* All scene transitions are seamless.
+* Motion, typography, lighting, and branding are visually consistent across the campaign.
+* Audio remains synchronized throughout.
+* The final CTA is polished, premium, and held long enough for viewers to comfortably read the referral code and download information.
+* Release assets and documentation are generated successfully.
+* The repository is versioned with a v3.0 tag while preserving previous approved masters.
+
+Execution Constraints
+
+* Do not redesign approved Scenes 1–5.
+* Do not introduce new features unrelated to production polish.
+* Preserve deterministic builds and existing QA validation scripts.
+* If any QA check fails, stop the pipeline, document the failure, resolve the issue, rerun validation, and only continue after all checks pass.
+
+This prompt gives the Replit agent a complete production pipeline from Scene 6 approval through final release, with clear deliverables and acceptance criteria rather than leaving room for interpretation.
