@@ -4,12 +4,8 @@
  * Content + media mapping for the Scene 5 Portfolio page (Phase 3).
  *
  * Media assets come from the supplied "portfolio media files" upload
- * (13 photos incl. 2 quote-card screenshots + 4 short video clips).
- * The reference screenshots also show several original-artwork /
- * painting tiles (e.g. an orange heart abstract, a coin-mosaic heart)
- * that were NOT included in the supplied asset upload — those tiles
- * are intentionally omitted rather than invented. See the Phase 3
- * fidelity report for the full discrepancy list.
+ * (13 photos incl. 2 quote-card screenshots + 4 short video clips) plus
+ * the two original-artwork tiles later supplied for the reference grid.
  */
 
 // Profile identity — same locked asset already used in Scenes 3/4 and the
@@ -29,6 +25,8 @@ import media10 from '@assets/scene5-portfolio/portfolio-10-porch-guitar.jpg';
 import media11 from '@assets/scene5-portfolio/portfolio-11-group-indoor.jpg';
 import media12 from '@assets/scene5-portfolio/portfolio-12-yoga.jpg';
 import media13 from '@assets/scene5-portfolio/portfolio-13-house-husky.jpg';
+import artworkHeartAbstract from '@assets/scene5-portfolio/portfolio-artwork-heart-abstract.jpeg';
+import artworkCoinHeart from '@assets/scene5-portfolio/portfolio-artwork-coin-heart.jpeg';
 
 import videoAppDemo from '@assets/scene5-portfolio/portfolio-video-app-demo.mp4';
 import videoDomeTent from '@assets/scene5-portfolio/portfolio-video-dome-tent.mp4';
@@ -56,9 +54,8 @@ export interface Scene5PortfolioMediaItem {
 }
 
 /**
- * Grid order approximates the reference screenshots' visual rhythm
- * (mixing personal photos, video clips, and the two quote-card
- * screenshots) using only the supplied original assets.
+ * Grid order approximates the reference screenshots' visual rhythm,
+ * including the supplied original-artwork tiles.
  */
 export const PORTFOLIO_MEDIA: Scene5PortfolioMediaItem[] = [
   { id: 'm1', kind: 'image', src: media01, alt: 'Elizabeth outdoors in a garden setting' },
@@ -66,16 +63,18 @@ export const PORTFOLIO_MEDIA: Scene5PortfolioMediaItem[] = [
   { id: 'm3', kind: 'image', src: media10, alt: 'Guitar player on a porch step' },
   { id: 'm4', kind: 'image', src: media09, alt: 'Playing a hand percussion instrument' },
   { id: 'm5', kind: 'image', src: media03, alt: 'Elizabeth with two husky dogs' },
-  { id: 'm6', kind: 'image', src: media13, alt: 'Elizabeth and a husky outside her home' },
-  { id: 'm7', kind: 'image', src: media05, alt: 'Lake with lily pads' },
-  { id: 'm8', kind: 'image', src: media02, alt: 'Outdoor table setting' },
-  { id: 'm9', kind: 'image', src: media06, alt: 'On a marina dock' },
-  { id: 'm10', kind: 'quote', src: media07QuoteA, alt: '"You are not for everyone" quote card' },
-  { id: 'm11', kind: 'video', src: videoDomeTent, alt: 'Backyard dome tent video clip' },
-  { id: 'm12', kind: 'image', src: media04, alt: 'Portrait in a blue dress' },
-  { id: 'm13', kind: 'image', src: media11, alt: 'Group hangout indoors' },
-  { id: 'm14', kind: 'video', src: videoBoyTent, alt: 'Backyard grow-tent video clip' },
-  { id: 'm15', kind: 'image', src: media12, alt: 'Outdoor yoga session' },
-  { id: 'm16', kind: 'quote', src: media08QuoteB, alt: '"You have a major hot streak coming" quote card' },
-  { id: 'm17', kind: 'video', src: videoAppDemo, alt: 'App feature demo clip' },
+  { id: 'm6', kind: 'image', src: artworkHeartAbstract, alt: 'Abstract painted heart artwork' },
+  { id: 'm7', kind: 'image', src: media13, alt: 'Elizabeth and a husky outside her home' },
+  { id: 'm8', kind: 'image', src: media05, alt: 'Lake with lily pads' },
+  { id: 'm9', kind: 'image', src: artworkCoinHeart, alt: 'Painted heart artwork with a coin border and key' },
+  { id: 'm10', kind: 'image', src: media02, alt: 'Outdoor table setting' },
+  { id: 'm11', kind: 'image', src: media06, alt: 'On a marina dock' },
+  { id: 'm12', kind: 'quote', src: media07QuoteA, alt: '"You are not for everyone" quote card' },
+  { id: 'm13', kind: 'video', src: videoDomeTent, alt: 'Backyard dome tent video clip' },
+  { id: 'm14', kind: 'image', src: media04, alt: 'Portrait in a blue dress' },
+  { id: 'm15', kind: 'image', src: media11, alt: 'Group hangout indoors' },
+  { id: 'm16', kind: 'video', src: videoBoyTent, alt: 'Backyard grow-tent video clip' },
+  { id: 'm17', kind: 'image', src: media12, alt: 'Outdoor yoga session' },
+  { id: 'm18', kind: 'quote', src: media08QuoteB, alt: '"You have a major hot streak coming" quote card' },
+  { id: 'm19', kind: 'video', src: videoAppDemo, alt: 'App feature demo clip' },
 ];

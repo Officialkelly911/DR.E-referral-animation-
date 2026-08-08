@@ -13,7 +13,7 @@
 
 import { Scene6CinematicAnimation } from './Scene6CinematicAnimation';
 
-export function Scene6CinematicApp({ variant = 'v3' }: { variant?: 'v3' | 'v4' }) {
+export function Scene6CinematicApp({ variant = 'v3' }: { variant?: 'v3' | 'v4' | 'v5' }) {
   return (
     <div
       id="s6-app-root"

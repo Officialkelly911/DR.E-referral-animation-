@@ -1,0 +1,27 @@
+{
+  "candidate": "scene6_final_v5.mp4",
+  "resolution": "1080x1920",
+  "fps": "30/1",
+  "frameCount": 465,
+  "durationSeconds": 15.5,
+  "audio": "none",
+  "sha256": "cb86646d000e4f5e95572595fe5e3f5160704445f852c7401d7d5d5d7b7c600c",
+  "startupOffsetMs": 2106,
+  "sequence": {
+    "forumStartsAtSeconds": 0,
+    "forumHoldSeconds": 0.8,
+    "forumEndsAtSeconds": 7.1,
+    "notificationStartsAtSeconds": 7.1,
+    "ctaContentStartsAtSeconds": 11.1,
+    "fadeStartsAtSeconds": 14.64
+  },
+  "checkpoints": [
+    "revision_v5/qa/A_forum_open.png",
+    "revision_v5/qa/B_forum_mid_scroll.png",
+    "revision_v5/qa/C_forum_final.png",
+    "revision_v5/qa/D_notifications.png",
+    "revision_v5/qa/E_notification_to_cta.png",
+    "revision_v5/qa/F_cta_final.png",
+    "revision_v5/qa/G_fade_out.png"
+  ]
+}

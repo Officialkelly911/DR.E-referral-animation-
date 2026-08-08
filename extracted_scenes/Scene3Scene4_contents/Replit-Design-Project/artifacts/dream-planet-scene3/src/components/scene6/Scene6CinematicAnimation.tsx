@@ -23,7 +23,7 @@
 
 import { useEffect, useRef, useState } from 'react';
 import { motion } from 'framer-motion';
-import { S6, S6_V4, s6t } from './Scene6Timeline';
+import { S6, S6_V4, S6_V5, s6t } from './Scene6Timeline';
 import { Scene6HomeFeed } from './Scene6HomeFeed';
 import { Scene6Sidebar } from './Scene6Sidebar';
 import { Scene6ForumFeed } from './Scene6ForumFeed';
@@ -34,14 +34,16 @@ const delay = (ms: number) => new Promise<void>(r => setTimeout(r, ms));
 
 type Screen = 'home' | 'forum' | 'notifications' | 'cta';
 
-export function Scene6CinematicAnimation({ variant = 'v3' }: { variant?: 'v3' | 'v4' }) {
+export function Scene6CinematicAnimation({ variant = 'v3' }: { variant?: 'v3' | 'v4' | 'v5' }) {
   const startedRef = useRef(false);
-  const timeline = variant === 'v4' ? S6_V4 : S6;
+  const timeline = variant === 'v5' ? S6_V5 : variant === 'v4' ? S6_V4 : S6;
   const isV4 = variant === 'v4';
+  const isV5 = variant === 'v5';
+  const isPolished = isV4 || isV5;
 
   // Screen visibility (crossfade via opacity)
-  const [screen, setScreen] = useState<Screen>('home');
-  const [forumOpacity, setForumOpacity] = useState(0);
+  const [screen, setScreen] = useState<Screen>(isV5 ? 'forum' : 'home');
+  const [forumOpacity, setForumOpacity] = useState(isV5 ? 1 : 0);
   const [notifOpacity, setNotifOpacity] = useState(0);
   const [ctaOpacity, setCtaOpacity] = useState(0);
 
@@ -82,30 +84,42 @@ export function Scene6CinematicAnimation({ variant = 'v3' }: { variant?: 'v3' | 
         document.documentElement.setAttribute('data-s6-phase-at', String(performance.now()));
       };
 
-      // ── P1: Home Feed hold ──────────────────────────────────────────────
-      markPhase('home-hold');
-      await delay(s6t(timeline.HOME_HOLD_END - 0));
+      if (isV5) {
+        // V5 starts directly inside the active Forum. The old standalone
+        // Home/sidebar establishing shots are intentionally not part of this
+        // candidate; the existing feed remains the source of truth.
+        markPhase('forum-hold');
+        await delay(s6t(S6_V5.FORUM_SCROLL_START));
 
-      // ── P2: Sidebar opens over Home Feed ─────────────────────────────────
-      markPhase('sidebar-open');
-      setSidebarProgress(1);
-      await delay(s6t(timeline.SIDEBAR_CLOSE_START - timeline.SIDEBAR_OPEN_START));
+        markPhase('forum-scroll');
+        setForumScrollActive(true);
+        await delay(s6t(timeline.NOTIF_REVEAL_START - timeline.FORUM_SCROLL_START));
+      } else {
+        // ── P1: Home Feed hold ──────────────────────────────────────────────
+        markPhase('home-hold');
+        await delay(s6t(timeline.HOME_HOLD_END - 0));
 
-      // ── P4: Sidebar closes ────────────────────────────────────────────────
-      markPhase('sidebar-close');
-      setSidebarProgress(0);
-      await delay(s6t(timeline.FORUM_REVEAL_START - timeline.SIDEBAR_CLOSE_START));
+        // ── P2: Sidebar opens over Home Feed ────────────────────────────────
+        markPhase('sidebar-open');
+        setSidebarProgress(1);
+        await delay(s6t(timeline.SIDEBAR_CLOSE_START - timeline.SIDEBAR_OPEN_START));
 
-      // ── P5: Crossfade Home → Forum ───────────────────────────────────────
-      markPhase('forum-reveal');
-      setScreen('forum');
-      setForumOpacity(1);
-      await delay(s6t(timeline.FORUM_SCROLL_START - timeline.FORUM_REVEAL_START));
+        // ── P4: Sidebar closes ──────────────────────────────────────────────
+        markPhase('sidebar-close');
+        setSidebarProgress(0);
+        await delay(s6t(timeline.FORUM_REVEAL_START - timeline.SIDEBAR_CLOSE_START));
 
-      // ── P6: Forum continuous scroll ──────────────────────────────────────
-      markPhase('forum-scroll');
-      setForumScrollActive(true);
-      await delay(s6t(timeline.NOTIF_REVEAL_START - timeline.FORUM_SCROLL_START));
+        // ── P5: Crossfade Home → Forum ──────────────────────────────────────
+        markPhase('forum-reveal');
+        setScreen('forum');
+        setForumOpacity(1);
+        await delay(s6t(timeline.FORUM_SCROLL_START - timeline.FORUM_REVEAL_START));
+
+        // ── P6: Forum continuous scroll ─────────────────────────────────────
+        markPhase('forum-scroll');
+        setForumScrollActive(true);
+        await delay(s6t(timeline.NOTIF_REVEAL_START - timeline.FORUM_SCROLL_START));
+      }
 
       // ── P7: Crossfade Forum → Notifications ──────────────────────────────
       markPhase('notifications-reveal');
@@ -123,11 +137,11 @@ export function Scene6CinematicAnimation({ variant = 'v3' }: { variant?: 'v3' | 
 
       // ── P9: Crossfade Notifications → CTA ────────────────────────────────
       markPhase('notifications-dim');
-      if (isV4) setNotifDimmed(true);
+      if (isPolished) setNotifDimmed(true);
       markPhase('cta-reveal');
       setScreen('cta');
       setCtaOpacity(1);
-      if (isV4) {
+      if (isPolished) {
         // Start the orange ambient field under the dimmed Notifications layer,
         // then reveal CTA content only after the 0.50s handoff has settled.
         setCtaBgVisible(true);
@@ -196,7 +210,7 @@ export function Scene6CinematicAnimation({ variant = 'v3' }: { variant?: 'v3' | 
          transition: `opacity ${timeline.SCREEN_CROSSFADE_DURATION}s ease-in-out`,
         pointerEvents: 'none',
       }}>
-        <Scene6ForumFeed scrollActive={forumScrollActive} />
+        <Scene6ForumFeed scrollActive={forumScrollActive} extended={isV5} />
       </div>
 
       {/* ── Layer 12: Notifications (replaces the old Forum summary screen) ──── */}
@@ -224,7 +238,7 @@ export function Scene6CinematicAnimation({ variant = 'v3' }: { variant?: 'v3' | 
           buttonsVisible={ctaButtonsVisible}
           ctaButtonVisible={ctaButtonVisible}
           ambientActive={ctaAmbientActive}
-          polished={isV4}
+          polished={isPolished}
         />
       </div>
 
