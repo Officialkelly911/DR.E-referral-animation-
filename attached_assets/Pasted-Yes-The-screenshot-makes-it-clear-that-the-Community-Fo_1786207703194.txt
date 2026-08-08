@@ -1,0 +1,260 @@
+Yes. The screenshot makes it clear that the Community Forum screen is still being rendered as the penultimate screen, so the previous implementation did not actually replace that scene. This needs to be treated as a specific Scene 6 correction, not as a general polish issue.
+Do not proceed to Master v3 yet. The Scene 6 candidate is not ready for approval.
+Use this revised prompt with the Replit agent:
+ 
+⸻
+ 
+Scene 6 Revision: Replace Penultimate Community Forum Screen with Notifications Screen
+The latest Scene 6 render still contains the old Community Forum screen immediately before the final CTA.
+This is incorrect.
+The penultimate screen must be replaced completely with the Notifications screen shown in the reference screenshot previously provided.
+1. Remove the Existing Community Forum Screen
+The current screen contains:
+* Community Forum
+* 2.4k members · 847 posts this week
+* Edit Forum
+* Multiple dark forum post cards
+* Referral/community discussion posts
+* Large unused dark area beneath the posts
+This entire screen must be removed from the Scene 6 animation.
+Do not simply hide the heading or modify the existing forum cards.
+The Community Forum screen must no longer appear anywhere in the penultimate-screen portion of Scene 6.
+ 
+⸻
+ 
+2. Replace It With the Notifications Screen
+Recreate the Notifications screen based on the previously uploaded reference screenshot.
+The visual structure should be:
+←   Notification
+
+
+[orange notification icon]
+benjamin Commented: Glasses look
+good on your Post                         New
+14hrs ago
+────────────────────────────────────────
+
+[orange notification icon]
+benjamin Liked your Post
+14hrs ago
+────────────────────────────────────────
+
+[orange notification icon]
+@creativewave: Hit Tok reterrals this month! The Dream Planet system actually works!
+14hrs ago
+────────────────────────────────────────
+
+[orange notification icon]
+Creativewave  Liked your Post
+14hrs ago
+────────────────────────────────────────
+
+[jose notification]
+jose Liked your Post
+14hrs ago
+────────────────────────────────────────
+
+[@luna.creates notification]
+@Luna.creates: tips for  growing your reterral network in the tirst 30 days
+14hrs ago
+────────────────────────────────────────
+
+[@Marcus.dp]
+
+Just unlocked "Community Leader' badge after 500 referrals
+
+14hrs ago
+────────────────────────────────────────
+
+[@Queenportia]
+
+Reached Gold tier - here's what changed for my earninas
+
+1d ago
+Use the supplied reference screenshot as the visual source of truth for:
+* spacing
+* typography
+* icon sizing
+* row height
+* divider placement
+* header positioning
+* back-button placement
+* New badge
+* notification icon treatment
+* overall white/light interface styling
+Do not invent a completely different notification design.
+ 
+⸻
+ 
+3. Reuse Existing Scene 6 Content Where Appropriate
+The notification messages can reuse appropriate copy from the existing generated Scene 6 content.
+For example:
+
+@creativewave: Hit Tok reterrals this month! The Dream Planet system actually works!
+14hrs ago
+
+Creativewave  Liked your Post
+14hrs ago
+
+@Luna.creates: tips for  growing your reterral network in the tirst 30 days
+* jose Liked your Post
+
+[@Marcus.dp]
+
+Just unlocked "Community Leader' badge after 500 referrals
+
+[@Queenportia]
+
+Reached Gold tier - here's what changed for my earninas
+The purpose is to make the Notifications screen feel connected to the activity viewers have already seen in Scene 6.
+Do not introduce random unrelated copy.
+ 
+⸻
+ 
+4. Animate the Notifications Screen
+The screen should not simply appear as a static replacement.
+Animate it naturally.
+Sequence:
+Entry
+Transition from the preceding Scene 6 interaction into Notifications.
+The Notifications screen should:
+1. enter smoothly
+2. settle into position
+3. allow the header to become readable
+4. reveal the notification activity
+Notification movement
+If scrolling is used, make it extremely smooth.
+The notifications should move vertically with:
+* consistent velocity
+* smooth easing
+* no jumping
+* no snapping
+* no sudden acceleration
+* no frame hitching
+The movement should resemble a real mobile social application feed.
+Do NOT use the same problematic scrolling implementation from the previous Forum screen.
+ 
+⸻
+ 
+5. Important: Fix the Existing Animation Stutter
+While making this replacement, inspect the entire Scene 6 animation pipeline.
+The previous Scene 6 had visible motion jerkiness.
+The revised version must not inherit that problem.
+Check:
+* frame timing
+* scroll implementation
+* CSS/JS animation timing
+* transform interpolation
+* capture/render pipeline
+* transition timing
+* compositing
+* excessive DOM/layout updates
+* unnecessary re-renders
+Prefer GPU-friendly transforms such as:
+transform: translate3d(...)
+where appropriate.
+Avoid animation approaches that repeatedly trigger layout/reflow.
+The final captured video must appear smooth and continuous.
+ 
+⸻
+ 
+6. Preserve the Sidebar Correction
+The previous Scene 6 also contained an incorrect sidebar state.
+When the sidebar interaction occurs:
+the Home Feed must remain visible in the background.
+Do not replace the background with:
+* Community Forum
+* Notifications
+* blank content
+* another unrelated screen
+The expected visual relationship is:
+SIDEBAR
+   ↓
+HOME FEED REMAINS VISIBLE BEHIND IT
+Then the subsequent interaction can navigate to the appropriate screen.
+ 
+⸻
+ 
+7. CTA Must Remain Separate
+Do not use this task as an excuse to modify the CTA again.
+The final CTA redesign is a separate approved requirement.
+The sequence should now be:
+Previous Scene 6 interaction
+          ↓
+NOTIFICATIONS SCREEN
+          ↓
+smooth transition
+          ↓
+PREMIUM FINAL CTA
+The Notifications screen should be clearly visible before the CTA.
+Do not immediately cut from the preceding interaction into the CTA.
+ 
+⸻
+ 
+8. Timing
+Give the Notifications screen enough time for the viewer to understand what is happening.
+Do not rush through it.
+The viewer should be able to recognize:
+Notification → activity → social engagement → transition to CTA
+Use smooth, deliberate timing rather than rapid UI playback.
+The animation should feel like a polished commercial demonstrating a real application, not a screen recording being fast-forwarded.
+ 
+⸻
+ 
+9. Visual Consistency
+Although the Notifications reference uses a light interface, do not artificially force it into the dark Community Forum styling.
+The reference screenshot is the source of truth for the Notifications screen.
+Maintain:
+* correct white/light background
+* dark typography
+* orange Dream Planet accent
+* orange notification icons
+* clean dividers
+* appropriate whitespace
+* realistic mobile UI proportions
+The screen should look like an actual Dream Planet application screen.
+ 
+⸻
+ 
+10. QA Requirements
+After implementation, generate a new Scene 6 build.
+Do not integrate it into Master v3 yet.
+Deliver:
+scene6_final_v3.mp4
+scene6_final_v3_no_audio.mp4
+scene6_start_frame.png
+scene6_end_frame.png
+SCENE6_FINAL_V3_QA.md
+The QA report must explicitly confirm:
+* Community Forum screen removed from penultimate position
+* Notifications screen appears in its place
+* Notifications visually match the supplied reference
+* Notification copy is readable
+* Notification rows scroll smoothly
+* No scrolling jumps
+* No visible animation stuttering
+* Sidebar shows Home Feed behind it
+* CTA remains intact
+* CTA follows Notifications
+* Scene 6 audio remains synchronized
+* Scene 6 resolution remains unchanged
+* Scene 6 FPS remains unchanged
+* No changes made to Scenes 1–5
+ 
+⸻
+ 
+Critical Constraints
+Do not touch Scenes 1–5.
+Do not integrate Scene 6 into Master v3.
+Do not overwrite the previously approved Scene 5 assets.
+Do not remove the premium CTA redesign.
+Do not leave the Community Forum screen anywhere in the final Scene 6 sequence where Notifications is supposed to appear.
+The specific acceptance test is simple:
+When watching the final Scene 6 build, the screen immediately before the final CTA must visibly be the Notifications screen, not the Community Forum screen.
+Only after this passes visual QA should Scene 6 proceed to Master v3 integration.
+ 
+⸻
+ 
+One important addition
+I’d have the agent search the existing Scene 6 source for the exact component/asset responsible for the Community Forum screen rather than merely overlaying the Notifications screen on top of it.
+Otherwise you risk the classic AI-agent solution of “technically changed” while the old screen is still lurking underneath like a bad sequel. The implementation should actually replace the relevant scene state/component in the animation pipeline.
