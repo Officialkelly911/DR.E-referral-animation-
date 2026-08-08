@@ -81,6 +81,28 @@ export const S6 = {
   END_DURATION: 0.86,
 } as const;
 
+/**
+ * Isolated v4 polish timing. The overall scene duration stays unchanged;
+ * only the Notifications → CTA handoff gets a slightly longer, intentional
+ * 0.50s transition before the CTA content sequence begins.
+ */
+export const S6_V4 = {
+  ...S6,
+  CTA_T0: 10.44,
+  CTA_BG_DURATION: 0.6,
+  CTA_LOGO_OFFSET: 0.35,
+  CTA_LOGO_DURATION: 0.6,
+  CTA_HEADLINE_OFFSET: 0.78,
+  CTA_HEADLINE_DURATION: 0.55,
+  CTA_REFERRAL_OFFSET: 1.22,
+  CTA_REFERRAL_DURATION: 0.62,
+  CTA_BUTTONS_OFFSET: 1.72,
+  CTA_BUTTONS_DURATION: 0.5,
+  CTA_BUTTON_OFFSET: 2.18,
+  CTA_BUTTON_DURATION: 0.45,
+  CTA_AMBIENT_OFFSET: 2.48,
+} as const;
+
 /** Total Scene 6 duration in ms — consumed by capture scripts */
 export const S6_DURATION_MS = S6.TOTAL * 1000;
 

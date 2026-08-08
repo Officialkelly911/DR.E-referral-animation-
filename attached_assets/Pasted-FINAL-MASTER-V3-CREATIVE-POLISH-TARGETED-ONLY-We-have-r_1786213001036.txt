@@ -1,0 +1,153 @@
+FINAL MASTER V3 CREATIVE POLISH — TARGETED ONLY
+
+We have reviewed the integrated Master v3 campaign render.
+
+Do NOT rebuild the campaign from scratch.
+Do NOT modify Scenes 1–5 unless absolutely required for the specific transition described below.
+Do NOT replace the approved Scene 6 creative.
+Do NOT redesign the CTA.
+
+The current Master v3 is technically validated and the following are APPROVED:
+- Scenes 1–5
+- Scene 6 overall structure
+- Scene 6 Notifications replacement
+- Premium CTA design direction
+- Referral code presentation
+- Dream Planet logo treatment
+- Existing audio
+- Existing 6-scene master architecture
+
+Make ONLY the following final creative refinements.
+
+1. NOTIFICATIONS → CTA TRANSITION
+
+The Notifications screen is now correctly replacing the old Community Forum screen.
+
+Keep the Notifications screen exactly as currently implemented.
+
+Improve only the transition from Notifications into the final CTA.
+
+Required behavior:
+- Let the Notifications screen remain readable long enough for the viewer to register the activity.
+- Introduce a subtle cinematic dim/fade of the notification UI.
+- Allow the Dream Planet orange ambient glow to emerge during the transition.
+- Transition into the existing premium CTA rather than cutting abruptly.
+- Target transition duration: approximately 0.4–0.7 seconds.
+- The transition must feel intentional, smooth and premium.
+- Do not introduce a new screen or additional copy.
+
+2. CTA MICRO-POLISH
+
+Keep the current CTA design and visual identity.
+
+Do NOT replace the current CTA with the old basic version.
+
+Preserve:
+- Dream Planet logo
+- orange atmospheric lighting
+- “Your Community Has Value”
+- supporting copy
+- referral code card
+- referral code
+- Join Dream Planet button
+- existing premium dark/orange aesthetic
+
+Only improve:
+- vertical spacing
+- grouping/hierarchy
+- readability
+- visual balance
+- relationship between headline, referral card and CTA button
+
+The referral code must remain the primary conversion element.
+
+The final CTA should feel like a polished commercial end card, not an application UI screenshot.
+
+3. MOTION QUALITY
+
+Review the final transition and CTA animation for:
+- no jerking
+- no snapping
+- no sudden position changes
+- no layout jumps
+- no frame stutter caused by unnecessary DOM/layout changes
+- smooth opacity and transform animations
+- consistent easing
+
+Use compositor-friendly animation where possible:
+- transform
+- opacity
+
+Avoid expensive continuous layout recalculation.
+
+4. PACING
+
+Do not significantly increase the total campaign duration.
+
+Do not add unnecessary content.
+
+If the transition requires additional time, keep the increase minimal.
+
+The current campaign should remain approximately 56–57 seconds.
+
+5. OUTPUT ISOLATION
+
+Do not overwrite the previously approved Scene 6 v3 candidate.
+
+Create a new isolated candidate, for example:
+
+scene6_final_v4.mp4
+scene6_final_v4_no_audio.mp4
+
+and corresponding QA frames/report.
+
+Do not replace Master v3 yet.
+
+6. QA
+
+After rendering, verify:
+
+- 1080×1920 source render
+- 30fps
+- expected Scene 6 duration
+- no audio drift
+- Notifications screen is still present
+- old Community Forum screen does NOT appear immediately before CTA
+- Notifications → CTA transition is smooth
+- CTA logo is readable
+- referral code is readable
+- CTA button is readable
+- no clipping
+- no unexpected black frames
+- no visual artifacts
+- final fade remains intact
+
+Perform actual visual frame inspection around:
+
+A. final Notifications frames
+B. Notifications → CTA transition
+C. CTA midpoint
+D. CTA final frame
+E. final fade-out
+
+7. DO NOT INTEGRATE INTO MASTER V3 YET
+
+This is a creative candidate only.
+
+After successful QA, report:
+
+- exact duration
+- resolution
+- fps
+- output filenames
+- SHA-256 hashes
+- transition timing
+- CTA timing
+- QA result
+- any remaining concerns
+
+Do not tag the candidate as final approved.
+Do not modify Master v3.
+Do not modify Scenes 1–5.
+
+Creative approval must occur before any replacement of the currently integrated Scene 6 in Master v3.

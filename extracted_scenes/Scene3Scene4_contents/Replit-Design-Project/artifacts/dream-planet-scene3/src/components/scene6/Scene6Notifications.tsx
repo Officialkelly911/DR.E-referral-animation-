@@ -78,7 +78,15 @@ function NotificationRow({ item, index, staggerIn }: { item: NotificationItem; i
   );
 }
 
-export function Scene6Notifications({ staggerIn, scrollActive }: { staggerIn: boolean; scrollActive: boolean }) {
+export function Scene6Notifications({
+  staggerIn,
+  scrollActive,
+  dimmed = false,
+}: {
+  staggerIn: boolean;
+  scrollActive: boolean;
+  dimmed?: boolean;
+}) {
   return (
     <div style={{
       position: 'absolute', inset: 0,
@@ -141,6 +149,19 @@ export function Scene6Notifications({ staggerIn, scrollActive }: { staggerIn: bo
           }} />
         </div>
       </div>
+      {/* v4 handoff treatment: let the notification activity remain visible
+          while a restrained cinematic dim makes room for the CTA glow behind it. */}
+      <motion.div
+        aria-hidden
+        style={{
+          position: 'absolute', inset: 0, zIndex: 5,
+          background: 'rgba(8,10,14,0.58)',
+          pointerEvents: 'none',
+        }}
+        initial={{ opacity: 0 }}
+        animate={{ opacity: dimmed ? 1 : 0 }}
+        transition={{ duration: 0.55, ease: [0.25, 0.46, 0.45, 0.94] }}
+      />
     </div>
   );
 }

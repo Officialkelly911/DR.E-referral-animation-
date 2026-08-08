@@ -23,7 +23,7 @@
 
 import { useEffect, useRef, useState } from 'react';
 import { motion } from 'framer-motion';
-import { S6, s6t } from './Scene6Timeline';
+import { S6, S6_V4, s6t } from './Scene6Timeline';
 import { Scene6HomeFeed } from './Scene6HomeFeed';
 import { Scene6Sidebar } from './Scene6Sidebar';
 import { Scene6ForumFeed } from './Scene6ForumFeed';
@@ -34,8 +34,10 @@ const delay = (ms: number) => new Promise<void>(r => setTimeout(r, ms));
 
 type Screen = 'home' | 'forum' | 'notifications' | 'cta';
 
-export function Scene6CinematicAnimation() {
+export function Scene6CinematicAnimation({ variant = 'v3' }: { variant?: 'v3' | 'v4' }) {
   const startedRef = useRef(false);
+  const timeline = variant === 'v4' ? S6_V4 : S6;
+  const isV4 = variant === 'v4';
 
   // Screen visibility (crossfade via opacity)
   const [screen, setScreen] = useState<Screen>('home');
@@ -50,6 +52,7 @@ export function Scene6CinematicAnimation() {
   const [forumScrollActive, setForumScrollActive] = useState(false);
   const [notifStaggerIn, setNotifStaggerIn] = useState(false);
   const [notifScrollActive, setNotifScrollActive] = useState(false);
+  const [notifDimmed, setNotifDimmed] = useState(false);
 
   // CTA phase gates
   const [ctaBgVisible, setCtaBgVisible] = useState(false);
@@ -76,58 +79,64 @@ export function Scene6CinematicAnimation() {
       document.documentElement.setAttribute('data-s6-started', String(Date.now()));
 
       // ── P1: Home Feed hold ──────────────────────────────────────────────
-      await delay(s6t(S6.HOME_HOLD_END - 0));
+      await delay(s6t(timeline.HOME_HOLD_END - 0));
 
       // ── P2: Sidebar opens over Home Feed ─────────────────────────────────
       setSidebarProgress(1);
-      await delay(s6t(S6.SIDEBAR_CLOSE_START - S6.SIDEBAR_OPEN_START));
+      await delay(s6t(timeline.SIDEBAR_CLOSE_START - timeline.SIDEBAR_OPEN_START));
 
       // ── P4: Sidebar closes ────────────────────────────────────────────────
       setSidebarProgress(0);
-      await delay(s6t(S6.FORUM_REVEAL_START - S6.SIDEBAR_CLOSE_START));
+      await delay(s6t(timeline.FORUM_REVEAL_START - timeline.SIDEBAR_CLOSE_START));
 
       // ── P5: Crossfade Home → Forum ───────────────────────────────────────
       setScreen('forum');
       setForumOpacity(1);
-      await delay(s6t(S6.FORUM_SCROLL_START - S6.FORUM_REVEAL_START));
+      await delay(s6t(timeline.FORUM_SCROLL_START - timeline.FORUM_REVEAL_START));
 
       // ── P6: Forum continuous scroll ──────────────────────────────────────
       setForumScrollActive(true);
-      await delay(s6t(S6.NOTIF_REVEAL_START - S6.FORUM_SCROLL_START));
+      await delay(s6t(timeline.NOTIF_REVEAL_START - timeline.FORUM_SCROLL_START));
 
       // ── P7: Crossfade Forum → Notifications ──────────────────────────────
       setScreen('notifications');
       setNotifOpacity(1);
-      await delay(s6t(S6.NOTIF_STAGGER_START - S6.NOTIF_REVEAL_START));
+      await delay(s6t(timeline.NOTIF_STAGGER_START - timeline.NOTIF_REVEAL_START));
 
       // ── P8: Notifications stagger-in, then gentle scroll ─────────────────
       setNotifStaggerIn(true);
-      await delay(s6t(S6.NOTIF_SCROLL_START - S6.NOTIF_STAGGER_START));
+      await delay(s6t(timeline.NOTIF_SCROLL_START - timeline.NOTIF_STAGGER_START));
       setNotifScrollActive(true);
-      await delay(s6t(S6.CTA_REVEAL_START - S6.NOTIF_SCROLL_START));
+      await delay(s6t(timeline.CTA_REVEAL_START - timeline.NOTIF_SCROLL_START));
 
       // ── P9: Crossfade Notifications → CTA ────────────────────────────────
+      if (isV4) setNotifDimmed(true);
       setScreen('cta');
       setCtaOpacity(1);
-      await delay(s6t(S6.CTA_T0 - S6.CTA_REVEAL_START));
+      if (isV4) {
+        // Start the orange ambient field under the dimmed Notifications layer,
+        // then reveal CTA content only after the 0.50s handoff has settled.
+        setCtaBgVisible(true);
+      }
+      await delay(s6t(timeline.CTA_T0 - timeline.CTA_REVEAL_START));
 
       // ── P10: Premium CTA sequence ─────────────────────────────────────────
-      setCtaBgVisible(true);
-      await delay(s6t(S6.CTA_LOGO_OFFSET));
+      if (!isV4) setCtaBgVisible(true);
       setCtaLogoVisible(true);
-      await delay(s6t(S6.CTA_HEADLINE_OFFSET - S6.CTA_LOGO_OFFSET));
+      await delay(s6t(timeline.CTA_LOGO_OFFSET));
+      await delay(s6t(timeline.CTA_HEADLINE_OFFSET - timeline.CTA_LOGO_OFFSET));
       setCtaHeadlineVisible(true);
-      await delay(s6t(S6.CTA_REFERRAL_OFFSET - S6.CTA_HEADLINE_OFFSET));
+      await delay(s6t(timeline.CTA_REFERRAL_OFFSET - timeline.CTA_HEADLINE_OFFSET));
       setCtaReferralVisible(true);
-      await delay(s6t(S6.CTA_BUTTONS_OFFSET - S6.CTA_REFERRAL_OFFSET));
+      await delay(s6t(timeline.CTA_BUTTONS_OFFSET - timeline.CTA_REFERRAL_OFFSET));
       setCtaButtonsVisible(true);
-      await delay(s6t(S6.CTA_BUTTON_OFFSET - S6.CTA_BUTTONS_OFFSET));
+      await delay(s6t(timeline.CTA_BUTTON_OFFSET - timeline.CTA_BUTTONS_OFFSET));
       setCtaButtonVisible(true);
-      await delay(s6t(S6.CTA_AMBIENT_OFFSET - S6.CTA_BUTTON_OFFSET));
+      await delay(s6t(timeline.CTA_AMBIENT_OFFSET - timeline.CTA_BUTTON_OFFSET));
       setCtaAmbientActive(true);
 
       // ── Final hold → fade to black ────────────────────────────────────────
-      await delay(s6t(S6.END_START - (S6.CTA_T0 + S6.CTA_AMBIENT_OFFSET)));
+      await delay(s6t(timeline.END_START - (timeline.CTA_T0 + timeline.CTA_AMBIENT_OFFSET)));
       setEndOpacity(1);
     };
 
@@ -148,7 +157,7 @@ export function Scene6CinematicAnimation() {
       <div style={{
         position: 'absolute', inset: 0, zIndex: 10,
         opacity: screen === 'home' ? 1 : 0,
-        transition: `opacity ${S6.SCREEN_CROSSFADE_DURATION}s ease-in-out`,
+         transition: `opacity ${timeline.SCREEN_CROSSFADE_DURATION}s ease-in-out`,
         pointerEvents: 'none',
       }}>
         <Scene6HomeFeed />
@@ -168,7 +177,7 @@ export function Scene6CinematicAnimation() {
       <div style={{
         position: 'absolute', inset: 0, zIndex: 11,
         opacity: forumOpacity,
-        transition: `opacity ${S6.SCREEN_CROSSFADE_DURATION}s ease-in-out`,
+         transition: `opacity ${timeline.SCREEN_CROSSFADE_DURATION}s ease-in-out`,
         pointerEvents: 'none',
       }}>
         <Scene6ForumFeed scrollActive={forumScrollActive} />
@@ -178,17 +187,17 @@ export function Scene6CinematicAnimation() {
       <div style={{
         position: 'absolute', inset: 0, zIndex: 12,
         opacity: notifOpacity,
-        transition: `opacity ${S6.SCREEN_CROSSFADE_DURATION}s ease-in-out`,
+         transition: `opacity ${timeline.SCREEN_CROSSFADE_DURATION}s ease-in-out`,
         pointerEvents: 'none',
       }}>
-        <Scene6Notifications staggerIn={notifStaggerIn} scrollActive={notifScrollActive} />
+        <Scene6Notifications staggerIn={notifStaggerIn} scrollActive={notifScrollActive} dimmed={notifDimmed} />
       </div>
 
       {/* ── Layer 13: Premium CTA ─────────────────────────────────────────────── */}
       <div style={{
         position: 'absolute', inset: 0, zIndex: 13,
         opacity: ctaOpacity,
-        transition: `opacity ${S6.SCREEN_CROSSFADE_DURATION}s ease-in-out`,
+         transition: `opacity ${timeline.SCREEN_CROSSFADE_DURATION}s ease-in-out`,
         pointerEvents: 'none',
       }}>
         <Scene6PremiumCTA
@@ -199,6 +208,7 @@ export function Scene6CinematicAnimation() {
           buttonsVisible={ctaButtonsVisible}
           ctaButtonVisible={ctaButtonVisible}
           ambientActive={ctaAmbientActive}
+          polished={isV4}
         />
       </div>
 
@@ -211,7 +221,7 @@ export function Scene6CinematicAnimation() {
           opacity: endOpacity,
           pointerEvents: 'none',
           zIndex: 100,
-          transition: `opacity ${S6.END_DURATION}s ease-in`,
+           transition: `opacity ${timeline.END_DURATION}s ease-in`,
         }}
       />
     </div>

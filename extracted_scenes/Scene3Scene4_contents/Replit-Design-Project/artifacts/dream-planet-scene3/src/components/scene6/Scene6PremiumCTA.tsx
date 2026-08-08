@@ -44,10 +44,12 @@ interface Scene6PremiumCTAProps {
   buttonsVisible: boolean;
   ctaButtonVisible: boolean;
   ambientActive: boolean;
+  polished?: boolean;
 }
 
 export function Scene6PremiumCTA({
   bgVisible, logoVisible, headlineVisible, referralVisible, buttonsVisible, ctaButtonVisible, ambientActive,
+  polished = false,
 }: Scene6PremiumCTAProps) {
   return (
     <div style={{ position: 'absolute', inset: 0, overflow: 'hidden', fontFamily: "'Inter', sans-serif" }}>
@@ -119,7 +121,7 @@ export function Scene6PremiumCTA({
       <div style={{
         position: 'relative', zIndex: 5,
         display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center',
-         height: '100%', padding: '72px 42px 86px', gap: 0,
+         height: '100%', padding: polished ? '64px 42px 74px' : '72px 42px 86px', gap: 0,
       }}>
         <motion.div
           initial={{ opacity: 0, y: 10 }}
@@ -127,14 +129,14 @@ export function Scene6PremiumCTA({
           transition={{ duration: 0.55, ease: EASE_SMOOTH }}
           style={{
             color: 'rgba(255,255,255,0.52)', fontSize: '11px', fontWeight: 700,
-            letterSpacing: '0.24em', textTransform: 'uppercase', marginBottom: '24px',
+             letterSpacing: '0.24em', textTransform: 'uppercase', marginBottom: polished ? '20px' : '24px',
           }}
         >
           The Dream Planet Movement
         </motion.div>
         {/* Logo hero */}
         <motion.div
-           style={{ position: 'relative', overflow: 'hidden', marginBottom: '34px', borderRadius: '28px' }}
+            style={{ position: 'relative', overflow: 'hidden', marginBottom: polished ? '28px' : '34px', borderRadius: '28px' }}
           initial={{ opacity: 0, scale: 0.88, y: 16 }}
           animate={logoVisible ? { opacity: 1, scale: 1, y: 0 } : { opacity: 0, scale: 0.88, y: 16 }}
           transition={{ duration: 0.65, ease: EASE_LUXURY }}
@@ -156,7 +158,7 @@ export function Scene6PremiumCTA({
           initial={{ opacity: 0, y: 16 }}
           animate={headlineVisible ? { opacity: 1, y: 0 } : { opacity: 0, y: 16 }}
           transition={{ duration: 0.55, ease: EASE_SMOOTH }}
-           style={{ textAlign: 'center', marginBottom: '40px', maxWidth: '650px' }}
+            style={{ textAlign: 'center', marginBottom: polished ? '30px' : '40px', maxWidth: '650px' }}
         >
           <h1 style={{
              color: '#ffffff', fontSize: '48px', fontWeight: 800,
@@ -171,7 +173,7 @@ export function Scene6PremiumCTA({
 
         {/* Referral card — premium glass, floating membership-card treatment */}
         <motion.div
-           style={{ position: 'relative', marginBottom: '34px' }}
+            style={{ position: 'relative', marginBottom: polished ? '26px' : '34px' }}
           initial={{ opacity: 0, y: 26, scale: 0.95 }}
           animate={referralVisible ? { opacity: 1, y: 0, scale: 1 } : { opacity: 0, y: 26, scale: 0.95 }}
           transition={{ duration: 0.65, ease: EASE_LUXURY }}
@@ -185,14 +187,14 @@ export function Scene6PremiumCTA({
               backdropFilter: 'blur(26px)', WebkitBackdropFilter: 'blur(26px)',
               border: '1px solid rgba(255,107,0,0.35)',
                borderRadius: '30px',
-               padding: '30px 46px 27px',
+                padding: polished ? '26px 42px 24px' : '30px 46px 27px',
                display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '11px',
               boxShadow: [
                 '0 0 0 1px rgba(255,107,0,0.10)',
                  '0 0 78px rgba(255,107,0,0.24)',
                  '0 20px 58px rgba(0,0,0,0.56)',
               ].join(', '),
-               minWidth: '480px',
+                minWidth: polished ? '460px' : '480px',
             }}
           >
             <img src={appIconUrl} alt="Dream Planet" style={{
@@ -228,7 +230,7 @@ export function Scene6PremiumCTA({
             display: 'flex', alignItems: 'center', gap: '11px',
             color: 'rgba(255,255,255,0.62)', fontSize: '13px', fontWeight: 600,
             letterSpacing: '0.08em', textTransform: 'uppercase',
-            marginBottom: '30px',
+             marginBottom: polished ? '25px' : '30px',
           }}
         >
           <span style={{
