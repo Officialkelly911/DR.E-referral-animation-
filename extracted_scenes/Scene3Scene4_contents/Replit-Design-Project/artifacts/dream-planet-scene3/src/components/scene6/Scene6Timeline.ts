@@ -54,8 +54,8 @@ export const S6 = {
   // ── P8: Notifications — stagger in, then gentle scroll (6.94–9.94s) ──────
   NOTIF_STAGGER_START: 6.94,
   NOTIF_STAGGER_DURATION: 0.45,
-  NOTIF_SCROLL_START: 7.2,
-  NOTIF_SCROLL_DURATION: 2.74,
+  NOTIF_SCROLL_START: 8.0,
+  NOTIF_SCROLL_DURATION: 1.94,
 
   // ── P9: Crossfade Notifications → CTA (9.94–10.44s) ───────────────────────
   CTA_REVEAL_START: 9.94,

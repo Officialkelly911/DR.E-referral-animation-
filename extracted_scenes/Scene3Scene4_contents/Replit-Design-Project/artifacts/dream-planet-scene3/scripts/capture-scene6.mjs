@@ -12,12 +12,12 @@
  *   - ffmpeg available
  *
  * Outputs (canonical — all in scene6/renders/ AND Scene 6/Final Animation/):
- *   scene6_final.mp4          — no audio (audio added at master concat stage)
- *   scene6_final_no_audio.mp4 — identical copy, convention mirror
+ *   scene6_final_v3.mp4          — corrected Scene 6 candidate, no audio
+ *   scene6_final_v3_no_audio.mp4 — identical copy, convention mirror
  *   scene6_start_frame.png
  *   scene6_end_frame.png
  *
- * Phase 10 — Scene 6: "Join the Dream Planet Movement" (Revision Pass)
+ * Phase 10 — Scene 6: "Join the Dream Planet Movement" (Notifications Revision v3)
  * Duration: 15.5s (S6.TOTAL in Scene6Timeline.ts)
  */
 
@@ -47,6 +47,7 @@ const CAPTURES_DIR = path.join(ARTIFACT_DIR, 'captured');
 const SCENE6_DIR = path.resolve(__dirname, '../../../../../../scene6');  // workspace root scene6/
 const SCENE6_RENDERS_DIR = path.join(SCENE6_DIR, 'renders');
 const SCENE6_QA_DIR      = path.join(SCENE6_DIR, 'qa');
+const SCENE6_V3_DIR      = path.join(SCENE6_DIR, 'revision_v3');
 
 // Mirror the campaign directory convention
 const CAMPAIGN_DIR = path.resolve(
@@ -85,7 +86,7 @@ const CHROMIUM_PATH = findSystemChromium();
 console.log(`\n🌐  Chromium: ${CHROMIUM_PATH}`);
 
 // ── Setup dirs ───────────────────────────────────────────────────────────────
-[CAPTURES_DIR, SCENE6_RENDERS_DIR, SCENE6_QA_DIR, S6_FINAL_DIR].forEach(d =>
+[CAPTURES_DIR, SCENE6_RENDERS_DIR, SCENE6_QA_DIR, SCENE6_V3_DIR, S6_FINAL_DIR].forEach(d =>
   fs.mkdirSync(d, { recursive: true })
 );
 
@@ -186,7 +187,7 @@ const webmPath = await video.path();
 console.log(`\n  ✓ WebM: ${path.basename(webmPath)}`);
 
 // ── Convert to MP4 ────────────────────────────────────────────────────────────
-const s6Mp4 = path.join(S6_FINAL_DIR, 'scene6_final.mp4');
+const s6Mp4 = path.join(S6_FINAL_DIR, 'scene6_final_v3.mp4');
 
 console.log('\n  → Converting WebM → MP4…');
 execSync(
@@ -203,22 +204,28 @@ execSync(
 console.log(`  ✓ Scene 6 MP4: ${s6Mp4}`);
 
 // ── No-audio copy (convention mirror) ────────────────────────────────────────
-const s6Mp4NoAudio = path.join(S6_FINAL_DIR, 'scene6_final_no_audio.mp4');
+const s6Mp4NoAudio = path.join(S6_FINAL_DIR, 'scene6_final_v3_no_audio.mp4');
 fs.copyFileSync(s6Mp4, s6Mp4NoAudio);
 console.log(`  ✓ No-audio copy: ${path.basename(s6Mp4NoAudio)}`);
 
 // ── Copy to scene6/renders/ workspace ────────────────────────────────────────
-fs.copyFileSync(s6Mp4, path.join(SCENE6_RENDERS_DIR, 'scene6_final.mp4'));
-fs.copyFileSync(s6Mp4NoAudio, path.join(SCENE6_RENDERS_DIR, 'scene6_final_no_audio.mp4'));
+fs.copyFileSync(s6Mp4, path.join(SCENE6_RENDERS_DIR, 'scene6_final_v3.mp4'));
+fs.copyFileSync(s6Mp4NoAudio, path.join(SCENE6_RENDERS_DIR, 'scene6_final_v3_no_audio.mp4'));
 console.log(`  ✓ Copies in scene6/renders/`);
 
 // ── Copy frames ───────────────────────────────────────────────────────────────
-const destinations = [S6_FINAL_DIR, SCENE6_RENDERS_DIR, SCENE6_QA_DIR];
+// Keep the v2/approved frame names untouched. The revision gets an isolated
+// folder with the requested generic frame names plus suffixed mirrors.
+const destinations = [SCENE6_V3_DIR];
 for (const dest of destinations) {
   fs.copyFileSync(startFramePath, path.join(dest, 'scene6_start_frame.png'));
   fs.copyFileSync(endFramePath,   path.join(dest, 'scene6_end_frame.png'));
 }
-console.log('  ✓ Frames copied to Final Animation/, scene6/renders/, scene6/qa/');
+for (const dest of [S6_FINAL_DIR, SCENE6_RENDERS_DIR, SCENE6_QA_DIR]) {
+  fs.copyFileSync(startFramePath, path.join(dest, 'scene6_start_frame_v3.png'));
+  fs.copyFileSync(endFramePath,   path.join(dest, 'scene6_end_frame_v3.png'));
+}
+console.log('  ✓ v3 frames copied without overwriting approved frames');
 
 // ── Duration probe ────────────────────────────────────────────────────────────
 let actualDuration = 'unknown';

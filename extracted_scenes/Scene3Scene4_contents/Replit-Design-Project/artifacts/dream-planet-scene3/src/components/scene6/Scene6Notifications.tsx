@@ -11,6 +11,9 @@
  *  - After the stagger, the whole list drifts upward in ONE continuous,
  *    gentle tween (same single-animation technique as the Forum feed) —
  *    smooth and alive, never abrupt.
+ *
+ * This is a complete screen replacement for the old penultimate Community
+ * Forum summary. The forum component is intentionally not nested here.
  */
 
 import { motion } from 'framer-motion';
@@ -26,12 +29,12 @@ interface NotificationItem {
 const NOTIFICATIONS: NotificationItem[] = [
   { name: 'benjamin', action: 'Commented: "Glasses look good on your Post"', time: '14hrs ago', isNew: true },
   { name: 'benjamin', action: 'Liked your Post', time: '14hrs ago' },
-  { name: 'benjamin', action: 'Commented: "Awesome vibe on your Post"', time: '14hrs ago' },
+  { name: '@creativewave', action: 'Hit 10k referrals this month! The Dream Planet system actually works!', time: '14hrs ago' },
+  { name: 'Creativewave', action: 'Liked your Post', time: '14hrs ago' },
   { name: 'jose', action: 'Liked your Post', time: '14hrs ago' },
-  { name: 'nosaduke', action: 'Commented: "Floral Princess on your Post"', time: '14hrs ago' },
-  { name: 'nosaduke', action: 'Liked your Post', time: '14hrs ago' },
-  { name: 'adeoshodin', action: 'Liked your Post', time: '1d ago' },
-  { name: 'marcus.dp', action: 'Liked your Post', time: '2d ago' },
+  { name: '@Luna.creates', action: 'Tips for growing your referral network in the first 30 days', time: '14hrs ago' },
+  { name: '@Marcus.dp', action: 'Just unlocked "Community Leader" badge after 500 referrals', time: '14hrs ago' },
+  { name: '@Queenportia', action: "Reached Gold tier — here's what changed for my earnings", time: '1d ago' },
 ];
 
 const SCROLL_EASE = [0.22, 0.61, 0.36, 1] as const;
@@ -51,7 +54,7 @@ function NotificationRow({ item, index, staggerIn }: { item: NotificationItem; i
     >
       <div style={{
         width: '38px', height: '38px', borderRadius: '50%',
-        background: 'linear-gradient(135deg,#FF6B00,#c94f00)',
+        background: '#c74312',
         display: 'flex', alignItems: 'center', justifyContent: 'center',
         flexShrink: 0,
       }}>
@@ -79,34 +82,64 @@ export function Scene6Notifications({ staggerIn, scrollActive }: { staggerIn: bo
   return (
     <div style={{
       position: 'absolute', inset: 0,
-       background: '#ffffff',
-      fontFamily: "'Inter', sans-serif",
       overflow: 'hidden',
     }}>
-      {/* Header */}
+      {/* The supplied reference is 472×840. Render the complete mobile
+          composition at the 1080×1920 scene scale instead of shrinking the
+          reference's typography and row rhythm into the canvas. */}
       <div style={{
-        display: 'flex', alignItems: 'center', gap: '14px',
-        padding: '54px 20px 18px',
-        borderBottom: '1px solid rgba(15,23,42,0.07)',
+        position: 'absolute',
+        width: '472px', height: '840px',
+        transform: 'scale(2.2881356)',
+        transformOrigin: 'top left',
+        background: '#ffffff',
+        fontFamily: "'Inter', sans-serif",
+        overflow: 'hidden',
       }}>
-         <ChevronLeft size={22} color="#101114" />
-         <span style={{ color: '#101114', fontSize: '18px', fontWeight: 600 }}>Notification</span>
-      </div>
-
-      <div style={{ position: 'relative', height: 'calc(100% - 96px)', overflow: 'hidden' }}>
-        <motion.div
-          animate={scrollActive ? { y: '-26%' } : { y: 0 }}
-          initial={{ y: 0 }}
-          transition={{ duration: 2.74, ease: SCROLL_EASE }}
-        >
-          {NOTIFICATIONS.map((item, i) => (
-            <NotificationRow key={`${item.name}-${i}`} item={item} index={i} staggerIn={staggerIn} />
-          ))}
-        </motion.div>
+        {/* iOS-style status bar from the supplied reference screenshot. */}
         <div style={{
-          position: 'absolute', bottom: 0, left: 0, right: 0, height: '18px',
-          background: 'linear-gradient(transparent, #ffffff)', pointerEvents: 'none',
-        }} />
+          height: '76px',
+          display: 'flex', alignItems: 'flex-end', justifyContent: 'space-between',
+          padding: '0 28px 10px',
+          color: '#101114',
+          fontSize: '16px', fontWeight: 700,
+        }}>
+          <span>11:21</span>
+          <div style={{ display: 'flex', alignItems: 'center', gap: '7px', fontSize: '12px' }}>
+            <span style={{ letterSpacing: '-2px' }}>▮▮▮▮</span>
+            <span style={{ fontSize: '15px' }}>⌁</span>
+            <span style={{
+              border: '1px solid #6b7280', borderRadius: '4px',
+              padding: '1px 3px', fontSize: '10px', lineHeight: 1,
+            }}>▰</span>
+          </div>
+        </div>
+        {/* Header */}
+        <div style={{
+          display: 'flex', alignItems: 'center', gap: '14px',
+          padding: '20px 28px 28px',
+          borderBottom: '1px solid rgba(15,23,42,0.07)',
+        }}>
+          <ChevronLeft size={30} color="#101114" strokeWidth={1.8} />
+          <span style={{ color: '#101114', fontSize: '20px', fontWeight: 600 }}>Notification</span>
+        </div>
+
+        <div style={{ position: 'relative', height: 'calc(100% - 156px)', overflow: 'hidden' }}>
+          <motion.div
+            animate={scrollActive ? { y: '-11%' } : { y: 0 }}
+            initial={{ y: 0 }}
+            style={{ willChange: 'transform', transform: 'translate3d(0,0,0)' }}
+            transition={{ duration: 1.94, ease: SCROLL_EASE }}
+          >
+            {NOTIFICATIONS.map((item, i) => (
+              <NotificationRow key={`${item.name}-${i}`} item={item} index={i} staggerIn={staggerIn} />
+            ))}
+          </motion.div>
+          <div style={{
+            position: 'absolute', bottom: 0, left: 0, right: 0, height: '18px',
+            background: 'linear-gradient(transparent, #ffffff)', pointerEvents: 'none',
+          }} />
+        </div>
       </div>
     </div>
   );
