@@ -77,40 +77,54 @@ export function Scene6CinematicAnimation({ variant = 'v3' }: { variant?: 'v3' | 
       // without this, a fixed capture duration silently truncates the
       // final fade-to-black.
       document.documentElement.setAttribute('data-s6-started', String(Date.now()));
+      const markPhase = (phase: string) => {
+        document.documentElement.setAttribute('data-s6-phase', phase);
+        document.documentElement.setAttribute('data-s6-phase-at', String(performance.now()));
+      };
 
       // ── P1: Home Feed hold ──────────────────────────────────────────────
+      markPhase('home-hold');
       await delay(s6t(timeline.HOME_HOLD_END - 0));
 
       // ── P2: Sidebar opens over Home Feed ─────────────────────────────────
+      markPhase('sidebar-open');
       setSidebarProgress(1);
       await delay(s6t(timeline.SIDEBAR_CLOSE_START - timeline.SIDEBAR_OPEN_START));
 
       // ── P4: Sidebar closes ────────────────────────────────────────────────
+      markPhase('sidebar-close');
       setSidebarProgress(0);
       await delay(s6t(timeline.FORUM_REVEAL_START - timeline.SIDEBAR_CLOSE_START));
 
       // ── P5: Crossfade Home → Forum ───────────────────────────────────────
+      markPhase('forum-reveal');
       setScreen('forum');
       setForumOpacity(1);
       await delay(s6t(timeline.FORUM_SCROLL_START - timeline.FORUM_REVEAL_START));
 
       // ── P6: Forum continuous scroll ──────────────────────────────────────
+      markPhase('forum-scroll');
       setForumScrollActive(true);
       await delay(s6t(timeline.NOTIF_REVEAL_START - timeline.FORUM_SCROLL_START));
 
       // ── P7: Crossfade Forum → Notifications ──────────────────────────────
+      markPhase('notifications-reveal');
       setScreen('notifications');
       setNotifOpacity(1);
       await delay(s6t(timeline.NOTIF_STAGGER_START - timeline.NOTIF_REVEAL_START));
 
       // ── P8: Notifications stagger-in, then gentle scroll ─────────────────
+      markPhase('notifications-stagger');
       setNotifStaggerIn(true);
       await delay(s6t(timeline.NOTIF_SCROLL_START - timeline.NOTIF_STAGGER_START));
+      markPhase('notifications-scroll');
       setNotifScrollActive(true);
       await delay(s6t(timeline.CTA_REVEAL_START - timeline.NOTIF_SCROLL_START));
 
       // ── P9: Crossfade Notifications → CTA ────────────────────────────────
+      markPhase('notifications-dim');
       if (isV4) setNotifDimmed(true);
+      markPhase('cta-reveal');
       setScreen('cta');
       setCtaOpacity(1);
       if (isV4) {
@@ -121,6 +135,7 @@ export function Scene6CinematicAnimation({ variant = 'v3' }: { variant?: 'v3' | 
       await delay(s6t(timeline.CTA_T0 - timeline.CTA_REVEAL_START));
 
       // ── P10: Premium CTA sequence ─────────────────────────────────────────
+      markPhase('cta-content');
       if (!isV4) setCtaBgVisible(true);
       setCtaLogoVisible(true);
       await delay(s6t(timeline.CTA_LOGO_OFFSET));
@@ -137,6 +152,7 @@ export function Scene6CinematicAnimation({ variant = 'v3' }: { variant?: 'v3' | 
 
       // ── Final hold → fade to black ────────────────────────────────────────
       await delay(s6t(timeline.END_START - (timeline.CTA_T0 + timeline.CTA_AMBIENT_OFFSET)));
+      markPhase('fade-out');
       setEndOpacity(1);
     };
 

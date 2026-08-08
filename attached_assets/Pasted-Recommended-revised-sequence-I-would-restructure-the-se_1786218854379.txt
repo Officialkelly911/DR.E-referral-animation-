@@ -1,0 +1,159 @@
+Recommended revised sequence
+
+I would restructure the section like this:
+
+1. Remove the two current pre-CTA screens
+
+* Remove the standalone side-navigation screen shown in the first screenshot.
+* Remove the standalone Community Forum overview/feed screen shown in the second screenshot.
+* Do not spend separate shots establishing these screens.
+
+2. Replace their combined runtime with one continuous forum-feed sequence
+
+The viewer should land directly inside the Community Forum and immediately see that it is active.
+
+New Forum Feed Sequence
+
+Forum opens → brief pause → continuous scrolling
+
+Use approximately 7–9 distinct posts rather than the current handful.
+
+The scrolling should reveal approximately 6–7 meaningful scroll movements, for example:
+
+1. Post 1
+    * “Hit 10k referrals this month! The Dream Planet system actually works”
+    * Likes/comments visible.
+2. Post 2
+    * “Tips for growing your referral network in the first 30 days”
+3. Post 3
+    * “Reached Gold tier — here’s what changed for my earnings”
+4. Post 4
+    * “Just unlocked ‘Community Leader’ badge after 500 referrals”
+5. Post 5
+    * “Anyone else stacking Invest returns with referral bonuses? Huge combo”
+6. Post 6
+    * “My onboarding checklist for new referrals — saved everyone hours”
+7. Post 7
+    * “Forum challenge winners announced — congrats to everyone who joined”
+8. Post 8
+    * “Six months in: from zero to a real second income stream”
+
+You can add one or two additional posts if needed so the final scroll doesn’t reveal an empty area.
+
+Important: slow the scrolling down
+
+Don’t make it look like someone is frantically flicking through Reddit at 2 a.m.
+
+Each scroll should be long enough for the viewer to register:
+
+avatar → username → post headline → engagement numbers
+
+I’d target roughly:
+
+* 0.8–1.0 sec initial forum view
+* 0.8–1.1 sec per scroll
+* 0.3–0.5 sec settling time between major scrolls
+* Total forum-feed section: approximately 7–10 seconds
+
+The feed should feel continuous, not like a slideshow of screenshots.
+
+Then transition into the notification screen
+
+After the final scroll:
+
+Feed slows → notification appears → brief hold → CTA
+
+Something like:
+
+Forum scrolling
+→ final post settles
+→ notification bell/notification panel activates
+→ notification screen
+→ Dream Planet CTA
+
+The notification screen therefore becomes the first major visual interruption after the community sequence, making it feel intentional rather than just another random app screen.
+
+The bigger improvement
+
+The story becomes much cleaner:
+
+Join Dream Planet → discover the ecosystem → see the referral/investment functionality → enter the community → see real community activity → notification → CTA
+
+That is substantially stronger than:
+
+Open menu → show forum → show forum again → notification → CTA
+
+The first version actually communicates why the platform is worth joining. The second mostly communicates that the developers know how to render a hamburger menu.
+
+⸻
+
+Replit implementation prompt
+
+You can give the production agent this directly:
+
+Revise the final forum-to-CTA portion of the Dream Planet referral video.
+
+Remove the two existing standalone screens immediately before the final CTA:
+
+1. The side-navigation/menu screen.
+2. The standalone Community Forum overview screen.
+
+Replace their runtime with an extended, continuous Community Forum feed animation.
+
+The purpose of this change is to make the forum feel like an active community rather than a static UI screen.
+
+New sequence
+
+Enter directly into the Community Forum feed and hold briefly so the viewer can identify the page. Then perform approximately 6–7 deliberate vertical scrolls, revealing approximately 8–10 community posts.
+
+Use posts similar to:
+
+* “Hit 10k referrals this month! The Dream Planet system actually works”
+* “Tips for growing your referral network in the first 30 days”
+* “Reached Gold tier — here’s what changed for my earnings”
+* “Just unlocked ‘Community Leader’ badge after 500 referrals”
+* “Anyone else stacking Invest returns with referral bonuses? Huge combo”
+* “My onboarding checklist for new referrals — saved everyone hours”
+* “Forum challenge winners announced — congrats to everyone who joined”
+* “Six months in: from zero to a real second income stream”
+
+Add 1–2 additional realistic posts if necessary to prevent the feed from reaching an empty area before the sequence ends.
+
+Animation requirements
+
+* Do NOT rapidly flick through the feed.
+* Each scroll should move naturally and smoothly.
+* Allow enough time for usernames, post text, avatars and engagement metrics to be readable.
+* Target approximately 0.8–1.1 seconds per scroll with short settling pauses.
+* The complete forum-feed sequence should occupy approximately 7–10 seconds.
+* Preserve realistic card spacing, typography, avatars, engagement icons and Dream Planet visual styling.
+* The feed should look like one continuous live community rather than multiple static screenshots.
+* Avoid introducing new UI elements that do not already belong to the Dream Planet interface.
+
+Ending
+
+After the final feed scroll, slow the movement and transition naturally into the existing notification screen.
+
+Hold the notification long enough for it to register, then proceed directly into the final CTA screen.
+
+Do not add the removed side-navigation or standalone forum-establishing screens back into this section.
+
+Timing priority
+
+If additional runtime is required, prioritize:
+
+Forum feed scrolling > notification screen > CTA
+
+rather than reintroducing the removed static screens.
+
+The final result should feel like:
+
+Active community → continued discovery → notification → CTA
+
+rather than:
+
+Menu → forum screen → another forum screen → CTA.
+
+Preserve all existing video resolution, audio synchronization, transitions and downstream scene integration. Regenerate the final scene assets and QA documentation after the change.
+
+One additional adjustment I’d make: don’t delete the forum interaction logic from the current implementation just because we’re deleting the standalone screen. Reuse the existing post cards, engagement states, scrolling behavior and notification transition. That keeps the revision focused and avoids the timeless software tradition of fixing one thing by accidentally demolishing three others.

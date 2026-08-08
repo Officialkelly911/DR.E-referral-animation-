@@ -1,0 +1,30 @@
+{
+  "candidate": "scene6_final_v4.mp4",
+  "noAudioCandidate": "scene6_final_v4_no_audio.mp4",
+  "resolution": "1080x1920",
+  "fps": "30/1",
+  "frameCount": 465,
+  "durationSeconds": 15.5,
+  "audio": "none",
+  "sha256": "d1e280891c252052614bf47b022f6c9770932774baa53d42c8cc366077712053",
+  "startupOffsetMs": 2071,
+  "transition": {
+    "notificationsReadableUntilSeconds": 9.94,
+    "dimAndGlowStartSeconds": 9.94,
+    "ctaContentStartSeconds": 10.44,
+    "durationSeconds": 0.5
+  },
+  "cta": {
+    "contentStartSeconds": 10.44,
+    "fullHoldStartSeconds": 12.92,
+    "fadeStartSeconds": 14.64
+  },
+  "checkpoints": [
+    "revision_v4/qa/A_notifications_final.png",
+    "revision_v4/qa/B_transition_early.png",
+    "revision_v4/qa/B_transition_late.png",
+    "revision_v4/qa/C_cta_midpoint.png",
+    "revision_v4/qa/D_cta_final.png",
+    "revision_v4/qa/E_fade_out.png"
+  ]
+}

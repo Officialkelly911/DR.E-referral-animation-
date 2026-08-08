@@ -116,3 +116,6 @@
 - The capture pipeline is identical to Scenes 3–5 (Playwright + system Chromium + ffmpeg)
 - Re-run: `PORT_OVERRIDE=24448 node scripts/capture-scene6.mjs` from the artifact root
 - Scene 6 preview URL: `http://localhost:24448/dream-planet-scene3/scene6-cinematic.html`
+- Isolated targeted-polish candidate: `revision_v4/qa/SCENE6_FINAL_V4_QA.md`
+- v4 capture: `PORT_OVERRIDE=24448 node scripts/capture-scene6-v4.mjs`
+- v4 is a creative candidate only and must not replace Master v3 before approval.
