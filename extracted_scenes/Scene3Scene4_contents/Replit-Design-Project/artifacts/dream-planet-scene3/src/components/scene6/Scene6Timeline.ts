@@ -103,6 +103,42 @@ export const S6_V4 = {
   CTA_AMBIENT_OFFSET: 2.48,
 } as const;
 
+/**
+ * Isolated v5 sequence candidate.
+ *
+ * Unlike v3/v4, this version starts directly in the Forum and gives the
+ * supplied community-feed treatment the lead: six intentional scroll/settle
+ * beats across 7.1 seconds. Notifications and the premium CTA retain the
+ * existing visual components and the established 15.5 second output length.
+ */
+export const S6_V5 = {
+  ...S6_V4,
+  TOTAL: 15.5,
+
+  // Forum feed starts on frame one; there is no standalone Home/sidebar shot.
+  FORUM_HOLD_END: 0.8,
+  FORUM_SCROLL_START: 0.8,
+  FORUM_BEAT_1: 0.8,
+  FORUM_BEAT_2: 1.85,
+  FORUM_BEAT_3: 2.9,
+  FORUM_BEAT_4: 3.95,
+  FORUM_BEAT_5: 5.0,
+  FORUM_BEAT_6: 6.05,
+  FORUM_END: 7.1,
+
+  // Preserve the Notifications → CTA structure, shifted after the longer feed.
+  NOTIF_REVEAL_START: 7.1,
+  NOTIF_STAGGER_START: 7.6,
+  NOTIF_SCROLL_START: 8.66,
+  CTA_REVEAL_START: 10.6,
+  CTA_T0: 11.1,
+
+  // Keep the v4 handoff polish and CTA offsets unchanged.
+  FINAL_HOLD_START: 12.64,
+  END_START: 14.64,
+  END_DURATION: 0.86,
+} as const;
+
 /** Total Scene 6 duration in ms — consumed by capture scripts */
 export const S6_DURATION_MS = S6.TOTAL * 1000;
 
