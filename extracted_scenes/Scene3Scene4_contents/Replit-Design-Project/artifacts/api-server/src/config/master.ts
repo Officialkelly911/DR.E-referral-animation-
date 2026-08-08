@@ -65,7 +65,7 @@ export const SCENE5_VIDEO_PATH = resolve(
 );
 
 // ── Known video metadata ──────────────────────────────────────────────────────
-// Sourced from ffprobe at the time the master was approved (Aug 5, 2026).
+// Sourced from ffprobe at the time Master v3 was approved (Aug 8, 2026).
 // Update when the master is regenerated with new scenes or a trim change.
 export const MASTER_META = {
   version: MASTER_VERSION,
@@ -82,7 +82,6 @@ export const MASTER_META = {
 } as const;
 
 // ── Scene list ────────────────────────────────────────────────────────────────
-// When adding Scene 6: append to this array.
 // startTime / endTime are seconds in the final master.
 export interface SceneEntry {
   id: string;

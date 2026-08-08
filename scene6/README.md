@@ -1,6 +1,6 @@
 # Dream Planet Referral Campaign — Scene 6
 
-> **Status: COMPLETE — CTA polish revision rendered; awaiting creative review and approval before Master v3 integration.**
+> **Status: COMPLETE — approved and integrated into Master v3.**
 >
 > Master v2 (Scenes 1–5) remains frozen. Scene 6 is self-contained and must not
 > touch any Scene 1–5 assets, the master build pipeline, or existing deliverables.
@@ -101,24 +101,13 @@
 
 ---
 
-## Integration Steps (when Scene 6 is approved)
+## Integration Steps (completed for Master v3)
 
-1. Confirm `scene6/renders/scene6_final.mp4` is the approved file
-2. In `Final Edit/build_master_v2.sh`:
-   - Uncomment `SCENE6_SRC` variable
-   - Uncomment `build_scene6()` function
-   - Append `scene6` to `SCENE_ORDER`
-3. In `Final Edit/validate_master.sh`:
-   - Uncomment `FLAT_SCENE_SRCS[scene6]` in SCENE REGISTRY
-   - Uncomment `SCENE_ORDER` scene6 entry
-   - Uncomment `TRIM_GUARDS[scene6]` (probe first frame to find correct trim)
-4. Update `artifacts/api-server/src/config/master.ts`:
-   - Append Scene 6 entry to `SCENES` array
-   - Update `MASTER_META.duration` to ~56.780s
-   - Bump `MASTER_VERSION` to "v3"
-5. Run `./build_master_v2.sh` → verify all checks pass
-6. Run `./validate_master.sh --verbose` → all checks pass
-7. Update memory: `dream-planet-baseline-locked.md`
+1. Approved Scene 6 was preserved as `scene6_final_v2.mp4`.
+2. `build_master_v3.sh` appends the approved Scene 6 to the locked Master v2 no-audio baseline.
+3. `validate_master_v3.sh` verifies the v3 release and Scene 5→6 boundary.
+4. `artifacts/api-server/src/config/master.ts` serves Master v3 and includes the Scene 6 timeline entry.
+5. Release assets and QA documentation are stored in the `Final Edit/` directory.
 
 ---
 

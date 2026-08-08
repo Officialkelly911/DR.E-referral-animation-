@@ -1,9 +1,17 @@
 ---
 name: Dream Planet baseline locked
-description: Master v2 (Scenes 1–5) locked and tagged; archive and Scene 6 workspace created; validate_master.sh updated for 5 scenes.
+description: Master v2 remains the locked five-scene baseline; tagged Master v3 appends the approved Scene 6 without changing it.
 ---
 
-## Current approved master — Master v2 (2026-08-06)
+## Current production master — Master v3 (2026-08-08)
+
+- Git tag: `v3.0`
+- Files: `DreamPlanet_Master_v3.mp4` / `_audio.mp4` / `_no_audio.mp4`
+- Location: `extracted_scenes/Scene3Scene4_contents/Scene1scene2_contents/Dre-animation/Dream Planet Referral Campaign/Final Edit/`
+- Duration: 56.767s | 1080×1920 | 30fps | AAC audio
+- QA: `MASTER_V3_QA.md` — 11/11 release checks pass
+
+## Locked baseline — Master v2 (2026-08-06)
 
 - Git tag: `master-v2-approved`
 - Files: `DreamPlanet_Master_v2.mp4` / `_audio.mp4` / `_no_audio.mp4`
