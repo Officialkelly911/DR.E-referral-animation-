@@ -16,6 +16,13 @@ const MASTER_V3 = join(
   "Final Edit",
   "DreamPlanet_Master_v3.mp4",
 );
+const SCENE6_V5 = join(
+  DIR,
+  "..",
+  "scene6",
+  "revision_v5",
+  "scene6_final_v5.mp4",
+);
 
 const MIME = {
   ".html": "text/html; charset=utf-8",
@@ -29,6 +36,13 @@ function resolve(rawUrl) {
   if (pathname === "/master-v3.mp4") {
     try {
       return { filePath: MASTER_V3, stat: statSync(MASTER_V3) };
+    } catch {
+      return null;
+    }
+  }
+  if (pathname === "/scene6-v5.mp4") {
+    try {
+      return { filePath: SCENE6_V5, stat: statSync(SCENE6_V5) };
     } catch {
       return null;
     }

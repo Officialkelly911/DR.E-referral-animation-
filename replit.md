@@ -25,7 +25,7 @@ Then open `http://localhost:8080/review`. Also exposes `/review/meta` (JSON) and
 ```sh
 node scene5_player/server.mjs
 ```
-The player streams the authoritative `Final Edit/DreamPlanet_Master_v3.mp4` through `/master-v3.mp4`, with the individual Scene 5 and Scene 6 review clips available in the adjacent tabs.
+The player streams the authoritative `Final Edit/DreamPlanet_Master_v3.mp4` through `/master-v3.mp4`, with the individual Scene 5 and Scene 6 review clips available in the adjacent tabs. The isolated Scene 6 v5 direct-forum-feed candidate is available in the `Scene 6 v5` candidate tab and `/scene6-v5.mp4`; it does not replace Master v3.
 
 **Scene 3 animation preview** (port 24448, `/dream-planet-scene3/`):
 ```sh

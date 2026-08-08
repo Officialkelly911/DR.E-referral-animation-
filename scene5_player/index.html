@@ -213,6 +213,7 @@
     <button class="tab active" onclick="switchScene('master')" id="tab-master">Master v3 <span class="badge-new">56.77s</span></button>
     <button class="tab" onclick="switchScene('s5')" id="tab-s5">Scene 5</button>
     <button class="tab" onclick="switchScene('s6')" id="tab-s6">Scene 6</button>
+    <button class="tab" onclick="switchScene('s6v5')" id="tab-s6v5">Scene 6 v5 <span class="badge-new">candidate</span></button>
   </div>
 
   <!-- Master v3 -->
@@ -308,6 +309,50 @@
     </div>
   </div>
 
+  <!-- Scene 6 v5 candidate -->
+  <div class="player-card" id="card-s6v5">
+    <div class="scene-label">
+      <div class="scene-name">Scene 6 v5 — Direct Forum Feed <span class="badge-new">Candidate</span></div>
+      <div class="scene-chips">
+        <span><strong>15.500 s</strong></span>
+        <span><strong>1080×1920</strong> 9:16</span>
+        <span><strong>H.264</strong></span>
+        <span><strong>No audio</strong></span>
+      </div>
+    </div>
+
+    <div style="display:flex;flex-direction:column;align-items:center;gap:5px">
+      <a class="open-btn" href="/scene6-v5.mp4" target="_blank">
+        <svg width="15" height="15" viewBox="0 0 16 16" fill="none"><path d="M6 3H3a1 1 0 0 0-1 1v9a1 1 0 0 0 1 1h9a1 1 0 0 0 1-1v-3" stroke="#fff" stroke-width="1.5" stroke-linecap="round"/><path d="M9 2h5v5" stroke="#fff" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/><path d="M14 2 8 8" stroke="#fff" stroke-width="1.5" stroke-linecap="round"/></svg>
+        Open in new tab — full controls
+      </a>
+      <p class="open-hint">Isolated candidate; Master v3 remains unchanged</p>
+    </div>
+
+    <div class="shell">
+      <div class="notch"></div>
+      <div class="screen" id="wrap-s6v5">
+        <video id="vid-s6v5" src="/scene6-v5.mp4" muted playsinline preload="auto"></video>
+        <div class="play-overlay" id="ov-s6v5">
+          <div class="play-circle"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div>
+        </div>
+      </div>
+      <div class="home-bar"></div>
+    </div>
+
+    <div class="phases">
+      <div class="ph-title">Revised sequence</div>
+      <table>
+        <tr><td class="pi">P1</td><td class="pt">0.00 – 0.80 s</td><td class="pd">Community Forum opens directly — no Home/sidebar establishing shots</td></tr>
+        <tr><td class="pi">P2</td><td class="pt">0.80 – 7.10 s</td><td class="pd">Extended feed with ten posts and six deliberate scroll/settle beats</td></tr>
+        <tr><td class="pi">P3</td><td class="pt">7.10 – 10.60 s</td><td class="pd">Notifications load in, then drift upward gently</td></tr>
+        <tr><td class="pi">P4</td><td class="pt">10.60 – 11.10 s</td><td class="pd">Notifications dim and transition into the premium CTA</td></tr>
+        <tr><td class="pi">P5</td><td class="pt">11.10 – 14.64 s</td><td class="pd">Existing premium CTA composition holds for reading</td></tr>
+        <tr><td class="pi">End</td><td class="pt">14.64 – 15.50 s</td><td class="pd">Slow fade to black</td></tr>
+      </table>
+    </div>
+  </div>
+
   <!-- Scene 5 -->
   <div class="player-card" id="card-s5">
     <div class="scene-label">
@@ -356,7 +401,7 @@
   <script>
     // ── Scene switching ──────────────────────────────────────────────
     function switchScene(id) {
-      ['master', 's5', 's6'].forEach(s => {
+      ['master', 's5', 's6', 's6v5'].forEach(s => {
         document.getElementById('card-' + s).classList.toggle('visible', s === id);
         document.getElementById('tab-'  + s).classList.toggle('active',  s === id);
         // Pause the video we're leaving
@@ -382,7 +427,7 @@
     }
 
     // Wire up click-to-play for each scene
-    ['master', 's5', 's6'].forEach(id => {
+    ['master', 's5', 's6', 's6v5'].forEach(id => {
       const wrap = document.getElementById('wrap-' + id);
       const vid  = document.getElementById('vid-'  + id);
 
