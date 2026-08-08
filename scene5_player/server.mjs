@@ -5,6 +5,17 @@ import { fileURLToPath } from "node:url";
 
 const DIR = fileURLToPath(new URL(".", import.meta.url));
 const PORT = 5000;
+const MASTER_V3 = join(
+  DIR,
+  "..",
+  "extracted_scenes",
+  "Scene3Scene4_contents",
+  "Scene1scene2_contents",
+  "Dre-animation",
+  "Dream Planet Referral Campaign",
+  "Final Edit",
+  "DreamPlanet_Master_v3.mp4",
+);
 
 const MIME = {
   ".html": "text/html; charset=utf-8",
@@ -15,6 +26,13 @@ const MIME = {
 
 function resolve(rawUrl) {
   let pathname = rawUrl.split("?")[0];
+  if (pathname === "/master-v3.mp4") {
+    try {
+      return { filePath: MASTER_V3, stat: statSync(MASTER_V3) };
+    } catch {
+      return null;
+    }
+  }
   if (pathname === "/" || pathname === "") pathname = "/index.html";
   let filePath = join(DIR, pathname);
   let stat;
@@ -27,6 +45,11 @@ function resolve(rawUrl) {
 }
 
 createServer((req, res) => {
+  if ((req.url ?? "").split("?")[0] === "/favicon.ico") {
+    res.writeHead(204);
+    res.end();
+    return;
+  }
   const found = resolve(req.url);
   if (!found) { res.writeHead(404); res.end("Not found"); return; }
 

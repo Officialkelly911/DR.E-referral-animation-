@@ -205,17 +205,62 @@
   <header>
     <p class="eyebrow">Dream Planet Referral Campaign</p>
     <h1 class="campaign-title">Campaign Preview</h1>
-    <p class="campaign-sub">Scenes 5 &amp; 6 · Master v2 + Scene 6</p>
+    <p class="campaign-sub">Dream Planet Referral Campaign · Master v3</p>
   </header>
 
   <!-- Tab bar -->
   <div class="tabs">
+    <button class="tab active" onclick="switchScene('master')" id="tab-master">Master v3 <span class="badge-new">56.77s</span></button>
     <button class="tab" onclick="switchScene('s5')" id="tab-s5">Scene 5</button>
-    <button class="tab active" onclick="switchScene('s6')" id="tab-s6">Scene 6 <span class="badge-new">NEW</span></button>
+    <button class="tab" onclick="switchScene('s6')" id="tab-s6">Scene 6</button>
+  </div>
+
+  <!-- Master v3 -->
+  <div class="player-card visible" id="card-master">
+    <div class="scene-label">
+      <div class="scene-name">Master v3 — Full Campaign</div>
+      <div class="scene-chips">
+        <span><strong>56.767 s</strong></span>
+        <span><strong>1080×1920</strong> 9:16</span>
+        <span><strong>H.264</strong> 30fps</span>
+        <span><strong>AAC audio</strong></span>
+      </div>
+    </div>
+
+    <div style="display:flex;flex-direction:column;align-items:center;gap:5px">
+      <a class="open-btn" href="/master-v3.mp4" target="_blank">
+        <svg width="15" height="15" viewBox="0 0 16 16" fill="none"><path d="M6 3H3a1 1 0 0 0-1 1v9a1 1 0 0 0 1 1h9a1 1 0 0 0 1-1v-3" stroke="#fff" stroke-width="1.5" stroke-linecap="round"/><path d="M9 2h5v5" stroke="#fff" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/><path d="M14 2 8 8" stroke="#fff" stroke-width="1.5" stroke-linecap="round"/></svg>
+        Open in new tab — full controls &amp; audio
+      </a>
+      <p class="open-hint">Use the full-tab player for seeking and sound</p>
+    </div>
+
+    <div class="shell">
+      <div class="notch"></div>
+      <div class="screen" id="wrap-master">
+        <video id="vid-master" src="/master-v3.mp4" playsinline preload="metadata" controls></video>
+        <div class="play-overlay" id="ov-master">
+          <div class="play-circle"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div>
+        </div>
+      </div>
+      <div class="home-bar"></div>
+    </div>
+
+    <div class="phases">
+      <div class="ph-title">Campaign timeline</div>
+      <table>
+        <tr><td class="pi">S1</td><td class="pt">0.000 – 3.000 s</td><td class="pd">Tattoo Reveal</td></tr>
+        <tr><td class="pi">S2</td><td class="pt">3.000 – 6.000 s</td><td class="pd">Creator Discovery</td></tr>
+        <tr><td class="pi">S3</td><td class="pt">6.000 – 19.433 s</td><td class="pd">Referral Journey</td></tr>
+        <tr><td class="pi">S4</td><td class="pt">19.433 – 28.433 s</td><td class="pd">Leaderboard</td></tr>
+        <tr><td class="pi">S5</td><td class="pt">28.433 – 41.300 s</td><td class="pd">Community &amp; Participation</td></tr>
+        <tr><td class="pi">S6</td><td class="pt">41.300 – 56.767 s</td><td class="pd">Premium CTA — Join the Dream Planet Movement</td></tr>
+      </table>
+    </div>
   </div>
 
   <!-- Scene 6 -->
-  <div class="player-card visible" id="card-s6">
+  <div class="player-card" id="card-s6">
     <div class="scene-label">
       <div class="scene-name">Scene 6 — Join the Dream Planet Movement</div>
       <div class="scene-chips">
@@ -311,7 +356,7 @@
   <script>
     // ── Scene switching ──────────────────────────────────────────────
     function switchScene(id) {
-      ['s5', 's6'].forEach(s => {
+      ['master', 's5', 's6'].forEach(s => {
         document.getElementById('card-' + s).classList.toggle('visible', s === id);
         document.getElementById('tab-'  + s).classList.toggle('active',  s === id);
         // Pause the video we're leaving
@@ -337,7 +382,7 @@
     }
 
     // Wire up click-to-play for each scene
-    ['s5', 's6'].forEach(id => {
+    ['master', 's5', 's6'].forEach(id => {
       const wrap = document.getElementById('wrap-' + id);
       const vid  = document.getElementById('vid-'  + id);
 
@@ -351,8 +396,9 @@
       vid.addEventListener('ended',  () => showOverlay(id));
     });
 
-    // Auto-play Scene 6 on load (it's the active tab)
-    tryPlay('s6');
+    // Master v3 is the active tab on load. Browsers may require a click
+    // because this render includes campaign audio.
+    tryPlay('master');
   </script>
 </body>
 </html>

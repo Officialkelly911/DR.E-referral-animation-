@@ -21,6 +21,12 @@ pnpm --filter @workspace/api-server run dev
 ```
 Then open `http://localhost:8080/review`. Also exposes `/review/meta` (JSON) and `/review/video` (MP4 stream). To update the review page for a new master version or Scene 5/6, edit `artifacts/api-server/src/config/master.ts`.
 
+**Master v3 preview player** (port 5000, `/`) — full 56.767-second production render with audio:
+```sh
+node scene5_player/server.mjs
+```
+The player streams the authoritative `Final Edit/DreamPlanet_Master_v3.mp4` through `/master-v3.mp4`, with the individual Scene 5 and Scene 6 review clips available in the adjacent tabs.
+
 **Scene 3 animation preview** (port 24448, `/dream-planet-scene3/`):
 ```sh
 pnpm --filter @workspace/dream-planet-scene3 run dev
@@ -76,7 +82,7 @@ All shared assets live in `extracted_scenes/Scene3Scene4_contents/Replit-Design-
 
 ## Setup status
 
-Dependencies installed and all four workflows (Scene 3 web, Referral Module web, API Server, mockup-sandbox) verified running and rendering correctly. The project was re-imported from GitHub; the platform's multi-artifact detection (pnpm workspace stack) auto-created managed workflows and artifact entries for these four services — restart those exact workflows (not new ones) after future changes.
+Dependencies installed and the configured `Scene 5 Preview` workflow verified running and serving the Master v3 review player. The project was re-imported from GitHub; restart that exact workflow after future changes.
 
 ## Scene 5 materials (uploaded, in progress)
 
