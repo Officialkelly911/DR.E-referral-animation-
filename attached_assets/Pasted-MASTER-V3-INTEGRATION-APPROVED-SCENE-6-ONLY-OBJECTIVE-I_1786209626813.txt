@@ -1,0 +1,425 @@
+MASTER V3 INTEGRATION — APPROVED SCENE 6 ONLY
+
+OBJECTIVE
+
+Integrate the approved Scene 6 v3 candidate into the existing approved 5-scene campaign to produce Master v3.
+
+This is an INTEGRATION-ONLY task.
+
+Do NOT redesign, regenerate, retime, re-render, or otherwise modify Scenes 1–5.
+
+Do NOT make any additional creative changes to Scene 6.
+
+Use the approved Scene 6 v3 deliverable exactly as it was approved during the standalone Scene 6 QA process.
+
+==================================================
+1. SOURCE OF TRUTH
+==================================================
+
+Before changing anything, inspect the project and identify:
+
+- Current approved Master v2
+- Approved/locked Scenes 1–5
+- Approved Scene 6 v3 candidate
+- Existing audio assets
+- Existing master-build scripts
+- Existing scene metadata
+- Existing QA reports
+
+The approved Scene 6 v3 candidate is the ONLY Scene 6 asset that may be integrated.
+
+Expected candidate naming:
+
+scene6_final_v3.mp4
+
+and, where applicable:
+
+scene6_final_v3_no_audio.mp4
+
+Use the actual project paths if they differ.
+
+Do NOT use:
+
+- old scene6_final.mp4
+- previous Scene 6 versions
+- stale preview renders
+- temporary capture files
+- QA snapshots
+- first-pass v3 renders
+- intermediate revision files
+
+If there is ambiguity about which Scene 6 file is approved, STOP and report the ambiguity instead of guessing.
+
+==================================================
+2. PROTECT MASTER V2
+==================================================
+
+Before integration:
+
+- Preserve Master v2 exactly as it currently exists.
+- Do not overwrite it.
+- Do not rename it in a way that destroys traceability.
+- Create a Git tag/release or equivalent immutable checkpoint if the project workflow supports it.
+
+Suggested tag:
+
+campaign-master-v2-approved
+
+If a tag already exists, do not recreate or overwrite it.
+
+The purpose is to guarantee that Master v2 remains recoverable.
+
+==================================================
+3. PROTECT SCENES 1–5
+==================================================
+
+Scenes 1–5 are APPROVED and LOCKED.
+
+Treat them as immutable source assets.
+
+Do NOT:
+
+- change their timing
+- change their resolution
+- change their frame rate
+- alter transitions
+- change audio
+- crop them
+- resize them individually
+- regenerate them
+- modify their animation
+- modify their visual assets
+- "improve" their pacing
+- normalize their styling
+
+The only permitted operation involving Scenes 1–5 is incorporating their existing approved renders into the Master v3 assembly.
+
+If the build process requires transcoding for technical compatibility, preserve the exact visual/timing content and document the operation.
+
+==================================================
+4. INTEGRATE APPROVED SCENE 6
+==================================================
+
+Append the approved Scene 6 v3 after Scene 5.
+
+Scene 6 must remain visually and temporally identical to the standalone approved candidate.
+
+Do not alter Scene 6's:
+
+- animation
+- timing
+- notification screen
+- notification scrolling
+- sidebar behavior
+- Home Feed background
+- CTA design
+- CTA timing
+- typography
+- colors
+- logo
+- referral code
+- app-store buttons
+- transitions
+
+The final sequence must be:
+
+SCENE 1
+→ SCENE 2
+→ SCENE 3
+→ SCENE 4
+→ SCENE 5
+→ SCENE 6 v3
+
+==================================================
+5. RESOLUTION / FPS / FORMAT
+==================================================
+
+Inspect the existing campaign specifications before encoding.
+
+The final Master v3 must use the project's established:
+
+- resolution
+- aspect ratio
+- frame rate
+- codec
+- pixel format
+- audio format
+
+Do not arbitrarily convert the campaign to a different format.
+
+If Scenes have different source properties, use the existing master-build pipeline or the project's established normalization method.
+
+Do not manually resize individual scenes unless the existing pipeline already does so.
+
+==================================================
+6. AUDIO
+==================================================
+
+Preserve the approved campaign audio.
+
+Do NOT:
+
+- replace the music
+- regenerate the music
+- alter the soundtrack
+- introduce a new fade
+- change the music timing unnecessarily
+
+Verify:
+
+- audio starts at the correct point
+- audio remains synchronized throughout the campaign
+- no duplicate audio tracks are introduced
+- Scene 6 does not accidentally introduce unwanted audio
+- the final CTA does not contain an unexpected audio cut
+
+If Scene 6 is intentionally no-audio and the master uses the campaign soundtrack separately, preserve that architecture.
+
+==================================================
+7. BUILD MASTER V3
+==================================================
+
+Use the project's existing deterministic master-build workflow whenever possible.
+
+Do not create an ad-hoc one-off assembly command if an established build script already exists.
+
+Generate:
+
+DreamPlanet_Master_v3.mp4
+
+Also generate the appropriate no-audio/audio variants if the project convention requires them.
+
+The previous Master v2 must remain untouched.
+
+==================================================
+8. TECHNICAL VALIDATION
+==================================================
+
+After building Master v3, verify:
+
+- file exists
+- file is playable
+- duration is correct
+- resolution is correct
+- frame rate is correct
+- codec is correct
+- audio stream exists where expected
+- audio duration matches the campaign
+- no corrupted frames
+- no unexpected black frames
+- no missing scene
+- no duplicated scene
+- no accidental Scene 6 older version
+
+Generate machine-readable metadata where useful.
+
+Compare the resulting scene boundaries against the expected timeline.
+
+==================================================
+9. SCENE BOUNDARY QA
+==================================================
+
+Inspect every transition:
+
+Scene 1 → Scene 2
+Scene 2 → Scene 3
+Scene 3 → Scene 4
+Scene 4 → Scene 5
+Scene 5 → Scene 6
+
+Pay particular attention to:
+
+- abrupt frame changes
+- black flashes
+- frozen frames
+- duplicated frames
+- audio pops
+- audio discontinuities
+- unexpected scaling
+- aspect-ratio changes
+- timing gaps
+- transition overlap
+
+Do not modify a scene to solve a problem without first reporting the problem.
+
+==================================================
+10. SCENE 5 → SCENE 6 QA
+==================================================
+
+This is the most important new integration boundary.
+
+Verify that Scene 5 transitions naturally into Scene 6.
+
+Confirm:
+
+- Scene 6 starts at the intended frame
+- no old Scene 6 asset appears
+- no Community Forum screen unexpectedly reappears
+- the approved Notifications sequence remains intact
+- motion remains smooth
+- the CTA remains the approved version
+
+The integrated Master must preserve the standalone-approved Scene 6 appearance.
+
+==================================================
+11. FULL CAMPAIGN PLAYBACK
+==================================================
+
+Perform a full end-to-end playback of:
+
+DreamPlanet_Master_v3.mp4
+
+Do not rely solely on FFmpeg metadata or automated tests.
+
+Review the actual rendered video.
+
+Pay attention to:
+
+- overall pacing
+- scene continuity
+- visual consistency
+- audio synchronization
+- scene boundaries
+- animation smoothness
+- CTA readability
+- final frame
+- unexpected artifacts
+
+The goal is to confirm that the campaign works as a continuous viewer experience, not merely that six MP4 files can be concatenated.
+
+==================================================
+12. VISUAL SAMPLING
+==================================================
+
+Generate representative frames from:
+
+- beginning of Scene 1
+- Scene 1 → 2 boundary
+- Scene 2 → 3 boundary
+- Scene 3 → 4 boundary
+- Scene 4 → 5 boundary
+- Scene 5 → 6 boundary
+- middle of Scene 6
+- Notifications section
+- CTA beginning
+- final CTA frame
+- final frame of the entire campaign
+
+Use these frames for QA documentation.
+
+==================================================
+13. CREATE MASTER V3 QA REPORT
+==================================================
+
+Create:
+
+MASTER_V3_QA.md
+
+Include:
+
+1. Build identifier
+2. Source Master v2
+3. Scene 6 source used
+4. Scene count
+5. Final duration
+6. Resolution
+7. FPS
+8. Audio specification
+9. Scene timeline
+10. Boundary QA results
+11. Scene 6 integration results
+12. Full playback result
+13. Visual artifact check
+14. Audio synchronization result
+15. Final approval status
+
+Explicitly state that Scenes 1–5 were not creatively modified.
+
+==================================================
+14. EXPECTED DELIVERABLES
+==================================================
+
+Produce:
+
+DreamPlanet_Master_v3.mp4
+
+and any project-standard companion files, such as:
+
+DreamPlanet_Master_v3_audio.mp4
+DreamPlanet_Master_v3_no_audio.mp4
+MASTER_V3_QA.md
+
+Also preserve the approved standalone Scene 6 v3 files.
+
+Do not overwrite them.
+
+==================================================
+15. GIT / VERSION CONTROL
+==================================================
+
+After successful validation, create a clear version-control checkpoint.
+
+Suggested tag:
+
+campaign-master-v3-candidate
+
+Do NOT label it "approved" until creative review has been completed.
+
+The status at the end of this task should be:
+
+MASTER V3 = TECHNICALLY VALIDATED / CREATIVE APPROVAL PENDING
+
+==================================================
+16. HARD STOP CONDITIONS
+==================================================
+
+STOP instead of improvising if:
+
+- approved Scene 6 v3 cannot be located
+- multiple competing Scene 6 v3 files exist
+- Master v2 cannot be safely preserved
+- Scenes 1–5 appear to have changed
+- audio synchronization fails
+- Scene 6 renders differently from its approved standalone version
+- the Community Forum screen returns unexpectedly
+- a scene boundary produces a visible artifact
+- the master duration is inconsistent with the scene timeline
+- any required source asset is missing
+
+Do not "fix" these by silently changing approved material.
+
+Report the exact issue and affected files.
+
+==================================================
+17. FINAL HANDOFF
+
+At completion, report:
+
+- Master v3 path
+- Master v3 duration
+- Scene 1 duration
+- Scene 2 duration
+- Scene 3 duration
+- Scene 4 duration
+- Scene 5 duration
+- Scene 6 duration
+- resolution
+- FPS
+- audio status
+- QA report path
+- Git tag/checkpoint
+- confirmation that Master v2 remains untouched
+- confirmation that Scenes 1–5 remain unchanged
+- confirmation that the approved Scene 6 v3 candidate was used
+- any warnings
+
+IMPORTANT:
+
+Do not integrate another Scene 6 version.
+Do not modify Scenes 1–5.
+Do not redesign anything.
+Do not make creative improvements.
+Do not overwrite Master v2.
+Do not mark Master v3 creatively approved.
+
+This task ends when Master v3 has been successfully assembled, technically validated, visually reviewed, documented, and left ready for final human creative approval.
