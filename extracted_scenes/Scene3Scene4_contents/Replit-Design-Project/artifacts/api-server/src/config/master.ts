@@ -15,11 +15,11 @@
 import { resolve } from "node:path";
 
 // ── Master version label (shown in the review UI) ─────────────────────────────
-export const MASTER_VERSION = "v2";
+export const MASTER_VERSION = "v3";
 
 // ── Video filename (inside the Final Edit directory) ─────────────────────────
 // Use the _audio variant so the review player has the campaign soundtrack.
-export const VIDEO_FILENAME = "DreamPlanet_Master_v2_audio.mp4";
+export const VIDEO_FILENAME = "DreamPlanet_Master_v3.mp4";
 
 // ── Path to the Final Edit directory ─────────────────────────────────────────
 // Resolved from __dirname (dist/), which the build banner injects from import.meta.url.
@@ -70,15 +70,15 @@ export const SCENE5_VIDEO_PATH = resolve(
 export const MASTER_META = {
   version: MASTER_VERSION,
   filename: VIDEO_FILENAME,
-  duration: 41.300,          // seconds
-  durationFormatted: "0:41", // mm:ss
+  duration: 56.767,          // seconds
+  durationFormatted: "0:57", // mm:ss
   width: 1080,
   height: 1920,
   aspectRatio: "9:16",
   fps: 30,
   hasAudio: true,
-  approvedDate: "2026-08-06",
-  buildScript: "build_master_v2.sh",
+  approvedDate: "2026-08-08",
+  buildScript: "build_master_v3.sh",
 } as const;
 
 // ── Scene list ────────────────────────────────────────────────────────────────
@@ -139,6 +139,15 @@ export const SCENES: SceneEntry[] = [
     startTime: 28.433,
     endTime: 41.300,
     description: "Community & participation — Creator Portfolio → Community Forum → engagement interactions",
+    source: "video",
+  },
+  {
+    id: "scene6",
+    label: "Scene 6",
+    shortLabel: "Premium CTA",
+    startTime: 41.300,
+    endTime: 56.767,
+    description: "Premium cinematic CTA — Dream Planet logo, referral code IK54OTRD, and final movement invitation",
     source: "video",
   },
 ];
