@@ -1,6 +1,6 @@
 # Dream Planet Referral Campaign — Scene 6
 
-> **Status: COMPLETE — approved and integrated into Master v3.**
+> **Status: COMPLETE — integrated into Master v3; technical validation passed, creative approval pending.**
 >
 > Master v2 (Scenes 1–5) remains frozen. Scene 6 is self-contained and must not
 > touch any Scene 1–5 assets, the master build pipeline, or existing deliverables.
@@ -103,7 +103,7 @@
 
 ## Integration Steps (completed for Master v3)
 
-1. Approved Scene 6 was preserved as `scene6_final_v2.mp4`.
+1. Approved Scene 6 was preserved as `scene6_final_v3.mp4` and `scene6_final_v3_no_audio.mp4`.
 2. `build_master_v3.sh` appends the approved Scene 6 to the locked Master v2 no-audio baseline.
 3. `validate_master_v3.sh` verifies the v3 release and Scene 5→6 boundary.
 4. `artifacts/api-server/src/config/master.ts` serves Master v3 and includes the Scene 6 timeline entry.

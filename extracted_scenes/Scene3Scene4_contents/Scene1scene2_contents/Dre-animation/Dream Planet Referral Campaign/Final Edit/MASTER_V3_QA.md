@@ -1,7 +1,7 @@
 # Dream Planet Master v3 QA
 
 **QA date:** 2026-08-08  
-**Status:** ✅ APPROVED — PRODUCTION MASTER
+**Status:** ✅ TECHNICALLY VALIDATED — CREATIVE APPROVAL PENDING
 
 ## Pass / fail checklist
 
@@ -55,6 +55,12 @@ Spot-check frames were extracted at scene boundaries and CTA milestones:
 
 All boundary frames contain intentional visual content. The Scene 6 CTA uses the campaign’s orange/charcoal language, keeps the referral code dominant, and maintains the approved premium motion treatment.
 
-## Final approval
+## Final release status
 
-Master v3 passes the release validation suite and the end-to-end production review. It is approved as the production master for the six-scene Dream Planet Referral Campaign.
+Master v3 passes the release validation suite and the end-to-end technical
+playback review. It is ready for final human creative approval as the
+production master for the six-scene Dream Planet Referral Campaign.
+
+Scenes 1–5 were not creatively modified. Master v2 remains untouched. The
+integrated Scene 6 source is the approved versioned candidate:
+`Scene 6/Final Animation/scene6_final_v3_no_audio.mp4`.

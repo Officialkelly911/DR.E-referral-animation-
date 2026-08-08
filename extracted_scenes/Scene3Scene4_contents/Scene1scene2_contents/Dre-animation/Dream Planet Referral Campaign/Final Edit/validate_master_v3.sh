@@ -9,7 +9,7 @@ REPO_ROOT="$(cd "$SCRIPT_DIR/../../../../../.." && pwd)"
 MASTER="$SCRIPT_DIR/DreamPlanet_Master_v3.mp4"
 MASTER_AUDIO="$SCRIPT_DIR/DreamPlanet_Master_v3_audio.mp4"
 MASTER_NO_AUDIO="$SCRIPT_DIR/DreamPlanet_Master_v3_no_audio.mp4"
-SCENE6="$REPO_ROOT/extracted_scenes/Scene3Scene4_contents/Scene1scene2_contents/Dre-animation/Dream Planet Referral Campaign/Scene 6/Final Animation/scene6_final_no_audio.mp4"
+SCENE6="$REPO_ROOT/extracted_scenes/Scene3Scene4_contents/Scene1scene2_contents/Dre-animation/Dream Planet Referral Campaign/Scene 6/Final Animation/scene6_final_v3_no_audio.mp4"
 
 for tool in ffprobe ffmpeg convert awk; do
   command -v "$tool" >/dev/null || { echo "ERROR: missing tool: $tool" >&2; exit 2; }

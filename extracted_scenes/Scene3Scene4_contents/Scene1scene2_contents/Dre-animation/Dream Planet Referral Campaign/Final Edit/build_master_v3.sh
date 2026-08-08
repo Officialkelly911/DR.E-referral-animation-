@@ -19,7 +19,7 @@ rm -rf "$WORK"
 mkdir -p "$WORK"
 
 BASE_NO_AUDIO="$SCRIPT_DIR/DreamPlanet_Master_v2_no_audio.mp4"
-SCENE6_SRC="$REPO_ROOT/extracted_scenes/Scene3Scene4_contents/Scene1scene2_contents/Dre-animation/Dream Planet Referral Campaign/Scene 6/Final Animation/scene6_final_no_audio.mp4"
+SCENE6_SRC="$REPO_ROOT/extracted_scenes/Scene3Scene4_contents/Scene1scene2_contents/Dre-animation/Dream Planet Referral Campaign/Scene 6/Final Animation/scene6_final_v3_no_audio.mp4"
 MUSIC="$REPO_ROOT/extracted_scenes/Scene3Scene4_contents/Replit-Design-Project/attached_assets/Ai_music_for_dream_planet_video__1785842118219.mp3"
 
 TARGET_W=1080
