@@ -1,0 +1,100 @@
+The revised master video has now been rebuilt. Perform a final non-destructive QA pass on the complete master. Do not modify or re-render anything.
+
+Check:
+
+* Final resolution is 1080×1920.
+* Frame rate is consistent throughout.
+* Video duration is correct.
+* Audio and video durations are synchronized.
+* No black frames.
+* No frozen frames.
+* No duplicated or missing frames at scene boundaries.
+* No audio pops, gaps, clipping or unexpected silence.
+* Scenes 1–4 remain unchanged.
+* Scene 4 transitions correctly into the revised forum sequence.
+* Forum feed contains the extended scrolling sequence.
+* Forum → notification transition is clean.
+* Notification → final CTA transition is clean.
+* Final CTA plays completely.
+* Final output file can be opened and played from beginning to end.
+
+Report the QA results, including:
+
+1. Filename
+2. Duration
+3. Resolution
+4. FPS
+5. Video codec
+6. Audio codec
+7. Audio/video duration
+8. Any detected issues
+
+Do not make changes during this QA pass.
+
+2. Then do the most important test: watch the whole thing
+
+Watch the complete master, preferably once normally and once specifically looking at transitions.
+
+The sequence should now feel like:
+
+Opening → product/story → Dream Planet interaction → referral/community discovery → extended forum activity → notification → final CTA
+
+The forum should no longer feel like filler. It should communicate that there are actual people and activity inside the Dream Planet ecosystem.
+
+3. If QA passes, lock the master
+
+Do not keep tweaking it just because you can. At this stage, endless micro-adjustments are usually how production projects acquire a permanent residence in revision hell.
+
+Tell Replit:
+
+Final QA has passed. Treat this master as the approved production version. Do not modify the video or source scene timings. Create a final production checkpoint of the current project state.
+
+4. Clean the project
+
+Now remove only obsolete generated files, such as:
+
+* Old Scene 5 renders
+* Superseded master renders
+* Temporary previews
+* Temporary frame exports
+* Old .gz archives you previously identified
+
+Keep:
+
+* Source code
+* Source assets
+* Approved Scene 5
+* Final master
+* Audio/no-audio master variants
+* Build scripts
+* QA documentation
+
+5. Commit the final state to GitHub
+
+Use a clear commit such as:
+
+Finalize Dream Planet referral video with extended forum sequence
+
+That gives you a reproducible checkpoint instead of relying on whichever version happens to be sitting in Replit at 3 a.m., which is not a particularly robust archival strategy.
+
+6. Then move to the actual delivery/export stage
+
+The production chain becomes:
+
+Implementation ✅
+↓
+Scene 5 QA ✅
+↓
+Master rebuild ✅
+↓
+Full-master QA ← NEXT
+↓
+Production lock
+↓
+Project cleanup
+↓
+GitHub checkpoint
+↓
+Final delivery/export
+
+So, if the master rebuild you just completed has passed its build checks, your next action is the non-destructive full-master QA prompt above.
