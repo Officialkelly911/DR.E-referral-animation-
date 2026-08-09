@@ -5,8 +5,8 @@
   "frameCount": 465,
   "durationSeconds": 15.5,
   "audio": "none",
-  "sha256": "cb86646d000e4f5e95572595fe5e3f5160704445f852c7401d7d5d5d7b7c600c",
-  "startupOffsetMs": 2106,
+  "sha256": "0b7c7c2896388c9433a8db0ce93818e2acfc2ed0f98d7a97c34af73f39f0fbe4",
+  "startupOffsetMs": 1802,
   "sequence": {
     "forumStartsAtSeconds": 0,
     "forumHoldSeconds": 0.8,
