@@ -1,20 +1,22 @@
 # Scene 5 Archive — v1 Approved
 
 **Archived:** 2026-08-06  
-**Status:** Approved and frozen. These are the final deliverables for Scene 5 v1.
+**Status:** Superseded and frozen. The canonical revised Scene 5 is retained in
+the production source tree; this directory now preserves the historical
+baseline metadata only.
 
 ---
 
-## Contents
+## Retained contents
 
 | File | Size | Description |
 |------|------|-------------|
-| `scene5_final.mp4` | ~9.7 MB | Scene 5 source — with original audio track (muted at master concat stage) |
-| `scene5_final_no_audio.mp4` | ~9.7 MB | Scene 5 source — audio stripped variant |
-| `scene5_start_frame.png` | ~98 KB | First meaningful frame (post-trim reference) |
-| `scene5_end_frame.png` | ~1.4 MB | Last frame (Scene 5 → Scene 6 transition reference) |
-| `scene5_start_frame_capture.png` | ~98 KB | Start frame from Playwright capture pipeline |
-| `scene5_end_frame_capture.png` | ~1.4 MB | End frame from Playwright capture pipeline |
+| `MASTER_V2_BASELINE.md` | — | Historical Master v2 production baseline |
+| `ARCHIVE_MANIFEST.md` | — | This archive record |
+
+The superseded v1 MP4s and capture stills were removed after the revised
+Master v5 passed full technical and visual QA. The approved Scene 5 source
+remains at the canonical production path documented below.
 
 ---
 
@@ -65,5 +67,6 @@ extracted_scenes/Scene3Scene4_contents/Scene1scene2_contents/
 
 ---
 
-> These files are read-only references. Do not overwrite them.
-> Future Scene 5 revisions would be archived as `scene5_v2/`.
+> The retained documents are read-only references. Do not overwrite them.
+> Future Scene 5 revisions should be archived separately from the production
+> source and final deliverables.

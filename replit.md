@@ -84,16 +84,15 @@ All shared assets live in `extracted_scenes/Scene3Scene4_contents/Replit-Design-
 
 Dependencies installed and the configured `Scene 5 Preview` workflow verified running and serving the Master v5 review player. The project was re-imported from GitHub; restart that exact workflow after future changes.
 
-## Scene 5 materials (uploaded, in progress)
+## Scene 5 materials and production status
 
 `attached_assets/` contains a full Scene 5 spec ("Creator Portfolio → Community Forum → Engagement") plus reference screenshots, screen recordings, forum/portfolio media, and brand assets. This is a large new feature (new UI screens: side navigation, portfolio, forum feed, forum overview, plus like/comment/share interactions and a new cinematic animation timeline).
 
-**Phase 2 — Side Navigation Drawer: done.** Recreated as `Scene5SideNavigation` and children under
-`artifacts/dream-planet-scene3/src/components/scene5/`. Review harness at
-`/dream-planet-scene3/scene5-preview.html` (isolated from Scenes 3/4). See
-`SCENE5_PHASE2_FIDELITY_REPORT.md` for the visual fidelity audit against the reference screenshot.
-Per the phase spec, work stopped here — Portfolio, Forum, engagement interactions, the Scene 5
-animation timeline, and master integration are separate later phases pending review/approval.
+Scene 5 is approved and integrated into the production Master v5. Its source
+render is at `Scene 5/Final Animation/scene5_final.mp4`; the deterministic
+master build applies the established 0.9s standalone-capture preamble trim.
+The original phase reports and isolated review harness remain available for
+historical reference.
 
 ## Deterministic master pipeline
 
