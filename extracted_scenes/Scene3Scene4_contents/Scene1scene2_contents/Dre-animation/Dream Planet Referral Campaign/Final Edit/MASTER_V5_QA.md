@@ -1,7 +1,7 @@
 # Dream Planet Master v5 QA
 
-**QA date:** 2026-08-08  
-**Status:** ✅ TECHNICALLY VALIDATED — revised Scene 5 master candidate
+**QA date:** 2026-08-09  
+**Status:** ✅ LOCKED — production master after independent full-campaign QA
 
 ## Build
 
@@ -126,6 +126,9 @@ Passed:
 - Full-file ffmpeg decode
 - `blackdetect` scan
 - `mpdecimate` duplicate-like frame scan
+- `freezedetect` review against the source timelines (all reported holds are intentional
+  readability holds or the final fade)
+- `silencedetect` audio scan (no digital silence interval ≥ 0.25s)
 - Boundary still extraction and visual review
 
 ## Final handoff
@@ -143,4 +146,6 @@ Passed:
 Scenes 1–4 were not creatively modified. The approved revised Scene 5 was
 used as the only replacement in the deterministic rebuild. The approved Scene
 6 v3 candidate was preserved and used unchanged as the final sequence.
-Master v2 remains untouched.
+Master v1–v4 delivery files and the obsolete pre-QA-fix archive were removed after this
+verification. The approved Scene 5 source, final v5 deliverables, build scripts, source
+assets, and QA documentation remain.
