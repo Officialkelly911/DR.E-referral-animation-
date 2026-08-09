@@ -21,11 +21,11 @@ pnpm --filter @workspace/api-server run dev
 ```
 Then open `http://localhost:8080/review`. Also exposes `/review/meta` (JSON) and `/review/video` (MP4 stream). To update the review page for a new master version or Scene 5/6, edit `artifacts/api-server/src/config/master.ts`.
 
-**Master v3 preview player** (port 5000, `/`) — full 56.767-second production render with audio:
+**Master v5 preview player** (port 5000, `/`) — full 56.767-second production render with audio:
 ```sh
 node scene5_player/server.mjs
 ```
-The player streams the authoritative `Final Edit/DreamPlanet_Master_v3.mp4` through `/master-v3.mp4`, with the individual Scene 5 and Scene 6 review clips available in the adjacent tabs. The isolated Scene 6 v5 direct-forum-feed candidate is available in the `Scene 6 v5` candidate tab and `/scene6-v5.mp4`; it does not replace Master v3.
+The player streams the authoritative `Final Edit/DreamPlanet_Master_v5.mp4` through `/master-v5.mp4`, with the individual Scene 5 and Scene 6 review clips available in the adjacent tabs.
 
 **Scene 3 animation preview** (port 24448, `/dream-planet-scene3/`):
 ```sh
@@ -82,7 +82,7 @@ All shared assets live in `extracted_scenes/Scene3Scene4_contents/Replit-Design-
 
 ## Setup status
 
-Dependencies installed and the configured `Scene 5 Preview` workflow verified running and serving the Master v3 review player. The project was re-imported from GitHub; restart that exact workflow after future changes.
+Dependencies installed and the configured `Scene 5 Preview` workflow verified running and serving the Master v5 review player. The project was re-imported from GitHub; restart that exact workflow after future changes.
 
 ## Scene 5 materials (uploaded, in progress)
 
@@ -148,3 +148,19 @@ Scene 5 / Scene 6.
 ## User preferences
 
 _No explicit preferences recorded yet._
+
+## Master v5 final rebuild (Aug 8, 2026)
+
+The complete campaign was rebuilt with the deterministic `Final Edit/build_master_v5.sh`
+pipeline using the approved revised Scene 5 and approved Scene 6 v3. The resulting
+master is 56.766667s at 1080×1920, 30fps, with AAC stereo audio. The no-audio and
+audio companion variants are generated alongside it.
+
+- Master: `Final Edit/DreamPlanet_Master_v5.mp4`
+- Audio variant: `Final Edit/DreamPlanet_Master_v5_audio.mp4`
+- No-audio variant: `Final Edit/DreamPlanet_Master_v5_no_audio.mp4`
+- QA: `Final Edit/MASTER_V5_QA.md`
+- Visual QA stills: `Final Edit/qa_v5/`
+
+Master v2 and the approved source scenes remain untouched. Master v5 is technically
+validated and ready for final human creative approval.

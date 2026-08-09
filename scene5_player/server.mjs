@@ -5,7 +5,7 @@ import { fileURLToPath } from "node:url";
 
 const DIR = fileURLToPath(new URL(".", import.meta.url));
 const PORT = 5000;
-const MASTER_V3 = join(
+const MASTER_V5 = join(
   DIR,
   "..",
   "extracted_scenes",
@@ -14,7 +14,7 @@ const MASTER_V3 = join(
   "Dre-animation",
   "Dream Planet Referral Campaign",
   "Final Edit",
-  "DreamPlanet_Master_v3.mp4",
+  "DreamPlanet_Master_v5.mp4",
 );
 const SCENE6_V5 = join(
   DIR,
@@ -33,9 +33,9 @@ const MIME = {
 
 function resolve(rawUrl) {
   let pathname = rawUrl.split("?")[0];
-  if (pathname === "/master-v3.mp4") {
+  if (pathname === "/master-v5.mp4") {
     try {
-      return { filePath: MASTER_V3, stat: statSync(MASTER_V3) };
+      return { filePath: MASTER_V5, stat: statSync(MASTER_V5) };
     } catch {
       return null;
     }

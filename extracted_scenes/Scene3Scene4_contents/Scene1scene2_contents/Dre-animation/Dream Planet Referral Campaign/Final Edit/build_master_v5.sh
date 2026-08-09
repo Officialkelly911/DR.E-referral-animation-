@@ -106,7 +106,6 @@ for point in 28.433 28.500 41.300 41.400; do
     echo "ERROR: boundary frame at ${point}s is near blank (brightness ${brightness})" >&2
     exit 1
   }
-  cp "$frame" "$WORK/boundary_${safe}.png"
 done
 
 cp "$WORK/master_audio.mp4" "$OUT_DIR/DreamPlanet_Master_v5.mp4"
