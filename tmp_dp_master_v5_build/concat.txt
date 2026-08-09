@@ -1,0 +1,2 @@
+file '/home/runner/workspace/tmp_dp_master_v5_build/base/DreamPlanet_Master_v5_no_audio.mp4'
+file '/home/runner/workspace/tmp_dp_master_v5_build/scene6_normalized.mp4'

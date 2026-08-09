@@ -15,11 +15,11 @@
 import { resolve } from "node:path";
 
 // ── Master version label (shown in the review UI) ─────────────────────────────
-export const MASTER_VERSION = "v3";
+export const MASTER_VERSION = "v5";
 
 // ── Video filename (inside the Final Edit directory) ─────────────────────────
 // Use the _audio variant so the review player has the campaign soundtrack.
-export const VIDEO_FILENAME = "DreamPlanet_Master_v3.mp4";
+export const VIDEO_FILENAME = "DreamPlanet_Master_v5.mp4";
 
 // ── Path to the Final Edit directory ─────────────────────────────────────────
 // Resolved from __dirname (dist/), which the build banner injects from import.meta.url.
@@ -65,7 +65,7 @@ export const SCENE5_VIDEO_PATH = resolve(
 );
 
 // ── Known video metadata ──────────────────────────────────────────────────────
-// Sourced from ffprobe at the time Master v3 was approved (Aug 8, 2026).
+// Sourced from ffprobe at the time Master v5 was rebuilt (Aug 9, 2026).
 // Update when the master is regenerated with new scenes or a trim change.
 export const MASTER_META = {
   version: MASTER_VERSION,
@@ -77,8 +77,8 @@ export const MASTER_META = {
   aspectRatio: "9:16",
   fps: 30,
   hasAudio: true,
-  approvedDate: "2026-08-08",
-  buildScript: "build_master_v3.sh",
+  approvedDate: "2026-08-09",
+  buildScript: "build_master_v5.sh",
 } as const;
 
 // ── Scene list ────────────────────────────────────────────────────────────────

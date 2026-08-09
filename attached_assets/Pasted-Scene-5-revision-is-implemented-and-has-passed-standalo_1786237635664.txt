@@ -1,0 +1,73 @@
+Scene 5 revision is implemented and has passed standalone QA. Now integrate the approved Scene 5 into the complete Dream Planet master video.
+
+Use the existing deterministic master build pipeline.
+
+Requirements:
+
+* Keep Scenes 1–4 unchanged.
+* Replace only the previous Scene 5 with the newly approved Scene 5.
+* Preserve the existing audio track and synchronization.
+* Preserve the required 1080×1920 output format.
+* Verify there are no black frames, duplicated frames, missing frames, abrupt audio changes, or unintended pauses.
+* Verify the transition from Scene 4 into the extended forum sequence.
+* Verify the transition from the forum feed → notification → final CTA.
+* Generate the final master MP4.
+* Also generate the existing _audio and _no_audio variants if those are part of the current pipeline.
+
+After rendering, report:
+
+1. Final filename(s)
+2. Total duration
+3. Resolution
+4. FPS
+5. Audio duration
+6. Whether the build completed without errors.
+
+Step 2: Watch the entire master
+
+Don’t just inspect the new forum section.
+
+Watch the whole video from beginning to end.
+
+Pay particular attention to:
+
+Scene 4 → Scene 5
+
+The forum should feel like the natural continuation of the previous interaction.
+
+Forum → Notification
+
+The notification should appear after enough community activity has been established.
+
+Notification → CTA
+
+The CTA should feel like the payoff, not an unrelated screen suddenly appearing because the timeline ran out.
+
+Step 3: Do the final technical QA
+
+Have Replit run:
+
+Perform final technical QA on the rebuilt master. Check video duration, resolution, frame rate, audio stream, audio/video duration alignment, scene boundaries, black frames, frozen frames, corrupted frames and final file integrity. Do not alter the video. Report only the QA results.
+
+If everything passes, lock the master.
+
+Step 4: Clean the project
+
+Only after the master is verified:
+
+* Keep the approved Scene 5.
+* Keep the final master.
+* Keep the final audio/no-audio variants.
+* Keep the QA documentation.
+* Remove obsolete renders/previews.
+* Remove the old superseded Scene 5 version if it’s clearly identified.
+* Remove the large .gz archives you previously wanted removed.
+* Do not delete source assets or anything required to reproduce the master.
+
+Step 5: Create the production checkpoint
+
+Commit the clean version to GitHub with something like:
+
+Finalized Dream Planet referral video - revised forum feed and CTA sequence
+
+This becomes the stable production version.
