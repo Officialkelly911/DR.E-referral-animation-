@@ -29,7 +29,7 @@ OUT_DIR="${1:-$SCRIPT_DIR}"
 mkdir -p "$OUT_DIR"
 
 # ── Build workspace ──────────────────────────────────────────────────────────
-WORK="$REPO_ROOT/tmp_dp_master_v2_build"
+WORK="${WORK_DIR_OVERRIDE:-$REPO_ROOT/tmp_dp_master_v2_build}"
 rm -rf "$WORK"
 mkdir -p "$WORK"
 
@@ -47,7 +47,7 @@ DP_ICON="$S2_DIR/Project Files/assets/dp_icon.png"
 
 SCENE3_SRC="$REPO_ROOT/extracted_scenes/Scene3Scene4_contents/Scene1scene2_contents/Dre-animation/Dream Planet Referral Campaign/Scene 3/Final Animation/scene3_final.mp4"
 SCENE4_SRC="$REPO_ROOT/extracted_scenes/Scene3Scene4_contents/Scene1scene2_contents/Dre-animation/Dream Planet Referral Campaign/Scene 4/Final Animation/scene4_final.mp4"
-SCENE5_SRC="$REPO_ROOT/extracted_scenes/Scene3Scene4_contents/Scene1scene2_contents/Dre-animation/Dream Planet Referral Campaign/Scene 5/Final Animation/scene5_final.mp4"
+SCENE5_SRC="${SCENE5_SRC_OVERRIDE:-$REPO_ROOT/extracted_scenes/Scene3Scene4_contents/Scene1scene2_contents/Dre-animation/Dream Planet Referral Campaign/Scene 5/Final Animation/scene5_final.mp4}"
 
 MUSIC="$REPO_ROOT/extracted_scenes/Scene3Scene4_contents/Replit-Design-Project/attached_assets/Ai_music_for_dream_planet_video__1785842118219.mp3"
 
@@ -62,7 +62,10 @@ SCENE3_TRIM_START=0.7
 # Scene 5 standalone capture: Playwright preamble stays pure white through t=0.8s;
 # animation content (home screen / side nav) begins at ~t=0.9s (brightness ~0.85).
 # Trim at 0.9s so the first frame is live animation, not browser startup white.
-SCENE5_TRIM_START=0.9
+SCENE5_TRIM_START="${SCENE5_TRIM_START_OVERRIDE:-0.9}"
+
+# Optional release naming. Defaults preserve the original Master v2 behavior.
+MASTER_BASENAME="${MASTER_BASENAME_OVERRIDE:-DreamPlanet_Master_v2}"
 
 # ── Required output spec ─────────────────────────────────────────────────────
 TARGET_W=1080
@@ -347,13 +350,13 @@ fi
 # ══════════════════════════════════════════════════════════════════════════
 # Deliverables — v2 filenames; v1 files are not touched
 # ══════════════════════════════════════════════════════════════════════════
-cp "$WORK/master_no_audio.mp4"   "$OUT_DIR/DreamPlanet_Master_v2_no_audio.mp4"
-cp "$WORK/master_with_audio.mp4" "$OUT_DIR/DreamPlanet_Master_v2_audio.mp4"
-cp "$WORK/master_with_audio.mp4" "$OUT_DIR/DreamPlanet_Master_v2.mp4"
+cp "$WORK/master_no_audio.mp4"   "$OUT_DIR/${MASTER_BASENAME}_no_audio.mp4"
+cp "$WORK/master_with_audio.mp4" "$OUT_DIR/${MASTER_BASENAME}_audio.mp4"
+cp "$WORK/master_with_audio.mp4" "$OUT_DIR/${MASTER_BASENAME}.mp4"
 
 echo ""
 echo "══════════════════════════════════════════════════════"
-echo " BUILD REPORT — Master v2"
+echo " BUILD REPORT — ${MASTER_BASENAME}"
 echo "══════════════════════════════════════════════════════"
 echo "  Resolution:      ${FINAL_W}x${FINAL_H}"
 echo "  Frame rate:      ${FINAL_FPS}"
@@ -363,7 +366,7 @@ echo "  Scene order:     ${SCENE_ORDER[*]}"
 echo "  Timeline:"
 echo -n "$TIMELINE"
 echo "  Deliverables written to: $OUT_DIR"
-echo "    - DreamPlanet_Master_v2.mp4"
-echo "    - DreamPlanet_Master_v2_audio.mp4"
-echo "    - DreamPlanet_Master_v2_no_audio.mp4"
+echo "    - ${MASTER_BASENAME}.mp4"
+echo "    - ${MASTER_BASENAME}_audio.mp4"
+echo "    - ${MASTER_BASENAME}_no_audio.mp4"
 echo "══════════════════════════════════════════════════════"
